@@ -7,4 +7,17 @@
     width: 100%;
     height: $footer-height;
     bottom: 0;
+    &__logo {
+        width: 150px;
+        height: 150px;
+        .cls-1 {
+            fill: $logo-white;
+        }
+        .cls-2 {
+            fill: $logo-border;
+        }
+        .cls-text {
+            fill: $logo-white;
+        }
+    }
 }

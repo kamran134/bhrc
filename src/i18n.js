@@ -20,7 +20,7 @@ i18n.use(LanguageDetector).init({
             }
         },
     },
-    lng: 'en',
+    lng: localStorage.getItem('az.bhrc.language') || 'az',
     fallbackLng: 'en',
     debug: true,
     nsSeparator: ':::',
