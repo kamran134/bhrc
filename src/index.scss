@@ -1,13 +1,28 @@
 @import './variables.scss';
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 // @import url('https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap');
+@import "~bootstrap/scss/bootstrap";
+@font-face {
+    font-family: 'candara-italic';
+    src: url('./assets/fonts/candara-light-italic.ttf') format('truetype');
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'candara-italic';
+    src: url('./assets/fonts/candara-bold-italic.ttf') format('truetype');
+    font-weight: bold;
+}
+
 body {
     margin: 0;
     font-family: 'Inter', sans-serif;
+    $font-size: $main-font-size;
     //font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     //padding-bottom: $footer-height;
+    overflow-x: hidden;
 }
 
 code {
@@ -19,7 +34,7 @@ code {
     flex-direction: column;
     align-items: center;
     &-inner {
-        width: 1000px;
+        width: $standart-container-width;
     }
 }
 
@@ -38,8 +53,188 @@ code {
     justify-content: space-between;
 }
 
+.space-around {
+    justify-content: space-around !important;
+}
+
 .flex-center {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.opacity {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: -webkit-fill-available;
+    background-color: $blue-opacity;
+    z-index: 1;
+}
+
+.relative {
+    position: relative;
+    z-index: 2;
+}
+
+.paint-badge {
+    width: $paint-width;
+    height: $paint-height;
+    position: relative;
+    .st0 {
+        fill: $main-orange;
+    }
+    .badge-label {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        font-size: $main-font-size;
+        //width: $paint-width;
+        //height: $paint-height;
+        // display: flex;
+        // justify-content: center;
+        // align-items: center;
+        transform: translate(-50%, -50%);
+        color: #fff;
+    }
+}
+
+
+/* Titles */
+
+h1,
+h2 {
+    font-family: 'candara-italic';
+    font-weight: 600 !important;
+}
+
+h1,
+h2,
+h3 {
+    margin: 8px 0 !important;
+}
+
+h1 {
+    font-size: $h1-font-size !important;
+}
+
+h2 {
+    font-size: $h2-font-size !important;
+    //color: $main-blue;
+    margin: $medium-margin 0 $big-margin 0;
+}
+
+h3 {
+    font-size: $h3-font-size !important;
+    line-height: 1.5 !important;
+    font-weight: normal !important;
+}
+
+.block-text {
+    line-height: 2;
+    font-size: $text-font-size;
+    color: $block-text-color;
+}
+
+
+/* Buttons */
+
+.bhrc-btn {
+    padding: 0 13px;
+    font-size: 15px;
+    border-radius: $button-radius;
+    height: 37px;
+    border: none;
+    display: flex;
+    align-items: center;
+    &:focus {
+        border: none;
+        outline: none;
+    }
+    svg {
+        margin-left: $small-margin;
+    }
+}
+
+.orange-btn {
+    background-color: $main-orange;
+    color: #fff;
+    margin-right: 33px;
+    &:hover {
+        background-color: $main-orange-hover;
+    }
+    &:last-child {
+        margin-right: 0;
+    }
+}
+
+.blue-btn {
+    background-color: $main-blue;
+    color: #fff;
+    &:hover {
+        background-color: $main-blue-hover;
+    }
+}
+
+.white-btn {
+    background-color: #fff;
+    color: $main-orange;
+    height: 22px;
+    font-size: $text-font-size;
+    &:hover {
+        background-color: $main-white-hover;
+    }
+}
+
+
+/* Margins */
+
+.small-margin-top {
+    margin-top: $small-margin;
+}
+
+
+/* Colors */
+
+.white-text {
+    color: #fff;
+}
+
+.main-blue-text {
+    color: $main-blue;
+}
+
+.main-orange-text {
+    color: $main-orange;
+}
+
+.main-grey-text {
+    color: $block-text-color;
+}
+
+.white-backgound {
+    background-color: #fff;
+}
+
+.main-blue-background {
+    background-color: $main-blue;
+}
+
+.main-orange-background {
+    background-color: $main-orange;
+}
+
+
+/* Text */
+
+.hashtag-text {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: $hashtag-font-size;
+}
+
+.block-title-text {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: $block-title-font-size;
+    font-weight: 600;
 }

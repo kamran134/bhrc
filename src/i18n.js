@@ -1,24 +1,20 @@
 import i18n from 'i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
+import translationAz from './locales/az/translation.json';
+import translationRu from './locales/ru/translation.json';
+import translationEn from './locales/en/translation.json';
 
 i18n.use(LanguageDetector).init({
     resources: {
         az: {
-            translation: {
-                'THIS IS HEADER!!!': 'BU HİDERDİR!!!',
-                'This is FOOTER!': 'Bu FUTERDİR!',
-                'Main': 'Əsas',
-                'About us': 'Haqqımızda'
-            }
+            translation: translationAz
         },
         ru: {
-            translation: {
-                'THIS IS HEADER!!!': 'ЭТО ХИДЕР!!!',
-                'This is FOOTER!': 'Это ФУТЕР!',
-                'Main': 'Главная',
-                'About us': 'О нас'
-            }
+            translation: translationRu
         },
+        en: {
+            translation: translationEn
+        }
     },
     lng: localStorage.getItem('az.bhrc.language') || 'az',
     fallbackLng: 'en',

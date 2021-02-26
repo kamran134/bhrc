@@ -3,6 +3,20 @@
 $logo-white: #fff;
 $logo-blue: #25a9e0;
 $logo-border: #f15a24;
+$logo-border-hover: #d8874d;
+$footer-color: #0062a0;
+$main-blue: #0062a0;
+$main-blue-hover: #1971a8;
+$footer-line-color: #0871B4;
+$main-orange: #f2623c;
+$main-orange-hover: #fa7753;
+$main-white-hover: #f7cbac;
+$progress-color: #ffa380;
+$main-grey: #f8f8f8;
+//$main-white-hover: #0062a0;
+$blue-opacity: #0062a04f;
+$block-text-color: #707070;
+$border-on-grey: #939393;
 
 /* Sizes */
 
@@ -11,8 +25,53 @@ $footer-height: 300px;
 
 /* Margins */
 
+$small-margin: 8px;
+$medium-margin: 15px;
+$menu-margin: 20px;
+$search-margin: 24px;
+$big-margin: 30px;
+$large-margin: 75px;
 
 /* Paddings */
 
+$menu-padding: 20px;
+$block-padding: 48px;
+$carousel-block-padding: 30px 40px;
 
 /* Font sizes */
+
+$little-font-size: 10px;
+$language-font-size: 12px;
+$location-font-size: 13px;
+$hashtag-font-size: 13px;
+$main-font-size: 14px;
+$menu-font-size: 15px;
+$h1-font-size: 35px;
+$h2-font-size: 25px;
+$h3-font-size: 15px;
+$text-font-size: 13px;
+$block-title-font-size: 18px;
+$footer-font-size: 20px;
+
+/* Borders */
+
+$menu-border: 1px solid rgba(202, 199, 199, 0.7);
+
+/* Widths */
+
+$standart-container-width: 750px;
+$paint-width: 82px;
+$paint-height: 26px;
+
+/* Round elements */
+
+$menu-round: 25px;
+
+/* Border radiuses */
+
+$standart-radius: 7px;
+$button-radius: 20px;
+
+/* Shadows */
+
+$standart-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.16);

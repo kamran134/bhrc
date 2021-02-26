@@ -1,22 +1,59 @@
 @import '../../../variables.scss';
 .footer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #2f4f4f;
+    padding: $menu-padding;
+    background-color: $footer-color;
     width: 100%;
-    height: $footer-height;
+    //height: $footer-height;
     bottom: 0;
+    color: #fff;
+    &__information {
+        display: flex;
+        justify-content: space-between;
+        font-size: $footer-font-size;
+        font-family: Arial, Helvetica, sans-serif;
+        h2 {
+            margin-bottom: $big-margin !important;
+        }
+        .footer-col {
+            width: 200px;
+        }
+        .contact-info {
+            color: $main-orange;
+            display: flex;
+            align-items: center;
+            margin-bottom: 18px;
+            svg {
+                margin-right: 5px;
+            }
+        }
+        .info-item {
+            display: block;
+            line-height: 1.2;
+            margin-bottom: 18px;
+        }
+    }
+    &__copyright {
+        width: 711px;
+        border-top: 2px solid $footer-line-color;
+        padding: 15px 0;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        .text {
+            margin-left: 100px;
+            font-size: $h3-font-size;
+        }
+    }
     &__logo {
-        width: 150px;
-        height: 150px;
-        .cls-1 {
+        width: auto;
+        height: 50px;
+        .st0 {
             fill: $logo-white;
         }
-        .cls-2 {
+        .st01 {
             fill: $logo-border;
         }
-        .cls-text {
+        .st1 {
             fill: $logo-white;
         }
     }

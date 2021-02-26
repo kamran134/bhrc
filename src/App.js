@@ -10,22 +10,18 @@ import {
 } from 'react-router-dom';
 import About from './components/Pages/About/About';
 import Main from './components/Pages/Main/Main';
-import Navigation from './components/Elements/Navigation/Navigation';
 import Footer from './components/Elements/Footer/Footer';
 import './i18n';
 
 function App() {
   return (
     <Router>
-      {/* <Suspense fallback='loading'> */}
         <Header/>
-        <Navigation/>
         <Switch>
           <Route path='/about' component={About} />
           <Route path='/' exact component={Main} />
         </Switch>
         <Footer/>
-      {/* </Suspense> */}
     </Router>
   );
 }

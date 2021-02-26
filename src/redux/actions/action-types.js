@@ -8,3 +8,5 @@ export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAIL = 'LOGIN_FAIL';
 export const LOGOUT = 'LOGOUT';
 export const SET_LANGUAGE = 'SET_LANGUAGE';
+export const ACTIVE_SEARCH = 'ACTIVE_SEARCH';
+export const HIDE_SEARCH = 'HIDE_SEARCH';
