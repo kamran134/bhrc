@@ -26,8 +26,8 @@ const Header = (props) => {
                         <div className='cover__slogan'>
                             <PaintBrushes />
                             <div className='slogan'>
-                                <p>{t('Be strong and move.')}</p>
-                                <p>{t('It\'s time to be happy again.')}</p>
+                                <p>{t("We defend your rights!")}</p>
+                                {/* <p>{t('It\'s time to be happy again.')}</p> */}
                             </div>
                         </div>
                         <div className='cover__follow'>
