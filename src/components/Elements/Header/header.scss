@@ -1,6 +1,28 @@
 @import '../../../variables.scss';
 .header {
     padding-top: 40px;
+    .white-header {
+        position: fixed;
+        background-color: #fff;
+        width: 100%;
+        top: 0;
+        //border-bottom: 1px solid rgba(0,0,0, 0.1);
+        box-shadow: 0px 1px 5px 1px rgba(0,0,0,0.1);
+        .languages {
+            .lang {
+                color: #fff;
+                background-color: $main-orange;
+            }
+        }
+        .navigation {
+            &__search {
+                span{
+                    color: $main-orange;
+                    border-color: $main-orange;
+                }
+            }
+        }
+    }
     &__navbar {
         display: flex;
         justify-content: center;
@@ -93,10 +115,43 @@
             text-decoration: none;
             color: #fff;
             font-size: $menu-font-size;
-            font-weight: 600;
+            //font-weight: 600;
             transition: 0s color;
             &:hover {
                 color: $main-white-hover;
+                transition-duration: 0.3s;
+            }
+        }
+    }
+}
+
+.white-menu {
+    top: 0;
+    height: 80px;
+    transition: 0.7s height;
+    .menu__logo {
+        width: fit-content;
+        height: fit-content;
+        background-color: transparent;
+        top: 50%;
+        align-items: center;
+        svg {
+            width: auto;
+            height: 40px;
+        }
+        .st0 {
+            fill: $logo-blue;
+        }
+        .st1 {
+            fill: #000;
+        }
+    }
+    .menu__element {
+        a {
+            color: #000;
+            transition: 0s color;
+            &:hover {
+                color: $main-orange;
                 transition-duration: 0.3s;
             }
         }
@@ -140,7 +195,7 @@
     height: calc(100vh - 100px);
     min-height: 518px;
     position: relative;
-    //background-attachment: fixed;
+    background-attachment: fixed;
     background-image: url("/assets/images/cover.jpg");
     background-size: cover;
     &__search {

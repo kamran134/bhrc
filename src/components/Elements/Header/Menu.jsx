@@ -4,18 +4,18 @@ import { Link } from 'react-router-dom';
 import { ReactComponent as LogoEn } from '../../../assets/images/BHRC_logo_horizontal_en.svg';
 import Navigation from './Navigation';
 
-const Menu = () => {
+const Menu = ({showWhite}) => {
     const { t } = useTranslation();
+    
     return (
-        <div className='menu'>
+        <div className={showWhite ? 'white-menu menu' : 'menu'}>
             <div className='menu__logo'>
                 <LogoEn />
             </div>
+            <MenuElement url='/contact' label={t('Home')} />
+            <MenuElement url='/urbanica' label={t('Urbanica')} />
             <MenuElement url='/activity' label={t('Activity')} />
             <MenuElement url='/recources' label={t('Recources')} />
-            <MenuElement url='/urbanica' label={t('Urbanica')} />
-            <MenuElement url='/contact' label={t('Contact')} />
-            <MenuElement url='/help' label={t('Help')} />
             <Navigation />
         </div>
     )

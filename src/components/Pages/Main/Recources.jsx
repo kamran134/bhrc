@@ -35,7 +35,7 @@ const MainRecources = () => {
         <div className='main-recources'>
             <div className='container'>
                 <div className='container-inner'>
-                    <div className='flex-col flex-center relative small-margin-top'>
+                    <div className='flex-col flex-center small-margin-top'>
                         <PaintBadge title={'Recources'} />
                         <div className='main-activity__central-block'>
                             <h1 className='main-blue-text'>The News You Care About</h1>

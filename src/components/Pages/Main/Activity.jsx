@@ -11,7 +11,7 @@ const MainActivity = () => {
                 <div className='opacity'/>
                 <div className='container'>
                     <div className='container-inner'>
-                        <div className='flex-col flex-center relative small-margin-top'>
+                        <div className='flex-col flex-center small-margin-top'>
                             <PaintBadge title={'Activity'} />
                             <div className='main-activity__central-block'>
                                 <h1 className='white-text'>Be Ready For Our Events</h1>

@@ -10,11 +10,28 @@ import './header.scss';
 
 const Header = (props) => {
     const { t } = useTranslation();
+    const [showWhite, setShowWhite] = React.useState(false);
+    
+    React.useEffect(() => {
+        
+        window.addEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll)
+        }
+    },[]);
+
+    const handleScroll = (e) => {
+        if (window.scrollY > 200 && !showWhite) {
+            setShowWhite(true);
+        } else {
+            setShowWhite(false);
+        }
+    }
     
     return (
         <div className='header'>
-            <div className='header__navbar relative'>
-                <Menu />
+            <div className={showWhite ? 'white-header header__navbar relative' : 'header__navbar relative'}>
+                <Menu showWhite={showWhite} />
             </div>
             <div className='cover'>
                 <div className='opacity'/>
@@ -42,6 +59,8 @@ const Header = (props) => {
         </div>
     )
 }
+
+
 
 const mapStateToProps = state => ({
     lang: state.settings.language,
