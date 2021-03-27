@@ -47,7 +47,7 @@ const Footer = (props) => {
                         <div className='footer__logo'>
                             <MultilangLogo language={props.lang} />
                         </div>
-                        <div className='text'>2021 BHRC. All Rights Reserved by Kamran Kazimi and Alina Asgarova</div>
+                        <div className='text'>2021 BHRC. All Rights Reserved</div>
                     </div>
                 </div>
             </div>

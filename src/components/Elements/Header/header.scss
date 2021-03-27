@@ -1,6 +1,6 @@
 @import '../../../variables.scss';
 .header {
-    padding-top: 40px;
+    padding-top: 60px;
     &__navbar {
         display: flex;
         justify-content: center;
@@ -53,7 +53,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 60px;
+    height: 90px;
     width: $standart-container-width;
     position: relative;
     &__logo {
@@ -66,11 +66,17 @@
         border-radius: 50%;
         background-color: #0062A0;
         position: absolute;
-        top: -38px;
+        top: -25px;
         left: 0;
+        a {
+            width: 100%;
+            height: 100%;
+        }
         svg {
             position: absolute;
             left: 12px;
+            top: 50%;
+            transform: translate(0, -50%);
             width: 159px;
         }
         .st0 {
@@ -130,88 +136,6 @@
             &:hover {
                 color: $main-white-hover;
                 border: 1px solid $main-white-hover;
-            }
-        }
-    }
-}
-
-.cover {
-    width: 100%;
-    height: calc(100vh - 100px);
-    min-height: 518px;
-    position: relative;
-    //background-attachment: fixed;
-    background-image: url("/assets/images/cover.jpg");
-    background-size: cover;
-    &__search {
-        z-index: 2;
-        margin-top: $search-margin;
-        input[type='text'] {
-            width: 0px;
-            padding: 0;
-            height: 30px;
-            border-radius: 24px;
-            border: none;
-            font-weight: 600;
-            transition: 0.3s width, opacity;
-            &.active {
-                width: 400px;
-                opacity: 1;
-                transition: 0.3s width, opacity;
-                padding: 0 20px;
-            }
-            &:focus {
-                outline: none;
-            }
-            &::placeholder {
-                color: #000;
-            }
-        }
-    }
-    &__slogan {
-        position: absolute;
-        z-index: 2;
-        width: 440px;
-        top: 50%;
-        transform: translate(0, -50%);
-        font-family: 'candara-italic';
-        svg {
-            transform: rotate(180deg);
-        }
-        .st0 {
-            fill: $main-orange;
-        }
-        .slogan {
-            color: #fff;
-            font-size: 25px;
-            width: 100%;
-            position: absolute;
-            line-height: 1.5;
-            top: 48%;
-            left: 45%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-            p {
-                margin: 0;
-            }
-        }
-    }
-    &__follow {
-        position: absolute;
-        display: flex;
-        height: 20px;
-        z-index: 2;
-        bottom: 20px;
-        font-weight: 600;
-        color: $main-orange;
-        .icon {
-            margin-left: $small-margin;
-            svg {
-                width: 20px;
-                height: 20px;
-            }
-            path {
-                fill: $main-orange;
             }
         }
     }

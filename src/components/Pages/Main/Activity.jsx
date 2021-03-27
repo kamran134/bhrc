@@ -1,10 +1,23 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import Carousel from 'react-bootstrap/Carousel';
 import PaintBadge from '../../../utils/paint-badge';
 import { ReactComponent as ClockIcon } from '../../../assets/images/clock.svg';
 import { ReactComponent as LocationIcon } from '../../../assets/images/location-pin.svg';
+import { getArticles } from '../../../redux/actions/article-actions';
 
 const MainActivity = () => {
+    const dispatch = useDispatch();
+    const { articles, lang } = useSelector(state => ({
+        articles: state.articles.articles,
+        lang: state.settings.language
+    }));
+
+    useEffect(() => {
+        dispatch(getArticles(1, 4));
+    }, [dispatch]);
+
+
     return (
         <div className='main-activity'>
             <div className='main-activity__background'>
@@ -20,56 +33,49 @@ const MainActivity = () => {
                             <div className='main-activity__activities'>
                                 <Carousel controls={false}>
                                     <Carousel.Item>
-                                        <div className='flex-row space-around container-inner'>
-                                            <div className='activity-block'>
-                                                <h2>Azerbaijany Con Donation</h2>
-                                                <div className='time-and-location'>
-                                                    <ClockIcon />
-                                                    <span>08.00 - 10.00</span>
-                                                    <LocationIcon />
-                                                    <span>Baku city</span>
+                                        <div className='flex-row flex-center container-inner'>
+                                        {articles.map((article, i) =>
+                                            i < 2 && (
+                                                <div className='activity-block'>
+                                                    <h2>{article[lang].name}</h2>
+                                                    <div className='time-and-location'>
+                                                        <ClockIcon />
+                                                        <span>08.00 - 10.00</span>
+                                                        <LocationIcon />
+                                                        <span>Baku city</span>
+                                                    </div>
+                                                    <div className='activity-block__description'>
+                                                        {article[lang].shortDescription}
+                                                    </div>
+                                                    <div className='activity-block__join'>
+                                                        Join now +
+                                                    </div>
                                                 </div>
-                                                <div className='activity-block__description'>
-                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla imperdiet turpis quis nunc vestibulum auctor.
-                                                </div>
-                                                <div className='activity-block__join'>
-                                                    Join now +
-                                                </div>
-                                            </div>
-                                            <div className='activity-block'>
-                                                <h2>Azerbaijany Con Donation</h2>
-                                                <div className='time-and-location'>
-                                                    <ClockIcon />
-                                                    <span>08.00 - 10.00</span>
-                                                    <LocationIcon />
-                                                    <span>Baku city</span>
-                                                </div>
-                                                <div className='activity-block__description'>
-                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla imperdiet turpis quis nunc vestibulum auctor.
-                                                </div>
-                                                <div className='activity-block__join'>
-                                                    Join now +
-                                                </div>
-                                            </div>
+                                            )
+                                        )}
                                         </div>
                                     </Carousel.Item>
                                     <Carousel.Item>
-                                        <div className='flex-row space-around container-inner'>
-                                            <div className='activity-block'>
-                                                <h2>Azerbaijany Con Donation</h2>
-                                                <div className='time-and-location'>
-                                                    <ClockIcon />
-                                                    <span>08.00 - 10.00</span>
-                                                    <LocationIcon />
-                                                    <span>Baku city</span>
+                                        <div className='flex-row flex-center container-inner'>
+                                        {articles.map((article, i) =>
+                                            i >= 2 && (
+                                                <div className='activity-block'>
+                                                    <h2>{article[lang].name}</h2>
+                                                    <div className='time-and-location'>
+                                                        <ClockIcon />
+                                                        <span>08.00 - 10.00</span>
+                                                        <LocationIcon />
+                                                        <span>Baku city</span>
+                                                    </div>
+                                                    <div className='activity-block__description'>
+                                                        {article[lang].shortDescription.substr(0, 94)}...
+                                                    </div>
+                                                    <div className='activity-block__join'>
+                                                        Join now +
+                                                    </div>
                                                 </div>
-                                                <div className='activity-block__description'>
-                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla imperdiet turpis quis nunc vestibulum auctor.
-                                                </div>
-                                                <div className='activity-block__join'>
-                                                    Join now +
-                                                </div>
-                                            </div>
+                                            )
+                                        )}
                                         </div>
                                     </Carousel.Item>
                                 </Carousel>

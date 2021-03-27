@@ -9,12 +9,11 @@ const Menu = () => {
     return (
         <div className='menu'>
             <div className='menu__logo'>
-                <LogoEn />
+                <Link to='/'><LogoEn /></Link>
             </div>
-            <MenuElement url='/activity' label={t('Activity')} />
-            <MenuElement url='/recources' label={t('Recources')} />
             <MenuElement url='/urbanica' label={t('Urbanica')} />
-            <MenuElement url='/contact' label={t('Contact')} />
+            <MenuElement url='/activities' label={t('Activity')} />
+            <MenuElement url='/recources' label={t('Recources')} />
             <MenuElement url='/help' label={t('Help')} />
             <Navigation />
         </div>

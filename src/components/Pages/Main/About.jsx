@@ -28,8 +28,8 @@ const MainAbout = () => {
                         </div>
                         <div className='main-about__right'>
                             <div className='about-circle-images'>
-                                <img className='small-circle' src={WomanImg} />
-                                <img className='big-circle' src={ManImg} />
+                                <img className='small-circle' src={WomanImg} alt={'woman'} />
+                                <img className='big-circle' src={ManImg} alt={'man'} />
                             </div>
                         </div>
                     </div>
