@@ -1,0 +1,77 @@
+@import '../../../variables.scss';
+.urbanica-main {
+    margin-top: -130px;
+    &__what-is {
+        font-weight: 600;
+        font-style: italic;
+        font-size: 30px;
+        color: $main-blue;
+        text-align: center;
+        width: 650px;
+    }
+    &__motivation {
+        font-weight: 600;
+        font-style: italic;
+        font-size: 40px;
+        color: $urbanica-orange;
+        text-align: center;
+        margin-top: 11px;
+        margin-bottom: 27px;
+    }
+    .urbanica-contest {
+        font-family: Arial, Helvetica, sans-serif;
+        width: 750px;
+        min-height: 306px;
+        border-radius: 39px;
+        background-color: $urbanica-pink;
+        padding: 65px 230px 35px 144px;
+        position: relative;
+        margin-bottom: 40px;
+        &__name {
+            font-size: 35px;
+            font-weight: 600;
+        }
+        &__description {
+            font-size: 15px;
+            width: 225px;
+            margin-bottom: 28px;
+        }
+        &__green {
+            position: absolute;
+            top: 0;
+            left: 0;
+            svg {
+                height: 150px;
+            }
+        }
+        &__girl {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+        }
+    }
+}
+
+.time-countdown {
+    display: flex;
+    margin-top: 20px;
+    &__number {
+        width: 18px;
+        height: 32px;
+        background-color: #fff;
+        border-radius: 3px;
+        margin-right: 3px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 3px 6px 0px rgba(0, 0, 0, 0.16);
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+    &__separator {
+        display: flex;
+        align-items: center;
+        margin: 0 3px 0 0;
+    }
+}
