@@ -10,12 +10,12 @@ const Menu = ({showWhite}) => {
     return (
         <div className={showWhite ? 'white-menu menu' : 'menu'}>
             <div className='menu__logo'>
-                <LogoEn />
+                <Link to='/'><LogoEn /></Link>
             </div>
-            <MenuElement url='/contact' label={t('Home')} />
             <MenuElement url='/urbanica' label={t('Urbanica')} />
-            <MenuElement url='/activity' label={t('Activity')} />
+            <MenuElement url='/activities' label={t('Activity')} />
             <MenuElement url='/recources' label={t('Recources')} />
+            <MenuElement url='/help' label={t('Help')} />
             <Navigation />
         </div>
     )

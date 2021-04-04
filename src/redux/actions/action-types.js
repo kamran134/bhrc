@@ -10,3 +10,6 @@ export const LOGOUT = 'LOGOUT';
 export const SET_LANGUAGE = 'SET_LANGUAGE';
 export const ACTIVE_SEARCH = 'ACTIVE_SEARCH';
 export const HIDE_SEARCH = 'HIDE_SEARCH';
+export const GET_ARTICLES = "GET_ARTICLES";
+export const GET_ARTICLE_BY_NAME = "GET_ARTICLE_BY_NAME";
+export const GET_LAST_4_ARTICLES = "GET_LAST_4_ARTICLES";

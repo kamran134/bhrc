@@ -190,6 +190,33 @@ h3 {
     }
 }
 
+.urbanica-btn {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 26px;
+    border: none;
+    &:focus {
+        border: none;
+        outline: none;
+    }
+    &.sign-up {
+        height: 55px;
+        padding: 0 35px;
+        font-size: 26px;
+        font-weight: 600;
+        color: #fff;
+        background-color: $urbanica-orange;
+    }
+    &.orange-btn {
+        background-color: $urbanica-orange;
+        padding: 0 25px;
+        height: 41px;
+        font-size: 14px;
+        font-weight: 600;
+    }
+}
+
 
 /* Margins */
 
