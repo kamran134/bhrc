@@ -1,29 +1,11 @@
 pipeline {
-    agent {
-        docker {
-            image 'node:6-alpine'
-            args '-p 3000:3000'
-        }
-    }
-    environment { 
-        CI = 'true'
-    }
+    agent any
+
     stages {
-        stage('Build') {
+        stage('Build docker image. Run tests and build app.') {
             steps {
-                sh 'npm install'
-            }
-        }
-        stage('Test') {
-            steps {
-                sh './jenkins/scripts/test.sh'
-            }
-        }
-        stage('Deliver') { 
-            steps {
-                sh './jenkins/scripts/deliver.sh' 
-                input message: 'Finished using the web site? (Click "Proceed" to continue)' 
-                sh './jenkins/scripts/kill.sh' 
+                git 'https://github.com/kamran134/bhrc'
+                sh 'sudo docker build -t bhrc-frontend-2:test -f Dockerfile.test .'
             }
         }
     }
