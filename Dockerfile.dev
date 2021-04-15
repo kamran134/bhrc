@@ -1,5 +1,6 @@
 # Берем node.js v8 в качестве родительского образа
 FROM node:8-alpine
+RUN apt-get update && apt-get install sudo -y
 # Устанавливаем рабочую директорию
 WORKDIR /app
 # Копируем файлы yarn.lock и package.json в рабочую директорию
