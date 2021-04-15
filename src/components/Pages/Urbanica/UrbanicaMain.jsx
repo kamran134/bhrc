@@ -4,6 +4,8 @@ import { ReactComponent as ContestGreen} from '../../../assets/images/green.svg'
 import { ReactComponent as ContestGirl} from '../../../assets/images/girl.svg';
 import { ReactComponent as TimeSeparator } from '../../../assets/images/time-separator.svg';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
+import { ReactComponent as LogoEn } from '../../../assets/images/BHRC_logo_horizontal_en.svg';
 import './urbanica.scss';
 
 const UrbanicaMain = () => {
@@ -19,6 +21,9 @@ const UrbanicaMain = () => {
                     </div>
                     <Contest name={'SHOW YOURSELF'} description={'Participate in our competition and show what you are capable of'} />
                 </div>
+            </div>
+            <div className='urbanica-main__go-home'>
+                <BHRCLink />
             </div>
         </div>
     )
@@ -93,10 +98,15 @@ const CountDown = ({date}) => {
     )
 }
 
+const BHRCLink = () => (
+    <div className='menu__logo'>
+        <Link to='/'><LogoEn /></Link>
+    </div>
+)
+
 CountDown.propTypes = {
     // eslint-disable-next-line react/no-typos
     date: PropTypes.date
 }
-
 
 export default UrbanicaMain;
