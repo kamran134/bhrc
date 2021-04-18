@@ -1,6 +1,6 @@
 # Берем в качестве родительского образа node:8-apline и назовем эту ступень сборки "build-stage"
 FROM node:8-alpine as build-stage
-RUN apt-get update && apt-get install sudo -y
+#RUN apt-get update && apt-get install sudo -y
 # Устанавливаем рабочую директорию
 WORKDIR /app
 # Копируем файлы package.json yarn.lock в рабочую директорию
