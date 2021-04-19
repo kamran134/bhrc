@@ -10,7 +10,7 @@ RUN npm install
 # Копируем исходники в рабочую директорию
 COPY . /app/
 # Собираем проект
-RUN npm build
+RUN npm run build
 
 # Вторая ступень сборки, поднимем nginx для раздачи статики
 FROM nginx:stable-alpine

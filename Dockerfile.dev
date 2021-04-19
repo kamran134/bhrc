@@ -4,10 +4,10 @@ FROM node:8-alpine
 # Устанавливаем рабочую директорию
 WORKDIR /app
 # Копируем файлы yarn.lock и package.json в рабочую директорию
-COPY package.json yarn.lock /app/
+COPY package.json package-lock.json /app/
 # Устанавливаем зависимости
-RUN yarn install
+RUN npm install
 # Открываем порт 3000
 EXPOSE 3000
 # Запускаем React-приложение после запуска контейнера
-CMD ["yarn", "start"]
+CMD ["npm", "start"]

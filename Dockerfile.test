@@ -4,4 +4,4 @@ COPY package.json package-lock.json /app/
 RUN npm install
 COPY . /app/
 RUN CI=true npm test
-RUN npm build
+RUN npm run build
