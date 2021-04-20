@@ -268,3 +268,55 @@ h3 {
     font-size: $block-title-font-size;
     font-weight: 600;
 }
+
+
+/* Modals */
+
+.modal-dialog {
+    max-width: 590px;
+}
+
+.modal-content {
+    padding: 20px;
+    width: 590px;
+    height: 452px;
+    background-image: url("/assets/images/modal-back.png");
+    background-size: 100%;
+    align-items: flex-end;
+    &__fields {
+        width: 303px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 14px;
+        h1 {
+            text-align: center;
+        }
+        input {
+            width: 202px;
+            height: 18px;
+            border: none;
+            outline: none;
+            border-radius: 20px;
+            margin: 15px 0;
+            font-size: 10px;
+            padding: 10px;
+        }
+        .bhrc-btn {
+            height: 20px;
+            padding: 0 5px;
+            svg {
+                margin: 0;
+            }
+            &.orange-btn {
+                background-color: #F79501;
+            }
+        }
+    }
+    &__footer {
+        display: flex;
+        justify-content: flex-end;
+        width: 202px;
+        margin-top: 10px;
+    }
+}
