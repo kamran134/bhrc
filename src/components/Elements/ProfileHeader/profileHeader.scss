@@ -1,0 +1,50 @@
+.profile-header {
+    width: 100%;
+    position: relative;
+    svg {
+        .st0 {
+            fill: #F3B13B;
+        }
+    }
+    &__avatar {
+        position: absolute;
+        width: 21vw;
+        height: 21vw;
+        top: 23%;
+        left: 18.5%;
+        border-radius: 50%;
+        background-color: #fff;
+        img {
+            width: 21vw;
+            height: 21vw;
+            object-fit: cover;
+            border-radius: 50%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    }
+    .ellipse {
+        position: absolute;
+        top: 62%;
+        left: 14.5%;
+        width: 6.5vw;
+        height: 6.5vw;
+        z-index: 2;
+    }
+    &__name {
+        position: absolute;
+        top: 48%;
+        left: 45vw;
+        text-align: center;
+        color: #fff;
+        p.name {
+            font-size: 2vw;
+            font-weight: 600;
+            margin-bottom: 0.5vw;
+        }
+        p.role {
+            font-size: 1vw;
+        }
+    }
+}

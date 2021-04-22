@@ -13,6 +13,8 @@ import Activities from './components/Pages/Activities/Activities';
 import './i18n';
 import UrbanicaMain from './components/Pages/Urbanica/UrbanicaMain';
 import UrbanicaHeader from './components/Elements/UrbanicaHeader/UrbanicaHeader';
+import ProfileHeader from './components/Elements/ProfileHeader/ProfileHeader';
+import ProfileMain from './components/Pages/Profile/ProfileMain';
 
 function App() {
   return (
@@ -23,6 +25,12 @@ function App() {
               <UrbanicaHeader />
               <Switch>
                 <Route path='/urbanica' exact component={UrbanicaMain} />
+              </Switch>
+            </Route>
+            <Route path='/profile'>
+              <ProfileHeader />
+              <Switch>
+                <Route path='/profile' exact component={ProfileMain} />
               </Switch>
             </Route>
             <Route>

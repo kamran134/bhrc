@@ -1,0 +1,97 @@
+@import '../../../variables.scss';
+.profile {
+    margin-bottom: 48px;
+    &__about {
+        width: 630px;
+        margin-top: 39px;
+        &-me {
+            width: 630px;
+            padding: 42px;
+            background-color: $urbanica-pink;
+            border-radius: 39px;
+            margin-top: 50px;
+            box-shadow: 3px 3px 6px 3px rgba(0, 0, 0, 0.16);
+            &__info {
+                margin-top: 20px;
+                color: $main-blue;
+                font-size: 20px;
+                line-height: 1.2;
+            }
+        }
+    }
+    &__statistics {
+        display: flex;
+        justify-content: space-around;
+        .statistics-badge {
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 49px;
+            height: 49px;
+            border-radius: 50%;
+            box-shadow: 0 3px 6px 3px rgba(0, 0, 0, 0.16);
+            color: $main-blue;
+            font-size: 20px;
+            font-weight: 600;
+        }
+        label {
+            font-size: 25px;
+            font-weight: 600;
+            color: $main-blue;
+            text-align: center;
+        }
+    }
+    &-badge {
+        height: 67px;
+        background-color: $main-blue;
+        padding: 0 20px;
+        width: fit-content;
+        color: #fff;
+        border-radius: 16px;
+        font-size: 25px;
+        font-weight: 600;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    &__works {
+        margin-top: 36px;
+        width: 100%;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        .left-corner {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .right-corner {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            transform: rotate(180deg);
+        }
+    }
+    &-files {
+        width: 852px;
+        margin: 50px 0 100px;
+        &__file {
+            background-color: $urbanica-light-pink;
+            border-radius: 28px;
+            padding: 24px;
+            width: 100%;
+            box-shadow: 3px 3px 6px 3px rgba(0, 0, 0, 0.16);
+            display: flex;
+            color: $main-blue;
+            margin-bottom: 43px;
+            .file-title {
+                font-weight: 600;
+                font-size: 20px;
+            }
+            .file-description {
+                font-size: 15px;
+            }
+        }
+    }
+}
