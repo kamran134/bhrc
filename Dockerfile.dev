@@ -1,5 +1,5 @@
 # Берем node.js v8 в качестве родительского образа
-FROM node:8-alpine
+FROM node:14-slim
 #RUN apt-get update && apt-get install sudo -y
 # Устанавливаем рабочую директорию
 WORKDIR /app

@@ -289,6 +289,10 @@ h3 {
         flex-direction: column;
         align-items: center;
         padding-top: 14px;
+        form {
+            display: flex;
+            flex-direction: column;
+        }
         h1 {
             text-align: center;
         }

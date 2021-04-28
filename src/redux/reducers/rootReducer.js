@@ -3,10 +3,12 @@ import alert from './alertReducer';
 import auth from './authReducer';
 import settings from './settingsReducer';
 import articles from './articleReducer';
+import { reducer as formReducer } from 'redux-form'
 
 export default combineReducers({
     alert,
     auth,
     settings,
-    articles
+    articles,
+    form: formReducer
 });
