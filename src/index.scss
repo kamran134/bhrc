@@ -64,6 +64,14 @@ code {
     align-items: center;
 }
 
+.align-top {
+    align-items: flex-start;
+}
+
+.align-center {
+    align-items: center;
+}
+
 .opacity {
     position: absolute;
     top: 0;

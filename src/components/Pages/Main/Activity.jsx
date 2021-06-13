@@ -37,7 +37,7 @@ const MainActivity = () => {
                                         {articles.map((article, i) =>
                                             i < 2 && (
                                                 <div className='activity-block'>
-                                                    <h2>{article[lang].name}</h2>
+                                                    <h2>{article.name[lang]}</h2>
                                                     <div className='time-and-location'>
                                                         <ClockIcon />
                                                         <span>08.00 - 10.00</span>
@@ -45,7 +45,7 @@ const MainActivity = () => {
                                                         <span>Baku city</span>
                                                     </div>
                                                     <div className='activity-block__description'>
-                                                        {article[lang].shortDescription}
+                                                        {article.shortDescription[lang]}
                                                     </div>
                                                     <div className='activity-block__join'>
                                                         Join now +

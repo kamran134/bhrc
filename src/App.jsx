@@ -15,6 +15,7 @@ import UrbanicaMain from './components/Pages/Urbanica/UrbanicaMain';
 import UrbanicaHeader from './components/Elements/UrbanicaHeader/UrbanicaHeader';
 import ProfileHeader from './components/Elements/ProfileHeader/ProfileHeader';
 import ProfileMain from './components/Pages/Profile/ProfileMain';
+import Recources from './components/Pages/Recources/Recources';
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
                 <Route path='/' exact component={Main} />
                 <Route path='/about' component={About} />
                 <Route path='/activities' component={Activities} />
+                <Route path='/recources' component={Recources} />
               </Switch>
             </Route>
           </Switch>
