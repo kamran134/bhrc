@@ -5,6 +5,8 @@ import PaintBadge from '../../../utils/paint-badge';
 import { ReactComponent as ClockIcon } from '../../../assets/images/clock.svg';
 import { ReactComponent as LocationIcon } from '../../../assets/images/location-pin.svg';
 import { getArticles } from '../../../redux/actions/article-actions';
+import moment from 'moment';
+import { useTranslation } from 'react-i18next';
 
 const MainActivity = () => {
     const dispatch = useDispatch();
@@ -13,10 +15,13 @@ const MainActivity = () => {
         lang: state.settings.language
     }));
 
+    const { t } = useTranslation();
+
     useEffect(() => {
         dispatch(getArticles(1, 4));
     }, [dispatch]);
 
+    moment.locale(lang);
 
     return (
         <div className='main-activity'>
@@ -36,26 +41,26 @@ const MainActivity = () => {
                                         <div className='flex-row flex-center container-inner'>
                                         {articles.map((article, i) =>
                                             i < 2 && (
-                                                <div className='activity-block'>
+                                                <div className='activity-block' key={i}>
                                                     <h2>{article.name[lang]}</h2>
                                                     <div className='time-and-location'>
                                                         <ClockIcon />
-                                                        <span>08.00 - 10.00</span>
-                                                        <LocationIcon />
-                                                        <span>Baku city</span>
+                                                        <span>{moment(article.createdAt).format('hh:mm, DD MMMM YYYY')}</span>
+                                                        {/* <LocationIcon />
+                                                        <span>Baku city</span> */}
                                                     </div>
-                                                    <div className='activity-block__description'>
+                                                    {/* <div className='activity-block__description'>
                                                         {article.shortDescription[lang]}
-                                                    </div>
+                                                    </div> */}
                                                     <div className='activity-block__join'>
-                                                        Join now +
+                                                        {t('Read more')}
                                                     </div>
                                                 </div>
                                             )
                                         )}
                                         </div>
                                     </Carousel.Item>
-                                    <Carousel.Item>
+                                    {articles.length > 2 && <Carousel.Item>
                                         <div className='flex-row flex-center container-inner'>
                                         {articles.map((article, i) =>
                                             i >= 2 && (
@@ -77,7 +82,7 @@ const MainActivity = () => {
                                             )
                                         )}
                                         </div>
-                                    </Carousel.Item>
+                                    </Carousel.Item>}
                                 </Carousel>
                             </div>
                         </div>
