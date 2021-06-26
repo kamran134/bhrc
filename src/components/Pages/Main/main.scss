@@ -379,6 +379,10 @@
                     svg {
                         width: 20px;
                         height: 20px;
+                        &:hover {
+                            width: 30px;
+                            height: 30px;
+                        }
                     }
                     path {
                         fill: $main-orange;
