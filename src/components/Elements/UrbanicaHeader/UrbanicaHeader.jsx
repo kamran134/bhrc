@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { ReactComponent as UrbanicaLeft } from '../../../assets/images/urbanica-left.svg';
 import { ReactComponent as UrbanicaRight } from '../../../assets/images/urbanica-right.svg';
-import { ReactComponent as UrbanicaHeaderCover } from '../../../assets/images/orange.svg';
+// import { ReactComponent as UrbanicaHeaderCover } from '../../../assets/images/orange.svg';
 import { ReactComponent as UrbanicaLogo } from '../../../assets/images/urbanica-logo.svg';
 import { useTranslation } from 'react-i18next';
 import Modal from 'react-bootstrap/Modal';
@@ -43,7 +43,8 @@ const UrbanicaHeader = () => {
                     <UrbanicaLogo />
                 </div>
             </div>
-            <Modal 
+            <Modal
+                className='urbanica-modal'
                 centered 
                 show={singUpModal}
                 onHide={() => setSignUpModal(false)}
