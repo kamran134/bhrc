@@ -3,6 +3,7 @@ import alert from './alertReducer';
 import auth from './authReducer';
 import settings from './settingsReducer';
 import articles from './articleReducer';
+import resources from './recourceReducer'
 import { reducer as formReducer } from 'redux-form'
 
 export default combineReducers({
@@ -10,5 +11,6 @@ export default combineReducers({
     auth,
     settings,
     articles,
+    resources,
     form: formReducer
 });

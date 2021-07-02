@@ -1,13 +1,27 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import Carousel from 'react-bootstrap/Carousel';
 import { ReactComponent as FolderIcon } from '../../../assets/images/folder.svg';
 import './recources.scss';
+import { getCategoryResources, getResourcesCategories } from '../../../redux/actions/resource-action';
 
 const Recources = () => {
-    const { lang } = useSelector(state => ({
-        lang: state.settings.language
+    const dispatch = useDispatch();
+    const [categoryId, setCategoryId] = useState(undefined);
+    const { lang, resources } = useSelector(state => ({
+        lang: state.settings.language,
+        resources: state.resources
     }));
+
+    useEffect(() => {
+        dispatch(getResourcesCategories())
+    }, [dispatch]);
+
+    useEffect(() => {
+        if (categoryId) {
+            dispatch(getCategoryResources(categoryId));
+        }
+    }, [categoryId, dispatch]);
 
     const topics = [
         {
@@ -88,7 +102,9 @@ const Recources = () => {
             presentations: [],
             reports: []
         }
-    ]
+    ];
+
+    console.log('category res', resources.category);
 
     return (
         <>
@@ -101,27 +117,17 @@ const Recources = () => {
                                 <Carousel controls={false} indicators={false}>
                                     <Carousel.Item>
                                         <div className='flex-row flex-center container-inner'>
-                                            <div className='category-block'>
-                                                <h2>Human Rights</h2>
-                                                <p className='category-block__description'>
-                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                                    Nulla imperdiet turpis quis nunc vestibulum auctor.
-                                                </p>
-                                            </div>
-                                            <div className='category-block'>
-                                                <h2>Business</h2>
-                                                <p className='category-block__description'>
-                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                                    Nulla imperdiet turpis quis nunc vestibulum auctor.
-                                                </p>
-                                            </div>
-                                            <div className='category-block'>
-                                                <h2>Main Help</h2>
-                                                <p className='category-block__description'>
-                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                                    Nulla imperdiet turpis quis nunc vestibulum auctor.
-                                                </p>
-                                            </div>
+                                            {resources.categories && resources.categories.map(category => (
+                                                <div className='category-block' 
+                                                    key={category._id}
+                                                    onClick={() => setCategoryId(category._id)}
+                                                >
+                                                    <h2>{category.name[lang]}</h2>
+                                                    <p className='category-block__description'>
+                                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                                    </p>
+                                                </div>
+                                            ))}
                                         </div>
                                     </Carousel.Item>
                                 </Carousel>
