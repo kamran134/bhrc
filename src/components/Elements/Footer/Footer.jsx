@@ -18,10 +18,7 @@ const Footer = props => {
                         <div className='footer-col'>
                             <h2>{t("Contact info")}</h2>
                             <span className='contact-info'><MdLocationOn />{t("Location")}</span>
-                            <span className='info-item'>
-                                48 Suleyman Rustam,
-                                Absheron Island,Baku
-                            </span>
+                            <span className='info-item'>{t("address")}</span>
                             <span className='contact-info'><MdCall />{t("Call us")}</span>
                             <span className='info-item'>+994 51 706 68 68</span>
                             <span className='contact-info'><MdEmail />{t("Email us")}</span>

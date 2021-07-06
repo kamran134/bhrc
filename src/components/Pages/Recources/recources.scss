@@ -148,6 +148,9 @@
                     &:focus {
                         outline: none;
                     }
+                    &:disabled {
+                        background-color: $block-text-color;
+                    }
                 }
             }
             &__date {
@@ -160,6 +163,41 @@
                 color: $block-text-color;
                 display: flex;
                 align-items: center;
+            }
+            &__materials {
+                display: flex;
+                justify-content: space-between;
+                flex-wrap: wrap;
+                .material {
+                    width: 198px;
+                    height: 166px;
+                    border-radius: 12px;
+                    box-shadow: 0 3px 6px rgba(#000000, 0.16);
+                }
+                .material-doc {
+                    display: flex;
+                    align-items: center;
+                    padding: 10px;
+                    border-radius: 12px;
+                    margin-top: 16px;
+                    margin-left: 100px;
+                    min-width: 500px;
+                    &:hover {
+                        background-color: $main-grey;
+                        box-shadow: 0 3px 6px rgba(#000000, 0.16);
+                    }
+                    svg {
+                        width: 40px;
+                        max-height: 50px;
+                    }
+                    div:last-child {
+                        margin-left: 20px;
+                        font-size: 13px;
+                        font-weight: 600;
+                        color: $block-text-color;
+                        font-style: italic;
+                    }
+                }
             }
         }
     }

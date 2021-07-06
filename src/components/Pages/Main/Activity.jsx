@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import Carousel from 'react-bootstrap/Carousel';
 import PaintBadge from '../../../utils/paint-badge';
@@ -32,7 +33,7 @@ const MainActivity = () => {
                         <div className='flex-col flex-center small-margin-top'>
                             <PaintBadge title={'Activity'} />
                             <div className='main-activity__central-block'>
-                                <h1 className='white-text'>Be Ready For Our Events</h1>
+                                <h1 className='white-text nowrap-text'>{t("Follow our activities")}</h1>
                                 <h3 className='white-text'>Event makes suspendice adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendices gravida.</h3>
                             </div>
                             <div className='main-activity__activities'>
@@ -53,7 +54,7 @@ const MainActivity = () => {
                                                         {article.shortDescription[lang]}
                                                     </div> */}
                                                     <div className='activity-block__join'>
-                                                        {t('Read more')}
+                                                        <Link to={`/activities/${article.path[lang]}`}>{t('Read more')}</Link>
                                                     </div>
                                                 </div>
                                             )
