@@ -158,14 +158,14 @@ const Material = ({material, lang}) => {
                         <div>{material.name[lang]}</div>
                     </div>
                 </a>
-            )
+            );
         default:
             return (
                 <div className='material'>
                     <iframe src={`${material.fileLink[lang]}&embedded=true`} width='100%' title={material.name[lang]} />
                     {material.name[lang]}
                 </div>
-            )
+            );
     }
 }
 

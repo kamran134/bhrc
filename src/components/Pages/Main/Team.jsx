@@ -4,6 +4,7 @@ import { ImArrowRight2 } from 'react-icons/im';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import RasulAvatar from '../../../assets/images/Rasul_avatar.jpg';
+import HeydarAvatar from '../../../assets/images/Heydar_avatar.jfif';
 import { ReactComponent as Facebook } from '../../../assets/images/circled_facebook.svg';
 import { ReactComponent as Instagram } from '../../../assets/images/circled_instagram.svg';
 import { ReactComponent as Twitter } from '../../../assets/images/circled_twitter.svg';
@@ -13,6 +14,7 @@ const MainTeam = () => {
 
     const membersMock = [
         {
+            _id: '453535435',
             name: {
                 az: 'Rəsul Cəfərov',
                 ru: 'Расул Джафаров',
@@ -34,6 +36,30 @@ const MainTeam = () => {
                 instagram: 'https://www.instagram.com/rasuljafarov/',
                 facebook: 'https://www.facebook.com/rasul.jafarov/'
             }
+        },
+        {
+            _id: '453535436',
+            name: {
+                az: 'Heydər Əhmədov',
+                ru: 'Гейдар Ахмедов',
+                en: 'Heydar Ahmedov'
+            },
+            avatar: HeydarAvatar,
+            profession: {
+                az: 'Hüquqşünas',
+                ru: 'Юрист',
+                en: 'Lawyer'
+            },
+            bio: {
+                az: '<p>Heydər Əhmədov Bakı İnsan Hüquqları Klubu İctimai Birliyinin (BİHK) hüquqşünasdır. Əhmədov Türkiyənin Samsun şəhərində yerləşən Ondokuz Mayıs Universitesinin hüquq fakultəsinin məzunudur.<br/><br/>Təhsil aldıqdan sonra İki il Türkiyədə hüquq bürosunda çalışmış, sonradan Azərbaycana qayıdaraq hüquq sahəsində fəaliyyət göstərən ictimai təşkilatlarla sosial və insan hüquqları layihələri üzrə əməkdaşlıq etmişdir. Yerli və xarici təlimlərin iştirakçısı olmuşdur.<br/><br/>Əhmədov hazırda BİHK əməkdaşı olaraq vətəndaşlara hüquqi yardımın göstərilməsi fəaliyyətində iştirak edir.</p>',
+                ru: '<p>Гейдар Ахмедов - юрист Общественного объединения «Бакинский клуб прав человека» (БКПЧ). Ахмедов окончил юридический факультет Университета Ондокуз Майис в Самсуне, Турция.<br/><br/>После образования он два года проработал в Турции в юридической фирме, затем вернулся в Азербайджан и участвовал в местных и зарубежных тренингах.<br/><br/>Ахмедов в настоящее время занимается оказанием правовой помощи гражданам в качестве сотрудника БКПЧ.</p>',
+                en: '<p> Heydar Ahmadov is a lawyer in Baku Human Rights Club (BHRC) Public Union. Ahmadov is a graduate of Ondokuz Mayis University\'s Law Faculty in Samsun, Turkey.<br/><br/>After education he worked in Turkey two years in law office, then he returned to Azerbaijan and has participated in local and foreign trainings.<br/><br/>Ahmadov is currently involved in providing legal assistance to citizens as an employee of the BHRC.</p>'
+            },
+            social: {
+                twitter: 'https://twitter.com/rasuljafarov/',
+                instagram: 'https://www.instagram.com/rasuljafarov/',
+                facebook: 'https://www.facebook.com/rasul.jafarov/'
+            }
         }
     ];
 
@@ -46,10 +72,10 @@ const MainTeam = () => {
                     <PaintBadge title={t("Team")} />
                     <h1>{t("Our team")}</h1>
                     <div className='main-team__text-button'>
-                        <div className='text'>
+                        {/* <div className='text'>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla imperdiet turpis
                             quis nunc vestibulum auctor. Fusce semper vel enim sit amet ultricies.
-                        </div>
+                        </div> */}
                         {/* <button className='bhrc-btn orange-btn'>Meet us <ImArrowRight2/></button> */}
                     </div>
                     <Members members={membersMock} />
@@ -63,12 +89,12 @@ const Members = ({members}) => {
     const { lang } = useSelector(state => ({
         lang: state.settings.language
     }));
-    const [showInfo, setShowInfo] = useState(false);
+    const [showInfo, setShowInfo] = useState(undefined);
     return (
         <div className='main-team__members'>
             {members.map(member => (
                 <>
-                    <div className='member' onClick={() => setShowInfo(true)}>
+                    <div className='member' onClick={() => setShowInfo(member._id)}>
                         <img src={member.avatar} alt={'avatar'} />
                         <div className='name'>{member.name[lang]}</div>
                         <div className='profession'>{member.profession[lang]}</div>
@@ -81,8 +107,8 @@ const Members = ({members}) => {
                     <Modal
                         className='member-modal'
                         centered
-                        show={showInfo}
-                        onHide={() => setShowInfo(false)}
+                        show={showInfo === member._id}
+                        onHide={() => setShowInfo(undefined)}
                     >
                         <img src={member.avatar} alt={'avatar'} />
                         <div className='name'>{member.name[lang]}</div>

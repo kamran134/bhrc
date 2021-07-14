@@ -25,7 +25,7 @@ const Cover = props => {
                         </div>
                     </div>
                     <div className="cover__donate">
-                        <button className='bhrc-btn orange-btn'>{t("Support our project")} <ImArrowRight2/></button>
+                        <button className='bhrc-btn orange-btn'>{t("Support us")} <ImArrowRight2/></button>
                     </div>
                     <div className='cover__follow'>
                         <span>{t('Follow us')}</span>

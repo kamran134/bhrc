@@ -22,6 +22,7 @@
     .category-block {
         width: 357px;
         height: 194px;
+        cursor: pointer;
         background-color: #fff;
         border-radius: $standart-radius;
         -webkit-box-shadow: $standart-shadow;
@@ -31,6 +32,18 @@
         font-size: $location-font-size;
         margin-right: $medium-margin;
         text-align: center;
+        &:hover {
+            background-color: $main-blue;
+            transition: background-color 2ms;
+            h2 {
+                color: #fff;
+                transition: color 1s;
+            }
+            .category-block__description {
+                color: #fff;
+                transition: color 1s;
+            }
+        }
         h2 {
             color: $main-blue;
         }

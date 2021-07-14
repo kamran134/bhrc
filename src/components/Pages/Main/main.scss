@@ -364,6 +364,7 @@
                 width: 141px;
                 height: 141px;
                 border-radius: 50%;
+                object-fit: cover;
             }
             .name {
                 font-size: $h3-font-size;
@@ -406,6 +407,7 @@
             width: 141px;
             height: 141px;
             border-radius: 50%;
+            object-fit: cover;
         }
         .name {
             font-size: $h3-font-size;

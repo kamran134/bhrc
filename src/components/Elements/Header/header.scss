@@ -128,6 +128,12 @@
                 transition-duration: 0.3s;
             }
         }
+        &.urbanica-menu {
+            a {
+                font-size: $menu-urbanica-font-size;
+                font-weight: 500;
+            }
+        }
     }
 }
 

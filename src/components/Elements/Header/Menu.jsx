@@ -12,22 +12,21 @@ const Menu = ({showWhite}) => {
             <div className='menu__logo'>
                 <Link to='/'><LogoEn /></Link>
             </div>
-            <MenuElement url='/urbanica' label={t('Urbanica')} />
             <MenuElement url='/activities' label={t('Activity')} />
+            <MenuElement url='/urbanica' label={t('Urbanica')} _className='urbanica-menu' />
             <MenuElement url='/recources' label={t('Recources')} />
-            <MenuElement url='/help' label={t('Help')} />
             <Navigation />
         </div>
     )
 }
 
-const MenuElement = ({url, submenu, label}) => {
+const MenuElement = ({url, submenu, label, _className}) => {
     if (!submenu) return (
-        <div className='menu__element'>
+        <div className={'menu__element ' + _className}>
             <Link to={url}>{label}</Link>
         </div>
     ); else return (
-        <div className='menu__element'>
+        <div className={'menu__element ' + _className}>
             <Link to={url}>{label} </Link>
         </div>
     );

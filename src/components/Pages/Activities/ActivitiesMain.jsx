@@ -37,7 +37,7 @@ const ActivitiesMain = props => {
                         <SearchIcon className='search-icon' />
                     </div>
                     <div className='popular-block'>
-                        <h4>{t('Popular Posts')}</h4>
+                        <h4>{t("Most read")}</h4>
                         {articles && articles.slice(0, 5).map(article =>
                         <div className='post'>
                             <img src={`${config.url.IMAGE_URL}article_images/${article.picture}/original/${article.picture}`} alt={article._id} />
