@@ -93,7 +93,7 @@ const Members = ({members}) => {
     return (
         <div className='main-team__members'>
             {members.map(member => (
-                <>
+                <React.Fragment key={member._id}>
                     <div className='member' onClick={() => setShowInfo(member._id)}>
                         <img src={member.avatar} alt={'avatar'} />
                         <div className='name'>{member.name[lang]}</div>
@@ -120,7 +120,7 @@ const Members = ({members}) => {
                             <a href={member.social.instagram} target="_blank" rel="noreferrer" className='icon'><Instagram/></a>
                         </div>
                     </Modal>
-                </>
+                </React.Fragment>
             ))}
         </div>
     )

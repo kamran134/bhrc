@@ -4,6 +4,7 @@ import auth from './authReducer';
 import settings from './settingsReducer';
 import articles from './articleReducer';
 import resources from './recourceReducer'
+import homepage from './homepageReducer';
 import { reducer as formReducer } from 'redux-form'
 
 export default combineReducers({
@@ -12,5 +13,6 @@ export default combineReducers({
     settings,
     articles,
     resources,
+    homepage,
     form: formReducer
 });

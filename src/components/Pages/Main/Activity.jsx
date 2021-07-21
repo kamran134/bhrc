@@ -9,7 +9,7 @@ import { getArticles } from '../../../redux/actions/article-actions';
 import moment from 'moment';
 import { useTranslation } from 'react-i18next';
 
-const MainActivity = () => {
+const MainActivity = ({ data }) => {
     const dispatch = useDispatch();
     const { articles, lang } = useSelector(state => ({
         articles: state.articles.articles,
@@ -33,8 +33,8 @@ const MainActivity = () => {
                         <div className='flex-col flex-center small-margin-top'>
                             <PaintBadge title={'Activity'} />
                             <div className='main-activity__central-block'>
-                                <h1 className='white-text nowrap-text'>{t("Follow our activities")}</h1>
-                                <h3 className='white-text'>Event makes suspendice adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendices gravida.</h3>
+                                <h1 className='white-text nowrap-text'>{data && data.title[lang]}</h1>
+                                <h3 className='white-text'>{data && data.subtitle[lang]}</h3>
                             </div>
                             <div className='main-activity__activities'>
                                 <Carousel controls={false}>

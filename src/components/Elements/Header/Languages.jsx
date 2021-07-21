@@ -12,15 +12,15 @@ const Languages = (props) => {
         <div className='languages'>
             <div className={lang === 'az' ? 'lang checked': 'lang'}>
                 <input name='lang' id='az' value='az' type='radio' checked={lang === 'az'} onChange={langSelectHandle} />
-                <label for='az'>Az</label>
+                <label htmlFor='az'>Az</label>
             </div>
             <div className={lang === 'ru' ? 'lang checked': 'lang'}>
                 <input name='lang' id='ru' value='ru' type='radio' checked={lang === 'ru'} onChange={langSelectHandle} />
-                <label for='ru'>Ru</label>
+                <label htmlFor='ru'>Ru</label>
             </div>
             <div className={lang === 'en' ? 'lang checked': 'lang'}>
                 <input name='lang' id='en' value='en' type='radio' checked={lang === 'en'} onChange={langSelectHandle} />
-                <label for='en'>En</label>
+                <label htmlFor='en'>En</label>
             </div>
         </div>
     )
