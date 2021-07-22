@@ -78,7 +78,8 @@ code {
     left: 0;
     width: 100%;
     height: -webkit-fill-available;
-    background-color: $blue-opacity;
+    // background-color: $blue-opacity;
+    background-color: rgba(256, 256, 256, 0.16);
     z-index: 1;
 }
 
@@ -279,6 +280,14 @@ h3 {
 
 .nowrap-text {
     white-space: nowrap;
+}
+
+.centered-text {
+    text-align: center;
+}
+
+.noncentered-text {
+    text-align: left;
 }
 
 

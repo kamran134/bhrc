@@ -1,5 +1,28 @@
 @import '../../../variables.scss';
 .header {
+    &__follow {
+        position: absolute;
+        top: 30px;
+        right: 22px;
+        display: flex;
+        height: 20px;
+        z-index: 2;
+        bottom: 20px;
+        font-size: $follow-font-size;
+        font-weight: 600;
+        color: $main-orange;
+        transform: translate(0, -50%);
+        .icon {
+            margin-left: $small-margin;
+            svg {
+                width: 20px;
+                height: 20px;
+            }
+            path {
+                fill: $main-orange;
+            }
+        }
+    }
     .white-header {
         position: fixed;
         background-color: #fff;

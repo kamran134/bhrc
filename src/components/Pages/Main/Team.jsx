@@ -68,8 +68,8 @@ const MainTeam = () => {
     return (
         <div className='main-team'>
             <div className='container'>
-                <div className='container-inner'>
-                    <PaintBadge title={t("Team")} />
+                <div className='container-inner centered-text'>
+                    {/* <PaintBadge title={t("Team")} /> */}
                     <h1>{t("Our team")}</h1>
                     <div className='main-team__text-button'>
                         {/* <div className='text'>

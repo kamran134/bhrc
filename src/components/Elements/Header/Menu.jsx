@@ -12,9 +12,11 @@ const Menu = ({showWhite}) => {
             <div className='menu__logo'>
                 <Link to='/'><LogoEn /></Link>
             </div>
-            <MenuElement url='/activities' label={t('Activity')} />
-            <MenuElement url='/urbanica' label={t('Urbanica')} _className='urbanica-menu' />
-            <MenuElement url='/recources' label={t('Recources')} />
+            <MenuElement url='/' label={t("Home")} />
+            <MenuElement url='/about' label={t("About us")} />
+            <MenuElement url='/activities' label={t("Activity")} />
+            {/* <MenuElement url='/urbanica' label={t("Urbanica")} _className='urbanica-menu' /> */}
+            <MenuElement url='/recources' label={t("Recources")} />
             <Navigation />
         </div>
     )

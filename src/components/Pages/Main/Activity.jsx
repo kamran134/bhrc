@@ -25,15 +25,16 @@ const MainActivity = ({ data }) => {
     moment.locale(lang);
 
     return (
-        <div className='main-activity'>
+        <div className='main-activity centered-text'>
+            <h1 className='main-blue-text nowrap-text'>{data && data.title[lang]}</h1>
             <div className='main-activity__background'>
                 <div className='opacity'/>
                 <div className='container'>
                     <div className='container-inner'>
                         <div className='flex-col flex-center small-margin-top'>
-                            <PaintBadge title={'Activity'} />
+                            {/* <PaintBadge title={'Activity'} /> */}
                             <div className='main-activity__central-block'>
-                                <h1 className='white-text nowrap-text'>{data && data.title[lang]}</h1>
+                                
                                 <h3 className='white-text'>{data && data.subtitle[lang]}</h3>
                             </div>
                             <div className='main-activity__activities'>
@@ -42,21 +43,7 @@ const MainActivity = ({ data }) => {
                                         <div className='flex-row flex-center container-inner'>
                                         {articles.map((article, i) =>
                                             i < 2 && (
-                                                <div className='activity-block' key={i}>
-                                                    <h2>{article.name[lang]}</h2>
-                                                    <div className='time-and-location'>
-                                                        <ClockIcon />
-                                                        <span>{moment(article.createdAt).format('hh:mm, DD MMMM YYYY')}</span>
-                                                        {/* <LocationIcon />
-                                                        <span>Baku city</span> */}
-                                                    </div>
-                                                    {/* <div className='activity-block__description'>
-                                                        {article.shortDescription[lang]}
-                                                    </div> */}
-                                                    <div className='activity-block__join'>
-                                                        <Link to={`/activities/${article.path[lang]}`}>{t('Read more')}</Link>
-                                                    </div>
-                                                </div>
+                                                <NewsBlock article={article} lang={lang} key={article._id} t={t} />
                                             )
                                         )}
                                         </div>
@@ -65,21 +52,7 @@ const MainActivity = ({ data }) => {
                                         <div className='flex-row flex-center container-inner'>
                                         {articles.map((article, i) =>
                                             i >= 2 && (
-                                                <div className='activity-block'>
-                                                    <h2>{article[lang].name}</h2>
-                                                    <div className='time-and-location'>
-                                                        <ClockIcon />
-                                                        <span>08.00 - 10.00</span>
-                                                        <LocationIcon />
-                                                        <span>Baku city</span>
-                                                    </div>
-                                                    <div className='activity-block__description'>
-                                                        {article[lang].shortDescription.substr(0, 94)}...
-                                                    </div>
-                                                    <div className='activity-block__join'>
-                                                        Join now +
-                                                    </div>
-                                                </div>
+                                                <NewsBlock article={article} lang={lang} key={article._id} t={t} />
                                             )
                                         )}
                                         </div>
@@ -89,6 +62,26 @@ const MainActivity = ({ data }) => {
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    )
+}
+
+const NewsBlock = ({article, lang, t}) => {
+    return (
+        <div className='activity-block noncentered-text'>
+            <h2 className='main-blue-text'>{article.name[lang]}</h2>
+            <div className='time-and-location'>
+                <ClockIcon />
+                <span>{moment(article.createdAt).format('hh:mm, DD MMMM YYYY')}</span>
+                {/* <LocationIcon />
+                <span>Baku city</span> */}
+            </div>
+            {/* <div className='activity-block__description'>
+                {article.shortDescription[lang]}
+            </div> */}
+            <div className='activity-block__join'>
+                <Link to={`/activities/${article.path[lang]}`}>{t('Read more')}</Link>
             </div>
         </div>
     )

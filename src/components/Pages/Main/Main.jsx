@@ -26,7 +26,7 @@ const Main = () => {
             <Cover data={welcome} />
             <MainAbout data={about} />
             <MainActivity data={activity} />
-            <Statistics />
+            {/* <Statistics /> */}
             <MainRecources data={resources} />
             <MainSignIn data={signin} />
             <MainTeam data={team} />
