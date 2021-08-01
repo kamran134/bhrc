@@ -1,33 +1,25 @@
 @import '../../../variables.scss';
 .cover {
     width: 100%;
-    height: calc(100vh - 145px);
-    min-height: 450px;
-    max-height: 720px;
+    height: calc(100vh - #{$cover-photo-margin});
     position: relative;
     //background-attachment: fixed;
     background-image: url("/assets/images/bhrc_1.jpg");
     background-size: cover;
-    background-position-y: center;
-    @media screen and (min-width: 1921px) {
-        background-position-y: -300px;
-    }
-    @media screen and (min-width: 3810px) {
-        background-position-y: -695px;
-    }
+    background-position-y: 60%;
     &__search {
         z-index: 2;
         margin-top: $search-margin;
         input[type='text'] {
-            width: 0px;
+            width: 0;
             padding: 0;
-            height: 30px;
-            border-radius: 24px;
+            height: $main-search-height;
+            border-radius: $main-search-radius;
             border: none;
             font-weight: 600;
             transition: 0.3s width, opacity;
             &.active {
-                width: 400px;
+                width: $main-search-width;
                 opacity: 1;
                 transition: 0.3s width, opacity;
                 padding: 0 20px;
@@ -43,19 +35,15 @@
     &__slogan {
         position: absolute;
         z-index: 2;
-        //width: 440px;
         top: 43%;
         transform: translate(0, -50%);
         font-family: 'candara-italic';
-        svg {
-            //transform: rotate(180deg);
-        }
         .st0 {
             fill: $main-orange;
         }
         .slogan {
             color: #fff;
-            font-size: 25px;
+            font-size: $h2-font-size;
             font-weight: 600;
             width: 60%;
             position: absolute;
@@ -72,35 +60,11 @@
     &__urbanica {
         z-index: 2;
         position: absolute;
-        bottom: 50px;
+        bottom: $urbanica-button-bottom;
         svg {
             cursor: pointer;
             #Image_24-2:hover {
                 fill: #6499d9;
-            }
-        }
-    }
-    &__donate {
-        z-index: 2;
-        position: absolute;
-        bottom: 80px;
-    }
-    &__follow {
-        position: absolute;
-        display: flex;
-        height: 20px;
-        z-index: 2;
-        bottom: 20px;
-        font-weight: 600;
-        color: $main-orange;
-        .icon {
-            margin-left: $small-margin;
-            svg {
-                width: 20px;
-                height: 20px;
-            }
-            path {
-                fill: $main-orange;
             }
         }
     }
@@ -111,25 +75,25 @@
     flex-direction: column;
     padding: $block-padding 0;
     &__left {
-        width: 375px;
+        width: $left-side-width;
     }
     &__right {
         position: relative;
-        width: 348px;
+        width: $right-side-width;
         .about-circle-images {
             .small-circle {
-                width: 199px;
-                height: 199px;
-                border: 11px solid #fff;
+                width: $litle-circle-size;
+                height: $litle-circle-size;
+                border: $circle-border-size solid #fff;
                 border-radius: 50%;
                 position: absolute;
-                top: 44px;
+                top: $small-circle-top;
                 z-index: 2;
                 image-rendering: pixelated;
             }
             .big-circle {
-                width: 265px;
-                height: 265px;
+                width: $big-circle-size;
+                height: $big-circle-size;
                 border-radius: 50%;
                 position: absolute;
                 right: 0;
@@ -137,48 +101,42 @@
         }
     }
     &__footer {
-        margin-top: 42px;
+        margin-top: $big-margin;
         display: flex;
     }
 }
 
 .main-activity {
     width: 100%;
-    height: 458px;
+    height: $main-activity-height;
     &__background {
         position: relative;
         width: 100%;
-        height: 352px;
+        height: $main-activity-back-height;
         background: url('../../../assets/images/bhrc_news.jpg');
         background-size: cover;
-        background-position-y: -168px;
-        @media screen and (min-width: 1921px) {
-            background-position-y: -190px;
-        }
-        @media screen and (min-width: 3810px) {
-            background-position-y: -380px;
-        }
+        background-position-y: $main-activity-y;
     }
     &__central-block {
         display: flex;
         flex-direction: column;
         align-items: center;
-        width: 430px;
+        width: $central-subtitle-width;
         text-align: center;
     }
     &__activities {
         position: absolute;
-        bottom: -25px;
+        bottom: $main-activity-bottom;
     }
     .activity-block {
-        width: 357px;
-        height: 236px;
+        width: $main-activity-width;
+        height: $main-activity-height;
         background-color: #fff;
         border-radius: $standart-radius;
         -webkit-box-shadow: $standart-shadow;
         -moz-box-shadow: $standart-shadow;
         box-shadow: $standart-shadow;
-        padding: $carousel-block-padding;
+        padding: $carousel-block-padding-v $carousel-block-padding-h;
         font-size: $location-font-size;
         margin-right: $medium-margin;
         &:last-child {
@@ -192,15 +150,15 @@
                 font-family: Arial, Helvetica, sans-serif;
                 font-weight: 600;
                 font-style: italic;
-                margin-left: 3px;
+                margin-left: $small-margin;
                 margin-right: $small-margin;
                 &:last-child {
                     margin-right: 0;
                 }
             }
             svg {
-                width: 16px;
-                height: 16px;
+                width: $small-icon-size;
+                height: $small-icon-size;
                 path {
                     fill: $block-text-color;
                 }
@@ -221,11 +179,11 @@
         overflow: visible;
     }
     .carousel-indicators {
-        bottom: -50px !important;
+        bottom: $main-indicator-bottom !important;
         li {
-            width: 73px;
-            height: 2px;
-            border-radius: 2px;
+            width: $main-indicator-width;
+            height: $main-indicator-height;
+            border-radius: $indicator-radius;
             border: 1px solid $main-blue;
             background-color: #fff;
         }
@@ -268,31 +226,33 @@
 }
 
 .main-recources {
+    margin-top: 220px;
+    padding: $block-padding 0;
     &__blocks {
         display: flex;
         justify-content: space-between;
         width: 100%;
         margin: $big-margin 0;
         .recource-block {
-            width: 270px;
-            height: 325px;
-            border-radius: 5px;
+            width: $main-resource-width;
+            height: $main-resource-height;
+            border-radius: $resources-radius;
             position: relative;
             background-size: cover;
             &__content {
                 position: absolute;
                 overflow: hidden;
-                width: 270px;
-                height: 160px;
-                border-radius: 12px 12px 5px 5px;
+                width: $main-resource-width;
+                height: $main-resource-small;
+                border-radius: $resources-radius-big $resources-radius-big $resources-radius $resources-radius;
                 background-color: $main-blue;
                 color: #fff;
                 bottom: 0;
-                padding: 11px;
+                padding: $small-padding;
                 transition: 0.3s height, background-color;
                 &:hover {
                     background-color: $main-orange;
-                    height: 200px;
+                    height: $main-resource-hover;
                     transition-duration: 0.3s;
                     .indicator {
                         &__progress {
@@ -301,23 +261,23 @@
                     }
                 }
                 .block-title-text {
-                    margin-top: 10px;
+                    margin-top: $modal-footer-top;
                 }
                 .text {
                     font-size: $text-font-size;
                     font-family: Arial, Helvetica, sans-serif;
-                    margin-bottom: 20px;
+                    margin-bottom: $medium-margin;
                     &:last-child {
                         margin-bottom: 0;
                     }
                 }
                 .statistics {
-                    margin-bottom: 12px;
+                    margin-bottom: $medium-margin+3;
                     font-family: Arial, Helvetica, sans-serif;
                     font-size: $text-font-size;
                 }
                 .indicator {
-                    height: 4px;
+                    height: $little-height;
                     background-color: $progress-color;
                     &__progress {
                         width: 50%;
@@ -332,13 +292,13 @@
 
 .main-sign-in {
     width: 100%;
-    min-height: 232px;
+    min-height: $main-sign-in;
     //background-color: $main-blue;
     background-image: url("/assets/images/signin-background.svg");
     background-size: cover;
     display: flex;
     justify-content: center;
-    padding: 26px 0;
+    padding: $medium-padding 0;
     color: #fff;
     position: relative;
     .start {
@@ -356,7 +316,7 @@
         margin: 0 !important;
     }
     &__container {
-        width: 515px;
+        width: $main-signin-container;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -370,19 +330,6 @@
     h1 {
         color: $main-blue;
     }
-    &__text-button {
-        display: flex;
-        align-items: flex-end;
-        .text {
-            margin-top: $medium-margin;
-            margin-right: 100px;
-            width: 440px;
-            font-size: $h3-font-size;
-            font-family: Arial, Helvetica, sans-serif;
-            color: $block-text-color;
-            line-height: 1;
-        }
-    }
     &__members {
         display: flex;
         flex-wrap: wrap;
@@ -390,9 +337,9 @@
         margin-top: $medium-margin;
         .member {
             cursor: pointer;
-            width: 230px;
-            height: 266px;
-            border-radius: 5px;
+            width: $member-width;
+            height: $member-height;
+            border-radius: $resources-radius;
             &:hover {
                 box-shadow: 6px 2px 6px 0 rgba(0, 0, 0, 0.16);
             }
@@ -403,10 +350,10 @@
             Helvetica,
             sans-serif;
             img {
-                margin-top: 19px;
+                margin-top: $menu-margin;
                 margin-bottom: $big-margin;
-                width: 141px;
-                height: 141px;
+                width: $main-logo-size;
+                height: $main-logo-size;
                 border-radius: 50%;
                 object-fit: cover;
             }
@@ -416,18 +363,18 @@
             .profession {
                 font-size: $little-font-size;
                 color: $main-orange;
-                margin-top: -5px;
+                margin-bottom: $small-margin;
             }
             .social-network {
                 color: $main-orange;
                 .icon {
                     margin-left: $small-margin;
                     svg {
-                        width: 20px;
-                        height: 20px;
+                        width: $social-icon;
+                        height: $social-icon;
                         &:hover {
-                            width: 30px;
-                            height: 30px;
+                            width: $social-icon-hover;
+                            height: $social-icon-hover;
                         }
                     }
                     path {
@@ -448,8 +395,8 @@
         height: auto;
         img {
             margin-bottom: $medium-margin;
-            width: 141px;
-            height: 141px;
+            width: $main-logo-size;
+            height: $main-logo-size;
             border-radius: 50%;
             object-fit: cover;
         }
@@ -459,15 +406,15 @@
         .profession {
             font-size: $little-font-size;
             color: $main-orange;
-            margin-top: -5px;
+            margin-bottom: $small-margin;
         }
         .social-network {
             color: $main-orange;
             .icon {
                 margin-left: $small-margin;
                 svg {
-                    width: 20px;
-                    height: 20px;
+                    width: $social-icon;
+                    height: $social-icon;
                 }
                 path {
                     fill: $main-orange;
@@ -478,6 +425,235 @@
             margin-top: $medium-margin;
             font-size: $language-font-size;
             color: $block-text-color;
+        }
+    }
+}
+
+
+/* FOR 4K monitors */
+
+@media screen and (min-width: $width-4K) {
+    .cover {
+        height: calc(100vh - #{$cover-photo-margin*2});
+        &__search {
+            margin-top: $search-margin*2;
+            input[type='text'] {
+                height: $main-search-height*2;
+                border-radius: $main-search-radius*2;
+                &.active {
+                    width: $main-search-width;
+                    padding: 0 40px;
+                }
+            }
+        }
+        &__slogan {
+            top: 43%;
+            transform: translate(0, -50%);
+            .slogan {
+                font-size: $h2-font-size*2;
+            }
+            svg {
+                width: 692px;
+                height: 404px;
+            }
+        }
+        &__urbanica {
+            z-index: 2;
+            position: absolute;
+            bottom: $urbanica-button-bottom*2;
+            svg {
+                @media screen and (min-width: 3840px) {
+                    width: 313.310px;
+                    height: 151.546px;
+                }
+            }
+        }
+    }
+    .main-about {
+        padding: $block-padding*2 0;
+        &__left {
+            width: $left-side-width*2;
+        }
+        &__right {
+            width: $right-side-width*2;
+            .about-circle-images {
+                .small-circle {
+                    width: $litle-circle-size*2;
+                    height: $litle-circle-size*2;
+                    border: $circle-border-size*2 solid #fff;
+                    top: $small-circle-top*2;
+                }
+                .big-circle {
+                    width: $big-circle-size*2;
+                    height: $big-circle-size*2;
+                }
+            }
+        }
+        &__footer {
+            margin-top: $big-margin*2;
+        }
+    }
+    .main-activity {
+        height: $main-activity-height*2;
+        &__background {
+            height: $main-activity-back-height*2;
+            background-position-y: $main-activity-y*2;
+        }
+        &__central-block {
+            width: $central-subtitle-width*2;
+        }
+        &__activities {
+            bottom: $main-activity-bottom*2;
+        }
+        .activity-block {
+            width: $main-activity-width*2;
+            height: $main-activity-height*2;
+            border-radius: $standart-radius*2;
+            padding: $carousel-block-padding-v*2 $carousel-block-padding-h*2;
+            font-size: $location-font-size*2;
+            margin-right: $medium-margin*2;
+            .time-and-location {
+                margin-top: $small-margin*2;
+                span {
+                    margin-left: $small-margin*2;
+                    margin-right: $small-margin*2;
+                }
+                svg {
+                    width: $small-icon-size*2;
+                    height: $small-icon-size*2;
+                }
+            }
+            &__description {
+                margin-top: $search-margin*2;
+                margin-bottom: $small-margin*2;
+                font-size: $location-font-size*2;
+            }
+            &__join {
+                font-size: $menu-font-size*2;
+                margin-top: $big-margin*2;
+            }
+        }
+        .carousel-indicators {
+            bottom: $main-indicator-bottom*2 !important;
+            li {
+                width: $main-indicator-width*2;
+                height: $main-indicator-height*2;
+                border-radius: $indicator-radius*2;
+                border: 2px solid $main-blue;
+            }
+        }
+    }
+    .main-recources {
+        margin-top: 480px;
+        padding: $block-padding*2 0;
+        &__blocks {
+            margin: $big-margin*2 0;
+            .recource-block {
+                width: $main-resource-width*2;
+                height: $main-resource-height*2;
+                border-radius: $resources-radius*2;
+                &__content {
+                    width: $main-resource-width*2;
+                    height: $main-resource-small*2;
+                    border-radius: $resources-radius-big*2 $resources-radius-big*2 $resources-radius*2 $resources-radius*2;
+                    padding: $small-padding*2;
+                    &:hover {
+                        height: $main-resource-hover*2;
+                    }
+                    .block-title-text {
+                        margin-top: $modal-footer-top*2;
+                    }
+                    .text {
+                        font-size: $text-font-size*2;
+                        margin-bottom: $medium-margin*2;
+                    }
+                    .statistics {
+                        margin-bottom: ($medium-margin+3)*2;
+                        font-size: $text-font-size*2;
+                    }
+                    .indicator {
+                        height: $little-height*2;
+                    }
+                }
+            }
+        }
+    }
+    .main-sign-in {
+        min-height: $main-sign-in*2;
+        padding: $medium-padding 0;
+        &__container {
+            width: $main-signin-container*2;
+        }
+        .start,
+        .end {
+            width: 380px;
+            height: 328px;
+        }
+    }
+    .main-team {
+        padding: $big-margin*2 0;
+        &__members {
+            margin-top: $medium-margin*2;
+            .member {
+                width: $member-width*2;
+                height: $member-height*2;
+                border-radius: $resources-radius*2;
+                img {
+                    margin-top: $menu-margin*2;
+                    margin-bottom: $big-margin*2;
+                    width: $main-logo-size*2;
+                    height: $main-logo-size*2;
+                }
+                .name {
+                    font-size: $h3-font-size*2;
+                }
+                .profession {
+                    font-size: $little-font-size*2;
+                    margin-bottom: $small-margin*2;
+                }
+                .social-network {
+                    .icon {
+                        margin-left: $small-margin*2;
+                        svg {
+                            width: $social-icon*2;
+                            height: $social-icon*2;
+                            &:hover {
+                                width: $social-icon-hover*2;
+                                height: $social-icon-hover*2;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .member-modal {
+        .modal-content {
+            img {
+                margin-bottom: $medium-margin*2;
+                width: $main-logo-size*2;
+                height: $main-logo-size*2;
+            }
+            .name {
+                font-size: $h3-font-size*2;
+            }
+            .profession {
+                font-size: $little-font-size*2;
+                margin-bottom: $small-margin*2;
+            }
+            .social-network {
+                .icon {
+                    margin-left: $small-margin*2;
+                    svg {
+                        width: $social-icon*2;
+                        height: $social-icon*2;
+                    }
+                }
+            }
+            .bio {
+                margin-top: $medium-margin*2;
+                font-size: $language-font-size*2;
+            }
         }
     }
 }

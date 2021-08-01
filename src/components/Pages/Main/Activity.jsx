@@ -26,7 +26,7 @@ const MainActivity = ({ data }) => {
 
     return (
         <div className='main-activity centered-text'>
-            <h1 className='main-blue-text nowrap-text'>{data && data.title[lang]}</h1>
+            <h1 className='main-blue-text nowrap-text title'>{data && data.title[lang]}</h1>
             <div className='main-activity__background'>
                 <div className='opacity'/>
                 <div className='container'>
@@ -34,7 +34,6 @@ const MainActivity = ({ data }) => {
                         <div className='flex-col flex-center small-margin-top'>
                             {/* <PaintBadge title={'Activity'} /> */}
                             <div className='main-activity__central-block'>
-                                
                                 <h3 className='white-text'>{data && data.subtitle[lang]}</h3>
                             </div>
                             <div className='main-activity__activities'>

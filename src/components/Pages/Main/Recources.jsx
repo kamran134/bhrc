@@ -56,7 +56,7 @@ const MainRecources = ({ data }) => {
                         {/* <PaintBadge title={'Recources'} /> */}
                         <div className='main-activity__central-block'>
                             <h1 className='main-blue-text'>{data && data.title[lang]}</h1>
-                            <h3 className='main-grey-text'>{data && data.subtitle[lang]}</h3>
+                            {data && data.subtitle[lang] && <h3 className='main-grey-text'>{data && data.subtitle[lang]}</h3>}
                         </div>
                         <div className='main-recources__blocks'>
                             {resources && <RecourceBlock content={recourceItems} categories={resources.categories} lang={lang} />}

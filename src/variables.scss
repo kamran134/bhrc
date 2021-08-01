@@ -23,23 +23,14 @@ $urbanica-light-pink: #fdf7ed;
 
 /* Sizes */
 
+$social-icon: 20px;
+$social-icon-hover: 30px;
 $header-height: 200px;
 $footer-height: 300px;
-
-/* Margins */
-
-$small-margin: 8px;
-$medium-margin: 15px;
-$menu-margin: 20px;
-$search-margin: 24px;
-$big-margin: 30px;
-$large-margin: 75px;
-
-/* Paddings */
-
-$menu-padding: 20px;
-$block-padding: 48px;
-$carousel-block-padding: 30px 40px;
+$small-icon-size: 16px;
+$main-logo-size: 142px;
+$main-logo-inner: 160px;
+$little-logo: 40px;
 
 /* Font sizes */
 
@@ -49,11 +40,13 @@ $location-font-size: 13px;
 $hashtag-font-size: 13px;
 $main-font-size: 14px;
 $follow-font-size: 15px;
+$button-font-size: 15px;
 $menu-font-size: 18px;
 $menu-urbanica-font-size: 25px;
+$urbanica-button-font-size: 26px;
 $h1-font-size: 35px;
 $h2-font-size: 25px;
-$h3-font-size: 15px;
+$h3-font-size: 18px;
 $text-font-size: 13px;
 $block-title-font-size: 18px;
 $footer-font-size: 20px;
@@ -62,11 +55,86 @@ $footer-font-size: 20px;
 
 $menu-border: 1px solid rgba(202, 199, 199, 0.7);
 
+/* Margins */
+
+$footer-margin: 5px;
+$small-margin: 8px;
+$modal-footer-top: 10px;
+$modal-input-margin: 15px;
+$medium-margin: 15px;
+$menu-margin: 20px;
+$search-margin: 24px;
+$big-margin: 30px;
+$large-margin: 75px;
+$cover-photo-margin: 145px;
+$urbanica-button-bottom: 50px;
+$small-circle-top: 44px;
+$menu-logo-top: -25px;
+$menu-logo-svg-left: 12px;
+$main-activity-bottom: -25px;
+$main-indicator-bottom: -50px;
+$copyright-margin: 100px;
+
+/* Paddings */
+
+$little-padding: 5px;
+$small-padding: 10px;
+$menu-padding: 20px;
+$modal-padding: 20px;
+$medium-padding: 26px;
+$modal-field-top: 15px;
+$block-padding: 48px;
+$carousel-block-padding-v: 30px;
+$carousel-block-padding-h: 40px;
+$copyright-padding: 15px;
+
 /* Widths */
 
+$circle-border-size: 10px;
 $standart-container-width: 900px;
+$main-search-width: 400px;
 $paint-width: 111px;
 $paint-height: 26px;
+$left-side-width: 375px;
+$right-side-width: 348px;
+$litle-circle-size: 200px;
+$big-circle-size: 265px;
+$modal-max-width: 600px;
+$modal-content-width: 600px;
+$modal-field-width: $modal-content-width/2;
+$modal-input-width: 200px;
+$modal-footer-width: $modal-input-width;
+$central-subtitle-width: 430px;
+$main-activity-width: 360px;
+$main-indicator-width: 73px;
+$main-resource-width: 270px;
+$main-signin-container: 515px;
+$member-width: 230px;
+$footer-col: 200px;
+$copyright-width: 711px;
+
+/* Heights */
+
+$bhrc-button-height: 20px;
+$menu-height: 90px;
+$main-activity-height: 460px;
+$main-activity-back-height: 350px;
+$main-search-height: 30px;
+$modal-content-height: 450px;
+$modal-input-height: 18px;
+$main-activity-height: 240px;
+$main-indicator-height: 2px;
+$little-height: 4px;
+$main-resource-height: 325px;
+$main-resource-small: 160px;
+$main-resource-hover: 200px;
+$main-sign-in: 230px;
+$member-height: 266px;
+$footer-logo-height: 50px;
+
+/* Background-positions */
+
+$main-activity-y: -170px;
 
 /* Round elements */
 
@@ -74,9 +142,31 @@ $menu-round: 25px;
 
 /* Border radiuses */
 
+$indicator-radius: 2px;
+$resources-radius: 5px;
 $standart-radius: 7px;
+$resources-radius-big: 12px;
 $button-radius: 20px;
+$main-search-radius: 24px;
 
 /* Shadows */
 
 $standart-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.16);
+
+/* Button sizes */
+
+$button-padding: 13px;
+$button-height: 37px;
+$orange-margin-right: 33px;
+$white-button-height: 22px;
+$urbanica-signup-button-height: 55px;
+$urbanica-orange-button-height: 40px;
+$urbanica-button-padding: 35px;
+$urbanica-orange-padding: 25px;
+$urbanica-orange-height: 40px;
+$urbanica-border-radius: 26px;
+
+/* Screen sizes */
+
+$width-full-HD: 1920px;
+$width-4K: 3840px;

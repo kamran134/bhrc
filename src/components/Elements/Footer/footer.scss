@@ -3,7 +3,6 @@
     padding: $menu-padding;
     background-color: $footer-color;
     width: 100%;
-    //height: $footer-height;
     bottom: 0;
     color: #fff;
     &__information {
@@ -15,38 +14,38 @@
             margin-bottom: $big-margin !important;
         }
         .footer-col {
-            width: 200px;
+            width: $footer-col;
         }
         .contact-info {
             color: $main-orange;
             display: flex;
             align-items: center;
-            margin-bottom: 18px;
+            margin-bottom: $medium-margin;
             svg {
-                margin-right: 5px;
+                margin-right: $footer-margin;
             }
         }
         .info-item {
             display: block;
             line-height: 1.2;
-            margin-bottom: 18px;
+            margin-bottom: $medium-margin;
         }
     }
     &__copyright {
-        width: 711px;
+        width: $copyright-width;
         border-top: 2px solid $footer-line-color;
-        padding: 15px 0;
+        padding: $copyright-padding 0;
         margin: 0 auto;
         display: flex;
         align-items: center;
         .text {
-            margin-left: 100px;
+            margin-left: $copyright-margin;
             font-size: $h3-font-size;
         }
     }
     &__logo {
         width: auto;
-        height: 50px;
+        height: $footer-logo-height;
         .st0 {
             fill: $logo-white;
         }
@@ -55,6 +54,41 @@
         }
         .st1 {
             fill: $logo-white;
+        }
+    }
+}
+
+@media screen and (min-width: $width-4K) {
+    .footer {
+        padding: $menu-padding*2;
+        &__information {
+            font-size: $footer-font-size*2;
+            h2 {
+                margin-bottom: $big-margin*2 !important;
+            }
+            .footer-col {
+                width: $footer-col*2;
+            }
+            .contact-info {
+                margin-bottom: $medium-margin*2;
+                svg {
+                    margin-right: $footer-margin*2;
+                }
+            }
+            .info-item {
+                margin-bottom: $medium-margin*2;
+            }
+        }
+        &__copyright {
+            width: $copyright-width*2;
+            border-top: 4px solid $footer-line-color;
+            .text {
+                margin-left: $copyright-margin*2;
+                font-size: $h3-font-size*2;
+            }
+        }
+        &__logo {
+            height: $footer-logo-height*2;
         }
     }
 }

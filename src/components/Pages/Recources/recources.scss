@@ -28,7 +28,7 @@
         -webkit-box-shadow: $standart-shadow;
         -moz-box-shadow: $standart-shadow;
         box-shadow: $standart-shadow;
-        padding: $carousel-block-padding;
+        padding: $carousel-block-padding-v $carousel-block-padding-h;
         font-size: $location-font-size;
         margin-right: $medium-margin;
         text-align: center;

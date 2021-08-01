@@ -69,15 +69,7 @@ const MainTeam = () => {
         <div className='main-team'>
             <div className='container'>
                 <div className='container-inner centered-text'>
-                    {/* <PaintBadge title={t("Team")} /> */}
                     <h1>{t("Our team")}</h1>
-                    <div className='main-team__text-button'>
-                        {/* <div className='text'>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla imperdiet turpis
-                            quis nunc vestibulum auctor. Fusce semper vel enim sit amet ultricies.
-                        </div> */}
-                        {/* <button className='bhrc-btn orange-btn'>Meet us <ImArrowRight2/></button> */}
-                    </div>
                     <Members members={membersMock} />
                 </div>
             </div>
