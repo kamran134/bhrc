@@ -5,8 +5,7 @@ const INITIAL_STATE = {
     about: undefined,
     activity: undefined,
     resources: undefined,
-    signin: undefined,
-    team: undefined
+    signin: undefined
 }
 
 // eslint-disable-next-line import/no-anonymous-default-export

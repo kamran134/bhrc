@@ -5,6 +5,7 @@ import './newsHeader.scss';
 
 const NewsHeader = () => {
     const { t } = useTranslation();
+
     return (
         <>
             <Header />

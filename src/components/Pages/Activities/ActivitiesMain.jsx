@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
+import { Element, scroller } from 'react-scroll';
 import { getArticles } from '../../../redux/actions/article-actions';
 import { config } from '../../../config';
 import moment from 'moment';
@@ -22,10 +24,19 @@ const ActivitiesMain = props => {
         dispatch(getArticles(1, 5));
     }, [dispatch]);
 
+    useEffect(() => {
+        scroller.scrollTo('articles', {
+            duration: 1500,
+            delay: 100,
+            smooth: true,
+            block: "center"
+        });
+    }, []);
+
     moment.locale(lang);
     
     return (
-        <div className='articles-body'>
+        <Element name='articles' className='articles-body'>
             <div className='container flex-row space-between align-top'>
                 <div className='articles-body__left'>
                     {props.children}
@@ -39,17 +50,17 @@ const ActivitiesMain = props => {
                         <h4>{t("Most read")}</h4>
                         {articles && articles.slice(0, 5).map(article =>
                         <div className='post'>
-                            <img src={`${config.url.IMAGE_URL}article_images/${article.picture}/original/${article.picture}`} alt={article._id} />
+                            <div><img loading='lazy' src={`${config.url.IMAGE_URL}article_images/${article.picture}/original/${article.picture}`} alt={article._id} /></div>
                             <div className='post__date'>
                                 <span className='blue-round'/> {moment(article.createdAt).format('dddd, DD MMMM')}
-                                <h5>{article.name[lang]}</h5>
+                                <h5><Link to={`/activities/${article.path[lang]}`}>{article.name[lang]}</Link></h5>
                             </div>
                         </div>
                         )}
                     </div>
                 </div>
             </div>
-        </div>
+        </Element>
     )
 }
 

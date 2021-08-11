@@ -27,7 +27,7 @@ const MainAbout = ({data}) => {
                                 <button className='bhrc-btn orange-btn' onClick={() => history.push('/about')}>
                                     {t("More info")} <ImArrowRight2/>
                                 </button>
-                                <button className='bhrc-btn blue-btn'>{t("More about Urbanica")} <ImArrowRight2/></button>
+                                <button className='bhrc-btn blue-btn'>{t("Support us")} <ImArrowRight2/></button>
                             </div>
                         </div>
                         <div className='main-about__right'>

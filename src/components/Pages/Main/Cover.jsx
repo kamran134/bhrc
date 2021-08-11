@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 //import { ReactComponent as PaintBrushes } from '../../../assets/images/paint_brushes.svg';
 import { ReactComponent as BHRCfigure } from '../../../assets/images/new-figure.svg';
 import { ReactComponent as UrbanicaButton } from '../../../assets/images/urbanica-button.svg';
-import { ImArrowRight2 } from 'react-icons/im';
+// import { ImArrowRight2 } from 'react-icons/im';
 import { useSelector } from 'react-redux';
 //import { activeSearch } from '../../../redux/actions/settings';
 

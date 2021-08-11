@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
+import { animateScroll as scroll } from 'react-scroll';
 import Cover from './Cover';
 import MainAbout from './About';
 import MainActivity from './Activity';
-import Statistics from './Statistics';
+// import Statistics from './Statistics';
 import MainRecources from './Recources';
 import MainSignIn from './SignIn';
 import MainTeam from './Team';
@@ -13,13 +14,21 @@ import './main.scss';
 const Main = () => {
     const dispatch = useDispatch();
 
-    const { homepage: { welcome, about, activity, resources, signin, team } } = useSelector(state => ({
+    const { homepage: { welcome, about, activity, resources, signin } } = useSelector(state => ({
         homepage: state.homepage
     }));
 
     useEffect(() => {
-        dispatch(getHomePage())
+        dispatch(getHomePage());
     }, [dispatch]);
+
+    useEffect(() => {
+        scroll.scrollToTop({
+            duration: 1500,
+            delay: 100,
+            smooth: true
+        });
+    }, []);
 
     return (
         <>
@@ -29,7 +38,7 @@ const Main = () => {
             {/* <Statistics /> */}
             <MainRecources data={resources} />
             <MainSignIn data={signin} />
-            <MainTeam data={team} />
+            <MainTeam />
         </>
     )
 }
