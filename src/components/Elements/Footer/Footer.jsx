@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { ReactComponent as FooterLogoAz } from '../../../assets/images/BHRC_logo_horizontal_az.svg';
@@ -19,25 +20,23 @@ const Footer = props => {
                             <h2>{t("Contact info")}</h2>
                             <span className='contact-info'><MdLocationOn />{t("Location")}</span>
                             <span className='info-item'>{t("address")}</span>
-                            <span className='contact-info'><MdCall />{t("Call us")}</span>
+                            <span className='contact-info'><MdCall />{t("WhatsApp")}</span>
                             <span className='info-item'>+994 51 706 68 68</span>
                             <span className='contact-info'><MdEmail />{t("Email us")}</span>
                             <span className='info-item'>humanrightsclub.az@gmail.com</span>
                         </div>
                         <div className='footer-col'>
                             <h2>Our support</h2>
-                            <span className='info-item'>Private Policies</span>
-                            <span className='info-item'>Donate Now</span>
-                            <span className='info-item'>Careers</span>
-                            <span className='info-item'>Contact us</span>
-                            <span className='info-item'>Partnership</span>
+                            <span className='info-item'>{t("Donate now")}</span>
+                            {/* <span className='info-item'>Careers</span> */}
+                            <span className='info-item'>{t("Contact us")}</span>
+                            {/* <span className='info-item'>Partnership</span> */}
                         </div>
                         <div className='footer-col'>
                             <h2>Our service</h2>
-                            <span className='info-item'>Donate</span>
-                            <span className='info-item'>Sponsor</span>
-                            <span className='info-item'>Fundraise</span>
-                            <span className='info-item'>Jobs</span>
+                            <Link to='/about'><span className='info-item'>{t("Who are we?")}</span></Link>
+                            <span className='info-item'>{t("Privacy policy")}</span>
+                            <span className='info-item'>{t("Terms of use")}</span>
                         </div>
                     </div>
                     <div className='footer__copyright'>

@@ -132,6 +132,7 @@ const Material = ({material, lang}) => {
     const extention = material.fileLink[lang].split('.').pop();
     switch(extention) {
         case 'docx':
+        case 'doc':
             return (
                 <a href={material.fileLink[lang]} target='_blanck'>
                     <div className='material-doc'>

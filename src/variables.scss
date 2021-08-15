@@ -31,6 +31,7 @@ $small-icon-size: 16px;
 $main-logo-size: 142px;
 $main-logo-inner: 160px;
 $little-logo: 40px;
+$blue-round: 6px;
 
 /* Font sizes */
 
@@ -66,6 +67,7 @@ $menu-margin: 20px;
 $search-margin: 24px;
 $big-margin: 30px;
 $large-margin: 75px;
+$hundred-margin: 100px;
 $cover-photo-margin: 145px;
 $urbanica-button-bottom: 50px;
 $small-circle-top: 44px;
@@ -74,6 +76,13 @@ $menu-logo-svg-left: 12px;
 $main-activity-bottom: -25px;
 $main-indicator-bottom: -50px;
 $copyright-margin: 100px;
+$article-info-top: 200px;
+$article-info-left: 7px;
+$article-title-top: 7px;
+$article-date-top: 12px;
+$post-image-right: 10px;
+$news-content-margin: -65px;
+$news-content-elem: 10px;
 
 /* Paddings */
 
@@ -87,6 +96,21 @@ $block-padding: 48px;
 $carousel-block-padding-v: 30px;
 $carousel-block-padding-h: 40px;
 $copyright-padding: 15px;
+$articles-top-padding: 45px;
+$article-body-top: 64px;
+$article-body-bottom: 56px;
+$topics-x: 40px;
+$topics-y: 30px;
+$topic-x: 12px;
+$topic-y: 18px;
+$search-y: 10px;
+$input-padding-left: 15px;
+$input-padding-right: 60px;
+$popular-v: 15px;
+$popular-left: 30px;
+$popular-right: 35px;
+$news-v: 40px;
+$news-h: 50px;
 
 /* Widths */
 
@@ -112,6 +136,9 @@ $main-signin-container: 515px;
 $member-width: 230px;
 $footer-col: 200px;
 $copyright-width: 711px;
+$news-left: 735px;
+$news-right: 350px;
+$post-image-width: 85px;
 
 /* Heights */
 
@@ -126,11 +153,20 @@ $main-activity-height: 240px;
 $main-indicator-height: 2px;
 $little-height: 4px;
 $main-resource-height: 325px;
-$main-resource-small: 160px;
+//$main-resource-small: 160px;
+$main-resource-small: 141px;
 $main-resource-hover: 200px;
 $main-sign-in: 230px;
 $member-height: 266px;
 $footer-logo-height: 50px;
+$news-cover-height: 560px;
+$news-p-height: 450px;
+$topic-height: 90px;
+$article-height: 280px;
+$article-info-height: 100px;
+$article-search-height: 80px;
+$post-image-height: 70px;
+$news-height: 400px;
 
 /* Background-positions */
 

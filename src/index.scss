@@ -357,6 +357,7 @@ h1.title {
 
 @media screen and (min-width: $width-4K) {
     .container {
+        max-width: 2280px !important;
         &-inner {
             width: $standart-container-width*2;
         }

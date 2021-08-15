@@ -4,13 +4,13 @@
     &__background {
         position: relative;
         width: 100%;
-        height: 560px;
+        height: $news-cover-height;
         background: url('../../../assets/images/BHRC_news_cover.jpg');
         background-size: cover;
         background-position-y: center;
     }
     &__text {
-        height: 560px;
+        height: $news-cover-height;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -20,7 +20,21 @@
         }
         p {
             color: #fff;
-            max-width: 450px;
+            max-width: $news-p-height;
+        }
+    }
+}
+
+@media screen and (min-width: $width-4K) {
+    .articles-head {
+        &__background {
+            height: $news-cover-height*2;
+        }
+        &__text {
+            height: $news-cover-height*2;
+            p {
+                max-width: $news-p-height*2;
+            }
         }
     }
 }

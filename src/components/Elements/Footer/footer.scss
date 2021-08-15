@@ -25,10 +25,14 @@
                 margin-right: $footer-margin;
             }
         }
+        a {
+            color: #fff;
+        }
         .info-item {
             display: block;
             line-height: 1.2;
             margin-bottom: $medium-margin;
+            color: #fff;
         }
     }
     &__copyright {

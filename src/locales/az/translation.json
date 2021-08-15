@@ -31,7 +31,7 @@
     "Contact info": "Əlaqə məlumatları",
     "Location": "Ünvanımız",
     "Email us": "Məktub yazın",
-    "Who we are?": "Biz kimik?",
+    "Who are we?": "Biz kimik?",
     "about_subtitle": "BİHK-nun əsas hədəf auditoriyası gənclər, jurnalistlər, bloggerlər, hüquq müdafiəçiləri, siyasi və ictimai fəallar, həmçinin hüquqlarının pozulduğunu bəyan edən istənilən vətəndaşdır.",
     "about_short_info": "Bakı İnsan Hüquqları Klubu (BİHK) vəkil Cavad Cavadov və hüquq müdafiəçisi Rəsul Cəfərov tərəfindən təsis edilib. Təşkilatın əsas məqsədi Azərbaycanda insan hüquq və azadlıqların müdafiəsinə yardım göstərmək və geniş demokratik inkişafı təşviq etməkdir. BİHK 5 oktyabr 2020-ci il tarixdə Azərbaycan Respublikasının Ədliyyə Nazirliyi tərəfindən rəsmi dövlət qeydiyyatına alınmışdır.",
     "More info": "Ətraflı",
@@ -51,5 +51,9 @@
     "Members": "Üzvlər",
     "Events": "Tədbirlər",
     "Home": "Əsas səhifə",
-    "Sign in": "Daxil olun"
+    "Sign in": "Daxil olun",
+    "Privacy policy": "Məxfilik siyasəti",
+    "Terms of use": "İstifadə qaydaları",
+    "Donate now": "İndi ianə et",
+    "Contact us": "Bizimlə əlaqə"
 }
