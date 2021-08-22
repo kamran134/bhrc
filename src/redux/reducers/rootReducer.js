@@ -3,7 +3,7 @@ import alert from './alertReducer';
 import auth from './authReducer';
 import settings from './settingsReducer';
 import articles from './articleReducer';
-import resources from './recourceReducer'
+import resources from './resourceReducer'
 import homepage from './homepageReducer';
 import team from './teamReducer';
 import { reducer as formReducer } from 'redux-form'

@@ -59,6 +59,7 @@ $menu-border: 1px solid rgba(202, 199, 199, 0.7);
 /* Margins */
 
 $footer-margin: 5px;
+$little-margin: 5px;
 $small-margin: 8px;
 $modal-footer-top: 10px;
 $modal-input-margin: 15px;
@@ -139,9 +140,13 @@ $copyright-width: 711px;
 $news-left: 735px;
 $news-right: 350px;
 $post-image-width: 85px;
+$resource-material-width: 200px;
+$resource-doc-width: 500px;
+$resource-icon-width: 40px;
 
 /* Heights */
 
+$mini-button-height: 22px;
 $bhrc-button-height: 20px;
 $menu-height: 90px;
 $main-activity-height: 460px;
@@ -157,7 +162,7 @@ $main-resource-height: 325px;
 $main-resource-small: 141px;
 $main-resource-hover: 200px;
 $main-sign-in: 230px;
-$member-height: 266px;
+//$member-height: 266px;
 $footer-logo-height: 50px;
 $news-cover-height: 560px;
 $news-p-height: 450px;
@@ -167,6 +172,10 @@ $article-info-height: 100px;
 $article-search-height: 80px;
 $post-image-height: 70px;
 $news-height: 400px;
+$resources-head-height: 365px;
+$resources-category-height: 200px;
+$resource-frame-height: 165px;
+$resource-icon-height: 50px;
 
 /* Background-positions */
 

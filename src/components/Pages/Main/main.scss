@@ -225,7 +225,7 @@
     }
 }
 
-.main-recources {
+.main-resources {
     margin-top: 220px;
     padding: $block-padding 0;
     &__blocks {
@@ -233,7 +233,7 @@
         justify-content: space-between;
         width: 100%;
         margin: $big-margin 0;
-        .recource-block {
+        .resource-block {
             width: $main-resource-width;
             height: $main-resource-height;
             border-radius: $resources-radius;
@@ -338,7 +338,7 @@
         .member {
             cursor: pointer;
             width: $member-width;
-            height: $member-height;
+            padding: $menu-margin;
             border-radius: $resources-radius;
             &:hover {
                 box-shadow: 6px 2px 6px 0 rgba(0, 0, 0, 0.16);
@@ -350,7 +350,6 @@
             Helvetica,
             sans-serif;
             img {
-                margin-top: $menu-margin;
                 margin-bottom: $big-margin;
                 width: $main-logo-size;
                 height: $main-logo-size;
@@ -447,8 +446,6 @@
             }
         }
         &__slogan {
-            top: 43%;
-            transform: translate(0, -50%);
             .slogan {
                 font-size: $h2-font-size*2;
             }
@@ -458,14 +455,10 @@
             }
         }
         &__urbanica {
-            z-index: 2;
-            position: absolute;
             bottom: $urbanica-button-bottom*2;
             svg {
-                @media screen and (min-width: 3840px) {
-                    width: 313.310px;
-                    height: 151.546px;
-                }
+                width: 313.310px;
+                height: 151.546px;
             }
         }
     }
@@ -543,12 +536,12 @@
             }
         }
     }
-    .main-recources {
+    .main-resources {
         margin-top: 480px;
         padding: $block-padding*2 0;
         &__blocks {
             margin: $big-margin*2 0;
-            .recource-block {
+            .resource-block {
                 width: $main-resource-width*2;
                 height: $main-resource-height*2;
                 border-radius: $resources-radius*2;
@@ -596,10 +589,9 @@
             margin-top: $medium-margin*2;
             .member {
                 width: $member-width*2;
-                height: $member-height*2;
+                padding: $menu-margin*2;
                 border-radius: $resources-radius*2;
                 img {
-                    margin-top: $menu-margin*2;
                     margin-bottom: $big-margin*2;
                     width: $main-logo-size*2;
                     height: $main-logo-size*2;

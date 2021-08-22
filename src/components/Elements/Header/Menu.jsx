@@ -16,7 +16,7 @@ const Menu = ({showWhite}) => {
             <MenuElement url='/about' label={t("About us")} />
             <MenuElement url='/activities' label={t("Activity")} />
             {/* <MenuElement url='/urbanica' label={t("Urbanica")} _className='urbanica-menu' /> */}
-            <MenuElement url='/recources' label={t("Recources")} />
+            <MenuElement url='/resources' label={t("Resources")} />
             <Navigation />
         </div>
     )

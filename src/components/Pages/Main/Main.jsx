@@ -4,7 +4,7 @@ import Cover from './Cover';
 import MainAbout from './About';
 import MainActivity from './Activity';
 // import Statistics from './Statistics';
-import MainRecources from './Recources';
+import MainResources from './Resources';
 import MainSignIn from './SignIn';
 import MainTeam from './Team';
 import { useDispatch, useSelector } from 'react-redux';
@@ -36,7 +36,7 @@ const Main = () => {
             <MainAbout data={about} />
             <MainActivity data={activity} />
             {/* <Statistics /> */}
-            <MainRecources data={resources} />
+            <MainResources data={resources} />
             <MainSignIn data={signin} />
             <MainTeam />
         </>

@@ -15,7 +15,7 @@ import UrbanicaMain from './components/Pages/Urbanica/UrbanicaMain';
 import UrbanicaHeader from './components/Elements/UrbanicaHeader/UrbanicaHeader';
 import ProfileHeader from './components/Elements/ProfileHeader/ProfileHeader';
 import ProfileMain from './components/Pages/Profile/ProfileMain';
-import Recources from './components/Pages/Recources/Recources';
+import Resources from './components/Pages/Resources/Resources';
 import Activity from './components/Pages/Activities/Activity';
 import NewsHeader from './components/Elements/NewsHeader/NewsHeader';
 
@@ -48,7 +48,8 @@ function App() {
               <Switch>
                 <Route path='/' exact component={Main} />
                 <Route path='/about' component={About} />
-                <Route path='/recources' component={Recources} />
+                <Route path='resources/:category/:topic' component={Resources} />
+                <Route path='/resources' component={Resources} />
               </Switch>
             </Route>
           </Switch>
