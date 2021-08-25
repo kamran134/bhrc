@@ -3,6 +3,8 @@ import { PropTypes } from 'prop-types';
 import { ReactComponent as ContestGreen} from '../../../assets/images/green.svg';
 import { ReactComponent as ContestGirl} from '../../../assets/images/girl.svg';
 import { ReactComponent as TimeSeparator } from '../../../assets/images/time-separator.svg';
+import { ReactComponent as UrbanicaInfoLeft } from '../../../assets/images/urbanica-info-left.svg';
+import { ReactComponent as UrbanicaInfoRight } from '../../../assets/images/urbanica-info-right.svg';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { ReactComponent as LogoEn } from '../../../assets/images/BHRC_logo_horizontal_en.svg';
@@ -10,22 +12,68 @@ import './urbanica.scss';
 
 const UrbanicaMain = () => {
     return (
-        <div className='urbanica-main'>
-            <div className='container'>
-                <div className='container-inner flex-center flex-column'>
-                    <div className='urbanica-main__what-is'>
-                        URBANICA is a youth platform to support the modern generation in new achievements!
+        <>
+            <div className='urbanica-main'>
+                <div className='container'>
+                    <div className='container-inner flex-center flex-column'>
+                        <div className='urbanica-main__what-is'>
+                            URBANICA is a youth platform to support the modern generation in new achievements!
+                        </div>
+                        <div className='urbanica-main__motivation'>
+                            BE WITH US
+                        </div>
+                        <Contest name={'SHOW YOURSELF'} description={'Participate in our competition and show what you are capable of'} />
                     </div>
-                    <div className='urbanica-main__motivation'>
-                        BE WITH US
+                </div>
+                {/* <div className='urbanica-main__go-home'>
+                    <BHRCLink />
+                </div> */}
+            </div>
+            <div className='urbanica-info'>
+                <div className='urbanica-info__left'>
+                    <UrbanicaInfoLeft />
+                    <div className='urbanica-info__left-text'>
+                        <p><h1>Why are we needed?</h1></p>
+                        <p>
+                            Donec consectetur mollis odio, ut aliquam nunc fermentum  ornare. Vivamus ut
+                            augue accumsan, venenatis turpis at, mattis lorem. Ut mattis nisi justo, non
+                            feugiat tortor varius sit amet. Aliquam sed justo et sem pulvinar rhoncus. Nunc
+                            placerat sollicitudin urna. Vestibulum id malesuada dui. Mauris vel tempor nunc.
+                            Praesent vel enim pretium, rutrum purus vel, ultricies arcu. Vivamus aliquam 
+                            viverra rhoncus. Donec malesuada lorem vitae porttitor finibus.
+                        </p>
                     </div>
-                    <Contest name={'SHOW YOURSELF'} description={'Participate in our competition and show what you are capable of'} />
+                </div>
+                <div className='urbanica-info__right'>
+                    <div className='urbanica-info__right-text'>
+                        <p><h1>Why are we needed?</h1></p>
+                        <p>
+                            Donec consectetur mollis odio, ut aliquam nunc fermentum  ornare. Vivamus ut
+                            augue accumsan, venenatis turpis at, mattis lorem. Ut mattis nisi justo, non
+                            feugiat tortor varius sit amet. Aliquam sed justo et sem pulvinar rhoncus. Nunc
+                            placerat sollicitudin urna. Vestibulum id malesuada dui. Mauris vel tempor nunc.
+                            Praesent vel enim pretium, rutrum purus vel, ultricies arcu. Vivamus aliquam 
+                            viverra rhoncus. Donec malesuada lorem vitae porttitor finibus.
+                        </p>
+                    </div>
+                    <UrbanicaInfoRight />
+                </div>
+                <div className='urbanica-info__left'>
+                    <UrbanicaInfoLeft />
+                    <div className='urbanica-info__left-text'>
+                        <p><h1>Why are we needed?</h1></p>
+                        <p>
+                            Donec consectetur mollis odio, ut aliquam nunc fermentum  ornare. Vivamus ut
+                            augue accumsan, venenatis turpis at, mattis lorem. Ut mattis nisi justo, non
+                            feugiat tortor varius sit amet. Aliquam sed justo et sem pulvinar rhoncus. Nunc
+                            placerat sollicitudin urna. Vestibulum id malesuada dui. Mauris vel tempor nunc.
+                            Praesent vel enim pretium, rutrum purus vel, ultricies arcu. Vivamus aliquam 
+                            viverra rhoncus. Donec malesuada lorem vitae porttitor finibus.
+                        </p>
+                    </div>
                 </div>
             </div>
-            <div className='urbanica-main__go-home'>
-                <BHRCLink />
-            </div>
-        </div>
+        </>
     )
 }
 

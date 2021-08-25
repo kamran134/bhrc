@@ -7,8 +7,22 @@
         height: fit-content;
         position: relative;
         svg {
-            margin-left: -58px;
+            margin-left: -9px;
             margin-top: -6px;
+        }
+        &__leaves {
+            .top,
+            .bottom {
+                position: absolute;
+            }
+            .top {
+                left: -50px;
+                top: 4px;
+            }
+            .bottom {
+                top: 196px;
+                left: -9px;
+            }
         }
     }
     &__right {
@@ -23,5 +37,46 @@
         position: absolute;
         bottom: 0;
         left: 150px;
+    }
+}
+
+@media screen and (min-width: $width-4K) {
+    .urbanica-header {
+        &__left {
+            height: 800px;
+            svg {
+                transform: scale(2);
+                transform-origin: 10px 6px;
+            }
+            &__leaves {
+                .top {
+                    left: -100px;
+                    top: 8px;
+                }
+                .bottom {
+                    top: 392px;
+                    left: -18px;
+                }
+            }
+        }
+        &__right {
+            svg {
+                width: 1436px;
+                height: 1400px;
+                //transform: scale(2);
+                //transform-origin: 100% 0;
+            }
+        }
+        &__logo {
+            left: 240px;
+            top: 240px;
+            svg {
+                transform: scale(2);
+                transform-origin: left;
+            }
+        }
+        &__sign-up {
+            left: 300px;
+        }
     }
 }

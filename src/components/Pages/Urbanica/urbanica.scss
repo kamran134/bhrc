@@ -50,11 +50,11 @@
             right: 0;
         }
     }
-    &__go-home {
-        position: fixed;
-        bottom: 130px;
-        left: 20px;
-    }
+    // &__go-home {
+    //     position: fixed;
+    //     bottom: 130px;
+    //     left: 20px;
+    // }
 }
 
 .time-countdown {
@@ -78,5 +78,114 @@
         display: flex;
         align-items: center;
         margin: 0 3px 0 0;
+    }
+}
+
+.urbanica-info {
+    font-size: 15px;
+    color: $block-text-color;
+    font-family: 'Candara';
+    &__left {
+        display: flex;
+    }
+    &__left-text {
+        max-width: 740px;
+        margin-left: 100px;
+        margin-top: 100px;
+        h1 {
+            color: $main-blue;
+        }
+    }
+    &__right {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: -220px;
+    }
+    &__right-text {
+        max-width: 740px;
+        margin-right: 100px;
+        margin-top: 200px;
+        h1 {
+            color: $main-blue;
+        }
+    }
+}
+
+@media screen and (min-width: $width-4K) {
+    .urbanica-main {
+        margin-top: -260px;
+        &__what-is {
+            font-size: 60px;
+            width: 1300px;
+        }
+        &__motivation {
+            font-size: 80px;
+            margin-top: 22px;
+            margin-bottom: 54px;
+        }
+        .urbanica-contest {
+            width: 1500px;
+            min-height: 612px;
+            border-radius: 78px;
+            padding: 130px 460px 70px 288px;
+            margin-bottom: 80px;
+            &__name {
+                font-size: 70px;
+            }
+            &__description {
+                font-size: 30px;
+                width: 450px;
+                margin-bottom: 56px;
+            }
+            &__green {
+                svg {
+                    height: 300px;
+                }
+            }
+            &__girl {
+                svg {
+                    transform: scale(2);
+                    transform-origin: bottom right;
+                }
+            }
+        }
+    }
+    .time-countdown {
+        margin-top: 40px;
+        &__number {
+            width: 36px;
+            height: 64px;
+            border-radius: 6px;
+            margin-right: 6px;
+        }
+        &__separator {
+            margin: 0 6px 0 0;
+        }
+    }
+    .urbanica-info {
+        font-size: 30px;
+        &__left {
+            svg {
+                width: 748px;
+                height: 928px;
+            }
+        }
+        &__left-text {
+            max-width: 1480px;
+            margin-left: 200px;
+            margin-top: 200px;
+        }
+        &__right {
+            margin-top: -440px;
+            svg {
+                width: 816px;
+                height: 900px;
+            }
+        }
+        &__right-text {
+            max-width: 1480px;
+            margin-right: 200px;
+            margin-top: 400px;
+        }
     }
 }
