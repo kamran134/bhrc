@@ -125,6 +125,11 @@ const Resources = () => {
                                                     disabled={topic.attachments.length === 0}>
                                                     {t("Documents")}
                                                 </button>
+                                                <button
+                                                    onClick={() => selectDocType(topic._id, 'informations')}
+                                                    disabled={topic.informations.length === 0}>
+                                                    {t("Info")}
+                                                </button>
                                             </div>
                                         </div>
                                         <div className='topic__date'>
@@ -146,8 +151,8 @@ const Materials = ({materialsArray, lang}) => {
     return (
         <div className='topic__materials'>
             {materialsArray.length > 0 && materialsArray.map(material =>
-                material.fileLink[lang] ? <Material material={material} lang={lang} key={material._id} />
-                : <div dangerouslySetInnerHTML={{__html: material.description[lang]}}/>
+                material.fileLink && material.fileLink[lang] ? <Material material={material} lang={lang} key={material._id} />
+                : <div className='material-doc info' dangerouslySetInnerHTML={{__html: material.description[lang]}}/>
             )}
         </div>
     )

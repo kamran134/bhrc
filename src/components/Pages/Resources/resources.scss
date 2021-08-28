@@ -176,6 +176,12 @@
                         color: $block-text-color;
                         font-style: italic;
                     }
+                    &.info {
+                        &:hover {
+                            background-color: #fff;
+                            box-shadow: none;
+                        }
+                    }
                 }
             }
         }

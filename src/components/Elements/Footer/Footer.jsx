@@ -26,17 +26,17 @@ const Footer = props => {
                             <span className='info-item'>humanrightsclub.az@gmail.com</span>
                         </div>
                         <div className='footer-col'>
-                            <h2>Our support</h2>
+                            <h2>{t("Support us")}</h2>
                             <span className='info-item'>{t("Donate now")}</span>
                             {/* <span className='info-item'>Careers</span> */}
-                            <span className='info-item'>{t("Contact us")}</span>
-                            {/* <span className='info-item'>Partnership</span> */}
+                            <span className='info-item'>{t("Be volunteer")}</span>
+                            <span className='info-item'>{t("Vacancies")}</span>
                         </div>
                         <div className='footer-col'>
-                            <h2>Our service</h2>
+                            <h2>{t("Reporting")}</h2>
                             <Link to='/about'><span className='info-item'>{t("Who are we?")}</span></Link>
+                            <span className='info-item'>{t("Financial reports")}</span>
                             <span className='info-item'>{t("Privacy policy")}</span>
-                            <span className='info-item'>{t("Terms of use")}</span>
                         </div>
                     </div>
                     <div className='footer__copyright'>
