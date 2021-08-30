@@ -85,6 +85,7 @@ $article-date-top: 12px;
 $post-image-right: 10px;
 $news-content-margin: -65px;
 $news-content-elem: 10px;
+$category-min-width: 290px;
 
 /* Paddings */
 
@@ -160,8 +161,8 @@ $main-indicator-height: 2px;
 $little-height: 4px;
 $main-resource-height: 325px;
 //$main-resource-small: 160px;
-$main-resource-small: 141px;
-$main-resource-hover: 200px;
+$main-resource-small: 100px;
+$main-resource-hover: 141px;
 $main-sign-in: 230px;
 //$member-height: 266px;
 $footer-logo-height: 50px;

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector, useDispatch } from 'react-redux';
-import { Link, useHistory, useLocation } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import Carousel from 'react-bootstrap/Carousel';
 import { ReactComponent as FolderIcon } from '../../../assets/images/folder.svg';
 import { ReactComponent as WordIcon } from '../../../assets/images/word-icon.svg';
@@ -9,7 +9,8 @@ import { ReactComponent as PowerPointIcon } from '../../../assets/images/powerpo
 import { ReactComponent as PDFIcon } from '../../../assets/images/pdf-icon.svg';
 import './resources.scss';
 import { getCategoryResources, getResourcesCategories } from '../../../redux/actions/resource-action';
-import moment from 'moment';
+// import moment from 'moment';
+import { Element, scroller } from 'react-scroll';
 import { transliterate } from '../../../translit';
 
 const Resources = () => {
@@ -35,6 +36,15 @@ const Resources = () => {
             dispatch(getCategoryResources(categoryId));
         }
     }, [categoryId, dispatch]);
+
+    useEffect(() => {
+        scroller.scrollTo('resources', {
+            duration: 1500,
+            delay: 100,
+            smooth: true,
+            block: "center"
+        });
+    }, []);
     
     const selectCategoryHandler = (id, name) => {
         setCategoryId(id);
@@ -46,9 +56,7 @@ const Resources = () => {
         if (resources.categories) {
             for (let category of resources.categories) {
                 const tName = transliterate().transform(category.name[lang], '-');
-                console.log('/resources/' + tName, ' == ', location.pathname);
                 if ('/resources/' + tName === location.pathname) {
-                    console.log('yes');
                     selectCategoryHandler(category._id, tName);
                     break;
                 }
@@ -61,11 +69,9 @@ const Resources = () => {
         setDocType(type);
     }
 
-    console.log('location', location);
-
     return (
         <>
-            <div className='resources-head'>
+            <Element name='resources' className='resources-head'>
                 <div className='resources-head__background'>
                     {/* <div className='opacity'/> */}
                     <div className='container'>
@@ -81,7 +87,7 @@ const Resources = () => {
                                                 >
                                                     <h2>{category.name[lang]}</h2>
                                                     <p className='category-block__description'>
-                                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                                        {category.description && category.description[lang]}
                                                     </p>
                                                 </div>
                                             ))}
@@ -92,7 +98,7 @@ const Resources = () => {
                         </div>
                     </div>
                 </div>
-            </div>
+            </Element>
             <div className='resources-body'>
                 <div className='container'>
                     <div className='container-inner'>
@@ -105,36 +111,26 @@ const Resources = () => {
                                         <div className='flex-col space-between'>
                                             <div className='topic__title'>{topic.name[lang]}</div>
                                             <div className='topic__resources'>
-                                                <button
-                                                    onClick={() => selectDocType(topic._id, 'videos')}
-                                                    disabled={topic.videos.length === 0}>
+                                                {topic.videos.length !== 0 && <button onClick={() => selectDocType(topic._id, 'videos')}>
                                                     {t("Videos")}
-                                                </button>
-                                                <button
-                                                    onClick={() => selectDocType(topic._id, 'presentations')}
-                                                    disabled={topic.presentations.length === 0}>
+                                                </button>}
+                                                {topic.presentations.length !== 0 && <button onClick={() => selectDocType(topic._id, 'presentations')}>
                                                     {t("Presentations")}
-                                                </button>
-                                                <button
-                                                    onClick={() => selectDocType(topic._id, 'reports')}
-                                                    disabled={topic.reports.length === 0}>
+                                                </button>}
+                                                {topic.reports.length !== 0 && <button onClick={() => selectDocType(topic._id, 'reports')}>
                                                     {t("Reports")}
-                                                </button>
-                                                <button
-                                                    onClick={() => selectDocType(topic._id, 'attachments')}
-                                                    disabled={topic.attachments.length === 0}>
+                                                </button>}
+                                                {topic.attachments.length !== 0 && <button onClick={() => selectDocType(topic._id, 'attachments')}>
                                                     {t("Documents")}
-                                                </button>
-                                                <button
-                                                    onClick={() => selectDocType(topic._id, 'informations')}
-                                                    disabled={topic.informations.length === 0}>
+                                                </button>}
+                                                {topic.informations.length !== 0 && <button onClick={() => selectDocType(topic._id, 'informations')}>
                                                     {t("Info")}
-                                                </button>
+                                                </button>}
                                             </div>
                                         </div>
-                                        <div className='topic__date'>
+                                        {/* <div className='topic__date'>
                                             {moment(topic.createdAt).format("DD.MM.YYYY")}
-                                        </div>
+                                        </div> */}
                                     </div>
                                     {topic._id === topicId && <Materials materialsArray={topic[docType]} lang={lang} />}
                                 </>
@@ -152,7 +148,10 @@ const Materials = ({materialsArray, lang}) => {
         <div className='topic__materials'>
             {materialsArray.length > 0 && materialsArray.map(material =>
                 material.fileLink && material.fileLink[lang] ? <Material material={material} lang={lang} key={material._id} />
-                : <div className='material-doc info' dangerouslySetInnerHTML={{__html: material.description[lang]}}/>
+                : <div className='material-doc info'>
+                    <h3>{material.name[lang]}</h3>
+                    <p dangerouslySetInnerHTML={{__html: material.description[lang]}} />
+                </div>
             )}
         </div>
     )

@@ -14,6 +14,7 @@
         bottom: $main-activity-bottom;
     }
     .category-block {
+        min-width: $category-min-width;
         height: $resources-category-height;
         cursor: pointer;
         background-color: #fff;
@@ -177,9 +178,12 @@
                         font-style: italic;
                     }
                     &.info {
-                        &:hover {
-                            background-color: #fff;
-                            box-shadow: none;
+                        display: block;
+                        h3 {
+                            color: $main-orange;
+                            font-style: italic;
+                            font-size: $main-font-size;
+                            font-weight: 600;
                         }
                     }
                 }
@@ -197,6 +201,7 @@
             bottom: $main-activity-bottom*2;
         }
         .category-block {
+            min-width: $category-min-width*2;
             height: $resources-category-height*2;
             border-radius: $standart-radius*2;
             padding: $carousel-block-padding-v*2 $carousel-block-padding-h*2;
