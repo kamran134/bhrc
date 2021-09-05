@@ -1,0 +1,43 @@
+import React, { FunctionComponent } from 'react';
+import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
+import { ReactComponent as LogoEn } from '../../../assets/images/BHRC_logo_horizontal_en.svg';
+import Navigation from './Navigation';
+
+type MenuProps = {
+    showWhite: boolean
+}
+
+const Menu: FunctionComponent<MenuProps> = ({showWhite}) => {
+    const { t } = useTranslation();
+    
+    return (
+        <div className={showWhite ? 'white-menu menu' : 'menu'}>
+            <div className='menu__logo'>
+                <Link to='/'><LogoEn /></Link>
+            </div>
+            <MenuElement url='/' label={t("Home")} />
+            <MenuElement url='/about' label={t("About us")} />
+            <MenuElement url='/activities' label={t("Activity")} />
+            {/* <MenuElement url='/urbanica' label={t("Urbanica")} _className='urbanica-menu' /> */}
+            <MenuElement url='/resources' label={t("Resources")} />
+            <Navigation />
+        </div>
+    )
+}
+
+type MenuElementProps = {
+    url: string,
+    label: string,
+    _className?: string
+}
+
+const MenuElement: FunctionComponent<MenuElementProps> = ({url, label, _className}) => {
+    return (
+        <div className={'menu__element ' + _className}>
+            <Link to={url}>{label} </Link>
+        </div>
+    );
+}
+
+export default Menu;
