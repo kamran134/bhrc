@@ -1,25 +1,27 @@
 import React, { useState, useEffect, FunctionComponent } from 'react';
-import { ReactComponent as ContestGreen} from '../../../assets/images/green.svg';
-import { ReactComponent as ContestGirl} from '../../../assets/images/girl.svg';
-import { ReactComponent as TimeSeparator } from '../../../assets/images/time-separator.svg';
-import { ReactComponent as UrbanicaInfoLeft } from '../../../assets/images/urbanica-info-left.svg';
-import { ReactComponent as UrbanicaInfoRight } from '../../../assets/images/urbanica-info-right.svg';
+import { ReactComponent as ContestGreen} from '../../../assets/images/urbanica/green.svg';
+import { ReactComponent as ContestGirl} from '../../../assets/images/urbanica/girl.svg';
+import { ReactComponent as TimeSeparator } from '../../../assets/images/urbanica/time-separator.svg';
+import { ReactComponent as UrbanicaInfoLeft } from '../../../assets/images/urbanica/urbanica-info-left.svg';
+import { ReactComponent as UrbanicaInfoRight } from '../../../assets/images/urbanica/urbanica-info-right.svg';
+import { ReactComponent as LogoEn } from '../../../assets/images/urbanica/bhrc-urbanica.svg';
+import { ReactComponent as UrbanicaLeftCircles } from '../../../assets/images/urbanica/urbanica-left-circles.svg';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import { ReactComponent as LogoEn } from '../../../assets/images/BHRC_logo_horizontal_en.svg';
 import './urbanica.scss';
 
 const UrbanicaMain: FunctionComponent = () => {
+    const { t } = useTranslation();
     return (
         <>
             <div className='urbanica-main'>
                 <div className='container'>
                     <div className='container-inner flex-center flex-column'>
                         <div className='urbanica-main__what-is'>
-                            URBANICA is a youth platform to support the modern generation in new achievements!
+                            {t("Urbanica is a social platform established for a youth")}
                         </div>
                         <div className='urbanica-main__motivation'>
-                            BE WITH US
+                            {t("MAKE A STEP")}
                         </div>
                         <Contest name={'SHOW YOURSELF'} description={'Participate in our competition and show what you are capable of'} />
                     </div>
@@ -32,43 +34,24 @@ const UrbanicaMain: FunctionComponent = () => {
                 <div className='urbanica-info__left'>
                     <UrbanicaInfoLeft />
                     <div className='urbanica-info__left-text'>
-                        <p><h1>Why are we needed?</h1></p>
-                        <p>
-                            Donec consectetur mollis odio, ut aliquam nunc fermentum  ornare. Vivamus ut
-                            augue accumsan, venenatis turpis at, mattis lorem. Ut mattis nisi justo, non
-                            feugiat tortor varius sit amet. Aliquam sed justo et sem pulvinar rhoncus. Nunc
-                            placerat sollicitudin urna. Vestibulum id malesuada dui. Mauris vel tempor nunc.
-                            Praesent vel enim pretium, rutrum purus vel, ultricies arcu. Vivamus aliquam 
-                            viverra rhoncus. Donec malesuada lorem vitae porttitor finibus.
-                        </p>
+                        <p><h1>{t("What are we proposing?")}</h1></p>
+                        <p>{t("urbanica_1")}</p>
+                        <BHRCLink />
                     </div>
                 </div>
                 <div className='urbanica-info__right'>
                     <div className='urbanica-info__right-text'>
-                        <p><h1>Why are we needed?</h1></p>
-                        <p>
-                            Donec consectetur mollis odio, ut aliquam nunc fermentum  ornare. Vivamus ut
-                            augue accumsan, venenatis turpis at, mattis lorem. Ut mattis nisi justo, non
-                            feugiat tortor varius sit amet. Aliquam sed justo et sem pulvinar rhoncus. Nunc
-                            placerat sollicitudin urna. Vestibulum id malesuada dui. Mauris vel tempor nunc.
-                            Praesent vel enim pretium, rutrum purus vel, ultricies arcu. Vivamus aliquam 
-                            viverra rhoncus. Donec malesuada lorem vitae porttitor finibus.
-                        </p>
+                        <p><h1>{t("Which fileds we support?")}</h1></p>
+                        <p>{t("urbanica_2")}</p>
                     </div>
                     <UrbanicaInfoRight />
                 </div>
                 <div className='urbanica-info__left'>
                     <UrbanicaInfoLeft />
                     <div className='urbanica-info__left-text'>
-                        <p><h1>Why are we needed?</h1></p>
-                        <p>
-                            Donec consectetur mollis odio, ut aliquam nunc fermentum  ornare. Vivamus ut
-                            augue accumsan, venenatis turpis at, mattis lorem. Ut mattis nisi justo, non
-                            feugiat tortor varius sit amet. Aliquam sed justo et sem pulvinar rhoncus. Nunc
-                            placerat sollicitudin urna. Vestibulum id malesuada dui. Mauris vel tempor nunc.
-                            Praesent vel enim pretium, rutrum purus vel, ultricies arcu. Vivamus aliquam 
-                            viverra rhoncus. Donec malesuada lorem vitae porttitor finibus.
-                        </p>
+                        <p><h1>{t("Who can apply?")}</h1></p>
+                        <p>{t("urbanica_3")}</p>
+                        <UrbanicaLeftCircles className='urbanica-info__left-circles' />
                     </div>
                 </div>
             </div>
@@ -159,8 +142,8 @@ const CountDown: FunctionComponent<CountDownProps> = ({date}) => {
 }
 
 const BHRCLink = () => (
-    <div className='menu__logo'>
-        <Link to='/'><LogoEn /></Link>
+    <div className='urbanica-info__go-home'>
+        <Link to='/'><LogoEn className='bhrc-go-home' /></Link>
     </div>
 );
 

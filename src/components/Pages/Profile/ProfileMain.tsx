@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import { useTranslation } from 'react-i18next';
-import { ReactComponent as ProfileEllipses } from '../../../assets/images/profile-ellipses.svg';
+import { ReactComponent as ProfileEllipses } from '../../../assets/images/profile/profile-ellipses.svg';
 import { ReactComponent as FolderIcon } from '../../../assets/images/folder.svg';
 
 import './profile.scss';

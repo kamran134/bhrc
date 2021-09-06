@@ -7,7 +7,6 @@ import { config } from '../../../config';
 import moment from 'moment';
 import 'moment/locale/az';
 import 'moment/locale/ru';
-// import { ReactComponent as SearchIcon } from '../../../assets/images/search-icon.svg';
 import ActivitiesMain from './ActivitiesMain';
 import './activities.scss';
 import { RootState } from '../../../redux/reducers/rootReducer';

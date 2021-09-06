@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import './profileHeader.scss';
-import { ReactComponent as ProfileCover } from '../../../assets/images/profile-cover.svg';
-import { ReactComponent as ProfileCoverEllipse } from '../../../assets/images/profile-cover-ellipse.svg';
+import { ReactComponent as ProfileCover } from '../../../assets/images/profile/profile-cover.svg';
+import { ReactComponent as ProfileCoverEllipse } from '../../../assets/images/profile/profile-cover-ellipse.svg';
 import testAvatar from '../../../assets/images/test_avatar4.png';
 
 const ProfileHeader: FunctionComponent = () => {

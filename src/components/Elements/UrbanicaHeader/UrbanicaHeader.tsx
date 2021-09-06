@@ -1,10 +1,10 @@
 import React, { useState, useEffect, FunctionComponent } from 'react';
 import { useSelector } from 'react-redux';
-import { ReactComponent as UrbanicaLeft } from '../../../assets/images/urbanica-head-left.svg';
-import { ReactComponent as UrbanicaRight } from '../../../assets/images/urbanica-head-right.svg';
-import { ReactComponent as UrbanicaLogo } from '../../../assets/images/urbanica-logo.svg';
-import { ReactComponent as UrbanicaLeftTopLeaves } from '../../../assets/images/urbanica-left-top-leaves.svg';
-import { ReactComponent as UrbanicaLeftBottomLeaves } from '../../../assets/images/urbanica-left-bottom-leaves.svg';
+import { ReactComponent as UrbanicaLeft } from '../../../assets/images/urbanica/urbanica-head-left.svg';
+import { ReactComponent as UrbanicaRight } from '../../../assets/images/urbanica/urbanica-head-right.svg';
+import { ReactComponent as UrbanicaLogo } from '../../../assets/images/urbanica/urbanica-logo.svg';
+import { ReactComponent as UrbanicaLeftTopLeaves } from '../../../assets/images/urbanica/urbanica-left-top-leaves.svg';
+import { ReactComponent as UrbanicaLeftBottomLeaves } from '../../../assets/images/urbanica/urbanica-left-bottom-leaves.svg';
 import { useTranslation } from 'react-i18next';
 import Modal from 'react-bootstrap/Modal';
 import './urbanicaHeader.scss';

@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import { useSelector } from 'react-redux';
-import FontanImg from '../../../assets/images/bhrc_3.jpg';
-import HAImg from '../../../assets/images/bhrc_7.jpg';
+import FontanImg from '../../../assets/images/about/bhrc_3.jpg';
+import HAImg from '../../../assets/images/about/bhrc_7.jpg';
 import { ImArrowRight2 } from 'react-icons/im';
 import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router-dom';
