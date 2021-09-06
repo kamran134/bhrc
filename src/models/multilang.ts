@@ -4,6 +4,6 @@
 //     en?: string
 // }
 
-export type TMultilang = {
+export interface IMultilang {
     [key: string]: string
 }

@@ -1,18 +1,18 @@
-import { TMultilang } from "./multilang"
+import { IMultilang } from "./multilang"
 
-export type THomePage = {
+export interface IHomePage {
     _id?: string,
     editedAt?: Date,
-    about?: THomePageBlock,
-    activity?: THomePageBlock,
-    resources?: THomePageBlock,
-    signin?: THomePageBlock,
-    team?: THomePageBlock,
-    welcome?: THomePageBlock
+    about?: IHomePageBlock,
+    activity?: IHomePageBlock,
+    resources?: IHomePageBlock,
+    signin?: IHomePageBlock,
+    team?: IHomePageBlock,
+    welcome?: IHomePageBlock
 }
 
-export type THomePageBlock = {
-    title: TMultilang,
-    subtitle?: TMultilang,
-    text?: TMultilang
+export interface IHomePageBlock {
+    title: IMultilang,
+    subtitle?: IMultilang,
+    text?: IMultilang
 }

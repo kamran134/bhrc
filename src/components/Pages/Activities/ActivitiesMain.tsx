@@ -11,8 +11,9 @@ import 'moment/locale/ru';
 import { ReactComponent as SearchIcon } from '../../../assets/images/search-icon.svg';
 import './activities.scss';
 import { RootState } from '../../../redux/reducers/rootReducer';
+import { IArticle } from '../../../models/article';
 
-type ActivitiesMainProps = {
+interface ActivitiesMainProps {
     children?: React.ReactElement | React.ReactElement[]
 }
 
@@ -53,7 +54,7 @@ const ActivitiesMain: FunctionComponent<ActivitiesMainProps> = props => {
                     </div>
                     <div className='popular-block'>
                         <h4>{t("Most read")}</h4>
-                        {articles && articles.slice(0, 5).map(article =>
+                        {articles && articles.slice(0, 5).map((article: IArticle) =>
                         <div className='post'>
                             <div><img loading='lazy' src={`${config.url.IMAGE_URL}article_images/${article.picture}/original/${article.picture}`} alt={article._id} /></div>
                             <div className='post__date'>

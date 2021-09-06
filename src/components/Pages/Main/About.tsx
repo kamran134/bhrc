@@ -6,10 +6,10 @@ import { ImArrowRight2 } from 'react-icons/im';
 import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router-dom';
 import { RootState } from '../../../redux/reducers/rootReducer';
-import { THomePageBlock } from '../../../models/homepage';
+import { IHomePageBlock } from '../../../models/homepage';
 
-type AboutProps = {
-    data: THomePageBlock
+interface AboutProps {
+    data: IHomePageBlock
 }
 
 const MainAbout: FunctionComponent<AboutProps> = ({data}) => {

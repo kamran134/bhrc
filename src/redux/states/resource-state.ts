@@ -1,6 +1,6 @@
-import { TCategory, ITopic } from "../../models/resource";
+import { ICategory, ITopic } from "../../models/resource";
 
-export type TResourceState = {
-    categories?: TCategory[],
+export interface IResourceState {
+    categories?: ICategory[],
     topics?: ITopic[]
 }

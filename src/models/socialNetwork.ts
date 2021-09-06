@@ -1,4 +1,4 @@
-export type TSocialNetwork = {
+export interface ISocialNetwork {
     name: string,
     link: string
 }

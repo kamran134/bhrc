@@ -8,12 +8,12 @@ export const login = (identifier: string, password: string): ThunkAction<void, R
 
 }
 
-type signUpType = {
+interface signUpAction {
     type: typeof REGISTER_SUCCESS,
     payload: string
 }
 
-const _signUp: ActionCreator<signUpType> = (token: string) => ({
+const _signUp: ActionCreator<signUpAction> = (token: string) => ({
     type: REGISTER_SUCCESS,
     payload: token
 });

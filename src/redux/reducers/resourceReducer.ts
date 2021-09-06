@@ -1,8 +1,8 @@
 import { GET_CATEGORY_RESOURCES, GET_RESOURCES_CATEGORIES } from "../actions/action-types";
 import { CategoriesTypes } from "../actions/resource-action";
-import { TResourceState } from "../states/resource-state";
+import { IResourceState } from "../states/resource-state";
 
-const INITIAL_STATE: TResourceState = {
+const INITIAL_STATE: IResourceState = {
     categories: [],
     topics: undefined
 }

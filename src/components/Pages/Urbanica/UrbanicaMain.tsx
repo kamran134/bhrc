@@ -76,7 +76,7 @@ const UrbanicaMain: FunctionComponent = () => {
     )
 }
 
-type ContestProps = {
+interface ContestProps {
     name: string,
     description: string,
     url?: string,
@@ -100,7 +100,7 @@ const Contest: FunctionComponent<ContestProps> = ({name, description, url, endTi
     )
 }
 
-type CountDownProps = {
+interface CountDownProps {
     date: Date
 }
 

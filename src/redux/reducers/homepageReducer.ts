@@ -1,8 +1,8 @@
-import { THomePage } from "../../models/homepage";
+import { IHomePage } from "../../models/homepage";
 import { GET_HOMEPAGE } from "../actions/action-types";
 import { homePageAction } from "../actions/home-actions";
 
-const INITIAL_STATE: THomePage = {
+const INITIAL_STATE: IHomePage = {
     welcome: undefined,
     about: undefined,
     activity: undefined,

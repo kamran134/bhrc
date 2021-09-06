@@ -5,7 +5,7 @@ import { activeSearch } from '../../../redux/actions/settings';
 import { connect } from 'react-redux';
 import { RootState } from '../../../redux/reducers/rootReducer';
 
-type NavigationProps = {
+interface NavigationProps {
     searchActive: boolean,
     activeSearch: (searchActive: boolean) => void
 }

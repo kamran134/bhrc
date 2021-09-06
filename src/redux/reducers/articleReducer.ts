@@ -1,8 +1,8 @@
 import { GET_ARTICLES, GET_ARTICLE_BY_NAME } from "../actions/action-types"
 import { ArticleTypes } from "../actions/article-actions";
-import { TArticleState } from "../states/article-state";
+import { IArticleState } from "../states/article-state";
 
-const INITIAL_STATE: TArticleState = {
+const INITIAL_STATE: IArticleState = {
     articles: [],
     articleByName: undefined
 }

@@ -10,7 +10,7 @@ import 'moment/locale/az';
 import 'moment/locale/ru';
 import { RootState } from '../../../redux/reducers/rootReducer';
 
-type QuizParams = {
+interface QuizParams {
     id: string;
 };
 

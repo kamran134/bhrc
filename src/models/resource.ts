@@ -1,9 +1,9 @@
-import { TMultilang } from "./multilang";
+import { IMultilang } from "./multilang";
 
-export type TCategory = {
+export interface ICategory {
     _id: string,
-    name: TMultilang,
-    description: TMultilang,
+    name: IMultilang,
+    description: IMultilang,
     picture: string,
     pictureLink: string,
     createdAt: Date,
@@ -15,7 +15,7 @@ export interface ITopic extends IResourceKey {
     category: string,
     createdAt: Date,
     editedAt: Date,
-    name: TMultilang,
+    name: IMultilang,
     attachments?: IAttachment[],
     presentations?: IPresentation[],
     reports?: IReport[],
@@ -24,33 +24,33 @@ export interface ITopic extends IResourceKey {
 }
 
 export interface IResourceKey {
-    [key: string]: string | Date | TMultilang | IAttachment[] | IPresentation[] | IReport[] | IVideo[] | IResource[] | undefined
+    [key: string]: string | Date | IMultilang | IAttachment[] | IPresentation[] | IReport[] | IVideo[] | IResource[] | undefined
 }
 
 export interface IResource {
     _id: string,
     topic: string,
     createdAt: Date,
-    name: TMultilang,
-    description: TMultilang,
-    shortDescription: TMultilang,
-    fileLink: TMultilang,
-    path: TMultilang
+    name: IMultilang,
+    description: IMultilang,
+    shortDescription: IMultilang,
+    fileLink: IMultilang,
+    path: IMultilang
     picture?: string
 }
 
 export interface IAttachment extends IResource {
-    attachment: TMultilang
+    attachment: IMultilang
 }
 
 export interface IPresentation extends IResource {
-    presentation: TMultilang
+    presentation: IMultilang
 }
 
 export interface IReport extends IResource {
-    report: TMultilang
+    report: IMultilang
 }
 
 export interface IVideo extends IResource {
-    video: TMultilang
+    video: IMultilang
 }

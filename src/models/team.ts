@@ -1,15 +1,15 @@
-import { TMultilang } from "./multilang";
-import { TSocialNetwork } from "./socialNetwork";
+import { IMultilang } from "./multilang";
+import { ISocialNetwork } from "./socialNetwork";
 
-export type TTeamMember = {
+export interface ITeamMember {
     _id: string,
-    name: TMultilang,
-    bio: TMultilang,
+    name: IMultilang,
+    bio: IMultilang,
     createdAt: Date,
     editedAt: Date,
     picture: string,
     pictureExtension: string,
     pictureLink: string,
-    profession: TMultilang,
-    socialNetworks: TSocialNetwork[]
+    profession: IMultilang,
+    socialNetworks: ISocialNetwork[]
 }

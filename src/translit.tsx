@@ -1,11 +1,11 @@
-type firstLetterType = {
+interface IFirstLetter {
     [key: string]: string
 }
 
 export const transliterate = function(config?: {preset: string}) {
     const _preset = config ? config.preset : "ru";
 
-    const _firstLetterAssociations: firstLetterType = {
+    const _firstLetterAssociations: IFirstLetter = {
         "а": "a",
         "б": "b",
         "в": "v",
@@ -70,7 +70,7 @@ export const transliterate = function(config?: {preset: string}) {
         "!": ""
     };
 
-    const _associations: firstLetterType = Object.assign({}, _firstLetterAssociations);
+    const _associations: IFirstLetter = Object.assign({}, _firstLetterAssociations);
 
     function transform(input: string, spaceReplacement: string) {
         if (!input) {

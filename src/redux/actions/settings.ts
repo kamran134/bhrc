@@ -3,7 +3,7 @@ import { Action, ActionCreator } from 'redux';
 import { ThunkAction } from 'redux-thunk';
 import { RootState } from '../reducers/rootReducer';
 
-type languageAction = {
+interface languageAction {
     type: typeof SET_LANGUAGE,
     language: string
 }
@@ -18,7 +18,7 @@ export const setLanguage = (language: string): ThunkAction<void, RootState, unkn
     return dispatch(_setLanguage(language));
 }
 
-type activeSearchAction = {
+interface activeSearchAction {
     type: typeof ACTIVE_SEARCH,
     searchActive: boolean
 }

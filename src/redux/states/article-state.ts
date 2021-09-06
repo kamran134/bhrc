@@ -1,6 +1,6 @@
-import { TArticle } from "../../models/article";
+import { IArticle } from "../../models/article";
 
-export type TArticleState = {
-    articles: TArticle[],
-    articleByName?: TArticle
+export interface IArticleState {
+    articles: IArticle[],
+    articleByName?: IArticle
 }

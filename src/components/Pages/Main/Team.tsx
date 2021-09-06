@@ -8,8 +8,8 @@ import { getTeam } from '../../../redux/actions/home-actions';
 import Modal from 'react-bootstrap/Modal';
 import { config } from '../../../config';
 import { RootState } from '../../../redux/reducers/rootReducer';
-import { TTeamMember } from '../../../models/team';
-import { TSocialNetwork } from '../../../models/socialNetwork';
+import { ITeamMember } from '../../../models/team';
+import { ISocialNetwork } from '../../../models/socialNetwork';
 
 const MainTeam: FunctionComponent = () => {
 
@@ -37,8 +37,8 @@ const MainTeam: FunctionComponent = () => {
     )
 }
 
-type MembersProps = {
-    members: TTeamMember[]
+interface MembersProps {
+    members: ITeamMember[]
 }
 
 const Members: FunctionComponent<MembersProps> = ({members}) => {
@@ -48,7 +48,7 @@ const Members: FunctionComponent<MembersProps> = ({members}) => {
     const [showInfo, setShowInfo] = useState<string | undefined>(undefined);
     return (
         <div className='main-team__members'>
-            {members.map((member: TTeamMember) => (
+            {members.map((member: ITeamMember) => (
                 <React.Fragment key={member._id}>
                     <div className='member' onClick={() => setShowInfo(member._id)}>
                         <img src={`${config.url.IMAGE_URL}team_images/${member.picture}/original/${member.picture}.${member.pictureExtension}`} alt={'avatar'} />
@@ -78,8 +78,8 @@ const Members: FunctionComponent<MembersProps> = ({members}) => {
     )
 }
 
-type SocialNetworkProps = {
-    network: TSocialNetwork
+interface SocialNetworkProps {
+    network: ISocialNetwork
 }
 
 const SocialNetwork: FunctionComponent<SocialNetworkProps> = ({ network }) => {

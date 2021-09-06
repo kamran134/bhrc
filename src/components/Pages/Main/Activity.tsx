@@ -9,12 +9,12 @@ import { getArticles } from '../../../redux/actions/article-actions';
 import moment from 'moment';
 import { useTranslation } from 'react-i18next';
 import { TFunction } from 'i18next';
-import { THomePageBlock } from '../../../models/homepage';
+import { IHomePageBlock } from '../../../models/homepage';
 import { RootState } from '../../../redux/reducers/rootReducer';
-import { TArticle } from '../../../models/article';
+import { IArticle } from '../../../models/article';
 
-type ActivityProps = {
-    data: THomePageBlock
+interface ActivityProps {
+    data: IHomePageBlock
 }
 
 const MainActivity: FunctionComponent<ActivityProps> = ({ data }) => {
@@ -74,8 +74,8 @@ const MainActivity: FunctionComponent<ActivityProps> = ({ data }) => {
     )
 }
 
-type NewsBlockProps = {
-    article: TArticle,
+interface NewsBlockProps {
+    article: IArticle,
     lang: string,
     t: TFunction
 }

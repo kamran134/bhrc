@@ -7,12 +7,12 @@ import { ImArrowRight2 } from 'react-icons/im';
 import { getResourcesCategories } from '../../../redux/actions/resource-action';
 import { config } from '../../../config';
 import { transliterate } from '../../../translit';
-import { THomePageBlock } from '../../../models/homepage';
+import { IHomePageBlock } from '../../../models/homepage';
 import { RootState } from '../../../redux/reducers/rootReducer';
-import { TCategory } from '../../../models/resource';
+import { ICategory } from '../../../models/resource';
 
-type MainResourcesProps = {
-    data: THomePageBlock
+interface MainResourcesProps {
+    data: IHomePageBlock
 }
 
 const MainResources: FunctionComponent<MainResourcesProps> = ({ data }) => {
@@ -54,8 +54,8 @@ const MainResources: FunctionComponent<MainResourcesProps> = ({ data }) => {
     )
 }
 
-type ResourceBlockProps = {
-    categories?: TCategory[],
+interface ResourceBlockProps {
+    categories?: ICategory[],
     lang: string,
     t: TFunction,
     history: any

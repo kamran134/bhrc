@@ -1,16 +1,16 @@
 import API from '../../api';
 import { Action, ActionCreator } from 'redux';
 import { GET_ARTICLES, GET_ARTICLE_BY_NAME, GET_LAST_4_ARTICLES } from './action-types';
-import { TArticle } from '../../models/article';
+import { IArticle } from '../../models/article';
 import { ThunkAction } from 'redux-thunk';
 import { RootState } from '../reducers/rootReducer';
 
-type articlesAction = {
+interface articlesAction {
     type: typeof GET_ARTICLES,
-    payload: TArticle[]
+    payload: IArticle[]
 }
 
-const _getArticles: ActionCreator<articlesAction> = (articles: TArticle[]) => (
+const _getArticles: ActionCreator<articlesAction> = (articles: IArticle[]) => (
     {
         type: GET_ARTICLES,
         payload: articles
@@ -22,7 +22,7 @@ export const getArticles = (page: number, limit: number): ThunkAction<void, Root
         .then(({ data }) => dispatch(_getArticles(data)));
 }
 
-const _getLastArticles: ActionCreator<articlesAction> = (articles: TArticle[]) => (
+const _getLastArticles: ActionCreator<articlesAction> = (articles: IArticle[]) => (
     {
         type: GET_LAST_4_ARTICLES,
         payload: articles
@@ -34,12 +34,12 @@ export const getLastArticles = (): ThunkAction<void, RootState, unknown, Action<
         .then(({ data }) => dispatch(_getLastArticles(data)));
 }
 
-type articleAction = {
+interface articleAction {
     type: typeof GET_ARTICLE_BY_NAME,
-    payload: TArticle
+    payload: IArticle
 }
 
-const _getArticleByName: ActionCreator<articleAction> = (article: TArticle) => ({
+const _getArticleByName: ActionCreator<articleAction> = (article: IArticle) => ({
     type: GET_ARTICLE_BY_NAME,
     payload: article
 });

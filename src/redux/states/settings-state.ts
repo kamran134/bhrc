@@ -1,4 +1,4 @@
-export type TSettingsState = {
+export interface ISettingsState {
     language: string,
     searchActive: boolean
 }

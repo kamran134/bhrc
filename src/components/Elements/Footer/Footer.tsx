@@ -9,7 +9,7 @@ import { MdLocationOn, MdCall, MdEmail } from 'react-icons/md';
 import './footer.scss'
 import { RootState } from '../../../redux/reducers/rootReducer';
 
-type FooterProps = {
+interface FooterProps {
     lang: string
 }
 

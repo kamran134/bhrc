@@ -3,11 +3,11 @@ import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { ImArrowRight2 } from 'react-icons/im';
 import { ReactComponent as Listochki } from '../../../assets/images/lists.svg';
-import { THomePageBlock } from '../../../models/homepage';
+import { IHomePageBlock } from '../../../models/homepage';
 import { RootState } from '../../../redux/reducers/rootReducer';
 
-type MainSignInProps = {
-    data: THomePageBlock
+interface MainSignInProps {
+    data: IHomePageBlock
 }
 
 const MainSignIn: FunctionComponent<MainSignInProps> = ({ data }) => {

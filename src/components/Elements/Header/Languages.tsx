@@ -6,7 +6,7 @@ import { ReactComponent as FlagRu } from '../../../assets/images/flag-ru.svg';
 import { ReactComponent as FlagEn } from '../../../assets/images/flag-en.svg';
 import { RootState } from '../../../redux/reducers/rootReducer';
 
-type LanguagesProps = {
+interface LanguagesProps {
     lang: string,
     setLanguage: (lang: string) => void;
 }

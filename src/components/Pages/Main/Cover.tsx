@@ -7,11 +7,11 @@ import { ReactComponent as UrbanicaButton } from '../../../assets/images/urbanic
 // import { ImArrowRight2 } from 'react-icons/im';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../redux/reducers/rootReducer';
-import { THomePageBlock } from '../../../models/homepage';
+import { IHomePageBlock } from '../../../models/homepage';
 //import { activeSearch } from '../../../redux/actions/settings';
 
-type CoverProps = {
-    data: THomePageBlock
+interface CoverProps {
+    data: IHomePageBlock
 }
 
 const Cover: FunctionComponent<CoverProps> = ({ data }) => {

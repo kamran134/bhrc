@@ -1,16 +1,16 @@
 import API from '../../api';
-import { TCategory, ITopic } from '../../models/resource';
+import { ICategory, ITopic } from '../../models/resource';
 import { Action, ActionCreator } from 'redux';
 import { ThunkAction } from 'redux-thunk';
 import { RootState } from '../reducers/rootReducer';
 import { GET_CATEGORY_RESOURCES, GET_RESOURCES_CATEGORIES } from "./action-types";
 
-type categoriesAction = {
+interface categoriesAction {
     type: typeof GET_RESOURCES_CATEGORIES,
-    payload: TCategory[]
+    payload: ICategory[]
 }
 
-const _getResourcesCategories: ActionCreator<categoriesAction> = (categories: TCategory[]) => ({
+const _getResourcesCategories: ActionCreator<categoriesAction> = (categories: ICategory[]) => ({
     type: GET_RESOURCES_CATEGORIES,
     payload: categories
 });
@@ -20,7 +20,7 @@ export const getResourcesCategories = (): ThunkAction<void, RootState, unknown, 
         .then(({ data }) => dispatch(_getResourcesCategories(data)));
 }
 
-type topicsAction = {
+interface topicsAction {
     type: typeof GET_CATEGORY_RESOURCES,
     payload: ITopic[]
 }

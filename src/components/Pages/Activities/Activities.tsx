@@ -11,7 +11,7 @@ import 'moment/locale/ru';
 import ActivitiesMain from './ActivitiesMain';
 import './activities.scss';
 import { RootState } from '../../../redux/reducers/rootReducer';
-import { TArticle } from '../../../models/article';
+import { IArticle } from '../../../models/article';
 
 const Activities: FunctionComponent = () => {
     const dispatch = useDispatch();
@@ -30,7 +30,7 @@ const Activities: FunctionComponent = () => {
 
     return (        
         <ActivitiesMain>
-            {articles && articles.map((article: TArticle) =>
+            {articles && articles.map((article: IArticle) =>
                 <Link key={article._id} to={`/activities/${article.path[lang]}`}>
                     <div 
                         className='article'

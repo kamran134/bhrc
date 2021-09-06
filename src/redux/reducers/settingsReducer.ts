@@ -1,9 +1,9 @@
 import { ACTIVE_SEARCH, SET_LANGUAGE } from '../actions/action-types';
 import i18n from 'i18next';
-import { TSettingsState } from '../states/settings-state';
+import { ISettingsState } from '../states/settings-state';
 import { SettingsTypes } from '../actions/settings';
 
-const initialState: TSettingsState = {
+const initialState: ISettingsState = {
     language: localStorage.getItem('az.bhrc.language') || 'az',
     searchActive: false
 }

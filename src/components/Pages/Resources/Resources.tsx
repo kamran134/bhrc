@@ -13,8 +13,8 @@ import { getCategoryResources, getResourcesCategories } from '../../../redux/act
 import { Element, scroller } from 'react-scroll';
 import { transliterate } from '../../../translit';
 import { RootState } from '../../../redux/reducers/rootReducer';
-import { IAttachment, IPresentation, IReport, IResource, IResourceKey, ITopic, IVideo } from '../../../models/resource';
-import { TMultilang } from '../../../models/multilang';
+import { IAttachment, ICategory, IPresentation, IReport, IResource, IResourceKey, ITopic, IVideo } from '../../../models/resource';
+import { IMultilang } from '../../../models/multilang';
 
 const Resources: FunctionComponent = () => {
     const dispatch = useDispatch();
@@ -22,7 +22,7 @@ const Resources: FunctionComponent = () => {
     const history = useHistory();
     const location = useLocation();
     const [categoryId, setCategoryId] = useState<string | undefined>(undefined);
-    const [topicId, seITopicId] = useState<string | undefined>(undefined);
+    const [topicId, setTopicId] = useState<string | undefined>(undefined);
     const [docType, setDocType] = useState<string | undefined>(undefined);
     const { lang, resources, topics } = useSelector((state: RootState) => ({
         lang: state.settings.language,
@@ -68,7 +68,7 @@ const Resources: FunctionComponent = () => {
     }, [location.pathname, lang, resources.categories])
 
     const selectDocType = (id: string, type: string) => {
-        seITopicId(id);
+        setTopicId(id);
         setDocType(type);
     }
 
@@ -83,7 +83,7 @@ const Resources: FunctionComponent = () => {
                                 <Carousel controls={false} indicators={false}>
                                     <Carousel.Item>
                                         <div className='flex-row flex-center container-inner'>
-                                            {resources.categories && resources.categories.map(category => (
+                                            {resources.categories && (resources.categories as ICategory[]).map((category: ICategory) => (
                                                 <div className={category._id === categoryId ? 'category-block active' : 'category-block'} 
                                                     key={category._id}
                                                     onClick={() => selectCategoryHandler(category._id, category.name[lang])}
@@ -108,8 +108,8 @@ const Resources: FunctionComponent = () => {
                         <div className='resources-body__topics'>
                             <h2>{t("Category topics")}</h2>
                             {topics && topics.map((topic: ITopic) => (
-                                <>
-                                    <div className='topic' key={topic._id}>
+                                <React.Fragment key={topic._id}>
+                                    <div className='topic'>
                                         <div className='topic__icon'><FolderIcon/></div>
                                         <div className='flex-col space-between'>
                                             <div className='topic__title'>{topic.name[lang]}</div>
@@ -135,8 +135,8 @@ const Resources: FunctionComponent = () => {
                                             {moment(topic.createdAt).format("DD.MM.YYYY")}
                                         </div> */}
                                     </div>
-                                    {topic._id === topicId && docType && <Materials materialsArray={topic[docType]} lang={lang} />}
-                                </>
+                                    {(topic._id === topicId) && docType && <Materials materialsArray={topic[docType]} lang={lang} />}
+                                </React.Fragment>
                             ))}
                         </div>
                     </div>
@@ -146,38 +146,34 @@ const Resources: FunctionComponent = () => {
     )
 }
 
-type MaterialsProps = {
-    materialsArray: IAttachment[] | IPresentation[] | IReport[] | IVideo[] | IResource[] | string | Date | undefined | TMultilang,
+interface MaterialsProps {
+    materialsArray: string | IAttachment[] | IPresentation[] | IReport[] | IVideo[] | IResource[] | Date | IMultilang | undefined,
     lang: string
 }
 
 const Materials: FunctionComponent<MaterialsProps> = ({materialsArray, lang}) => {
-    const MaterialArrays = [];
-    if (Array.isArray(materialsArray)) {
-        for(let material of materialsArray) {
-            if (material.fileLink && material.fileLink[lang]) MaterialArrays.push(<Material material={material} lang={lang} key={material._id} />);
-            else MaterialArrays.push(
-                <div className='material-doc info'>
-                    <h3>{material.name[lang]}</h3>
-                    <p dangerouslySetInnerHTML={{__html: material.description[lang]}} />
-                </div>
-            );
-        }
-    }
-    
     return (
         <div className='topic__materials'>
-            {MaterialArrays}
+            {(materialsArray as (IAttachment | IPresentation | IReport | IVideo | IResource)[]).map(material => {
+                if(material.fileLink && material.fileLink[lang]) return <Material material={material} lang={lang} key={material._id} />
+                else return(
+                    <div className='material-doc info'>
+                        <h3>{material.name[lang]}</h3>
+                        <p dangerouslySetInnerHTML={{__html: material.description[lang]}} />
+                    </div>
+                )
+            })}
         </div>
     )
 }
 
-type MaterialProps = {
+interface MaterialProps {
     lang: string,
     material: IAttachment | IResource | IPresentation | IReport | IVideo
 }
 
 const Material: FunctionComponent<MaterialProps> = ({material, lang}) => {
+    console.log('me', material);
     const extention = material.fileLink[lang].split('.').pop();
     switch(extention) {
         case 'docx':

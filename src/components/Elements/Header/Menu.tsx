@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { ReactComponent as LogoEn } from '../../../assets/images/BHRC_logo_horizontal_en.svg';
 import Navigation from './Navigation';
 
-type MenuProps = {
+interface MenuProps {
     showWhite: boolean
 }
 
@@ -26,7 +26,7 @@ const Menu: FunctionComponent<MenuProps> = ({showWhite}) => {
     )
 }
 
-type MenuElementProps = {
+interface MenuElementProps {
     url: string,
     label: string,
     _className?: string

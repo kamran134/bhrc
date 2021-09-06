@@ -1,13 +1,13 @@
-import { TMultilang } from "./multilang";
+import { IMultilang } from "./multilang";
 
-export type TArticle = {
+export interface IArticle {
     _id: string,
-    name: TMultilang,
+    name: IMultilang,
     picture: string,
     createdAt: Date,
     //updatedAt: Date,
-    description: TMultilang,
-    path: TMultilang,
+    description: IMultilang,
+    path: IMultilang,
     pictureExtension: string,
     shortDescription: string
 }
