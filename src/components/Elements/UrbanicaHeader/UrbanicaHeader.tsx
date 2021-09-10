@@ -1,28 +1,77 @@
 import React, { useState, useEffect, FunctionComponent } from 'react';
-import { useSelector } from 'react-redux';
 import { ReactComponent as UrbanicaLeft } from '../../../assets/images/urbanica/urbanica-head-left.svg';
 import { ReactComponent as UrbanicaRight } from '../../../assets/images/urbanica/urbanica-head-right.svg';
 import { ReactComponent as UrbanicaLogo } from '../../../assets/images/urbanica/urbanica-logo.svg';
 import { ReactComponent as UrbanicaLeftTopLeaves } from '../../../assets/images/urbanica/urbanica-left-top-leaves.svg';
 import { ReactComponent as UrbanicaLeftBottomLeaves } from '../../../assets/images/urbanica/urbanica-left-bottom-leaves.svg';
+import { ImArrowRight2 } from 'react-icons/im';
 import { useTranslation } from 'react-i18next';
 import Modal from 'react-bootstrap/Modal';
 import './urbanicaHeader.scss';
 import RegisterForm from '../../../forms/RegisterForm';
 import { RootState } from '../../../redux/reducers/rootReducer';
+import { submit, FormAction } from "redux-form";
+import { connect, useDispatch } from 'react-redux';
+import { signUp, signIn } from '../../../redux/actions/auth-actions';
+import { IAuthForm } from '../../../models/auth';
+import LoginForm from '../../../forms/LoginForm';
 
-const UrbanicaHeader: FunctionComponent = () => {
+interface UrbanicaHeaderProps {
+    submit: (form: string) => FormAction;
+    signUp: (email: string, password: string) => void;
+    signIn: (identifier: string, password: string) => void;
+    auth: any;
+}
+
+const UrbanicaHeader: FunctionComponent<UrbanicaHeaderProps> = (props) => {
     const { t } = useTranslation();
-    const [singUpModal, setSignUpModal] = useState(false);
-    const { auth } = useSelector((state: RootState) => ({
-        auth: state.auth
-    }));
+    const dispatch = useDispatch();
+    const [singUpModal, setSignUpModal] = useState<boolean>(false);
+    const [openRegister, setOpenRegister] = useState<boolean>(false);
+    const { auth, submit, signUp, signIn } = props;
 
     useEffect(() => {
         if (auth.isAuthenticated) {
             setSignUpModal(false)
         }
-    }, [auth])
+    }, [auth]);
+
+    const onSubmit = (data: IAuthForm) => {
+        if (openRegister) {
+            if (data.password !== data.passwordRepeat) {
+                console.error('Passwords did not match');
+            } else {
+                signUp(data.email, data.password);
+            }
+        } else {
+            signIn(data.identifier, data.password);
+        }
+    }
+
+    const modalHideHandler = () => {
+        setSignUpModal(false);
+        setOpenRegister(false);
+    }
+
+    const renderRegister = () => (
+        <>
+            <h1 className='white-text'>{t("Sign up")}</h1>
+            <RegisterForm onSubmit={(data: IAuthForm) => onSubmit(data)} />
+            <div className='modal-content__footer'>
+                <button onClick={() => submit("RegisterForm")} className='bhrc-btn orange-btn'><ImArrowRight2/></button>
+            </div>
+        </>
+    );
+
+    const renderLogin = () => (
+        <>
+            <h1 className='white-text'>{t("Sign in")}</h1>
+            <LoginForm onSubmit={(data: IAuthForm) => onSubmit(data)} />
+            <div className='modal-content__footer'>
+                <button onClick={() => submit("LoginForm")} className='bhrc-btn orange-btn'><ImArrowRight2/></button>
+            </div>
+        </>
+    )
 
     return (
         <>
@@ -34,11 +83,11 @@ const UrbanicaHeader: FunctionComponent = () => {
                         <UrbanicaLeftBottomLeaves className='bottom' />
                     </div>
                     <div className='urbanica-header__sign-up'>
-                        {!auth.isAuthenticated && <button 
+                        {!auth.token && <button 
                             className='urbanica-btn sign-up'
                             onClick={() => setSignUpModal(true)}
                         >
-                            {t("Sign up")}
+                            {t("Sign in")}
                         </button>}
                     </div>
                 </div>
@@ -53,15 +102,25 @@ const UrbanicaHeader: FunctionComponent = () => {
                 className='urbanica-modal'
                 centered 
                 show={singUpModal}
-                onHide={() => setSignUpModal(false)}
+                onHide={modalHideHandler}
             >
                 <div className='modal-content__fields'>
-                    <h1 className='white-text'>{t("Sign up")}</h1>
-                    <RegisterForm />
+                    {openRegister ? renderRegister() : renderLogin()}
                 </div>
+                {!openRegister && <button onClick={() => setOpenRegister(true)} className='bhrc-btn blue-btn register-btn'>{t("Sign up")}</button>}
             </Modal>
         </>
     )
 }
 
-export default UrbanicaHeader;
+const mapStateToProps = (state: RootState) => ({
+    auth: state.auth
+});
+
+const mapDispatchToProps = {
+    submit,
+    signUp,
+    signIn
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(UrbanicaHeader);

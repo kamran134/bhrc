@@ -6,7 +6,7 @@ import news from './articleReducer';
 import resources from './resourceReducer'
 import homepage from './homepageReducer';
 import team from './teamReducer';
-import { reducer as formReducer } from 'redux-form'
+import { reducer as formReducer } from 'redux-form';
 
 const rootReducer = combineReducers({
     alert,
