@@ -67,7 +67,7 @@ export const getProfile = (token: string, userId: string): ThunkAction<void, Roo
         _id: userId,
     }, {headers: {
         'Content-Type': 'application/json',
-        Authorization: `BHRC ${token}`
+        'Authorization': `BHRC ${token}`
     }}).then(({data}) => dispatch(_getProfile(data)));
 }
 
