@@ -1,4 +1,4 @@
-import { IUser } from "../../models/user";
+import { IUserInfo } from "../../models/user";
 import { IError } from "./error-state";
 
 export interface IAuth {
@@ -16,5 +16,5 @@ export interface ISignIn {
 export interface IAuthenticate {
     token?: string;
     isAuthenticated: boolean;
-    user?: IUser;
+    user?: IUserInfo;
 }

@@ -4,24 +4,35 @@ export interface IUser {
     _id: string;
     login: string;
     password: string;
-    email: string;
-    profile: IProfile;
+    userInfo: IUserInfo;
 }
 
-export interface IProfile {
-    _id: string;
+export interface IUserInfo {
     userId: string;
+    profile: IProfile;
+    emails: IEmail[];
+    online: boolean;
+    createdAt: Date;
+}
+
+interface IProfile {
+    role?: UserRole;
+    _id: string;
+    darkMode: boolean;
+    language: string;
+    ratinrg?: number;
     fullName: IMultilang;
     bio: IMultilang;
-    role?: UserRole;
-    rating?: number;
-    language: string;
-    darkMode: boolean;
+}
+
+interface IEmail {
+    address: string;
+    verified: boolean;
 }
 
 export enum UserRole {
-    SUPERADMIN = 0,
-    ADMIN = 1,
-    EDITOR = 2,
-    PARTICIPANT = 3
+    SUPERADMIN = "superadmin",
+    ADMIN = "admin",
+    EDITOR = "editor",
+    PARTICIPANT = "user"
 }

@@ -20,4 +20,5 @@ export const GET_CATEGORY_RESOURCES: string = "GET_CATEGORY_RESOURCES";
 export const GET_HOMEPAGE: string = "GET_HOMEPAGE";
 export const GET_TEAM: string = "GET_TEAM";
 export const GET_PROFILE: string = "GET_PROFILE";
+export const GET_COMPETITION: string = "GET_COMPETITION";
 export const ERROR: string = "ERROR";

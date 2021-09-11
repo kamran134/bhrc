@@ -1,11 +1,11 @@
 import API from '../../api';
-import { GET_PROFILE, LOGIN_SUCCESS, REGISTER_SUCCESS } from './action-types';
+import { LOGIN_SUCCESS, REGISTER_SUCCESS, USER_LOADED } from './action-types';
 import { ThunkAction } from 'redux-thunk';
 import { Action, ActionCreator } from 'redux';
 import { RootState } from '../reducers/rootReducer';
 import { ISignIn } from '../states/auth-state';
 import { _hasError } from './error-actions';
-import { IUser } from '../../models/user';
+import { IUser, IUserInfo } from '../../models/user';
 
 interface singInAction {
     type: typeof LOGIN_SUCCESS;
@@ -29,7 +29,7 @@ export const signIn = (identifier: string, password: string): ThunkAction<void, 
         else dispatch(_hasError(data.error));
     }).then(data => {
         if (data) {
-            dispatch(getProfile(data.token, data.userId));
+            dispatch(getProfile(data.token));
         }
         else console.log('pichal');
     });
@@ -53,22 +53,19 @@ export const signUp = (email: string, password: string): ThunkAction<void, RootS
 }
 
 interface getProfileAction {
-    type: typeof GET_PROFILE;
-    payload: IUser;
+    type: typeof USER_LOADED;
+    payload: IUserInfo;
 }
 
-const _getProfile: ActionCreator<getProfileAction> = (profile: IUser) => ({
-    type: GET_PROFILE,
+const _getProfile: ActionCreator<getProfileAction> = (profile: IUserInfo) => ({
+    type: USER_LOADED,
     payload: profile
 });
 
-export const getProfile = (token: string, userId: string): ThunkAction<void, RootState, unknown, Action<string>> => dispatch => {
+export const getProfile = (token: string): ThunkAction<void, RootState, unknown, Action<string>> => dispatch => {
     API.post(`getProfile`, {
-        _id: userId,
-    }, {headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `BHRC ${token}`
-    }}).then(({data}) => dispatch(_getProfile(data)));
+        token
+    }).then(({data}) => dispatch(_getProfile(data)));
 }
 
 export type AuthType = singInAction & signUpAction & getProfileAction;

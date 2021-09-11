@@ -15,12 +15,15 @@ import { connect, useDispatch } from 'react-redux';
 import { signUp, signIn } from '../../../redux/actions/auth-actions';
 import { IAuthForm } from '../../../models/auth';
 import LoginForm from '../../../forms/LoginForm';
+import { IAuthenticate } from '../../../redux/states/auth-state';
+import history from '../../../history';
 
 interface UrbanicaHeaderProps {
     submit: (form: string) => FormAction;
     signUp: (email: string, password: string) => void;
     signIn: (identifier: string, password: string) => void;
-    auth: any;
+    auth: IAuthenticate;
+    lang: string;
 }
 
 const UrbanicaHeader: FunctionComponent<UrbanicaHeaderProps> = (props) => {
@@ -28,7 +31,7 @@ const UrbanicaHeader: FunctionComponent<UrbanicaHeaderProps> = (props) => {
     const dispatch = useDispatch();
     const [singUpModal, setSignUpModal] = useState<boolean>(false);
     const [openRegister, setOpenRegister] = useState<boolean>(false);
-    const { auth, submit, signUp, signIn } = props;
+    const { auth, lang, submit, signUp, signIn } = props;
 
     useEffect(() => {
         if (auth.isAuthenticated) {
@@ -71,7 +74,9 @@ const UrbanicaHeader: FunctionComponent<UrbanicaHeaderProps> = (props) => {
                 <button onClick={() => submit("LoginForm")} className='bhrc-btn orange-btn'><ImArrowRight2/></button>
             </div>
         </>
-    )
+    );
+
+    console.log('user', auth.user);
 
     return (
         <>
@@ -83,11 +88,13 @@ const UrbanicaHeader: FunctionComponent<UrbanicaHeaderProps> = (props) => {
                         <UrbanicaLeftBottomLeaves className='bottom' />
                     </div>
                     <div className='urbanica-header__sign-up'>
-                        {!auth.token && <button 
+                        {!auth.isAuthenticated ? <button 
                             className='urbanica-btn sign-up'
                             onClick={() => setSignUpModal(true)}
                         >
                             {t("Sign in")}
+                        </button> : <button className='urbanica-btn sign-up' onClick={() => history.push('/profile')}>
+                            {(auth.user?.profile.fullName || {})[lang] || auth.user?.emails[0]?.address}
                         </button>}
                     </div>
                 </div>
@@ -114,7 +121,8 @@ const UrbanicaHeader: FunctionComponent<UrbanicaHeaderProps> = (props) => {
 }
 
 const mapStateToProps = (state: RootState) => ({
-    auth: state.auth
+    auth: state.auth,
+    lang: state.settings.language
 });
 
 const mapDispatchToProps = {

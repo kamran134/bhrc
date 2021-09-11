@@ -16,9 +16,13 @@ interface IUrbanicaBlock {
 export interface IContest {
     _id: string;
     name: IMultilang;
+    shortDescription: IMultilang;
     description: IMultilang;
+    path: IMultilang;
     createdAt: Date;
+    startDate: Date;
     endDate: Date;
+    picture: string;
 }
 
 export interface IProject {

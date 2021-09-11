@@ -9,9 +9,25 @@ import { ReactComponent as UrbanicaLeftCircles } from '../../../assets/images/ur
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import './urbanica.scss';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../../redux/reducers/rootReducer';
+import { getCompetition } from '../../../redux/actions/urbanica-actions';
 
 const UrbanicaMain: FunctionComponent = () => {
     const { t } = useTranslation();
+    const dispatch = useDispatch();
+
+    const { competition, lang } = useSelector((state: RootState) => ({
+        competition: state.urbanica.competition,
+        lang: state.settings.language
+    }));
+
+    useEffect(() => {
+        dispatch(getCompetition());
+    }, [dispatch]);
+
+    console.log('comp', competition);
+
     return (
         <>
             <div className='urbanica-main'>
@@ -23,12 +39,9 @@ const UrbanicaMain: FunctionComponent = () => {
                         <div className='urbanica-main__motivation'>
                             {t("MAKE A STEP")}
                         </div>
-                        <Contest name={'SHOW YOURSELF'} description={'Participate in our competition and show what you are capable of'} />
+                        {competition && <Contest name={competition.name[lang] || competition.name.az} description={(competition.shortDescription || {})[lang || 'az']} />}
                     </div>
                 </div>
-                {/* <div className='urbanica-main__go-home'>
-                    <BHRCLink />
-                </div> */}
             </div>
             <div className='urbanica-info'>
                 <div className='urbanica-info__left'>
@@ -74,7 +87,7 @@ const Contest: FunctionComponent<ContestProps> = ({name, description, url, endTi
             <div className='urbanica-contest__name'>{name}</div>
             <div className='urbanica-contest__description'>{description}</div>
             <div className='urbanica-contest__join'>
-                <button className='urbanica-btn orange-btn'>{t("Learn more").toLocaleUpperCase()}</button>
+                <button className='urbanica-btn orange-btn'>{t("Participate").toLocaleUpperCase()}</button>
             </div>
             <div><CountDown date={date} /></div>
             <div className='urbanica-contest__green'><ContestGreen /></div>
