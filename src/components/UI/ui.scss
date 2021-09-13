@@ -1,0 +1,69 @@
+@import '../../variables.scss';
+.modal-input {
+    width: 200px;
+    height: 18px;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    margin: 15px 0;
+    font-size: 10px;
+    padding: 10px;
+}
+
+.urbanica-input {
+    border-radius: $urbanica-input-radius;
+    border: none;
+    outline: none;
+    background-color: $urbanica-pink;
+    height: 48px;
+    padding: 0 $menu-padding;
+    width: 100%;
+}
+
+.urbanica-textarea {
+    border-radius: $urbanica-input-radius;
+    border: none;
+    outline: none;
+    background-color: $urbanica-pink;
+    padding: $menu-padding;
+    width: 100%;
+    min-height: 135px;
+}
+
+.urbanica-select {}
+
+.css-g1d714-ValueContainer {
+    border-radius: $urbanica-input-radius;
+    border: none;
+    outline: none;
+    background-color: $urbanica-pink;
+    padding: $menu-padding;
+    height: 48px;
+}
+
+.css-yk16xz-control {
+    border: none !important;
+    background-color: $urbanica-pink !important;
+    border-radius: $urbanica-input-radius !important;
+    width: 80px !important;
+    &:focus {
+        outline: none;
+        border: none;
+    }
+}
+
+.css-1pahdxg-control {
+    border: none !important;
+    background-color: $urbanica-pink !important;
+    border-radius: $urbanica-input-radius !important;
+    width: 80px !important;
+    &:focus {
+        outline: 0 !important;
+    }
+}
+
+.css-26l3qy-menu {
+    background-color: $urbanica-pink !important;
+    border-radius: $urbanica-input-radius !important;
+    width: 80px !important;
+}

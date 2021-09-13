@@ -18,22 +18,22 @@ const INITIAL_STATE: IAuthenticate = {
 }
 
 export default function(state = INITIAL_STATE, action: AuthType) {
-    const { type, payload } = action;
+    const { type, user, token } = action;
     switch (type) {
         case USER_LOADED:
-            return {...state, isAuthenticated: true, user: payload }
+            return {...state, isAuthenticated: true, user }
         case REGISTER_SUCCESS:
         case LOGIN_SUCCESS:
-            localStorage.setItem('bhrc.token', payload.token);
-            return {...state, token: payload.token }
+            localStorage.setItem('bhrc.token', token);
+            return {...state, token }
         case REGISTER_FAIL:
         case AUTH_ERROR:
         case LOGIN_FAIL:
             localStorage.removeItem('bhrc.token');
-            return {...state, token: null, isAuthenticated: false, loading: true }
+            return {...state, token: undefined, isAuthenticated: false }
         case LOGOUT:
             localStorage.removeItem('bhrc.token');
-            return {...state, token: null, isAuthenticated: false, loading: false, user: null }
+            return {...state, token: undefined, isAuthenticated: false, user: undefined }
         default:
             return state;
     }

@@ -9,6 +9,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import rootReducer from './redux/reducers/rootReducer';
 import thunkMiddleware from 'redux-thunk';
 import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
 
 let middleware: any;
 
@@ -27,13 +28,15 @@ if (window.__REDUX_DEVTOOLS_EXTENSION__) {
 const store = createStore(rootReducer, middleware);
 
 ReactDOM.render(
-    <React.StrictMode>
-        <Provider store={store}>
-            <I18nextProvider i18n={i18n}>
-                <App/>
-            </I18nextProvider>
-        </Provider>
-    </React.StrictMode>,
+    <BrowserRouter>
+        <React.StrictMode>
+            <Provider store={store}>
+                <I18nextProvider i18n={i18n}>
+                    <App/>
+                </I18nextProvider>
+            </Provider>
+        </React.StrictMode>
+    </BrowserRouter>,
     document.getElementById('root')
 );
 

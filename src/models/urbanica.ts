@@ -26,25 +26,25 @@ export interface IContest {
 }
 
 export interface IProject {
-    _id: string;
-    contestId: string;
-    userId: string;
-    general: IProjectGeneralInfo;
-    details: IProjectDetails;
-    budget: IProjectBudjet;
+    _id?: string;
+    contestId?: string;
+    userId?: string;
+    general?: IProjectGeneralInfo;
+    details?: IProjectDetails;
+    budget?: IProjectBudjet;
 }
 
 interface IProjectGeneralInfo {
-    projectName: string;
-    neccessary: string;
-    howSolve: string;
-    groups: string;
+    projectName?: string;
+    neccessary?: string;
+    howSolve?: string;
+    groups?: string;
 }
 
 interface IProjectDetails {
-    goal: string;
-    suggestions: string;
-    expectedResult: string;
+    goal?: string;
+    suggestions?: string;
+    expectedResult?: string;
 }
 
 interface IProjectBudjet {

@@ -30,7 +30,7 @@
                 width: $news-right - 15px;
                 height: $article-info-height;
                 border-radius: $standart-radius;
-                box-shadow: 0 3px 6px rgba(#000000, 0.16);
+                box-shadow: $standart-shadow;
                 text-align: center;
                 h4 {
                     font-size: $footer-font-size;
@@ -54,7 +54,7 @@
             height: $article-search-height;
             background-color: #fff;
             border-radius: $standart-radius;
-            box-shadow: 0 3px 6px rgba(#000000, 0.16);
+            box-shadow: $standart-shadow;
             padding: $search-y $topic-x;
             position: relative;
             margin-bottom: $menu-margin;
@@ -82,7 +82,7 @@
             width: 100%;
             background-color: #fff;
             border-radius: $standart-radius;
-            box-shadow: 0 3px 6px rgba(#000000, 0.16);
+            box-shadow: $standart-shadow;
             padding: $popular-v $popular-right $popular-v $popular-left;
             color: $block-text-color;
             h4 {
@@ -137,7 +137,7 @@
     &__content {
         background-color: #fff;
         border-radius: $standart-radius;
-        box-shadow: 0 3px 6px rgba(#000000, 0.16);
+        box-shadow: $standart-shadow;
         width: calc(100% - 14px);
         padding: $news-v $news-h;
         margin: $news-content-margin auto 0 auto;

@@ -79,7 +79,7 @@
         padding: $topics-y $topics-x;
         background-color: #fff;
         border-radius: $standart-radius;
-        box-shadow: 0 3px 6px rgba(#000000, 0.16);
+        box-shadow: $standart-shadow;
         h2 {
             color: $main-blue
         }
@@ -91,11 +91,11 @@
             border-radius: $standart-radius;
             &:hover {
                 background-color: $main-grey;
-                box-shadow: 0 3px 6px rgba(#000000, 0.16);
+                box-shadow: $standart-shadow;
             }
             &.active {
                 background-color: $main-grey;
-                box-shadow: 0 3px 6px rgba(#000000, 0.16);
+                box-shadow: $standart-shadow;
             }
             &__icon {
                 margin-right: $big-margin;
@@ -152,7 +152,7 @@
                     width: $resource-material-width;
                     height: $resource-frame-height;
                     border-radius: $resources-radius-big;
-                    box-shadow: 0 3px 6px rgba(#000000, 0.16);
+                    box-shadow: $standart-shadow;
                 }
                 .material-doc {
                     display: flex;
@@ -164,7 +164,7 @@
                     min-width: $resource-doc-width;
                     &:hover {
                         background-color: $main-grey;
-                        box-shadow: 0 3px 6px rgba(#000000, 0.16);
+                        box-shadow: $standart-shadow;
                     }
                     svg {
                         width: $resource-icon-width;

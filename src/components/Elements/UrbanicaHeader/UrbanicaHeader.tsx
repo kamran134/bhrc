@@ -12,11 +12,12 @@ import RegisterForm from '../../../forms/RegisterForm';
 import { RootState } from '../../../redux/reducers/rootReducer';
 import { submit, FormAction } from "redux-form";
 import { connect, useDispatch } from 'react-redux';
-import { signUp, signIn } from '../../../redux/actions/auth-actions';
+import { signUp, signIn, getProfile } from '../../../redux/actions/auth-actions';
 import { IAuthForm } from '../../../models/auth';
 import LoginForm from '../../../forms/LoginForm';
 import { IAuthenticate } from '../../../redux/states/auth-state';
-import history from '../../../history';
+import { useHistory } from 'react-router-dom';
+//import history from '../../../history';
 
 interface UrbanicaHeaderProps {
     submit: (form: string) => FormAction;
@@ -28,6 +29,7 @@ interface UrbanicaHeaderProps {
 
 const UrbanicaHeader: FunctionComponent<UrbanicaHeaderProps> = (props) => {
     const { t } = useTranslation();
+    let history = useHistory();
     const dispatch = useDispatch();
     const [singUpModal, setSignUpModal] = useState<boolean>(false);
     const [openRegister, setOpenRegister] = useState<boolean>(false);
@@ -38,6 +40,10 @@ const UrbanicaHeader: FunctionComponent<UrbanicaHeaderProps> = (props) => {
             setSignUpModal(false)
         }
     }, [auth]);
+
+    useEffect(() => {
+        dispatch(getProfile(auth.token || ''));
+    }, [dispatch]);
 
     const onSubmit = (data: IAuthForm) => {
         if (openRegister) {
@@ -75,8 +81,6 @@ const UrbanicaHeader: FunctionComponent<UrbanicaHeaderProps> = (props) => {
             </div>
         </>
     );
-
-    console.log('user', auth.user);
 
     return (
         <>

@@ -3,18 +3,17 @@ import { LOGIN_SUCCESS, REGISTER_SUCCESS, USER_LOADED } from './action-types';
 import { ThunkAction } from 'redux-thunk';
 import { Action, ActionCreator } from 'redux';
 import { RootState } from '../reducers/rootReducer';
-import { ISignIn } from '../states/auth-state';
 import { _hasError } from './error-actions';
-import { IUser, IUserInfo } from '../../models/user';
+import { IUserInfo } from '../../models/user';
 
 interface singInAction {
     type: typeof LOGIN_SUCCESS;
-    payload: ISignIn;
+    token: string;
 }
 
-const _signIn: ActionCreator<singInAction> = (data: ISignIn) => ({
+const _signIn: ActionCreator<singInAction> = (token: string) => ({
     type: LOGIN_SUCCESS,
-    payload: data
+    token
 });
 
 export const signIn = (identifier: string, password: string): ThunkAction<void, RootState, unknown, Action<string>> => dispatch => {
@@ -23,7 +22,7 @@ export const signIn = (identifier: string, password: string): ThunkAction<void, 
         password
     }).then(({ data }) => {
         if (!data.error) {
-            dispatch(_signIn(data));
+            dispatch(_signIn(data.token));
             return data;
         }
         else dispatch(_hasError(data.error));
@@ -31,18 +30,18 @@ export const signIn = (identifier: string, password: string): ThunkAction<void, 
         if (data) {
             dispatch(getProfile(data.token));
         }
-        else console.log('pichal');
+        else console.error('Authorization failed');
     });
 }
 
 interface signUpAction {
     type: typeof REGISTER_SUCCESS,
-    payload: string
+    token: string
 }
 
 const _signUp: ActionCreator<signUpAction> = (token: string) => ({
     type: REGISTER_SUCCESS,
-    payload: token
+    token
 });
 
 export const signUp = (email: string, password: string): ThunkAction<void, RootState, unknown, Action<string>> => dispatch => {
@@ -54,12 +53,12 @@ export const signUp = (email: string, password: string): ThunkAction<void, RootS
 
 interface getProfileAction {
     type: typeof USER_LOADED;
-    payload: IUserInfo;
+    user: IUserInfo;
 }
 
 const _getProfile: ActionCreator<getProfileAction> = (profile: IUserInfo) => ({
     type: USER_LOADED,
-    payload: profile
+    user: profile
 });
 
 export const getProfile = (token: string): ThunkAction<void, RootState, unknown, Action<string>> => dispatch => {

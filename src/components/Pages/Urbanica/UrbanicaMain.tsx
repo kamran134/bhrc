@@ -12,21 +12,21 @@ import './urbanica.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../../redux/reducers/rootReducer';
 import { getCompetition } from '../../../redux/actions/urbanica-actions';
+import { useHistory } from 'react-router-dom';
 
 const UrbanicaMain: FunctionComponent = () => {
     const { t } = useTranslation();
     const dispatch = useDispatch();
 
-    const { competition, lang } = useSelector((state: RootState) => ({
+    const { competition, lang, auth } = useSelector((state: RootState) => ({
         competition: state.urbanica.competition,
-        lang: state.settings.language
+        lang: state.settings.language,
+        auth: state.auth
     }));
 
     useEffect(() => {
         dispatch(getCompetition());
     }, [dispatch]);
-
-    console.log('comp', competition);
 
     return (
         <>
@@ -39,7 +39,12 @@ const UrbanicaMain: FunctionComponent = () => {
                         <div className='urbanica-main__motivation'>
                             {t("MAKE A STEP")}
                         </div>
-                        {competition && <Contest name={competition.name[lang] || competition.name.az} description={(competition.shortDescription || {})[lang || 'az']} />}
+                        {competition && 
+                            <Contest 
+                                name={competition.name[lang] || competition.name.az}
+                                description={(competition.shortDescription || {})[lang || 'az']}
+                                isAuthenticate={auth.isAuthenticated}
+                                endDate={competition.endDate} />}
                     </div>
                 </div>
             </div>
@@ -75,21 +80,31 @@ const UrbanicaMain: FunctionComponent = () => {
 interface ContestProps {
     name: string,
     description: string,
-    url?: string,
-    endTime?: Date
+    isAuthenticate: boolean,
+    endDate: Date
 }
 
-const Contest: FunctionComponent<ContestProps> = ({name, description, url, endTime}) => {
+const Contest: FunctionComponent<ContestProps> = ({name, description, isAuthenticate, endDate}) => {
     const { t } = useTranslation();
     const date = new Date('10.28.2021 10:30');
+    let history = useHistory();
+
+    const participateHandler = () => {
+        if (isAuthenticate) {
+            history.push('/urbanica/competition');
+        } else {
+            console.log('');
+        }
+    }
+
     return (
         <div className='urbanica-contest'>
             <div className='urbanica-contest__name'>{name}</div>
             <div className='urbanica-contest__description'>{description}</div>
             <div className='urbanica-contest__join'>
-                <button className='urbanica-btn orange-btn'>{t("Participate").toLocaleUpperCase()}</button>
+                <button className='urbanica-btn orange-btn' onClick={participateHandler} >{t("Participate").toLocaleUpperCase()}</button>
             </div>
-            <div><CountDown date={date} /></div>
+            <div><CountDown date={endDate} /></div>
             <div className='urbanica-contest__green'><ContestGreen /></div>
             <div className='urbanica-contest__girl'><ContestGirl /></div>
         </div>

@@ -36,6 +36,12 @@ code {
     &-inner {
         z-index: 1;
         width: $standart-container-width;
+        &.urbanica-container {
+            width: $urbanica-container-width;
+            padding: $topics-y $topics-x;
+            box-shadow: 0 3px 6px rgba(#000000, 0.16);
+            margin-bottom: $big-margin;
+        }
     }
 }
 
@@ -141,14 +147,24 @@ h3 {
     font-weight: normal !important;
 }
 
-.block-text {
-    line-height: 2;
-    font-size: $text-font-size;
-    color: $block-text-color;
-}
-
 h1.title {
     margin-bottom: $big-margin !important;
+}
+
+.lined-title {
+    width: 100%;
+    text-align: center;
+    border-bottom: 2px solid $main-orange;
+    line-height: 0.1em;
+    margin: 10px 0 20px !important;
+    span {
+        background: #fff;
+        padding: 0 10px;
+    }
+}
+
+.upper-case {
+    text-transform: uppercase;
 }
 
 
@@ -294,6 +310,20 @@ h1.title {
     text-align: left;
 }
 
+.block-text {
+    line-height: 2;
+    font-size: $text-font-size;
+    color: $block-text-color;
+}
+
+.candara {
+    font-family: 'Candara';
+}
+
+.regular-font {
+    font-weight: normal !important;
+}
+
 
 /* Modals */
 
@@ -360,11 +390,35 @@ h1.title {
     }
 }
 
+
+/* Badges */
+
+.urbanica-badge {
+    border-radius: 50%;
+    width: $urbanica-badge-round;
+    height: $urbanica-badge-round;
+    background-color: $main-orange;
+    color: #fff;
+    font-family: 'Candara';
+    font-style: italic;
+    font-weight: bold;
+    font-size: 20px;
+    display: inline-block;
+}
+
+.with-badge {
+    margin-left: 15px;
+}
+
 @media screen and (min-width: $width-4K) {
     .container {
         max-width: 2280px !important;
         &-inner {
             width: $standart-container-width*2;
+            &.urbanica-container {
+                width: $urbanica-container-width*2;
+                padding: $topics-y*2 $topics-x*2;
+            }
         }
     }
     .paint-badge {

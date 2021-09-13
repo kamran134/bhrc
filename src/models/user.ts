@@ -8,7 +8,7 @@ export interface IUser {
 }
 
 export interface IUserInfo {
-    userId: string;
+    _id: string;
     profile: IProfile;
     emails: IEmail[];
     online: boolean;
