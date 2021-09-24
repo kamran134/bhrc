@@ -47,21 +47,21 @@ interface IProjectDetails {
     expectedResult?: string;
 }
 
-interface IProjectBudjet {
+export interface IProjectBudjet {
     period: IPeriod;
-    participants: IBudget[];
-    activities: IBudget[];
-    devices: IBudget[];
-    others: IBudget[];
+    participants?: IBudget[];
+    activities?: IBudget[];
+    devices?: IBudget[];
+    others?: IBudget[];
 }
 
-interface IBudget {
+export interface IBudget {
     name: string;
     period: IPeriod;
     price: number;
 }
 
-interface IPeriod {
+export interface IPeriod {
     quantity: number;
     unit: "day" | "week" | "month" | "year"
 }

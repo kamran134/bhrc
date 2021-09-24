@@ -5,9 +5,9 @@ import { RootState } from '../../../redux/reducers/rootReducer';
 import { submit, FormAction } from "redux-form";
 import './urbanica.scss';
 import { connect, useDispatch } from 'react-redux';
-import { IContest, IProject } from '../../../models/urbanica';
+import { IBudget, IContest, IProject, IProjectBudjet } from '../../../models/urbanica';
 import { IUserInfo } from '../../../models/user';
-import { getCompetition } from '../../../redux/actions/urbanica-actions';
+import { getCompetition, sendProject } from '../../../redux/actions/urbanica-actions';
 import { getProfile } from '../../../redux/actions/auth-actions';
 import { IAuthenticate } from '../../../redux/states/auth-state';
 import UrbanicaBudgetForm from '../../../forms/UrbanicaBudgetForm';
@@ -19,10 +19,11 @@ interface CompetitionProps {
     auth?: IAuthenticate;
     getCompetition: () => void;
     getProfile: (token: string) => void;
+    sendProject: (project: IProject) => void;
 }
 
 const UrbanicaCompetition: FunctionComponent<CompetitionProps> = (props: CompetitionProps) => {
-    const { submit, competition, auth, getCompetition } = props;
+    const { submit, competition, auth, getCompetition, sendProject, getProfile } = props;
     const [project, setProject] = useState<IProject>({});
     const [stage, setStage] = useState<number>(0);
 
@@ -51,6 +52,44 @@ const UrbanicaCompetition: FunctionComponent<CompetitionProps> = (props: Competi
         setStage(1);
     }
 
+    const createArray = (numb: number, data: any) => {
+        let i = 0;
+        let arr: IBudget[] = [];
+        while (data[`${numb}_type_${i}`]) {
+            arr.push({
+                name: data[`${numb}_type_${i}`],
+                period: {
+                    quantity: data[`${numb}_quantity_${i}`],
+                    unit: data[`${numb}_unit_${i}`]?.value
+                },
+                price: data[`${numb}_price_${i}`]
+            });
+            i++;
+        }
+        return arr;
+    }
+
+    const submitBudget = (data: any) => {
+        let participantsArr: IBudget[] = createArray(1, data);;
+        let activitiesArr: IBudget[] = createArray(2, data);
+        let gadjetsArr: IBudget[] = createArray(3, data);
+        let othersArr: IBudget[] = createArray(4, data);
+
+        let bud: IProjectBudjet = {
+            period: {
+                quantity: data.projectPeriod,
+                unit: data.projectPeriodSelect.value,
+            },
+            participants: participantsArr,
+            activities: activitiesArr,
+            devices: gadjetsArr,
+            others: othersArr            
+        }
+
+        setProject({...project, budget: bud});
+        sendProject(project);
+    }
+
     console.log('pro', project);
 
     return (
@@ -63,7 +102,12 @@ const UrbanicaCompetition: FunctionComponent<CompetitionProps> = (props: Competi
                     </button>
                 </div>
             </div> : <div className='container'>
-                <UrbanicaBudgetForm />
+                <UrbanicaBudgetForm onSubmit={submitBudget} />
+                <div className='urbanica-competition__footer'>
+                    <button className='urbanica-btn sign-up' onClick={() => submit("UrbanicaBudgetForm")}>
+                        Göndər <ImArrowRight2/>
+                    </button>
+                </div>
             </div>}
         </div>
         
@@ -77,7 +121,9 @@ const mapStateToProps = (state: RootState) => ({
 
 const mapDispatchToProps = {
     submit,
-    getCompetition
+    getCompetition,
+    getProfile,
+    sendProject
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(UrbanicaCompetition);

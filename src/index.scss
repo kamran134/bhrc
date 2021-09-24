@@ -244,6 +244,21 @@ h1.title {
         font-size: $main-font-size;
         font-weight: 600;
     }
+    &.blue-btn {
+        background-color: $main-blue;
+        font-family: 'Candara';
+        min-width: 64px;
+        height: 48px;
+        font-size: 30px;
+        font-style: italic;
+        font-weight: bold;
+        border-radius: $urbanica-input-radius;
+        text-align: center;
+        justify-content: center;
+        &:hover {
+            background-color: $main-blue-hover;
+        }
+    }
 }
 
 

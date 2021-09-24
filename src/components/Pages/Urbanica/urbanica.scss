@@ -185,6 +185,7 @@
     label {
         font-size: 20px;
         margin-right: 40px;
+        margin-left: 10px;
     }
 }
 
@@ -192,6 +193,7 @@
     &__row {
         display: flex;
         width: 100%;
+        margin-bottom: 17px;
     }
     &__th {
         &-1 {
@@ -207,7 +209,14 @@
             margin-right: $big-margin;
         }
         &-4 {
-            width: 170px;
+            width: 180px;
+            display: flex;
+            justify-content: flex-end;
+            margin-right: $big-margin;
+        }
+        &-5 {
+            display: flex;
+            align-items: center;
         }
     }
 }

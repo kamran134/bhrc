@@ -1,11 +1,8 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useState } from 'react';
 import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 import { useTranslation } from 'react-i18next';
 import { IAuthForm } from '../models/auth';
 import UrbanicaInput from '../components/UI/UrbanicaInput';
-import UrbanicaTextarea from '../components/UI/UrbanicaTextarea';
-import { ReactComponent as Humans } from '../assets/images/urbanica/humans.svg';
-import { ReactComponent as BHRCLogo } from '../assets/images/urbanica/bhrc-logo-balls.svg';
 import UrbanicaSelect from '../components/UI/UrbanicaSelect';
 
 const UrbanicaBudgetForm: FunctionComponent<InjectedFormProps<IAuthForm>> = (props) => {
@@ -15,6 +12,74 @@ const UrbanicaBudgetForm: FunctionComponent<InjectedFormProps<IAuthForm>> = (pro
         {value: 'month', label: 'ay'},
         {value: 'year', label: 'il'}
     ];
+
+    const [teams, setTeams] = useState<number>(1);
+    const [activities, setActivities] = useState<number>(1);
+    const [gadjets, setGadjets] = useState<number>(1);
+    const [others, setOthers] = useState<number>(1);
+
+    const renderForms = (order: number, selector: number, setSelector: (selector: number) => void, label: string) => {
+        return (
+            <div>
+                <p className='candara'>
+                    <span className='urbanica-badge centered-text'>{order}</span>
+                    <span className='with-badge'>{t(label)}</span>
+                </p>
+                <div className='budget-table'>
+                    <div className='budget-table__row'>
+                        <div className='budget-table__th-1'>
+                            <label className='main-blue-text candara'>{t('Xərclərin növü')}</label>
+                        </div>
+                        <div className='budget-table__th-2'>
+                            <label className='main-blue-text candara'>{t('Vahid')}</label>
+                        </div>
+                        <div className='budget-table__th-3'>
+                            <label className='main-blue-text candara'>{t('Kəmiyyət')}</label>
+                        </div>
+                        <div className='budget-table__th-4'>
+                            <label className='main-blue-text candara'>{t('Vahidin qiyməti')}</label>
+                        </div>
+                    </div>
+                    {renderFields(selector, order)}
+                    <div className='budget-table__row'>
+                        <div className='budget-table__th-1'>
+                            <label className='main-blue-text candara'>{t('Cəmi')}:</label>
+                        </div>
+                        <div className='budget-table__th-2' />
+                        <div className='budget-table__th-3' />
+                        <div className='budget-table__th-4'>
+                            <button className='urbanica-btn blue-btn' onClick={() => setSelector(selector+1)}>+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        )
+    }
+
+    const renderFields = (selector: number, order: number) => {
+        let budgetArray: any = [];
+        for(let i = 0; i < selector; i++) {
+            budgetArray.push(
+                <div className='budget-table__row' key={i}>
+                    <div className='budget-table__th-1'>
+                        <Field component={UrbanicaInput} name={`${order}_type_${i}`} />
+                    </div>
+                    <div className='budget-table__th-2'>
+                        <Field component={UrbanicaSelect} name={`${order}_unit_${i}`} options={options} />
+                    </div>
+                    <div className='budget-table__th-3'>
+                        <Field component={UrbanicaInput} name={`${order}_quantity_${i}`} />
+                    </div>
+                    <div className='budget-table__th-4'>
+                        <Field component={UrbanicaInput} name={`${order}_price_${i}`} />
+                    </div>
+                    <div className='budget-table__th-5'><label className='main-blue-text candara'>{t("Cəmi")}: </label></div>
+                </div>
+            );
+        }
+        return budgetArray;
+    }
+
     return (
         <div>
             <div className='container-inner urbanica-container flex-col align-center'>
@@ -31,153 +96,10 @@ const UrbanicaBudgetForm: FunctionComponent<InjectedFormProps<IAuthForm>> = (pro
                 </div>
                 
                 <div className='urbanica-container__general-info'>
-                    <div>
-                        <p className='candara'>
-                            <span className='urbanica-badge centered-text'>1</span>
-                            <span className='with-badge'>Heyət xərcləri</span>
-                        </p>
-                        <div className='budget-table'>
-                            <div className='budget-table__row'>
-                                <div className='budget-table__th-1'>
-                                    <label className='main-blue-text candara'>{t('Xərclərin növü')}</label>
-                                </div>
-                                <div className='budget-table__th-2'>
-                                    <label className='main-blue-text candara'>{t('Vahid')}</label>
-                                </div>
-                                <div className='budget-table__th-3'>
-                                    <label className='main-blue-text candara'>{t('Kəmiyyət')}</label>
-                                </div>
-                                <div className='budget-table__th-4'>
-                                    <label className='main-blue-text candara'>{t('Vahidin qiyməti')}</label>
-                                </div>
-                            </div>
-                            <div className='budget-table__row'>
-                                <div className='budget-table__th-1'>
-                                    <Field component={UrbanicaInput} name={'neccessary'} />
-                                </div>
-                                <div className='budget-table__th-2'>
-                                    <Field component={UrbanicaSelect} name={'neccessary'} />
-                                </div>
-                                <div className='budget-table__th-3'>
-                                    <Field component={UrbanicaInput} name={'neccessary'} />
-                                </div>
-                                <div className='budget-table__th-4'>
-                                    <Field component={UrbanicaInput} name={'neccessary'} />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div>
-                        <p className='candara'>
-                            <span className='urbanica-badge centered-text'>2</span>
-                            <span className='with-badge'>Fəaliyyətlər</span>
-                        </p>
-                        <div className='budget-table'>
-                            <div className='budget-table__row'>
-                                <div className='budget-table__th-1'>
-                                    <label className='main-blue-text candara'>{t('Xərclərin növü')}</label>
-                                </div>
-                                <div className='budget-table__th-2'>
-                                    <label className='main-blue-text candara'>{t('Vahid')}</label>
-                                </div>
-                                <div className='budget-table__th-3'>
-                                    <label className='main-blue-text candara'>{t('Kəmiyyət')}</label>
-                                </div>
-                                <div className='budget-table__th-4'>
-                                    <label className='main-blue-text candara'>{t('Vahidin qiyməti')}</label>
-                                </div>
-                            </div>
-                            <div className='budget-table__row'>
-                                <div className='budget-table__th-1'>
-                                    <Field component={UrbanicaInput} name={'neccessary'} />
-                                </div>
-                                <div className='budget-table__th-2'>
-                                    <Field component={UrbanicaSelect} name={'neccessary'} />
-                                </div>
-                                <div className='budget-table__th-3'>
-                                    <Field component={UrbanicaInput} name={'neccessary'} />
-                                </div>
-                                <div className='budget-table__th-4'>
-                                    <Field component={UrbanicaInput} name={'neccessary'} />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <p className='candara'>
-                            <span className='urbanica-badge centered-text'>3</span>
-                            <span className='with-badge'>Avadanlıq</span>
-                        </p>
-                        <div className='budget-table'>
-                            <div className='budget-table__row'>
-                                <div className='budget-table__th-1'>
-                                    <label className='main-blue-text candara'>{t('Xərclərin növü')}</label>
-                                </div>
-                                <div className='budget-table__th-2'>
-                                    <label className='main-blue-text candara'>{t('Vahid')}</label>
-                                </div>
-                                <div className='budget-table__th-3'>
-                                    <label className='main-blue-text candara'>{t('Kəmiyyət')}</label>
-                                </div>
-                                <div className='budget-table__th-4'>
-                                    <label className='main-blue-text candara'>{t('Vahidin qiyməti')}</label>
-                                </div>
-                            </div>
-                            <div className='budget-table__row'>
-                                <div className='budget-table__th-1'>
-                                    <Field component={UrbanicaInput} name={'neccessary'} />
-                                </div>
-                                <div className='budget-table__th-2'>
-                                    <Field component={UrbanicaSelect} name={'neccessary'} />
-                                </div>
-                                <div className='budget-table__th-3'>
-                                    <Field component={UrbanicaInput} name={'neccessary'} />
-                                </div>
-                                <div className='budget-table__th-4'>
-                                    <Field component={UrbanicaInput} name={'neccessary'} />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <p className='candara'>
-                            <span className='urbanica-badge centered-text'>4</span>
-                            <span className='with-badge'>Digər xərclər</span>
-                        </p>
-                        <div className='budget-table'>
-                            <div className='budget-table__row'>
-                                <div className='budget-table__th-1'>
-                                    <label className='main-blue-text candara'>{t('Xərclərin növü')}</label>
-                                </div>
-                                <div className='budget-table__th-2'>
-                                    <label className='main-blue-text candara'>{t('Vahid')}</label>
-                                </div>
-                                <div className='budget-table__th-3'>
-                                    <label className='main-blue-text candara'>{t('Kəmiyyət')}</label>
-                                </div>
-                                <div className='budget-table__th-4'>
-                                    <label className='main-blue-text candara'>{t('Vahidin qiyməti')}</label>
-                                </div>
-                            </div>
-                            <div className='budget-table__row'>
-                                <div className='budget-table__th-1'>
-                                    <Field component={UrbanicaInput} name={'neccessary'} />
-                                </div>
-                                <div className='budget-table__th-2'>
-                                    <Field component={UrbanicaSelect} name={'neccessary'} />
-                                </div>
-                                <div className='budget-table__th-3'>
-                                    <Field component={UrbanicaInput} name={'neccessary'} />
-                                </div>
-                                <div className='budget-table__th-4'>
-                                    <Field component={UrbanicaInput} name={'neccessary'} />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    {renderForms(1, teams, setTeams, t("Heyət xərcləri"))}
+                    {renderForms(2, activities, setActivities, t("Fəaliyyətlər"))}
+                    {renderForms(3, gadjets, setGadjets, t("Avadanlıq"))}
+                    {renderForms(4, others, setOthers, t("Digər xərclər"))}
                 </div>
             </div>
         </div>
