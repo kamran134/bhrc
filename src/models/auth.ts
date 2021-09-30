@@ -14,4 +14,6 @@ export interface IAuthForm {
     email: string;
     password: string;
     passwordRepeat: string;
+    fullname: string;
+    bio: string;
 }

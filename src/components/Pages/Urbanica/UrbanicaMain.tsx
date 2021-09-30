@@ -13,6 +13,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../../redux/reducers/rootReducer';
 import { getCompetition } from '../../../redux/actions/urbanica-actions';
 import { useHistory } from 'react-router-dom';
+import { openModal } from '../../../redux/actions/settings';
 
 const UrbanicaMain: FunctionComponent = () => {
     const { t } = useTranslation();
@@ -88,12 +89,13 @@ const Contest: FunctionComponent<ContestProps> = ({name, description, isAuthenti
     const { t } = useTranslation();
     const date = new Date('10.28.2021 10:30');
     let history = useHistory();
+    const dispatch = useDispatch();
 
     const participateHandler = () => {
         if (isAuthenticate) {
             history.push('/urbanica/competition');
         } else {
-            console.log('');
+            dispatch(openModal(true));
         }
     }
 

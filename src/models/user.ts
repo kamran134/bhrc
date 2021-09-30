@@ -1,25 +1,25 @@
 import { IMultilang } from "./multilang";
 
 export interface IUser {
-    _id: string;
+    _id?: string;
     login: string;
     password: string;
     userInfo: IUserInfo;
 }
 
 export interface IUserInfo {
-    _id: string;
+    _id?: string;
     profile: IProfile;
-    emails: IEmail[];
-    online: boolean;
-    createdAt: Date;
+    emails?: IEmail[];
+    online?: boolean;
+    createdAt?: Date;
 }
 
 interface IProfile {
     role?: UserRole;
-    _id: string;
-    darkMode: boolean;
-    language: string;
+    _id?: string;
+    darkMode?: boolean;
+    language?: string;
     ratinrg?: number;
     fullName: IMultilang;
     bio: IMultilang;

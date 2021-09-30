@@ -6,7 +6,7 @@ import {
     AUTH_ERROR,
     LOGIN_SUCCESS,
     LOGIN_FAIL,
-    LOGOUT
+    LOGOUT, ERROR, REGISTER_STAGE
 } from '../actions/action-types';
 import { AuthType } from '../actions/auth-actions';
 import { IAuthenticate } from '../states/auth-state';
@@ -14,11 +14,12 @@ import { IAuthenticate } from '../states/auth-state';
 const INITIAL_STATE: IAuthenticate = {
     token: localStorage.getItem('bhrc.token') || undefined,
     isAuthenticated: false,
-    user: undefined
+    user: undefined,
+    processStage: 0
 }
 
 export default function(state = INITIAL_STATE, action: AuthType) {
-    const { type, user, token } = action;
+    const { type, user, token, stage } = action;
     switch (type) {
         case USER_LOADED:
             return {...state, isAuthenticated: true, user }
@@ -31,9 +32,12 @@ export default function(state = INITIAL_STATE, action: AuthType) {
         case LOGIN_FAIL:
             localStorage.removeItem('bhrc.token');
             return {...state, token: undefined, isAuthenticated: false }
+        case ERROR:
         case LOGOUT:
             localStorage.removeItem('bhrc.token');
             return {...state, token: undefined, isAuthenticated: false, user: undefined }
+        case REGISTER_STAGE:
+            return {...state, processStage: stage}
         default:
             return state;
     }

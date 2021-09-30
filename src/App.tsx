@@ -19,11 +19,13 @@ import Resources from './components/Pages/Resources/Resources';
 import Activity from './components/Pages/Activities/Activity';
 import NewsHeader from './components/Elements/NewsHeader/NewsHeader';
 import UrbanicaCompetition from './components/Pages/Urbanica/UrbanicaCompetition';
+import AlertMessage from './components/UI/AlertMessage';
 
 function App() {
   return (
     <>
       <Router>
+          <AlertMessage />
           <Switch>
             <Route path='/urbanica'>
               <UrbanicaHeader />

@@ -1,4 +1,5 @@
 export interface ISettingsState {
-    language: string,
-    searchActive: boolean
+    language: string;
+    searchActive: boolean;
+    modal: boolean;
 }

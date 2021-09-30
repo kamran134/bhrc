@@ -47,4 +47,14 @@
             font-size: 1vw;
         }
     }
+    &__logout {
+        position: absolute;
+        right: 30px;
+        top: 90px;
+        color: #fff;
+        font-size: 26px;
+        a {
+            color: #fff;
+        }
+    }
 }

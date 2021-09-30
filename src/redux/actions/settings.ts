@@ -1,4 +1,4 @@
-import { ACTIVE_SEARCH, SET_LANGUAGE } from './action-types';
+import { ACTIVE_SEARCH, OPEN_SIGNIN, SET_LANGUAGE } from './action-types';
 import { Action, ActionCreator } from 'redux';
 import { ThunkAction } from 'redux-thunk';
 import { RootState } from '../reducers/rootReducer';
@@ -32,4 +32,16 @@ export const activeSearch = (searchActive: boolean): ThunkAction<void, RootState
     return dispatch(_activeSearch(searchActive))
 }
 
-export type SettingsTypes = languageAction & activeSearchAction;
+interface signInModal {
+    type: typeof OPEN_SIGNIN;
+    open: boolean;
+}
+
+export const openModal = (open?: boolean): ThunkAction<void, RootState, unknown, Action<string>> => (dispatch) => {
+    dispatch({
+        type: OPEN_SIGNIN,
+        open
+    });
+}
+
+export type SettingsTypes = languageAction & activeSearchAction & signInModal;

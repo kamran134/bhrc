@@ -73,5 +73,14 @@
     "Participate": "Участвуй",
     "Participant": "Участник",
     "Competition": "Конкурс",
-    "General information": "Общая информация"
+    "General information": "Общая информация",
+    "Logout": "Выход",
+    "User not found. [404]": "Пользователь не найден. Неверный логин или пароль!",
+    "Incorrect password. [403]": "Неверный пароль",
+    "Successfull authorization": "Успешная авторизация",
+    "Full name": "ФИО",
+    "Biography": "Информация о себе",
+    "Email already exists. [403]": "Пользователь с таким email уже существует",
+    "Password mismatch": "Пароли не совпадают",
+    "Successfull register": "Регистрация успешно завершена"
 }

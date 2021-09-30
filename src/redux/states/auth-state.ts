@@ -17,4 +17,5 @@ export interface IAuthenticate {
     token?: string;
     isAuthenticated: boolean;
     user?: IUserInfo;
+    processStage: number;
 }

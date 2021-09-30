@@ -2,10 +2,15 @@ import React, { FunctionComponent } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ReactComponent as ProfileEllipses } from '../../../assets/images/profile/profile-ellipses.svg';
 import { ReactComponent as FolderIcon } from '../../../assets/images/folder.svg';
-
+import { useSelector } from 'react-redux';
+import { RootState } from '../../../redux/reducers/rootReducer';
 import './profile.scss';
 
 const ProfileMain: FunctionComponent = () => {
+    const { auth, lang } = useSelector((state: RootState) => ({
+        auth: state.auth,
+        lang: state.settings.language
+    }));
     const { t } = useTranslation();
     return (
         <div className='profile container'>
@@ -30,11 +35,7 @@ const ProfileMain: FunctionComponent = () => {
                             {t("#AboutME")}
                         </div>
                         <div className='profile__about-me__info'>
-                            I am a new participant in this enterprise. I strive to improve life in our country.
-                            I am looking for new opportunities to prove myself.is simply dummy text of the
-                            printing and typesetting industry. Lorem Ipsum has been the industry's standard
-                            dummy text ever since the 1500s, when an unknown printer took a galley of type and
-                            scrambled it to make a type specimen book. 
+                            {auth.user?.profile?.bio[lang]} 
                         </div>
                     </div>
                 </div>

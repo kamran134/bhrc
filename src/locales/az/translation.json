@@ -73,5 +73,14 @@
     "Participate": "İştirak et",
     "Participant": "İştirakçı",
     "Competition": "Müsabiqə",
-    "General information": "Ümumi məlumat"
+    "General information": "Ümumi məlumat",
+    "Logout": "Çıxış",
+    "User not found. [404]": "İstifadəçi tapılmadı. Loqin və ya şifrə yalnışdır!",
+    "Incorrect password. [403]": "Şifrə yanlışdır",
+    "Successfull authorization": "Sistemə uğurla daxil oldunuz",
+    "Full name": "Ad, soyad, ata adı",
+    "Biography": "Özünüz haqqınızda məlumat",
+    "Email already exists. [403]": "Bu email ilə istifadəçi artıq mövcuddur",
+    "Password mismatch": "Şifrələr uyğun gəlmir",
+    "Successfull register": "Qeydiyyat uğurla tamamlandı"
 }

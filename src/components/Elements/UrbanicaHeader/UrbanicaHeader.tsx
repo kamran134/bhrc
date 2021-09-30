@@ -12,32 +12,37 @@ import RegisterForm from '../../../forms/RegisterForm';
 import { RootState } from '../../../redux/reducers/rootReducer';
 import { submit, FormAction } from "redux-form";
 import { connect, useDispatch } from 'react-redux';
-import { signUp, signIn, getProfile } from '../../../redux/actions/auth-actions';
+import { signUp, signIn, getProfile, setProcessStage } from '../../../redux/actions/auth-actions';
 import { IAuthForm } from '../../../models/auth';
 import LoginForm from '../../../forms/LoginForm';
 import { IAuthenticate } from '../../../redux/states/auth-state';
 import { useHistory } from 'react-router-dom';
+import { IUser } from '../../../models/user';
+import { setAlert } from '../../../redux/actions/alert-actions';
+import { openModal } from '../../../redux/actions/settings';
 //import history from '../../../history';
 
 interface UrbanicaHeaderProps {
     submit: (form: string) => FormAction;
-    signUp: (email: string, password: string) => void;
+    signUp: (user: IUser) => void;
     signIn: (identifier: string, password: string) => void;
+    setProcessStage: (stage: number) => void;
+    openModal: (open?: boolean) => void;
     auth: IAuthenticate;
     lang: string;
+    modal: boolean;
 }
 
 const UrbanicaHeader: FunctionComponent<UrbanicaHeaderProps> = (props) => {
     const { t } = useTranslation();
     let history = useHistory();
     const dispatch = useDispatch();
-    const [singUpModal, setSignUpModal] = useState<boolean>(false);
     const [openRegister, setOpenRegister] = useState<boolean>(false);
-    const { auth, lang, submit, signUp, signIn } = props;
+    const { auth, lang, submit, signUp, signIn, setProcessStage, modal, openModal } = props;
 
     useEffect(() => {
         if (auth.isAuthenticated) {
-            setSignUpModal(false)
+            openModal(false);
         }
     }, [auth]);
 
@@ -48,9 +53,26 @@ const UrbanicaHeader: FunctionComponent<UrbanicaHeaderProps> = (props) => {
     const onSubmit = (data: IAuthForm) => {
         if (openRegister) {
             if (data.password !== data.passwordRepeat) {
-                console.error('Passwords did not match');
+                dispatch(setAlert("Password mismatch", "error"));
             } else {
-                signUp(data.email, data.password);
+                if (auth.processStage === 0) {
+                    dispatch(setProcessStage(1));
+                } else {
+                    let user: IUser = {
+                        login: data.email,
+                        password: data.password,
+                        userInfo: {
+                            emails: [{address: data.email, verified: false}],
+                            profile: {
+                                fullName: {az: data.fullname, ru: data.fullname, en: data.fullname},
+                                bio: {az: data.bio, ru: data.bio, en: data.bio}
+                            }
+                        }
+                    };
+                    signUp(user);
+                    dispatch(setProcessStage(0));
+                    modalHideHandler();
+                }
             }
         } else {
             signIn(data.identifier, data.password);
@@ -58,7 +80,7 @@ const UrbanicaHeader: FunctionComponent<UrbanicaHeaderProps> = (props) => {
     }
 
     const modalHideHandler = () => {
-        setSignUpModal(false);
+        openModal(false);
         setOpenRegister(false);
     }
 
@@ -94,11 +116,11 @@ const UrbanicaHeader: FunctionComponent<UrbanicaHeaderProps> = (props) => {
                     <div className='urbanica-header__sign-up'>
                         {!auth.isAuthenticated ? <button 
                             className='urbanica-btn sign-up'
-                            onClick={() => setSignUpModal(true)}
+                            onClick={() => openModal(true)}
                         >
                             {t("Sign in")}
                         </button> : <button className='urbanica-btn sign-up' onClick={() => history.push('/profile')}>
-                            {(auth.user?.profile.fullName || {})[lang] || auth.user?.emails[0]?.address}
+                            {(auth.user?.profile?.fullName || {})[lang] || (auth.user?.emails || [])[0]?.address}
                         </button>}
                     </div>
                 </div>
@@ -112,7 +134,7 @@ const UrbanicaHeader: FunctionComponent<UrbanicaHeaderProps> = (props) => {
             <Modal
                 className='urbanica-modal'
                 centered 
-                show={singUpModal}
+                show={modal}
                 onHide={modalHideHandler}
             >
                 <div className='modal-content__fields'>
@@ -126,13 +148,16 @@ const UrbanicaHeader: FunctionComponent<UrbanicaHeaderProps> = (props) => {
 
 const mapStateToProps = (state: RootState) => ({
     auth: state.auth,
-    lang: state.settings.language
+    lang: state.settings.language,
+    modal: state.settings.modal
 });
 
 const mapDispatchToProps = {
     submit,
     signUp,
-    signIn
+    signIn,
+    setProcessStage,
+    openModal
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(UrbanicaHeader);
