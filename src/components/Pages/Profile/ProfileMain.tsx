@@ -35,7 +35,7 @@ const ProfileMain: FunctionComponent = () => {
                             {t("#AboutME")}
                         </div>
                         <div className='profile__about-me__info'>
-                            {auth.user?.profile?.bio[lang]} 
+                            {(auth.user?.profile?.bio || {})[lang]} 
                         </div>
                     </div>
                 </div>
