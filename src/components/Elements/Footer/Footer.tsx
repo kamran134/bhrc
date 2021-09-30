@@ -26,7 +26,7 @@ const Footer: FunctionComponent<FooterProps> = props => {
                             <span className='contact-info'><MdLocationOn />{t("Location")}</span>
                             <span className='info-item'>{t("address")}</span>
                             <span className='contact-info'><MdCall />{t("WhatsApp")}</span>
-                            <span className='info-item'>+994 51 706 68 68</span>
+                            <span className='info-item'>+994 51 706 74 47</span>
                             <span className='contact-info'><MdEmail />{t("Email us")}</span>
                             <span className='info-item'>humanrightsclub.az@gmail.com</span>
                         </div>
