@@ -47,6 +47,17 @@
             font-size: 1vw;
         }
     }
+    &__homepage {
+        position: absolute;
+        top: 40%;
+        right: 25.8%;
+        a {
+            display: block;
+            border-radius: 50%;
+            width: 138px;
+            height: 138px;
+        }
+    }
     &__logout {
         position: absolute;
         right: 30px;

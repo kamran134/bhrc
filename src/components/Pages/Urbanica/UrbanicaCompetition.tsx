@@ -3,19 +3,21 @@ import { ImArrowRight2 } from 'react-icons/im';
 import UrbanicaGeneralForm from '../../../forms/UrbanicaGeneralForm';
 import { RootState } from '../../../redux/reducers/rootReducer';
 import { submit, FormAction } from "redux-form";
-import './urbanica.scss';
-import { connect, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import { IBudget, IContest, IProject, IProjectBudjet } from '../../../models/urbanica';
-import { IUserInfo } from '../../../models/user';
 import { getCompetition, sendProject } from '../../../redux/actions/urbanica-actions';
 import { getProfile } from '../../../redux/actions/auth-actions';
 import { IAuthenticate } from '../../../redux/states/auth-state';
 import UrbanicaBudgetForm from '../../../forms/UrbanicaBudgetForm';
+import { BsCheckCircle } from 'react-icons/bs';
+import './urbanica.scss';
 
 interface CompetitionProps {
     submit: (form: string) => FormAction;
     lang: string;
     competition?: IContest;
+    response: string;
     auth?: IAuthenticate;
     getCompetition: () => void;
     getProfile: (token: string) => void;
@@ -23,7 +25,7 @@ interface CompetitionProps {
 }
 
 const UrbanicaCompetition: FunctionComponent<CompetitionProps> = (props: CompetitionProps) => {
-    const { submit, competition, auth, getCompetition, sendProject, getProfile } = props;
+    const { submit, competition, auth, getCompetition, sendProject, getProfile, response } = props;
     const [project, setProject] = useState<IProject>({});
     const [stage, setStage] = useState<number>(0);
 
@@ -90,11 +92,16 @@ const UrbanicaCompetition: FunctionComponent<CompetitionProps> = (props: Competi
         sendProject(project);
     }
 
-    console.log('pro', project);
-
     return (
         <div className='urbanica-competition'>
-            {stage === 0 ? <div className='container'>
+            {response ? <div className='container success'>
+                <h1 className='main-blue-text'>
+                    <span className='success-icon'><BsCheckCircle /></span>
+                    Layihə uğurla göndərildi!
+                </h1>
+                <Link to={`/`}>Ana səhifə</Link>
+                <Link to={`/urbanica`}>Urbanica</Link>
+            </div> : stage === 0 ? <div className='container'>
                 <UrbanicaGeneralForm onSubmit={submitHandler} />
                 <div className='urbanica-competition__footer'>
                     <button className='urbanica-btn sign-up' onClick={() => submit("UrbanicaGeneralForm")}>
@@ -116,7 +123,8 @@ const UrbanicaCompetition: FunctionComponent<CompetitionProps> = (props: Competi
 
 const mapStateToProps = (state: RootState) => ({
     competition: state.urbanica.competition,
-    auth: state.auth
+    auth: state.auth,
+    response: state.urbanica.response
 });
 
 const mapDispatchToProps = {

@@ -4,6 +4,7 @@ import API from "../../api";
 import { IContest, IProject } from "../../models/urbanica";
 import { RootState } from "../reducers/rootReducer";
 import { GET_COMPETITION, SEND_PROJECT } from "./action-types";
+import { setAlert } from "./alert-actions";
 
 interface CompetitionAction {
     type: typeof GET_COMPETITION;
@@ -30,7 +31,12 @@ const _sendProject: ActionCreator<SendProjectAction> = response => ({
 });
 
 export const sendProject = (project: IProject): ThunkAction<void, RootState, unknown, Action<string>> => dispatch => {
-    API.post(`sendRequest`, project).then(({ data }) => dispatch(_sendProject(data)));
+    API.post(`sendRequest`, project).then(({ data }) => {
+        if (!data.error) dispatch(_sendProject(data));
+        else {
+            dispatch(setAlert(data.message, 'error'));
+        }
+    });
 }
 
 export type UrbanicaType = CompetitionAction & SendProjectAction;

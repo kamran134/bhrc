@@ -35,8 +35,11 @@ const ProfileHeader: FunctionComponent = () => {
                 <img src={noAvatar} alt={'test_avatar'} />
             </div>
             <div className='profile-header__name'>
-                <p className='name'>{(auth.user?.profile.fullName || {})[lang] || (auth.user?.emails || [])[0]?.address}</p>
+                <p className='name'>{auth.user?.profile.fullName[lang]}</p>
                 <p className='role'>{auth.user?.profile.role === UserRole.PARTICIPANT ? t("Participant") : t(auth.user?.profile.role || "Participant")}</p>
+            </div>
+            <div className='profile-header__homepage'>
+                <Link to={`/`} />
             </div>
             <div className='profile-header__logout'>
                 <Link to={`/urbanica`} onClick={signOutHandler} >{t("Logout")} <LogoutIcon /></Link>

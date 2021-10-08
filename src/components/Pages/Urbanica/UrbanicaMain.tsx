@@ -14,6 +14,8 @@ import { RootState } from '../../../redux/reducers/rootReducer';
 import { getCompetition } from '../../../redux/actions/urbanica-actions';
 import { useHistory } from 'react-router-dom';
 import { openModal } from '../../../redux/actions/settings';
+import moment from 'moment';
+import 'moment/locale/az';
 
 const UrbanicaMain: FunctionComponent = () => {
     const { t } = useTranslation();
@@ -87,7 +89,6 @@ interface ContestProps {
 
 const Contest: FunctionComponent<ContestProps> = ({name, description, isAuthenticate, endDate}) => {
     const { t } = useTranslation();
-    const date = new Date('10.28.2021 10:30');
     let history = useHistory();
     const dispatch = useDispatch();
 
@@ -118,14 +119,18 @@ interface CountDownProps {
 }
 
 const CountDown: FunctionComponent<CountDownProps> = ({date}) => {
+    moment.locale('az');
     const calculateTimeLeft = () => {
-        let difference: number = Number(date) - Number(new Date());
-        let timeLeft: {hours: number, minutes: number, seconds: number} = {hours: 0, minutes: 0, seconds: 0};
-        if (difference > 0) {
+        const endDate = new Date(date);
+        const today = new Date();
+        let diffSec: number = Math.abs(endDate.getTime() - today.valueOf());
+        let timeLeft: {days: number, hours: number, minutes: number, seconds: number} = {days: 0, hours: 0, minutes: 0, seconds: 0};
+        if (diffSec > 0) {
             timeLeft = {
-                hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-                minutes: Math.floor((difference / 1000 / 60) % 60),
-                seconds: Math.floor((difference / 1000) % 60)
+                days: Math.floor((diffSec / (1000 * 60 * 60 * 24))),
+                hours: Math.floor((diffSec / (1000 * 60 * 60)) % 24),
+                minutes: Math.floor((diffSec / 1000 / 60) % 60),
+                seconds: Math.floor((diffSec / 1000) % 60)
             }
         }
         return timeLeft;
@@ -142,7 +147,7 @@ const CountDown: FunctionComponent<CountDownProps> = ({date}) => {
 
     return (
         <>
-            {timeLeft && <div className='time-countdown'>
+            {timeLeft && timeLeft.days < 1 ? <div className='time-countdown'>
                 {timeLeft.hours < 10 ? <>
                     <span className='time-countdown__number'>0</span>
                     <span className='time-countdown__number'>{timeLeft.hours}</span>
@@ -166,6 +171,9 @@ const CountDown: FunctionComponent<CountDownProps> = ({date}) => {
                     <span className='time-countdown__number'>{(timeLeft.seconds - timeLeft.seconds % 10) / 10}</span>
                     <span className='time-countdown__number'>{timeLeft.seconds % 10}</span>
                 </>}
+            </div> : 
+            <div className='time-countdown'>
+                {timeLeft.days} gün qaldı. Son tarix: {moment(date).format('D MMMM YYYY')}
             </div>}
         </>
     )

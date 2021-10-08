@@ -425,6 +425,11 @@ h1.title {
     margin-left: 15px;
 }
 
+.success-icon {
+    color: $success-green;
+    margin-right: 10px;
+}
+
 @media screen and (min-width: $width-4K) {
     .container {
         max-width: 2280px !important;
