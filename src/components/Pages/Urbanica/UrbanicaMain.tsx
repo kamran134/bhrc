@@ -176,7 +176,7 @@ const CountDown: FunctionComponent<CountDownProps> = ({date}) => {
                 {timeLeft.days} gün qaldı. Son tarix: {moment(date).format('D MMMM YYYY')}
             </div>}
         </>
-    )
+    );
 }
 
 const BHRCLink = () => (
