@@ -21,7 +21,7 @@ const RegisterForm: FunctionComponent<InjectedFormProps<IAuthForm>> = (props) =>
                 <Field placeholder={t("Repeat password")} component={ModalInput} type='password' name={'passwordRepeat'} />
             </>
             : processStage === 1 && <>
-                <Field placeholder={t("Full name")} component={ModalInput} name={'fullname'} />
+                <Field placeholder={t("Full name")} component={ModalInput} autoComplete={'off'} value={''} name={'fullname'} />
                 <Field placeholder={t("Biography")} component={ModalTextarea} name={'bio'} />
             </>
             }

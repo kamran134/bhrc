@@ -11,7 +11,7 @@ const ModalInput: FunctionComponent<ModalInputProps> = (props) => {
     const {
         placeholder,
         type,
-        input: { onChange },
+        input: { onChange, value },
         meta: { touched, valid, error },
         name,
     } = props;
@@ -21,6 +21,7 @@ const ModalInput: FunctionComponent<ModalInputProps> = (props) => {
             type={type}
             onChange={onChange}
             name={name}
+            value={value}
         />
     )
 }
