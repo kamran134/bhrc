@@ -186,10 +186,12 @@ const CountDown: FunctionComponent<CountDownProps> = ({date}) => {
     );
 }
 
-const BHRCLink = () => (
-    <div className='urbanica-info__go-home'>
-        <Link to='/'><LogoEn className='bhrc-go-home' /></Link>
-    </div>
-);
+const BHRCLink = () => {
+    const dispatch = useDispatch();
+    return (
+        <div className='urbanica-info__go-home'>
+            <Link to='/' onClick={() => dispatch(redirect('/'))} ><LogoEn className='bhrc-go-home' /></Link>
+        </div>
+)};
 
 export default UrbanicaMain;

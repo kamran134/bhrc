@@ -25,7 +25,7 @@ const MainSignIn: FunctionComponent<MainSignInProps> = ({ data }) => {
 
     useEffect(() => {
         if (redirectUrl && redirectUrl !== '' && isAuthenticated) history.push(redirectUrl);
-    });
+    }, [isAuthenticated, redirectUrl]);
 
     return (
         <>
