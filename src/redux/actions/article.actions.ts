@@ -1,0 +1,40 @@
+import API from '../../api';
+import { Action, ActionCreator } from 'redux';
+import { ArticleAction, ArticlesAction, GET_ARTICLES, GET_ARTICLE_BY_NAME, GET_LAST_4_ARTICLES, LastArticlesAction } from '../types';
+import { IArticle } from '../../models';
+import { ThunkAction } from 'redux-thunk';
+import { RootState } from '../reducers';
+
+const _getArticles: ActionCreator<ArticlesAction> = (articles: IArticle[]) => (
+    {
+        type: GET_ARTICLES,
+        payload: articles
+    }
+);
+
+export const getArticles = (page: number, limit: number): ThunkAction<void, RootState, unknown, Action<string>> => dispatch => {
+    API.get(`articles/${limit}/${(page-1)*limit}`)
+        .then(({ data }) => dispatch(_getArticles(data)));
+}
+
+const _getLastArticles: ActionCreator<LastArticlesAction> = (articles: IArticle[]) => (
+    {
+        type: GET_LAST_4_ARTICLES,
+        payload: articles
+    }
+);
+
+export const getLastArticles = (): ThunkAction<void, RootState, unknown, Action<string>> => dispatch => {
+    API.get(`articles/4/0`)
+        .then(({ data }) => dispatch(_getLastArticles(data)));
+}
+
+const _getArticleByName: ActionCreator<ArticleAction> = (article: IArticle) => ({
+    type: GET_ARTICLE_BY_NAME,
+    payload: article
+});
+
+export const getArticleByName = (humanId: string): ThunkAction<void, RootState, unknown, Action<string>> => dispatch => {
+    API.get(`articleByPath/${humanId}`)
+        .then(({ data }) => dispatch(_getArticleByName(data)));
+}

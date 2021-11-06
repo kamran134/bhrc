@@ -1,17 +1,17 @@
-import React, { useEffect, FunctionComponent, ReactChildren } from 'react';
+import React, { useEffect, FunctionComponent } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { Element, scroller } from 'react-scroll';
-import { getArticles } from '../../../redux/actions/article-actions';
+import { getArticles } from '../../../redux/actions/article.actions';
 import { config } from '../../../config';
+import { ReactComponent as SearchIcon } from '../../../assets/images/search-icon.svg';
+import { RootState } from '../../../redux/reducers';
+import { IArticle } from '../../../models';
 import moment from 'moment';
 import 'moment/locale/az';
 import 'moment/locale/ru';
-import { ReactComponent as SearchIcon } from '../../../assets/images/search-icon.svg';
 import './activities.scss';
-import { RootState } from '../../../redux/reducers/rootReducer';
-import { IArticle } from '../../../models/article';
 
 interface ActivitiesMainProps {
     children?: React.ReactElement | React.ReactElement[]

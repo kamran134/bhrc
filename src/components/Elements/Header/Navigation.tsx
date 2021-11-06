@@ -1,19 +1,19 @@
 import React, { FunctionComponent } from 'react';
 import Languages from './Languages';
 import { AiOutlineSearch } from 'react-icons/ai';
-import { activeSearch } from '../../../redux/actions/settings';
-import { connect } from 'react-redux';
-import { RootState } from '../../../redux/reducers/rootReducer';
+import { activeSearch } from '../../../redux/actions';
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from '../../../redux/reducers';
 
-interface NavigationProps {
-    searchActive: boolean,
-    activeSearch: (searchActive: boolean) => void
-}
+const Navigation: FunctionComponent<{}> = (props) => {
+    const { searchActive } = useSelector((state: RootState) => ({
+        searchActive: state.settings.searchActive
+    }));
 
-const Navigation: FunctionComponent<NavigationProps> = ({searchActive, activeSearch}) => {
-    
+    const dispatch = useDispatch();
+
     const searchHandler = () => {
-        activeSearch(!searchActive);
+        dispatch(activeSearch(!searchActive));
     }
 
     return (
@@ -23,15 +23,7 @@ const Navigation: FunctionComponent<NavigationProps> = ({searchActive, activeSea
             </div>
             <Languages />
         </div>
-    )
+    );
 }
 
-const mapStateToProps = (state: RootState) => ({
-    searchActive: state.settings.searchActive
-});
-
-const mapDispatchToProps = {
-    activeSearch
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Navigation);
+export default Navigation;

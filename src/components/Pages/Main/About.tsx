@@ -5,8 +5,8 @@ import HAImg from '../../../assets/images/about/bhrc_7.jpg';
 import { ImArrowRight2 } from 'react-icons/im';
 import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router-dom';
-import { RootState } from '../../../redux/reducers/rootReducer';
-import { IHomePageBlock } from '../../../models/homepage';
+import { RootState } from '../../../redux/reducers';
+import { IHomePageBlock } from '../../../models';
 
 interface AboutProps {
     data: IHomePageBlock

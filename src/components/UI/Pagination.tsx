@@ -5,7 +5,7 @@ const Pagination: FunctionComponent = () => {
         <div className='pagination'>
             
         </div>
-    )
+    );
 }
 
 export default Pagination;

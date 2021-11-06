@@ -20,7 +20,7 @@ const ModalTextarea: FunctionComponent<ModalTextareaProps> = (props) => {
             onChange={onChange}
             name={name}
         />
-    )
+    );
 }
 
 export default ModalTextarea;

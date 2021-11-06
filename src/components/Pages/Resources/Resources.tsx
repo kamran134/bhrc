@@ -7,14 +7,12 @@ import { ReactComponent as FolderIcon } from '../../../assets/images/folder.svg'
 import { ReactComponent as WordIcon } from '../../../assets/images/word-icon.svg';
 import { ReactComponent as PowerPointIcon } from '../../../assets/images/powerpoint-icon.svg';
 import { ReactComponent as PDFIcon } from '../../../assets/images/pdf-icon.svg';
-import './resources.scss';
-import { getCategoryResources, getResourcesCategories } from '../../../redux/actions/resource-action';
-// import moment from 'moment';
+import { getCategoryResources, getResourcesCategories } from '../../../redux/actions';
 import { Element, scroller } from 'react-scroll';
 import { transliterate } from '../../../translit';
-import { RootState } from '../../../redux/reducers/rootReducer';
-import { IAttachment, ICategory, IPresentation, IReport, IResource, IResourceKey, ITopic, IVideo } from '../../../models/resource';
-import { IMultilang } from '../../../models/multilang';
+import { RootState } from '../../../redux/reducers';
+import { IAttachment, ICategory, IPresentation, IReport, IResource, ITopic, IVideo, IMultilang } from '../../../models';
+import './resources.scss';
 
 const Resources: FunctionComponent = () => {
     const dispatch = useDispatch();

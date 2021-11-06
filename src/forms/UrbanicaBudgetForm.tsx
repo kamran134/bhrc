@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useState } from 'react';
 import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 import { useTranslation } from 'react-i18next';
-import { IAuthForm } from '../models/auth';
+import { IAuthForm } from '../models';
 import UrbanicaInput from '../components/UI/UrbanicaInput';
 import UrbanicaSelect from '../components/UI/UrbanicaSelect';
 
@@ -103,7 +103,7 @@ const UrbanicaBudgetForm: FunctionComponent<InjectedFormProps<IAuthForm>> = (pro
                 </div>
             </div>
         </div>
-    )
+    );
 }
 
 export default reduxForm<IAuthForm, any>({

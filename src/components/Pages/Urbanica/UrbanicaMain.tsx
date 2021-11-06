@@ -1,4 +1,5 @@
 import React, { useState, useEffect, FunctionComponent } from 'react';
+import { Redirect } from 'react-router-dom';
 import { ReactComponent as ContestGreen} from '../../../assets/images/urbanica/green.svg';
 import { ReactComponent as ContestGirl} from '../../../assets/images/urbanica/girl.svg';
 import { ReactComponent as TimeSeparator } from '../../../assets/images/urbanica/time-separator.svg';
@@ -8,28 +9,33 @@ import { ReactComponent as LogoEn } from '../../../assets/images/urbanica/bhrc-u
 import { ReactComponent as UrbanicaLeftCircles } from '../../../assets/images/urbanica/urbanica-left-circles.svg';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import './urbanica.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../../redux/reducers/rootReducer';
-import { getCompetition } from '../../../redux/actions/urbanica-actions';
+import { RootState } from '../../../redux/reducers';
+import { getCompetition, openModal, redirect } from '../../../redux/actions';
 import { useHistory } from 'react-router-dom';
-import { openModal } from '../../../redux/actions/settings';
 import moment from 'moment';
 import 'moment/locale/az';
+import './urbanica.scss';
 
 const UrbanicaMain: FunctionComponent = () => {
     const { t } = useTranslation();
     const dispatch = useDispatch();
+    const history = useHistory();
 
-    const { competition, lang, auth } = useSelector((state: RootState) => ({
+    const { competition, lang, auth, redirect } = useSelector((state: RootState) => ({
         competition: state.urbanica.competition,
         lang: state.settings.language,
+        redirect: state.settings.redirect,
         auth: state.auth
     }));
 
     useEffect(() => {
         dispatch(getCompetition());
     }, [dispatch]);
+
+    useEffect(() => {
+        if(redirect && redirect!== '' && auth.isAuthenticated ) history.push(redirect);
+    }, [auth, redirect]);
 
     return (
         <>
@@ -43,7 +49,7 @@ const UrbanicaMain: FunctionComponent = () => {
                             {t("MAKE A STEP")}
                         </div>
                         {competition && 
-                            <Contest 
+                            <Contest
                                 name={competition.name[lang] || competition.name.az}
                                 description={(competition.shortDescription || {})[lang || 'az']}
                                 isAuthenticate={auth.isAuthenticated}
@@ -77,17 +83,17 @@ const UrbanicaMain: FunctionComponent = () => {
                 </div>
             </div>
         </>
-    )
+    );
 }
 
 interface ContestProps {
-    name: string,
-    description: string,
-    isAuthenticate: boolean,
-    endDate: Date
+    name: string;
+    description: string;
+    isAuthenticate: boolean;
+    endDate: Date;
 }
 
-const Contest: FunctionComponent<ContestProps> = ({name, description, isAuthenticate, endDate}) => {
+const Contest: FunctionComponent<ContestProps> = ({ name, description, isAuthenticate, endDate }) => {
     const { t } = useTranslation();
     let history = useHistory();
     const dispatch = useDispatch();
@@ -97,6 +103,7 @@ const Contest: FunctionComponent<ContestProps> = ({name, description, isAuthenti
             history.push('/urbanica/competition');
         } else {
             dispatch(openModal(true));
+            dispatch(redirect('/urbanica/competition'));
         }
     }
 
@@ -111,7 +118,7 @@ const Contest: FunctionComponent<ContestProps> = ({name, description, isAuthenti
             <div className='urbanica-contest__green'><ContestGreen /></div>
             <div className='urbanica-contest__girl'><ContestGirl /></div>
         </div>
-    )
+    );
 }
 
 interface CountDownProps {

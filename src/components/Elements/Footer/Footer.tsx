@@ -1,20 +1,20 @@
 import React, { FunctionComponent } from 'react';
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { ReactComponent as FooterLogoAz } from '../../../assets/images/BHRC_logo_horizontal_az.svg';
 import { ReactComponent as FooterLogoRu } from '../../../assets/images/BHRC_logo_horizontal_ru.svg';
 import { ReactComponent as FooterLogoEn } from '../../../assets/images/BHRC_logo_horizontal_en.svg';
 import { MdLocationOn, MdCall, MdEmail } from 'react-icons/md';
+import { RootState } from '../../../redux/reducers';
 import './footer.scss'
-import { RootState } from '../../../redux/reducers/rootReducer';
 
-interface FooterProps {
-    lang: string
-}
-
-const Footer: FunctionComponent<FooterProps> = props => {
+const Footer: FunctionComponent<{}> = () => {
     const { t } = useTranslation();
+
+    const { lang } = useSelector((state: RootState) => ({
+        lang: state.settings.language
+    }));
 
     return (
         <div className='footer'>
@@ -46,7 +46,7 @@ const Footer: FunctionComponent<FooterProps> = props => {
                     </div>
                     <div className='footer__copyright'>
                         <div className='footer__logo'>
-                            <MultilangLogo language={props.lang} />
+                            <MultilangLogo language={lang} />
                         </div>
                         <div className='text'>2021 BHRC. {t("All Rights Reserved")}</div>
                     </div>
@@ -62,8 +62,4 @@ const MultilangLogo: FunctionComponent<{language: string}> = ({language}) => {
     return <FooterLogoEn className='footer__logo' />
 }
 
-const mapStateToProps = (state: RootState) => ({
-    lang: state.settings.language
-})
-
-export default connect(mapStateToProps)(Footer);
+export default Footer;

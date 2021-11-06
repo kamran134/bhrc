@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 import { useTranslation } from 'react-i18next';
-import { IAuthForm } from '../models/auth';
+import { IAuthForm } from '../models';
 import UrbanicaInput from '../components/UI/UrbanicaInput';
 import UrbanicaTextarea from '../components/UI/UrbanicaTextarea';
 import { ReactComponent as Humans } from '../assets/images/urbanica/humans.svg';
@@ -74,7 +74,7 @@ const UrbanicaGeneralForm: FunctionComponent<InjectedFormProps<IAuthForm>> = (pr
                 <BHRCLogo className='urbanica-container__bhrc-logo' />
             </div>
         </div>
-    )
+    );
 }
 
 export default reduxForm<IAuthForm, any>({

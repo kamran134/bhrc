@@ -2,16 +2,13 @@ import React, { useEffect, FunctionComponent } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import Carousel from 'react-bootstrap/Carousel';
-import PaintBadge from '../../../utils/paint-badge';
 import { ReactComponent as ClockIcon } from '../../../assets/images/clock.svg';
-import { ReactComponent as LocationIcon } from '../../../assets/images/location-pin.svg';
-import { getArticles } from '../../../redux/actions/article-actions';
-import moment from 'moment';
+import { getArticles } from '../../../redux/actions/article.actions';
 import { useTranslation } from 'react-i18next';
 import { TFunction } from 'i18next';
-import { IHomePageBlock } from '../../../models/homepage';
-import { RootState } from '../../../redux/reducers/rootReducer';
-import { IArticle } from '../../../models/article';
+import { RootState } from '../../../redux/reducers';
+import { IHomePageBlock, IArticle } from '../../../models';
+import moment from 'moment';
 
 interface ActivityProps {
     data: IHomePageBlock
@@ -21,7 +18,7 @@ const MainActivity: FunctionComponent<ActivityProps> = ({ data }) => {
     const dispatch = useDispatch();
     const { articles, lang } = useSelector((state: RootState) => ({
         articles: state.news.articles,
-        lang: state.settings.language
+        lang: state.settings.language as string
     }));
 
     const { t } = useTranslation();

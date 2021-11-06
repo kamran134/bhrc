@@ -4,8 +4,8 @@ import { useTranslation } from 'react-i18next';
 import { ReactComponent as BHRCfigure } from '../../../assets/images/new-figure.svg';
 import { ReactComponent as UrbanicaButton } from '../../../assets/images/urbanica-button.svg';
 import { useSelector } from 'react-redux';
-import { RootState } from '../../../redux/reducers/rootReducer';
-import { IHomePageBlock } from '../../../models/homepage';
+import { RootState } from '../../../redux/reducers';
+import { IHomePageBlock } from '../../../models';
 
 interface CoverProps {
     data: IHomePageBlock

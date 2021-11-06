@@ -20,7 +20,7 @@ const UrbanicaTextarea: FunctionComponent<UrbanicaTextareaProps> = (props) => {
             onChange={onChange}
             name={name}
         />
-    )
+    );
 }
 
 export default UrbanicaTextarea;

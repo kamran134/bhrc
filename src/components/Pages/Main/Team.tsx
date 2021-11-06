@@ -4,12 +4,11 @@ import { ReactComponent as Facebook } from '../../../assets/images/circled_faceb
 import { ReactComponent as Instagram } from '../../../assets/images/circled_instagram.svg';
 import { ReactComponent as Twitter } from '../../../assets/images/circled_twitter.svg';
 import { useDispatch, useSelector } from 'react-redux';
-import { getTeam } from '../../../redux/actions/home-actions';
+import { getTeam } from '../../../redux/actions/home.actions';
 import Modal from 'react-bootstrap/Modal';
 import { config } from '../../../config';
-import { RootState } from '../../../redux/reducers/rootReducer';
-import { ITeamMember } from '../../../models/team';
-import { ISocialNetwork } from '../../../models/socialNetwork';
+import { RootState } from '../../../redux/reducers';
+import { ITeamMember, ISocialNetwork } from '../../../models';
 
 const MainTeam: FunctionComponent = () => {
 

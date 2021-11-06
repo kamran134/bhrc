@@ -3,12 +3,12 @@ import ActivitiesMain from './ActivitiesMain';
 import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
-import { getArticleByName } from '../../../redux/actions/article-actions';
+import { getArticleByName } from '../../../redux/actions';
 import { config } from '../../../config';
+import { RootState } from '../../../redux/reducers';
 import moment from 'moment';
 import 'moment/locale/az';
 import 'moment/locale/ru';
-import { RootState } from '../../../redux/reducers/rootReducer';
 
 interface QuizParams {
     id: string;

@@ -23,7 +23,7 @@ const UrbanicaInput: FunctionComponent<UrbanicaInputProps> = (props) => {
             onChange={onChange}
             name={name}
         />
-    )
+    );
 }
 
 export default UrbanicaInput;

@@ -5,8 +5,8 @@ import { useTranslation } from 'react-i18next';
 import { ReactComponent as Facebook } from '../../../assets/images/circled_facebook.svg';
 import { ReactComponent as Instagram } from '../../../assets/images/circled_instagram.svg';
 import { ReactComponent as Twitter } from '../../../assets/images/circled_twitter.svg';
+import { RootState } from '../../../redux/reducers';
 import './header.scss';
-import { RootState } from '../../../redux/reducers/rootReducer';
 
 const Header: FunctionComponent = () => {
     const { t } = useTranslation();

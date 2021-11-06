@@ -6,10 +6,11 @@ import reportWebVitals from './reportWebVitals';
 import { I18nextProvider } from 'react-i18next';
 import i18n from 'i18next';
 import { createStore, applyMiddleware, compose } from 'redux';
-import rootReducer from './redux/reducers/rootReducer';
+import { rootReducer } from './redux/reducers';
 import thunkMiddleware from 'redux-thunk';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
+import { browserHistory } from './history';
 
 let middleware: any;
 

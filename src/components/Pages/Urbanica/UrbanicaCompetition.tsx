@@ -1,38 +1,32 @@
 import React, { FunctionComponent, useState, useEffect } from 'react';
 import { ImArrowRight2 } from 'react-icons/im';
 import UrbanicaGeneralForm from '../../../forms/UrbanicaGeneralForm';
-import { RootState } from '../../../redux/reducers/rootReducer';
-import { submit, FormAction } from "redux-form";
+import { RootState } from '../../../redux/reducers';
+import { submit } from "redux-form";
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { IBudget, IContest, IProject, IProjectBudjet } from '../../../models/urbanica';
-import { getCompetition, sendProject } from '../../../redux/actions/urbanica-actions';
-import { getProfile } from '../../../redux/actions/auth-actions';
-import { IAuthenticate } from '../../../redux/states/auth-state';
+import { useSelector, useDispatch } from 'react-redux';
+import { IBudget, IProject, IProjectBudjet } from '../../../models';
+import { getCompetition, sendProject, getProfile } from '../../../redux/actions';
 import UrbanicaBudgetForm from '../../../forms/UrbanicaBudgetForm';
 import { BsCheckCircle } from 'react-icons/bs';
 import './urbanica.scss';
 
-interface CompetitionProps {
-    submit: (form: string) => FormAction;
-    lang: string;
-    competition?: IContest;
-    response: string;
-    auth?: IAuthenticate;
-    getCompetition: () => void;
-    getProfile: (token: string) => void;
-    sendProject: (project: IProject) => void;
-}
-
-const UrbanicaCompetition: FunctionComponent<CompetitionProps> = (props: CompetitionProps) => {
-    const { submit, competition, auth, getCompetition, sendProject, getProfile, response } = props;
+const UrbanicaCompetition: FunctionComponent<{}> = (props) => {
     const [project, setProject] = useState<IProject>({});
     const [stage, setStage] = useState<number>(0);
 
+    const { competition, auth, response } = useSelector((state: RootState) => ({
+        competition: state.urbanica.competition,
+        auth: state.auth,
+        response: state.urbanica.response
+    }));
+
+    const dispatch = useDispatch();
+
     useEffect(() => {
-        getCompetition();
-        getProfile(auth?.token || '');
-    }, [])
+        dispatch(getCompetition());
+        dispatch(getProfile(auth?.token || ''));
+    }, []);
 
     const submitHandler = (data: any) => {
         let pro: IProject = {
@@ -89,7 +83,7 @@ const UrbanicaCompetition: FunctionComponent<CompetitionProps> = (props: Competi
         }
 
         setProject({...project, budget: bud});
-        sendProject(project);
+        dispatch(sendProject(project));
     }
 
     return (
@@ -104,34 +98,20 @@ const UrbanicaCompetition: FunctionComponent<CompetitionProps> = (props: Competi
             </div> : stage === 0 ? <div className='container'>
                 <UrbanicaGeneralForm onSubmit={submitHandler} />
                 <div className='urbanica-competition__footer'>
-                    <button className='urbanica-btn sign-up' onClick={() => submit("UrbanicaGeneralForm")}>
+                    <button className='urbanica-btn sign-up' onClick={() => dispatch(submit("UrbanicaGeneralForm"))}>
                         İrəli <ImArrowRight2/>
                     </button>
                 </div>
             </div> : <div className='container'>
                 <UrbanicaBudgetForm onSubmit={submitBudget} />
                 <div className='urbanica-competition__footer'>
-                    <button className='urbanica-btn sign-up' onClick={() => submit("UrbanicaBudgetForm")}>
+                    <button className='urbanica-btn sign-up' onClick={() => dispatch(submit("UrbanicaBudgetForm"))}>
                         Göndər <ImArrowRight2/>
                     </button>
                 </div>
             </div>}
         </div>
-        
-    )
+    );
 }
 
-const mapStateToProps = (state: RootState) => ({
-    competition: state.urbanica.competition,
-    auth: state.auth,
-    response: state.urbanica.response
-});
-
-const mapDispatchToProps = {
-    submit,
-    getCompetition,
-    getProfile,
-    sendProject
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(UrbanicaCompetition);
+export default UrbanicaCompetition;

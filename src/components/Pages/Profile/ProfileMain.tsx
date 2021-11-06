@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { ReactComponent as ProfileEllipses } from '../../../assets/images/profile/profile-ellipses.svg';
 import { ReactComponent as FolderIcon } from '../../../assets/images/folder.svg';
 import { useSelector } from 'react-redux';
-import { RootState } from '../../../redux/reducers/rootReducer';
+import { RootState } from '../../../redux/reducers';
 import './profile.scss';
 
 const ProfileMain: FunctionComponent = () => {

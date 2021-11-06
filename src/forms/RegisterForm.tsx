@@ -2,9 +2,9 @@ import React, { FunctionComponent } from 'react';
 import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 import { useTranslation } from 'react-i18next';
 import ModalInput from '../components/UI/ModalInput';
-import { IAuthForm } from '../models/auth';
+import { IAuthForm } from '../models';
 import { useSelector } from 'react-redux';
-import { RootState } from '../redux/reducers/rootReducer';
+import { RootState } from '../redux/reducers';
 import ModalTextarea from '../components/UI/ModalTextarea';
 
 const RegisterForm: FunctionComponent<InjectedFormProps<IAuthForm>> = (props) => {
@@ -26,7 +26,7 @@ const RegisterForm: FunctionComponent<InjectedFormProps<IAuthForm>> = (props) =>
             </>
             }
         </>
-    )
+    );
 }
 
 export default reduxForm<IAuthForm, any>({

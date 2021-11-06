@@ -1,20 +1,19 @@
 import React, { FunctionComponent } from 'react';
-import { connect } from 'react-redux';
-import { setLanguage } from '../../../redux/actions/settings';
+import { useDispatch, useSelector } from 'react-redux';
+import { setLanguage } from '../../../redux/actions/settings.actions';
 import { ReactComponent as FlagAz } from '../../../assets/images/flag-az.svg';
 import { ReactComponent as FlagRu } from '../../../assets/images/flag-ru.svg';
 import { ReactComponent as FlagEn } from '../../../assets/images/flag-en.svg';
-import { RootState } from '../../../redux/reducers/rootReducer';
+import { RootState } from '../../../redux/reducers';
 
-interface LanguagesProps {
-    lang: string,
-    setLanguage: (lang: string) => void;
-}
+const Languages: FunctionComponent<{}> = props => {
+    const { lang } = useSelector((state: RootState) => ({
+        lang: state.settings.language
+    }));
+    const dispatch = useDispatch();
 
-const Languages: FunctionComponent<LanguagesProps> = props => {
-    const { lang } = props;
     const langSelectHandle = (language: string) => {
-        props.setLanguage(language);
+        dispatch(setLanguage(language));
     }
     return (
         <div className='languages'>
@@ -30,15 +29,7 @@ const Languages: FunctionComponent<LanguagesProps> = props => {
                 <FlagEn onClick={() => langSelectHandle('en')} />
             </div>
         </div>
-    )
+    );
 }
 
-const mapStateToProps = (state: RootState) => ({
-    lang: state.settings.language
-});
-
-const mapDispatchToProps = {
-    setLanguage
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Languages);
+export default Languages;

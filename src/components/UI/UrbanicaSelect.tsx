@@ -25,7 +25,7 @@ const UrbanicaSelect: FunctionComponent<UrbanicaSelectProps> = (props) => {
             name={name}
             options={options}
         />
-    )
+    );
 }
 
 export default UrbanicaSelect;

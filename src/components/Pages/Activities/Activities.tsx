@@ -1,16 +1,15 @@
 import React, { useEffect, FunctionComponent } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { getArticles } from '../../../redux/actions/article-actions';
+import { getArticles } from '../../../redux/actions';
+import { IArticle } from '../../../models';
 import { config } from '../../../config';
-// import { useTranslation } from 'react-i18next';
+import ActivitiesMain from './ActivitiesMain';
+import { RootState } from '../../../redux/reducers';
 import moment from 'moment';
 import 'moment/locale/az';
 import 'moment/locale/ru';
-import ActivitiesMain from './ActivitiesMain';
 import './activities.scss';
-import { RootState } from '../../../redux/reducers/rootReducer';
-import { IArticle } from '../../../models/article';
 
 const Activities: FunctionComponent = () => {
     const dispatch = useDispatch();

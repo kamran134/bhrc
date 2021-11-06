@@ -1,8 +1,8 @@
 import React, { FunctionComponent } from 'react';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import { RootState } from '../../redux/reducers/rootReducer';
-import { IAlert } from '../../redux/states/alert-state';
+import { RootState } from '../../redux/reducers';
+import { IAlert } from '../../redux/states';
 
 const AlertMessage: FunctionComponent = () => {
     const { t } = useTranslation();
@@ -20,7 +20,7 @@ const AlertMessage: FunctionComponent = () => {
                 </div>
             ))}
         </div>
-    )
+    );
 }
 
 export default AlertMessage;

@@ -4,12 +4,11 @@ import { useTranslation } from 'react-i18next';
 import { TFunction } from 'i18next';
 import { useHistory } from 'react-router-dom';
 import { ImArrowRight2 } from 'react-icons/im';
-import { getResourcesCategories } from '../../../redux/actions/resource-action';
+import { getResourcesCategories } from '../../../redux/actions';
 import { config } from '../../../config';
 import { transliterate } from '../../../translit';
-import { IHomePageBlock } from '../../../models/homepage';
-import { RootState } from '../../../redux/reducers/rootReducer';
-import { ICategory } from '../../../models/resource';
+import { IHomePageBlock, ICategory } from '../../../models';
+import { RootState } from '../../../redux/reducers';
 
 interface MainResourcesProps {
     data: IHomePageBlock
@@ -40,12 +39,12 @@ const MainResources: FunctionComponent<MainResourcesProps> = ({ data }) => {
                             {data && data.subtitle && <h3 className='main-grey-text'>{data && data.subtitle[lang]}</h3>}
                         </div>
                         <div className='main-resources__blocks'>
-                            {resources && 
+                            {resources ? 
                                 <ResourceBlock 
                                     categories={resources.categories}
                                     lang={lang}
                                     t={t}
-                                    history={history} />}
+                                    history={history} /> : <></>}
                         </div>
                     </div>
                 </div>

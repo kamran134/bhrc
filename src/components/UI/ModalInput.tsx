@@ -23,7 +23,7 @@ const ModalInput: FunctionComponent<ModalInputProps> = (props) => {
             name={name}
             value={value}
         />
-    )
+    );
 }
 
 export default ModalInput;
