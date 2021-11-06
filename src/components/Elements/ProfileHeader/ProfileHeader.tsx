@@ -26,7 +26,7 @@ const ProfileHeader: FunctionComponent = () => {
 
     useEffect(() => {
         if (!auth.isAuthenticated) history.push('/urbanica');
-    }, [auth]);
+    }, [auth, history]);
 
     const signOutHandler = () => {
         dispatch(signOut(auth.user?._id || '', auth.token || ''));

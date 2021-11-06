@@ -35,7 +35,7 @@ const UrbanicaMain: FunctionComponent = () => {
 
     useEffect(() => {
         if(redirect && redirect!== '' && auth.isAuthenticated ) history.push(redirect);
-    }, [auth, redirect]);
+    }, [auth, redirect, history]);
 
     return (
         <>
