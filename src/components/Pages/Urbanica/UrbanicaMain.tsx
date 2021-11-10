@@ -1,5 +1,4 @@
 import React, { useState, useEffect, FunctionComponent } from 'react';
-import { Redirect } from 'react-router-dom';
 import { ReactComponent as ContestGreen} from '../../../assets/images/urbanica/green.svg';
 import { ReactComponent as ContestGirl} from '../../../assets/images/urbanica/girl.svg';
 import { ReactComponent as TimeSeparator } from '../../../assets/images/urbanica/time-separator.svg';

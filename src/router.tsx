@@ -3,8 +3,7 @@ import Header from './components/Elements/Header/Header';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  // Redirect
+  Route
 } from 'react-router-dom';
 import About from './components/Pages/About/About';
 import Main from './components/Pages/Main/Main';
@@ -19,18 +18,11 @@ import Activity from './components/Pages/Activities/Activity';
 import NewsHeader from './components/Elements/NewsHeader/NewsHeader';
 import UrbanicaCompetition from './components/Pages/Urbanica/UrbanicaCompetition';
 import AlertMessage from './components/UI/AlertMessage';
-// import { useSelector } from 'react-redux';
-// import { RootState } from './redux/reducers';
 
-const MyRouter: FunctionComponent<{}> = (props) => {
-    // const { redirect } = useSelector((state: RootState) => ({
-    //     redirect: state.settings.redirect
-    // }));
-
+const MyRouter: FunctionComponent<{}> = () => {
     return (
         <Router>
           <AlertMessage />
-          {/* {redirect && <Redirect to={redirect} />} */}
           <Switch>
             <Route path='/urbanica'>
               <UrbanicaHeader />
@@ -64,7 +56,7 @@ const MyRouter: FunctionComponent<{}> = (props) => {
           </Switch>
           <Footer/>
       </Router>
-    )
+    );
 }
 
 export default MyRouter;

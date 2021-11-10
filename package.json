@@ -8,6 +8,7 @@
         "@testing-library/user-event": "^12.6.2",
         "@types/axios": "^0.14.0",
         "@types/bootstrap": "^5.1.4",
+        "@types/express": "^4.17.13",
         "@types/history": "^4.7.9",
         "@types/i18next": "^13.0.0",
         "@types/i18next-browser-languagedetector": "^3.0.0",

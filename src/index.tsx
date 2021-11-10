@@ -10,7 +10,6 @@ import { rootReducer } from './redux/reducers';
 import thunkMiddleware from 'redux-thunk';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
-import { browserHistory } from './history';
 
 let middleware: any;
 

@@ -59,7 +59,10 @@ const ActivitiesMain: FunctionComponent<ActivitiesMainProps> = props => {
                             <div><img loading='lazy' src={`${config.url.IMAGE_URL}article_images/${article.picture}/original/${article.picture}`} alt={article._id} /></div>
                             <div className='post__date'>
                                 <span className='blue-round'/> {moment(article.createdAt).format('dddd, DD MMMM')}
-                                <h5><Link to={`/activities/${article.path[lang]}`}>{article.name[lang]}</Link></h5>
+                                <h5><Link to={`/activities/${article.path[lang]}`}>
+                                    {article.name[lang].length <= 56 ? article.name[lang] : article.name[lang].substring(0, 56) + ' ...'}
+                                    </Link>
+                                </h5>
                             </div>
                         </div>
                         )}

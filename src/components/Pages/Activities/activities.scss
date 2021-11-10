@@ -29,6 +29,7 @@
                 left: $article-info-left;
                 width: $news-right - 15px;
                 height: $article-info-height;
+                padding: 0 $menu-padding;
                 border-radius: $standart-radius;
                 box-shadow: $standart-shadow;
                 text-align: center;
@@ -186,6 +187,7 @@
                     left: $article-info-left*2;
                     width: ($news-right - 15px)*2;
                     height: $article-info-height*2;
+                    padding: 0 $menu-padding*2;
                     border-radius: $standart-radius*2;
                     h4 {
                         font-size: $footer-font-size*2;
