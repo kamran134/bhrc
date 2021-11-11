@@ -82,5 +82,6 @@
     "Biography": "Özünüz haqqınızda məlumat",
     "Email already exists. [403]": "Bu email ilə istifadəçi artıq mövcuddur",
     "Password mismatch": "Şifrələr uyğun gəlmir",
-    "Successfull register": "Qeydiyyat uğurla tamamlandı"
+    "Successfull register": "Qeydiyyat uğurla tamamlandı",
+    "Select one of the categories above": "Yuxarıdakı kateqoriyalardan birini seçin"
 }

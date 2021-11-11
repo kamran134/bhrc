@@ -104,7 +104,7 @@ const Resources: FunctionComponent = () => {
                 <div className='container'>
                     <div className='container-inner'>
                         <div className='resources-body__topics'>
-                            <h2>{t("Category topics")}</h2>
+                            <h2>{topics ? t("Category topics") : t("Select one of the categories above")}</h2>
                             {topics && topics.map((topic: ITopic) => (
                                 <React.Fragment key={topic._id}>
                                     <div className='topic'>
@@ -141,7 +141,7 @@ const Resources: FunctionComponent = () => {
                 </div>
             </div>
         </>
-    )
+    );
 }
 
 interface MaterialsProps {

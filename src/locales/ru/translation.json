@@ -82,5 +82,6 @@
     "Biography": "Информация о себе",
     "Email already exists. [403]": "Пользователь с таким email уже существует",
     "Password mismatch": "Пароли не совпадают",
-    "Successfull register": "Регистрация успешно завершена"
+    "Successfull register": "Регистрация успешно завершена",
+    "Select one of the categories above": "Выберите одну из категорий выше"
 }
