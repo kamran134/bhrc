@@ -3,18 +3,21 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { Element, scroller } from 'react-scroll';
-import { getArticles } from '../../../redux/actions/article.actions';
+import { getArticles } from '../../../redux/actions';
 import { config } from '../../../config';
 import { ReactComponent as SearchIcon } from '../../../assets/images/search-icon.svg';
 import { RootState } from '../../../redux/reducers';
 import { IArticle } from '../../../models';
+import Pagination from '../../UI/Pagination';
 import moment from 'moment';
 import 'moment/locale/az';
 import 'moment/locale/ru';
 import './activities.scss';
 
 interface ActivitiesMainProps {
-    children?: React.ReactElement | React.ReactElement[]
+    page?: number;
+    count?: number;
+    allNews?: boolean;
 }
 
 const ActivitiesMain: FunctionComponent<ActivitiesMainProps> = props => {
@@ -55,7 +58,7 @@ const ActivitiesMain: FunctionComponent<ActivitiesMainProps> = props => {
                     <div className='popular-block'>
                         <h4>{t("Most read")}</h4>
                         {articles && articles.slice(0, 5).map((article: IArticle) =>
-                        <div className='post'>
+                        <div className='post' key={article._id}>
                             <div><img loading='lazy' src={`${config.url.IMAGE_URL}article_images/${article.picture}/original/${article.picture}`} alt={article._id} /></div>
                             <div className='post__date'>
                                 <span className='blue-round'/> {moment(article.createdAt).format('dddd, DD MMMM')}
@@ -69,6 +72,7 @@ const ActivitiesMain: FunctionComponent<ActivitiesMainProps> = props => {
                     </div>
                 </div>
             </div>
+            {props.allNews && <Pagination page={props.page || 1} url={'/activities'} count={props.count!} />}
         </Element>
     )
 }

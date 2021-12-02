@@ -11,10 +11,9 @@ const INITIAL_STATE: IHomePage = {
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export function homepageReducer(state = INITIAL_STATE, action: HomePageAction) {
-    const { type, payload } = action;
-    switch (type) {
+    switch (action.type) {
         case GET_HOMEPAGE:
-            return {...state, ...payload }
+            return {...state, ...action.payload }
         default:
             return state;
     }

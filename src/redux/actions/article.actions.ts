@@ -1,11 +1,11 @@
 import API from '../../api';
 import { Action, ActionCreator } from 'redux';
-import { ArticleAction, ArticlesAction, GET_ARTICLES, GET_ARTICLE_BY_NAME, GET_LAST_4_ARTICLES, LastArticlesAction } from '../types';
+import { ArticleAction, ArticlesAction, ArticleTypes, COUNT_ARTICLES, GET_ARTICLES, GET_ARTICLE_BY_NAME, GET_LAST_4_ARTICLES, LastArticlesAction } from '../types';
 import { IArticle } from '../../models';
 import { ThunkAction } from 'redux-thunk';
 import { RootState } from '../reducers';
 
-const _getArticles: ActionCreator<ArticlesAction> = (articles: IArticle[]) => (
+const _getArticles: ActionCreator<ArticleTypes> = (articles: IArticle[]) => (
     {
         type: GET_ARTICLES,
         payload: articles
@@ -17,7 +17,7 @@ export const getArticles = (page: number, limit: number): ThunkAction<void, Root
         .then(({ data }) => dispatch(_getArticles(data)));
 }
 
-const _getLastArticles: ActionCreator<LastArticlesAction> = (articles: IArticle[]) => (
+const _getLastArticles: ActionCreator<ArticleTypes> = (articles: IArticle[]) => (
     {
         type: GET_LAST_4_ARTICLES,
         payload: articles
@@ -29,7 +29,7 @@ export const getLastArticles = (): ThunkAction<void, RootState, unknown, Action<
         .then(({ data }) => dispatch(_getLastArticles(data)));
 }
 
-const _getArticleByName: ActionCreator<ArticleAction> = (article: IArticle) => ({
+const _getArticleByName: ActionCreator<ArticleTypes> = (article: IArticle) => ({
     type: GET_ARTICLE_BY_NAME,
     payload: article
 });
@@ -37,4 +37,13 @@ const _getArticleByName: ActionCreator<ArticleAction> = (article: IArticle) => (
 export const getArticleByName = (humanId: string): ThunkAction<void, RootState, unknown, Action<string>> => dispatch => {
     API.get(`articleByPath/${humanId}`)
         .then(({ data }) => dispatch(_getArticleByName(data)));
+}
+
+const _countArticles: ActionCreator<ArticleTypes> = (count: number) => ({
+    type: COUNT_ARTICLES,
+    payload: count
+});
+
+export const countArticles = (): ThunkAction<void, RootState, unknown, Action<string>> => dispatch => {
+    API.get(`getArticlesCount`).then(({ data }) => dispatch(_countArticles(data)));
 }

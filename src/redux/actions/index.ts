@@ -6,3 +6,4 @@ export * from './home.actions';
 export * from './resource.action';
 export * from './settings.actions';
 export * from './urbanica.actions';
+export * from './visitors.action';

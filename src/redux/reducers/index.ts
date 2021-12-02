@@ -7,6 +7,7 @@ import { resourcesReducer } from './resource.reducer'
 import { homepageReducer } from './homepage.reducer';
 import { teamReducer } from './team.reducer';
 import { urbanicaReducer } from './urbanica.reducer';
+import { visitorsReducer } from './visitors.reducer';
 import { reducer as formReducer } from 'redux-form';
 
 export const rootReducer = combineReducers({
@@ -18,6 +19,7 @@ export const rootReducer = combineReducers({
     homepage: homepageReducer,
     team: teamReducer,
     urbanica: urbanicaReducer,
+    visitors: visitorsReducer,
     form: formReducer
 });
 
