@@ -1,6 +1,6 @@
 import API from '../../api';
 import { Action, ActionCreator } from 'redux';
-import { ArticleAction, ArticlesAction, ArticleTypes, COUNT_ARTICLES, GET_ARTICLES, GET_ARTICLE_BY_NAME, GET_LAST_4_ARTICLES, LastArticlesAction } from '../types';
+import { ArticleAction, ArticlesAction, ArticleTypes, COUNT_ARTICLES, GET_ARTICLES, GET_ARTICLE_BY_NAME, GET_LAST_4_ARTICLES, LastArticlesAction, SEARCH_ARTICLES } from '../types';
 import { IArticle } from '../../models';
 import { ThunkAction } from 'redux-thunk';
 import { RootState } from '../reducers';
@@ -46,4 +46,15 @@ const _countArticles: ActionCreator<ArticleTypes> = (count: number) => ({
 
 export const countArticles = (): ThunkAction<void, RootState, unknown, Action<string>> => dispatch => {
     API.get(`getArticlesCount`).then(({ data }) => dispatch(_countArticles(data)));
+}
+
+const _searchArticles: ActionCreator<ArticleTypes> = (articles: IArticle[]) => ({
+    type: SEARCH_ARTICLES,
+    payload: articles
+});
+
+export const searchArticles = (searchString: string, empty?: boolean): ThunkAction<void, RootState, unknown, Action<string>> =>
+dispatch => {
+    !empty ? API.get(`search/${searchString}`).then(({ data }) => dispatch(_searchArticles(data.articles))) :
+    dispatch(_searchArticles([]));
 }

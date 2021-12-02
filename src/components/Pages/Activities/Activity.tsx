@@ -37,8 +37,6 @@ const Activity: FunctionComponent = () => {
 
     moment.locale(lang);
 
-    console.log('seen', seen);
-
     return (
         <ActivitiesMain>
             {article && <>

@@ -25,4 +25,10 @@ export interface CountArticlesAction {
     payload: number;
 }
 
-export type ArticleTypes = ArticlesAction | LastArticlesAction | ArticleAction | CountArticlesAction;
+export const SEARCH_ARTICLES = "SEARCH_ARTICLES";
+export interface SearchArticlesAction {
+    type: typeof SEARCH_ARTICLES;
+    payload: IArticle[];
+}
+
+export type ArticleTypes = ArticlesAction | LastArticlesAction | ArticleAction | CountArticlesAction | SearchArticlesAction;

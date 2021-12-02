@@ -59,6 +59,11 @@
             padding: $search-y $topic-x;
             position: relative;
             margin-bottom: $menu-margin;
+            div {
+                &:first-child {
+                    height: 100%;
+                }
+            }
             input[type='text'] {
                 background-color: $main-grey;
                 border-radius: $standart-radius;
@@ -77,6 +82,20 @@
                 right: $big-margin;
                 top: 50%;
                 transform: translate(0, -50%);
+            }
+            &__item {
+                padding: 20px;
+                width: 325px;
+                border-bottom: 1px solid #cecece;
+                a {
+                    display: flex;
+                }
+            }
+            &__item-image {
+                width: $post-image-width;
+                height: $post-image-height;
+                object-fit: cover;
+                margin-right: $post-image-right;
             }
         }
         .popular-block {

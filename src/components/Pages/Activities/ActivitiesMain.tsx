@@ -1,14 +1,16 @@
-import React, { useEffect, FunctionComponent } from 'react';
+import React, { useEffect, FunctionComponent, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { Element, scroller } from 'react-scroll';
-import { getArticles } from '../../../redux/actions';
+import { getArticles, searchArticles } from '../../../redux/actions';
 import { config } from '../../../config';
 import { ReactComponent as SearchIcon } from '../../../assets/images/search-icon.svg';
 import { RootState } from '../../../redux/reducers';
 import { IArticle } from '../../../models';
 import Pagination from '../../UI/Pagination';
+import Autocomplete from 'react-autocomplete';
+//import 'react-dropdown/style.css';
 import moment from 'moment';
 import 'moment/locale/az';
 import 'moment/locale/ru';
@@ -23,10 +25,12 @@ interface ActivitiesMainProps {
 const ActivitiesMain: FunctionComponent<ActivitiesMainProps> = props => {
     const dispatch = useDispatch();
     const { t } = useTranslation();
+    const [searchString, setSearchString] = useState<string>('');
 
-    const { articles, lang } = useSelector((state: RootState) => ({
+    const { articles, lang, foundArticles } = useSelector((state: RootState) => ({
         articles: state.news.articles,
-        lang: state.settings.language
+        lang: state.settings.language,
+        foundArticles: state.news.foundArticles
     }));
 
     useEffect(() => {
@@ -43,7 +47,21 @@ const ActivitiesMain: FunctionComponent<ActivitiesMainProps> = props => {
     }, []);
 
     moment.locale(lang);
-    
+
+    const searchNewsHandler = (searchString: string) => {
+        setSearchString(searchString);
+        if(searchString.length > 2) dispatch(searchArticles(searchString));
+    }
+
+    const selectNewsHandler = (value: string) => {
+        console.log('selected', value);
+        setSearchString(value);
+    }
+
+    const onFocusHandler = () => {
+        if (searchString.length < 3) dispatch(searchArticles('', true));
+    }
+
     return (
         <Element name='articles' className='articles-body'>
             <div className='container flex-row space-between align-top'>
@@ -52,7 +70,28 @@ const ActivitiesMain: FunctionComponent<ActivitiesMainProps> = props => {
                 </div>
                 <div className='articles-body__right'>
                     <div className='search-block'>
-                        <input type='text' placeholder={t('Search')} />
+                        <Autocomplete 
+                            items={foundArticles}
+                            getItemValue={(item: IArticle) => item.name[lang]}
+                            value={searchString}
+                            onChange={(e) => searchNewsHandler(e.target.value)}
+                            onSelect={(val) => selectNewsHandler(val)}
+                            
+                            renderInput={(props) => (
+                                <input type='text' {...props} placeholder={t('Search')} onFocus={onFocusHandler} />
+                            )}
+                            renderItem={(item, isHighlighted) => (
+                                <div className='search-block__item'>
+                                    <Link to={`/activities/${item.path[lang]}`}>
+                                        <img loading='lazy'
+                                            className='search-block__item-image'
+                                            src={`${config.url.IMAGE_URL}article_images/${item.picture}/original/${item.picture}`}
+                                            alt={item._id} />
+                                        {item.name[lang]}
+                                    </Link>
+                                </div>
+                            )} />
+                        
                         <SearchIcon className='search-icon' />
                     </div>
                     <div className='popular-block'>
