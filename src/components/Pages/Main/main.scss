@@ -31,10 +31,31 @@
                 color: #000;
             }
         }
+        .search-item {
+            padding: 20px;
+            max-height: 200px;
+            overflow: auto;
+            &__category {
+                font-weight: 600;
+                border-bottom: 2px dashed #cecece;
+            }
+            &__item {
+                border-bottom: 1px solid #cecece;
+                padding: 10px 0;
+                display: block;
+                text-decoration: none;
+                &:hover {
+                    background-color: #f7f5f5;
+                }
+                &.highlighted {
+                    background-color: #f7f5f5;
+                }
+            }
+        }
     }
     &__slogan {
         position: absolute;
-        z-index: 2;
+        z-index: 1;
         top: 43%;
         transform: translate(0, -50%);
         font-family: 'candara-italic';
@@ -58,7 +79,7 @@
         }
     }
     &__urbanica {
-        z-index: 2;
+        z-index: 1;
         position: absolute;
         bottom: $urbanica-button-bottom;
         svg {

@@ -1,4 +1,4 @@
-import { IArticle, IAttachment, IPresentation, IReport, IResource, IVideo } from "../../models";
+import { IArticle } from "../../models";
 
 export interface IArticleState {
     articles: IArticle[];
@@ -6,13 +6,4 @@ export interface IArticleState {
     count?: number;
     foundArticles: IArticle[];
     //found?: IFound;
-}
-
-interface IFound {
-    articles: IArticle[];
-    attachments: IAttachment[];
-    informations: IResource[];
-    presentations: IPresentation[];
-    reports: IReport[];
-    videos: IVideo[];
 }

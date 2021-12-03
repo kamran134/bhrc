@@ -55,6 +55,7 @@ const _searchArticles: ActionCreator<ArticleTypes> = (articles: IArticle[]) => (
 
 export const searchArticles = (searchString: string, empty?: boolean): ThunkAction<void, RootState, unknown, Action<string>> =>
 dispatch => {
-    !empty ? API.get(`search/${searchString}`).then(({ data }) => dispatch(_searchArticles(data.articles))) :
+    !empty ? API.get(`searchArticles/${searchString}`)
+        .then(({ data }) => dispatch(_searchArticles(data))) :
     dispatch(_searchArticles([]));
 }

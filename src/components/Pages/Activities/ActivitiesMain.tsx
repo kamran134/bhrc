@@ -54,7 +54,6 @@ const ActivitiesMain: FunctionComponent<ActivitiesMainProps> = props => {
     }
 
     const selectNewsHandler = (value: string) => {
-        console.log('selected', value);
         setSearchString(value);
     }
 
@@ -76,12 +75,11 @@ const ActivitiesMain: FunctionComponent<ActivitiesMainProps> = props => {
                             value={searchString}
                             onChange={(e) => searchNewsHandler(e.target.value)}
                             onSelect={(val) => selectNewsHandler(val)}
-                            
                             renderInput={(props) => (
                                 <input type='text' {...props} placeholder={t('Search')} onFocus={onFocusHandler} />
                             )}
                             renderItem={(item, isHighlighted) => (
-                                <div className='search-block__item'>
+                                <div className={isHighlighted ? 'search-block__item highlighted' : 'search-block__item'}>
                                     <Link to={`/activities/${item.path[lang]}`}>
                                         <img loading='lazy'
                                             className='search-block__item-image'
@@ -90,7 +88,14 @@ const ActivitiesMain: FunctionComponent<ActivitiesMainProps> = props => {
                                         {item.name[lang]}
                                     </Link>
                                 </div>
-                            )} />
+                            )}
+                            menuStyle={{
+                                    left: 0,
+                                    top: 60,
+                                    width: 250,
+                                    position: 'absolute',
+                                    backgroundColor: 'rgba(248,248,248, 1)'
+                            }} />
                         
                         <SearchIcon className='search-icon' />
                     </div>

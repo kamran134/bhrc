@@ -15,7 +15,7 @@ const MainTeam: FunctionComponent = () => {
     const dispatch = useDispatch();
 
     const { team } = useSelector((state: RootState) => ({
-        team: state.team
+        team: state.homepage.teamMembers
     }));
 
     useEffect(() => {
