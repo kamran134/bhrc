@@ -1,6 +1,6 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { ReactComponent as FooterLogoAz } from '../../../assets/images/BHRC_logo_horizontal_az.svg';
 import { ReactComponent as FooterLogoRu } from '../../../assets/images/BHRC_logo_horizontal_ru.svg';
@@ -8,13 +8,20 @@ import { ReactComponent as FooterLogoEn } from '../../../assets/images/BHRC_logo
 import { MdLocationOn, MdCall, MdEmail } from 'react-icons/md';
 import { RootState } from '../../../redux/reducers';
 import './footer.scss'
+import { getStatics } from '../../../redux/actions';
 
 const Footer: FunctionComponent<{}> = () => {
     const { t } = useTranslation();
+    const dispatch = useDispatch();
 
-    const { lang } = useSelector((state: RootState) => ({
-        lang: state.settings.language
+    const { lang, staticPages } = useSelector((state: RootState) => ({
+        lang: state.settings.language,
+        staticPages: state.homepage.staticPages
     }));
+
+    useEffect(() => {
+        dispatch(getStatics(10, 0));
+    }, []);
 
     return (
         <div className='footer'>
@@ -39,9 +46,9 @@ const Footer: FunctionComponent<{}> = () => {
                         </div>
                         <div className='footer-col'>
                             <h2>{t("Reporting")}</h2>
-                            <Link to='/about'><span className='info-item'>{t("Who are we?")}</span></Link>
-                            <span className='info-item'>{t("Financial reports")}</span>
-                            <span className='info-item'>{t("Privacy policy")}</span>
+                            {staticPages && staticPages.slice(0).reverse().map(page => (
+                                <Link to={`/${page.path.az}`}><span className='info-item'>{page.name[lang]}</span></Link>
+                            ))}
                         </div>
                     </div>
                     <div className='footer__copyright'>

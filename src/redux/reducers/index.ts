@@ -5,7 +5,7 @@ import { settingsReducer } from './settings.reducer';
 import { newsReducer } from './article.reducer';
 import { resourcesReducer } from './resource.reducer'
 import { homepageReducer } from './homepage.reducer';
-// import { teamReducer } from './team.reducer';
+import { staticPageReducer } from './staticPage.reducer';
 import { urbanicaReducer } from './urbanica.reducer';
 import { visitorsReducer } from './visitors.reducer';
 import { reducer as formReducer } from 'redux-form';
@@ -17,7 +17,7 @@ export const rootReducer = combineReducers({
     news: newsReducer,
     resources: resourcesReducer,
     homepage: homepageReducer,
-    // team: teamReducer,
+    staticPage: staticPageReducer,
     urbanica: urbanicaReducer,
     visitors: visitorsReducer,
     form: formReducer

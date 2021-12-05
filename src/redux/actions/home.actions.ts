@@ -1,10 +1,11 @@
 import API from "../../api";
-import { GET_HOMEPAGE, GET_TEAM, GLOBAL_SEARCH, HomePageTypes } from "../types";
+import { GET_HOMEPAGE, GET_STATICS, GET_TEAM, GLOBAL_SEARCH, HomePageTypes } from "../types";
 import { Action, ActionCreator } from 'redux';
 import { ThunkAction } from 'redux-thunk';
 import { RootState } from '../reducers';
 import { IHomePage, ITeamMember } from "../../models";
 import { ISearch } from "../../models/search.model";
+import { IStaticPage } from "../../models/staticPages.model";
 
 const _getHomePage: ActionCreator<HomePageTypes> = (homepage: IHomePage) => ({
     type: GET_HOMEPAGE,
@@ -67,4 +68,14 @@ dispatch => {
             
         }) :
     dispatch(_globalSearch(undefined));
+}
+
+const _getStatics: ActionCreator<HomePageTypes> = (staticPages: IStaticPage[]) => ({
+    type: GET_STATICS,
+    payload: staticPages
+});
+
+export const getStatics = (limit: number, skip: number): ThunkAction<void, RootState, unknown, Action<string>> => dispatch => {
+    API.get(`pages/${limit}/${skip}`)
+        .then(({ data }) => dispatch(_getStatics(data)));
 }

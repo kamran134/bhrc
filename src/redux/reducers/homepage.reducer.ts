@@ -1,5 +1,5 @@
 import { IHome } from "../states";
-import { GET_HOMEPAGE, GET_TEAM, GLOBAL_SEARCH, HomePageTypes } from "../types";
+import { GET_HOMEPAGE, GET_STATICS, GET_TEAM, GLOBAL_SEARCH, HomePageTypes } from "../types";
 
 const INITIAL_STATE: IHome = {
     welcome: undefined,
@@ -8,7 +8,8 @@ const INITIAL_STATE: IHome = {
     resources: undefined,
     signin: undefined,
     teamMembers: [],
-    searchResults: []
+    searchResults: [],
+    staticPages: []
 }
 
 // eslint-disable-next-line import/no-anonymous-default-export
@@ -20,6 +21,8 @@ export function homepageReducer(state = INITIAL_STATE, action: HomePageTypes) {
             return {...state, teamMembers: action.payload }
         case GLOBAL_SEARCH:
             return {...state, searchResults: action.payload }
+        case GET_STATICS:
+            return {...state, staticPages: action.payload }
         default:
             return state;
     }

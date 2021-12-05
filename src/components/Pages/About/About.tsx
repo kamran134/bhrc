@@ -15,8 +15,7 @@ const About: FunctionComponent = () => {
                 </div>
             </div>
         </div>
-        
-    )
+    );
 }
 
 export default About;

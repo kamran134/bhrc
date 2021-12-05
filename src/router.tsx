@@ -18,6 +18,7 @@ import Activity from './components/Pages/Activities/Activity';
 import NewsHeader from './components/Elements/NewsHeader/NewsHeader';
 import UrbanicaCompetition from './components/Pages/Urbanica/UrbanicaCompetition';
 import AlertMessage from './components/UI/AlertMessage';
+import StaticPage from './components/Pages/StaticPage/StaticPage';
 
 const MyRouter: FunctionComponent<{}> = () => {
     return (
@@ -48,9 +49,9 @@ const MyRouter: FunctionComponent<{}> = () => {
               <Header/>
               <Switch>
                 <Route path='/' exact component={Main} />
-                <Route path='/about' component={About} />
                 <Route path='resources/:category/:topic' component={Resources} />
                 <Route path='/resources' component={Resources} />
+                <Route path='/:page' component={StaticPage} />
               </Switch>
             </Route>
           </Switch>

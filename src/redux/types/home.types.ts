@@ -1,5 +1,6 @@
 import { IHomePage, ITeamMember } from "../../models";
 import { ISearch } from "../../models/search.model";
+import { IStaticPage } from "../../models/staticPages.model";
 
 //HOME
 export const GET_HOMEPAGE = "GET_HOMEPAGE";
@@ -20,4 +21,10 @@ export interface GlobalSearchAction {
     payload: ISearch[];
 }
 
-export type HomePageTypes = HomePageAction | TeamAction | GlobalSearchAction;
+export const GET_STATICS = "GET_STATICS";
+export interface GetStaticAction {
+    type: typeof GET_STATICS;
+    payload: IStaticPage[];
+}
+
+export type HomePageTypes = HomePageAction | TeamAction | GlobalSearchAction | GetStaticAction;
