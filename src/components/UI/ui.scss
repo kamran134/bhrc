@@ -1,4 +1,9 @@
 @import '../../variables.scss';
+.modal-row {
+    display: flex;
+    position: relative;
+}
+
 .modal-input {
     width: 200px;
     height: 18px;
@@ -8,6 +13,19 @@
     margin: 15px 0;
     font-size: 13px;
     padding: 10px;
+    &.error {
+        border: 2px solid $error-red;
+    }
+    &__error {
+        margin-top: -10px;
+        font-size: $main-font-size;
+        position: absolute;
+        top: 45px;
+        color: #fff;
+        padding: 0 10px;
+        border-radius: 7px;
+        background-color: rgba(244, 67, 54, 0.76);
+    }
 }
 
 .modal-textarea {

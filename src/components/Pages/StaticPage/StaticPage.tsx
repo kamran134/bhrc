@@ -35,8 +35,7 @@ const StaticPage: FunctionComponent = () => {
                 </div>
             </div>
         </div>
-        
-    )
+    );
 }
 
 export default StaticPage;

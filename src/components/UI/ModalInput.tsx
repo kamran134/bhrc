@@ -16,13 +16,18 @@ const ModalInput: FunctionComponent<ModalInputProps> = (props) => {
         name,
     } = props;
     return (
-        <input className='modal-input'
-            placeholder={placeholder}
-            type={type}
-            onChange={onChange}
-            name={name}
-            value={value}
-        />
+        <div className='modal-row'>
+            <input className={(touched && error) ? 'modal-input error' : 'modal-input'}
+                placeholder={placeholder}
+                type={type}
+                onChange={onChange}
+                name={name}
+                value={value}
+            />
+            {touched && error && <span className='modal-input__error'>
+                {error}
+            </span>}
+        </div>
     );
 }
 
