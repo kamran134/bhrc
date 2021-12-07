@@ -34,7 +34,7 @@ const validate = (values: IAuthForm): FormErrors<IAuthForm> => {
     const emailReg: RegExp = new RegExp(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
     const errors: FormErrors<IAuthForm> = {};
     if (!values.email || !values.email.trim().toLowerCase().match(emailReg)) {
-        errors.email = 'Bu email deyil';
+        errors.email = 'Bu, email deyil';
     }
     if (!values.password || values.password.trim() === '') {
         errors.password = 'Şifrə yazmamısınız!';
