@@ -343,8 +343,8 @@
         position: fixed;
         cursor: auto;
         top: 0;
-        right: -100%;
-        transform: translateX(0);
+        right: 0;
+        transform: translateX(100%);
         transition: transform 0.7s linear;
         width: 325px;
         height: 100vh;
@@ -365,7 +365,7 @@
             }
         }
         &.opened {
-            transform: translateX(-123%);
+            transform: translateX(0);
             transition: transform 0.7s cubic-bezier(0.39, 0.58, 0.57, 1);
         }
         &__header {
