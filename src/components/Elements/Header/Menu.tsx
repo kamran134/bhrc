@@ -17,6 +17,7 @@ interface MenuProps {
 const Menu: FunctionComponent<MenuProps> = ({showWhite}) => {
     const { t } = useTranslation();
     const [mobileNavMenu, setMobileNavMenu] = useState<boolean>(false);
+    let navStyle;
     const ref = useRef() as React.MutableRefObject<HTMLDivElement>;
 
     const renderDesktop = () => (
@@ -40,15 +41,15 @@ const Menu: FunctionComponent<MenuProps> = ({showWhite}) => {
             </div>
             <div className='menu__navbar'>
                 <BHRCNavBarIcon onClick={() => setMobileNavMenu(!mobileNavMenu)} />
-                {<MobileNav />}
+                {renderMobileNav()}
             </div>
         </div>
     );
 
-    const MobileNav = () => (
+    const renderMobileNav = () => (        
         <div className={mobileNavMenu ? 'mobile-nav opened' : 'mobile-nav'} ref={ref}>
             <div className='mobile-nav__header'>
-                <IoMdClose onClick={() => setMobileNavMenu(!mobileNavMenu)} />
+                <IoMdClose onClick={(e) => setMobileNavMenu(!mobileNavMenu)} />
             </div>
             <div className='mobile-nav__lang'>
                 <Languages />

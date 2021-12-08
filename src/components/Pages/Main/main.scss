@@ -751,6 +751,9 @@
             flex-direction: column !important;
             align-items: center;
         }
+        &__central-block {
+            width: auto;
+        }
         &__activities {
             position: inherit;
             bottom: 0;
