@@ -68,8 +68,8 @@ const Cover: FunctionComponent<CoverProps> = ({ data }) => {
         }
     }
 
-    return (
-        <div className='cover'>
+    const renderDesktop = () => (
+        <div className='cover desktop'>
             <div className='opacity'/>
             <div className='container'>
                 <div className='container-inner flex-row flex-center'>
@@ -113,6 +113,21 @@ const Cover: FunctionComponent<CoverProps> = ({ data }) => {
                 </div>
             </div>
         </div>
+    );
+
+    const renderMobile = () => (
+        <div className='cover mobile'>
+            <div className='cover__urbanica'>
+                <Link to='/urbanica'><UrbanicaButton /></Link>
+            </div>
+        </div>
+    );
+
+    return (
+        <>
+            {renderDesktop()}
+            {renderMobile()}
+        </>
     );
 }
 

@@ -18,8 +18,6 @@ const Languages: FunctionComponent<{}> = props => {
     return (
         <div className='languages'>
             <div className={lang === 'az' ? 'lang checked': 'lang'}>
-                {/* <input name='lang' id='az' value='az' type='radio' checked={lang === 'az'} onChange={langSelectHandle} />
-                <label htmlFor='az'>Az</label> */}
                 <FlagAz onClick={() => langSelectHandle('az')} />
             </div>
             <div className={lang === 'ru' ? 'lang checked': 'lang'}>

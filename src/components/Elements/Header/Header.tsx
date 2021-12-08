@@ -7,6 +7,7 @@ import { ReactComponent as Instagram } from '../../../assets/images/circled_inst
 import { ReactComponent as Twitter } from '../../../assets/images/circled_twitter.svg';
 import { RootState } from '../../../redux/reducers';
 import './header.scss';
+import 'react-bootstrap';
 
 const Header: FunctionComponent = () => {
     const { t } = useTranslation();
@@ -26,9 +27,10 @@ const Header: FunctionComponent = () => {
             setShowWhite(false);
         }
     }
+
     return (
         <div className='header'>
-            <div className={'header__follow'}>
+            <div className={'header__follow desktop'}>
                 <span>{t('Follow us')}</span>
                 <span className='icon'><Twitter/></span>
                 <a href='https://www.facebook.com/BakuHumanRightsClub' target={'__blanck'}>
@@ -40,7 +42,7 @@ const Header: FunctionComponent = () => {
                 <Menu showWhite={showWhite} />
             </div>
         </div>
-    )
+    );
 }
 
 const mapStateToProps = (state: RootState) => ({

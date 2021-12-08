@@ -712,6 +712,34 @@
 }
 
 @media screen and (max-width: $width-mobile) {
+    .cover {
+        display: flex;
+        justify-content: center;
+        background: none;
+        height: auto;
+        &__urbanica {
+            z-index: 1;
+            position: inherit;
+            bottom: 0;
+            svg {
+                cursor: pointer;
+                #Image_24-2 {
+                    fill: #6499d9;
+                }
+            }
+        }
+    }
+
+    .main-about {
+        &__left {
+            margin-bottom: $big-margin;
+            text-align: center;
+        }
+        &__footer {
+            justify-content: center;
+        }
+    }
+
     .main-activity {
         height: auto;
         .main-activity-flex {

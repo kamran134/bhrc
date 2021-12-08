@@ -310,3 +310,108 @@
         }
     }
 }
+
+@media screen and (max-width: $width-mobile) {
+    .header {
+        padding-top: 15px;
+        &__navbar {
+            background-color: transparent;
+        }
+    }
+
+    .menu {
+        height: 48px;
+        margin-bottom: 15px;
+        padding: 0 30px;
+        justify-content: space-between;
+        &__logo {
+            width: 48px;
+            height: 48px;
+            top: 0;
+            position: inherit;
+            svg {
+                width: 46px;
+                transform: translate(-7%, -50%);
+            }
+        }
+        &__navbar {
+            cursor: pointer;
+        }
+    }
+
+    .mobile-nav {
+        position: fixed;
+        cursor: auto;
+        top: 0;
+        right: -100%;
+        transition: right 0.7s linear;
+        width: 325px;
+        height: 100vh;
+        background: rgba(242,146,28, 0.91);
+        background: linear-gradient(90deg, rgba(242,146,28,0.91) 0%, rgba(242,145,27,0.91) 50%, rgba(242,197,61,0.91) 100%);
+        padding: 27px 22px;
+        ul {
+            list-style-type: none;
+            padding: 0;
+            li {
+                margin-bottom: $big-margin;
+                font-family: 'Candara';
+                font-size: 20px;
+            }
+            a {
+                color: #fff;
+                text-decoration: none;
+            }
+        }
+        &.opened {
+            right: 0;
+            transition: right 0.7s cubic-bezier(0.39, 0.58, 0.57, 1);
+        }
+        &__header {
+            font-size: 40px;
+            margin-top: -7px;
+            color: #fff;
+            display: flex;
+            justify-content: flex-end;
+            svg {
+                cursor: pointer;
+            }
+        }
+        &__lang {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 16px;
+        }
+        &__footer {
+            color: #fff;
+            border-top: 2px solid #fff;
+            padding-top: 30px;
+            svg {
+                fill: #fff;
+                height: 26px;
+                .st0 {
+                    fill: #fff;
+                }
+                .st01 {
+                    fill: #000;
+                }
+            }
+            &__social {
+                display: flex;
+                margin-top: 16px;
+                svg {
+                    width: 18px;
+                    height: 18px;
+                    margin-right: 6px;
+                    &:last-child {
+                        margin-right: 0;
+                    }
+                }
+            }
+        }
+    }
+
+    .languages {
+        margin-left: 0;
+    }
+}

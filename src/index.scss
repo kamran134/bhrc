@@ -549,12 +549,12 @@ h1.title {
 
 @media screen and (max-width: $width-mobile) {
     .desktop {
-        display: none;
+        display: none !important;
     }
 }
 
 @media screen and (min-width: ($width-mobile + 1)) {
     .mobile {
-        display: none;
+        display: none !important;
     }
 }
