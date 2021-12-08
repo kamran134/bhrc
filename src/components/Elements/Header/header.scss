@@ -376,6 +376,9 @@
             svg {
                 cursor: pointer;
             }
+            &.white-header {
+                width: 100vw;
+            }
         }
         &__lang {
             display: flex;

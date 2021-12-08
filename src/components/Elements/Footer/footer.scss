@@ -110,5 +110,16 @@
                 align-items: center;
             }
         }
+        &__copyright {
+            width: 100vw;
+        }
+    }
+}
+
+@media screen and (max-width: $width-mobile) {
+    .footer {
+        &__copyright {
+            width: 100vw;
+        }
     }
 }

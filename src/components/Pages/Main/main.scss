@@ -146,8 +146,9 @@
         text-align: center;
     }
     &__activities {
-        position: absolute;
-        bottom: $main-activity-bottom;
+        // position: absolute;
+        // bottom: $main-activity-bottom;
+        margin-top: -185px;
     }
     .activity-block {
         width: $main-activity-width;
@@ -198,6 +199,9 @@
     }
     .carousel-inner {
         overflow: visible;
+        margin: 0 50%;
+        width: fit-content;
+        transform: translate(-50%, 0);
     }
     .carousel-indicators {
         bottom: $main-indicator-bottom !important;
@@ -755,6 +759,7 @@
                 display: flex;
                 flex-direction: column;
                 align-items: center;
+                overflow: hidden;
             }
             .carousel-item {
                 margin-right: 0;

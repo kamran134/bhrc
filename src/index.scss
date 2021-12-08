@@ -541,6 +541,14 @@ h1.title {
 }
 
 @media screen and (max-width: $width-first) {
+    .container {
+        &-inner {
+            width: 100vw;
+            &.urbanica-container {
+                width: 100vw;
+            }
+        }
+    }
     .main-about-flex {
         flex-direction: column !important;
         align-items: center !important;
@@ -550,6 +558,14 @@ h1.title {
 @media screen and (max-width: $width-mobile) {
     .desktop {
         display: none !important;
+    }
+    .container {
+        &-inner {
+            width: 100vw;
+            &.urbanica-container {
+                width: 100vw;
+            }
+        }
     }
 }
 

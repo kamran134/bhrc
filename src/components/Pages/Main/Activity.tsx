@@ -39,11 +39,11 @@ const MainActivity: FunctionComponent<ActivityProps> = ({ data }) => {
                             {data && data.subtitle && <div className='main-activity__central-block'>
                                 <h3 className='white-text'>{data.subtitle[lang]}</h3>
                             </div>}
-                            <Activities articles={articles} lang={lang} className='desktop' />
                         </div>
                     </div>
                 </div>
             </div>
+            <Activities articles={articles} lang={lang} className='desktop' />
             <Activities articles={articles} lang={lang} className='mobile' />
         </div>
     );
@@ -59,28 +59,26 @@ const Activities: FunctionComponent<ActivitiesProps> = (props) => {
     const { t } = useTranslation();
     const { articles, lang, className } = props;
     return (
-        <div className={`main-activity__activities ${className || ''}`}>
-            <Carousel controls={false}>
-                <Carousel.Item>
-                    <div className='flex-row flex-center container-inner main-activity-flex'>
-                    {articles.map((article, i) =>
-                        i < 2 && (
-                            <NewsBlock article={article} lang={lang} key={article._id} t={t} />
-                        )
-                    )}
-                    </div>
-                </Carousel.Item>
-                {articles.length > 2 && <Carousel.Item>
-                    <div className='flex-row flex-center container-inner main-activity-flex'>
-                    {articles.map((article, i) =>
-                        i >= 2 && (
-                            <NewsBlock article={article} lang={lang} key={article._id} t={t} />
-                        )
-                    )}
-                    </div>
-                </Carousel.Item>}
-            </Carousel>
-        </div>
+        <Carousel controls={false} className={`main-activity__activities ${className || ''}`}>
+            <Carousel.Item>
+                <div className='flex-row flex-center container-inner main-activity-flex'>
+                {articles.map((article, i) =>
+                    i < 2 && (
+                        <NewsBlock article={article} lang={lang} key={article._id} t={t} />
+                    )
+                )}
+                </div>
+            </Carousel.Item>
+            {articles.length > 2 && <Carousel.Item>
+                <div className='flex-row flex-center container-inner main-activity-flex'>
+                {articles.map((article, i) =>
+                    i >= 2 && (
+                        <NewsBlock article={article} lang={lang} key={article._id} t={t} />
+                    )
+                )}
+                </div>
+            </Carousel.Item>}
+        </Carousel>
     );
 }
 
