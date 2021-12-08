@@ -670,3 +670,79 @@
         }
     }
 }
+
+/* FOR VERY SMALL MONITORS */
+@media screen and (max-width: $width-first) {
+    .main-about {
+        &__left {
+            margin-bottom: $big-margin;
+        }
+        &__right {
+            .about-circle-images {
+                height: $big-circle-size;       
+            }
+        }
+    }
+
+    .main-activity {
+        &__background {
+            background-position-y: -50px;
+        }
+    }
+
+    .main-resources {
+        &__blocks {
+            flex-direction: column;
+            align-items: center;
+            .resource-block {
+                margin-bottom: $big-margin;
+            }
+        }
+    }
+
+    .main-team {
+        &__members {
+            flex-direction: column;
+            align-items: center;
+            .member {
+                margin-bottom: $big-margin;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: $width-mobile) {
+    .main-activity {
+        height: auto;
+        .main-activity-flex {
+            display: flex;
+            flex-direction: column !important;
+            align-items: center;
+        }
+        &__activities {
+            position: inherit;
+            bottom: 0;
+            margin-top: -1 * $hundred-margin;
+            .carousel-inner {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .carousel-item {
+                margin-right: 0;
+                &.active {
+                    display: flex;
+                }
+            }
+        }
+        .activity-block {
+            margin-right: 0;
+            margin-left: 0;
+            margin-bottom: $big-margin;
+        }
+    }
+
+    .main-resources {
+        margin-top: 0;
+    }
+}

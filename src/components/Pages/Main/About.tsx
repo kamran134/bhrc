@@ -22,8 +22,7 @@ const MainAbout: FunctionComponent<AboutProps> = ({data}) => {
         <div className='main-about'>
             <div className='container'>
                 <div className='container-inner'>
-                    {/* <PaintBadge title={'About'} /> */}
-                    <div className='flex-row space-between'>
+                    <div className='flex-row space-between main-about-flex'>
                         <div className='main-about__left'>
                             {data && data.title && <h2 className='main-blue-text'>{data.title[lang]}</h2>}
                             {data && data.subtitle && <h3 className='main-orange-text'>{data.subtitle[lang]}</h3>}
@@ -35,7 +34,7 @@ const MainAbout: FunctionComponent<AboutProps> = ({data}) => {
                                 <button className='bhrc-btn blue-btn'>{t("Support us")} <ImArrowRight2/></button>
                             </div>
                         </div>
-                        <div className='main-about__right'>
+                        <div className='main-about__right desktop'>
                             <div className='about-circle-images'>
                                 <img className='small-circle' src={FontanImg} alt={'woman'} />
                                 <img className='big-circle' src={HAImg} alt={'man'} />

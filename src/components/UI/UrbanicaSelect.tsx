@@ -12,9 +12,9 @@ interface UrbanicaSelectProps extends WrappedFieldProps {
 
 const UrbanicaSelect: FunctionComponent<UrbanicaSelectProps> = (props) => {
     const {
-        placeholder,
+        //placeholder,
         input: { onChange },
-        meta: { touched, valid, error },
+        //meta: { touched, valid, error },
         name,
         options,
     } = props;

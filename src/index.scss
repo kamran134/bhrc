@@ -539,3 +539,22 @@ h1.title {
         }
     }
 }
+
+@media screen and (max-width: $width-first) {
+    .main-about-flex {
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+}
+
+@media screen and (max-width: $width-mobile) {
+    .desktop {
+        display: none;
+    }
+}
+
+@media screen and (min-width: ($width-mobile + 1)) {
+    .mobile {
+        display: none;
+    }
+}

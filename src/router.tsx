@@ -5,7 +5,6 @@ import {
   Switch,
   Route
 } from 'react-router-dom';
-import About from './components/Pages/About/About';
 import Main from './components/Pages/Main/Main';
 import Footer from './components/Elements/Footer/Footer';
 import Activities from './components/Pages/Activities/Activities';

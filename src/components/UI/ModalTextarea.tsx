@@ -11,7 +11,7 @@ const ModalTextarea: FunctionComponent<ModalTextareaProps> = (props) => {
     const {
         placeholder,
         input: { onChange },
-        meta: { touched, valid, error },
+        //meta: { touched, valid, error },
         name,
     } = props;
     return (

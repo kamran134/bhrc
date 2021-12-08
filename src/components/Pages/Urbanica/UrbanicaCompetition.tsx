@@ -11,7 +11,7 @@ import UrbanicaBudgetForm from '../../../forms/UrbanicaBudgetForm';
 import { BsCheckCircle } from 'react-icons/bs';
 import './urbanica.scss';
 
-const UrbanicaCompetition: FunctionComponent<{}> = (props) => {
+const UrbanicaCompetition: FunctionComponent = () => {
     const [project, setProject] = useState<IProject>({});
     const [stage, setStage] = useState<number>(0);
 
@@ -26,7 +26,7 @@ const UrbanicaCompetition: FunctionComponent<{}> = (props) => {
     useEffect(() => {
         dispatch(getCompetition());
         dispatch(getProfile(auth?.token || ''));
-    }, []);
+    }, [auth, dispatch]);
 
     const submitHandler = (data: any) => {
         let pro: IProject = {

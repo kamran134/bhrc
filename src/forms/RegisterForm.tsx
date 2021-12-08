@@ -6,7 +6,6 @@ import { IAuthForm } from '../models';
 import { useSelector } from 'react-redux';
 import { RootState } from '../redux/reducers';
 import ModalTextarea from '../components/UI/ModalTextarea';
-import { IAuth } from '../redux/states';
 
 const RegisterForm: FunctionComponent<InjectedFormProps<IAuthForm>> = (props) => {
     const { t } = useTranslation();

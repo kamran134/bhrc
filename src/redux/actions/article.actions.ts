@@ -1,6 +1,6 @@
 import API from '../../api';
 import { Action, ActionCreator } from 'redux';
-import { ArticleAction, ArticlesAction, ArticleTypes, COUNT_ARTICLES, GET_ARTICLES, GET_ARTICLE_BY_NAME, GET_LAST_4_ARTICLES, LastArticlesAction, SEARCH_ARTICLES } from '../types';
+import { ArticleTypes, COUNT_ARTICLES, GET_ARTICLES, GET_ARTICLE_BY_NAME, GET_LAST_4_ARTICLES, SEARCH_ARTICLES } from '../types';
 import { IArticle } from '../../models';
 import { ThunkAction } from 'redux-thunk';
 import { RootState } from '../reducers';

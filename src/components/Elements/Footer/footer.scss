@@ -96,3 +96,19 @@
         }
     }
 }
+
+@media screen and (max-width: $width-first) {
+    .footer {
+        &__information {
+            flex-direction: column;
+            align-items: center;
+            .footer-col {
+                width: 100%;
+                margin-bottom: $big-margin;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    }
+}

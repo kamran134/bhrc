@@ -1,5 +1,4 @@
 import React, { FunctionComponent, useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getStaticPage } from '../../../redux/actions';
@@ -11,7 +10,6 @@ interface QuizParams {
 }
 
 const StaticPage: FunctionComponent = () => {
-    const { t } = useTranslation();
     const { page } = useParams<QuizParams>();
     const dispatch = useDispatch();
 
@@ -22,7 +20,7 @@ const StaticPage: FunctionComponent = () => {
 
     useEffect(() => {
         dispatch(getStaticPage(page));
-    }, [page]);
+    }, [page, dispatch]);
 
     return (
         <div className='static-page'>

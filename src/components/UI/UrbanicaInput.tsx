@@ -13,7 +13,7 @@ const UrbanicaInput: FunctionComponent<UrbanicaInputProps> = (props) => {
         placeholder,
         type,
         input: { onChange },
-        meta: { touched, valid, error },
+        //meta: { touched, valid, error },
         name,
     } = props;
     return (

@@ -12,7 +12,7 @@ const ModalInput: FunctionComponent<ModalInputProps> = (props) => {
         placeholder,
         type,
         input: { onChange, value },
-        meta: { touched, valid, error },
+        meta: { touched, error },
         name,
     } = props;
     return (

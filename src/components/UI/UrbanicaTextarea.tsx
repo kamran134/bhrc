@@ -11,7 +11,7 @@ const UrbanicaTextarea: FunctionComponent<UrbanicaTextareaProps> = (props) => {
     const {
         placeholder,
         input: { onChange },
-        meta: { touched, valid, error },
+        //meta: { touched, valid, error },
         name,
     } = props;
     return (
