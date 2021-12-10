@@ -26,7 +26,7 @@ const UrbanicaCompetition: FunctionComponent = () => {
     useEffect(() => {
         dispatch(getCompetition());
         dispatch(getProfile(auth?.token || ''));
-    }, [auth, dispatch]);
+    }, []);
 
     const submitHandler = (data: any) => {
         let pro: IProject = {
@@ -82,8 +82,7 @@ const UrbanicaCompetition: FunctionComponent = () => {
             others: othersArr            
         }
 
-        setProject({...project, budget: bud});
-        dispatch(sendProject(project));
+        dispatch(sendProject({...project, budget: bud}));
     }
 
     return (

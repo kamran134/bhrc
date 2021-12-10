@@ -20,11 +20,11 @@
     }
     .urbanica-contest {
         font-family: Arial, Helvetica, sans-serif;
-        width: 750px;
+        //width: 750px;
         min-height: 306px;
         border-radius: 39px;
         background-color: $urbanica-pink;
-        padding: 65px 230px 35px 144px;
+        padding: 65px 144px 35px 144px;
         position: relative;
         margin-bottom: 40px;
         &__name {
@@ -33,7 +33,7 @@
         }
         &__description {
             font-size: 15px;
-            width: 225px;
+            //width: 225px;
             margin-bottom: 28px;
         }
         &__green {
@@ -50,7 +50,7 @@
             right: 0;
             svg {
                 width: 165px;
-                height: calc((278px * 165) / 235)calc((278px * 165) / 235);
+                height: calc((278px * 165) / 235);
             }
         }
     }

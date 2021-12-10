@@ -43,7 +43,7 @@ const ProfileMain: FunctionComponent = () => {
                     <ProfileEllipses className='left-corner' />
                     <ProfileEllipses className='right-corner' />
                     <div className='profile-badge'>
-                        #MyWorks
+                        {t("#MyWorks")}
                     </div>
                     <div className='profile-files'>
                         <div className='profile-files__file'>

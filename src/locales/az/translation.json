@@ -84,5 +84,7 @@
     "Password mismatch": "Şifrələr uyğun gəlmir",
     "Successfull register": "Qeydiyyat uğurla tamamlandı",
     "Select one of the categories above": "Yuxarıdakı kateqoriyalardan birini seçin",
-    "Informations": "Məlumat"
+    "Informations": "Məlumat",
+    "#AboutME": "#ÖzümHaqqımda",
+    "#MyWorks": "#Layihələrim"
 }
