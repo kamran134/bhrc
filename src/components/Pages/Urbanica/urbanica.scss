@@ -48,6 +48,10 @@
             position: absolute;
             bottom: 0;
             right: 0;
+            svg {
+                width: 165px;
+                height: calc((278px * 165) / 235)calc((278px * 165) / 235);
+            }
         }
     }
     // &__go-home {

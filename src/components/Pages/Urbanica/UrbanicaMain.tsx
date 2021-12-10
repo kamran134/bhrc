@@ -50,7 +50,7 @@ const UrbanicaMain: FunctionComponent = () => {
                         {competition && 
                             <Contest
                                 name={competition.name[lang] || competition.name.az}
-                                description={(competition.shortDescription || {})[lang || 'az']}
+                                description={(competition.description || {})[lang || 'az']}
                                 isAuthenticate={auth.isAuthenticated}
                                 endDate={competition.endDate} />}
                     </div>
@@ -109,7 +109,7 @@ const Contest: FunctionComponent<ContestProps> = ({ name, description, isAuthent
     return (
         <div className='urbanica-contest'>
             <div className='urbanica-contest__name'>{name}</div>
-            <div className='urbanica-contest__description'>{description}</div>
+            <div className='urbanica-contest__description' dangerouslySetInnerHTML={{__html: description}} />
             <div className='urbanica-contest__join'>
                 <button className='urbanica-btn orange-btn' onClick={participateHandler} >{t("Participate").toLocaleUpperCase()}</button>
             </div>
