@@ -9,7 +9,7 @@ import ModalTextarea from '../components/UI/ModalTextarea';
 
 const RegisterForm: FunctionComponent<InjectedFormProps<IAuthForm>> = (props) => {
     const { t } = useTranslation();
-    const {processStage } = useSelector((state: RootState) => ({
+    const { processStage } = useSelector((state: RootState) => ({
         processStage: state.auth.processStage
     }));
 

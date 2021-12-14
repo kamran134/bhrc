@@ -30,7 +30,7 @@ const UrbanicaMain: FunctionComponent = () => {
 
     useEffect(() => {
         dispatch(getCompetition());
-    }, [dispatch]);
+    }, []);
 
     useEffect(() => {
         if(redirect && redirect!== '' && auth.isAuthenticated ) history.push(redirect);

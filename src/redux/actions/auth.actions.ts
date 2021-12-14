@@ -6,17 +6,16 @@ import {
     USER_LOADED,
     REGISTER_STAGE,
     REGISTER_SUCCESS,
-    SignUpAction,
-    SingInAction,
-    SingOutAction
+    AuthType,
+    GET_USER_PROJECTS
 } from '../types';
 import { ThunkAction } from 'redux-thunk';
 import { Action, ActionCreator } from 'redux';
 import { RootState } from '../reducers';
 import { _hasError, setAlert, openModal, redirect } from '.';
-import { IUser, IUserInfo } from '../../models';
+import { IProject, IUser, IUserInfo } from '../../models';
 
-const _signIn: ActionCreator<SingInAction> = (token: string) => ({
+const _signIn: ActionCreator<AuthType> = (token: string) => ({
     type: AUTH_SUCCESS,
     payload: token
 });
@@ -46,7 +45,7 @@ export const signIn = (identifier: string, password: string, redirect?: string):
     });
 }
 
-const _signOut: ActionCreator<SingOutAction> = () => ({
+const _signOut: ActionCreator<AuthType> = () => ({
     type: LOGOUT
 });
 
@@ -60,7 +59,7 @@ export const signOut = (userId: string, token: string): ThunkAction<void, RootSt
     });
 }
 
-const _signUp: ActionCreator<SignUpAction> = (token: string) => ({
+const _signUp: ActionCreator<AuthType> = (token: string) => ({
     type: REGISTER_SUCCESS,
     payload: token
 });
@@ -83,7 +82,7 @@ export const signUp = (user: IUser): ThunkAction<void, RootState, unknown, Actio
     });
 }
 
-const _getProfile: ActionCreator<GetProfileAction> = (profile: IUserInfo) => ({
+const _getProfile: ActionCreator<AuthType> = (profile: IUserInfo) => ({
     type: USER_LOADED,
     payload: profile
 });
@@ -95,6 +94,18 @@ export const getProfile = (token: string): ThunkAction<void, RootState, unknown,
         if (data.error) {
             dispatch(_hasError(data))
         } else dispatch(_getProfile(data))
+    });
+}
+
+const _getUserProjects: ActionCreator<AuthType> = (projects: IProject[]) => ({
+    type: GET_USER_PROJECTS,
+    payload: projects
+});
+
+export const getUserProjects = (userId: string, limit: number, skip: number): ThunkAction<void, RootState, unknown, Action<string>> => dispatch => {
+    API.get(`projectsByUser/${userId}/${limit}/${skip}`).then(({ data }) => {
+        if (data.error) dispatch(_hasError(data));
+        else dispatch(_getUserProjects(data));
     });
 }
 

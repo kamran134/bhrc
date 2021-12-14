@@ -133,6 +133,12 @@
 .urbanica-competition {
     &__footer {
         margin-bottom: $big-margin;
+        display: flex;
+        button {
+            &:first-child {
+                margin-right: $medium-margin;
+            }
+        }
     }
     .success {
         margin-bottom: $big-margin;
@@ -141,8 +147,10 @@
 
 .urbanica-container {
     position: relative;
+    background-color: #fff;
+    border-radius: $standart-radius;
     &:first-child {
-        margin-top: -$large-margin;
+        margin-top: $urbanica-margin;
     }
     &:last-child {
         padding-bottom: 170px;

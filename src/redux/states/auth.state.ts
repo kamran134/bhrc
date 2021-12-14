@@ -1,4 +1,4 @@
-import { IUserInfo } from "../../models";
+import { IProject, IUserInfo } from "../../models";
 import { IError } from "./";
 
 export interface IAuth {
@@ -17,5 +17,6 @@ export interface IAuthenticate {
     token?: string;
     isAuthenticated: boolean;
     user?: IUserInfo;
+    userProjects?: IProject[];
     processStage: number;
 }

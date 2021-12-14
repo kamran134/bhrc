@@ -22,7 +22,7 @@ const ProfileHeader: FunctionComponent = () => {
 
     useEffect(() => {
         dispatch(getProfile(auth.token || ''));
-    }, [auth, dispatch]);
+    }, []);
 
     useEffect(() => {
         if (!auth.isAuthenticated) history.push('/urbanica');

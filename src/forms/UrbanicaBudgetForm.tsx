@@ -18,68 +18,6 @@ const UrbanicaBudgetForm: FunctionComponent<InjectedFormProps<IAuthForm>> = (pro
     const [gadjets, setGadjets] = useState<number>(1);
     const [others, setOthers] = useState<number>(1);
 
-    const renderForms = (order: number, selector: number, setSelector: (selector: number) => void, label: string) => {
-        return (
-            <div>
-                <p className='candara'>
-                    <span className='urbanica-badge centered-text'>{order}</span>
-                    <span className='with-badge'>{t(label)}</span>
-                </p>
-                <div className='budget-table'>
-                    <div className='budget-table__row'>
-                        <div className='budget-table__th-1'>
-                            <label className='main-blue-text candara'>{t('Xərclərin növü')}</label>
-                        </div>
-                        <div className='budget-table__th-2'>
-                            <label className='main-blue-text candara'>{t('Vahid')}</label>
-                        </div>
-                        <div className='budget-table__th-3'>
-                            <label className='main-blue-text candara'>{t('Kəmiyyət')}</label>
-                        </div>
-                        <div className='budget-table__th-4'>
-                            <label className='main-blue-text candara'>{t('Vahidin qiyməti')}</label>
-                        </div>
-                    </div>
-                    {renderFields(selector, order)}
-                    <div className='budget-table__row'>
-                        <div className='budget-table__th-1'>
-                            <label className='main-blue-text candara'>{t('Cəmi')}:</label>
-                        </div>
-                        <div className='budget-table__th-2' />
-                        <div className='budget-table__th-3' />
-                        <div className='budget-table__th-4'>
-                            <button className='urbanica-btn blue-btn' onClick={() => setSelector(selector+1)}>+</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        )
-    }
-
-    const renderFields = (selector: number, order: number) => {
-        let budgetArray: any = [];
-        for(let i = 0; i < selector; i++) {
-            budgetArray.push(
-                <div className='budget-table__row' key={i}>
-                    <div className='budget-table__th-1'>
-                        <Field component={UrbanicaInput} name={`${order}_type_${i}`} />
-                    </div>
-                    <div className='budget-table__th-2'>
-                        <Field component={UrbanicaSelect} name={`${order}_unit_${i}`} options={options} />
-                    </div>
-                    <div className='budget-table__th-3'>
-                        <Field component={UrbanicaInput} name={`${order}_quantity_${i}`} />
-                    </div>
-                    <div className='budget-table__th-4'>
-                        <Field component={UrbanicaInput} name={`${order}_price_${i}`} />
-                    </div>
-                    <div className='budget-table__th-5'><label className='main-blue-text candara'>{t("Cəmi")}: </label></div>
-                </div>
-            );
-        }
-        return budgetArray;
-    }
-
     return (
         <div>
             <div className='container-inner urbanica-container flex-col align-center'>
@@ -96,12 +34,105 @@ const UrbanicaBudgetForm: FunctionComponent<InjectedFormProps<IAuthForm>> = (pro
                 </div>
                 
                 <div className='urbanica-container__general-info'>
-                    {renderForms(1, teams, setTeams, t("Heyət xərcləri"))}
-                    {renderForms(2, activities, setActivities, t("Fəaliyyətlər"))}
-                    {renderForms(3, gadjets, setGadjets, t("Avadanlıq"))}
-                    {renderForms(4, others, setOthers, t("Digər xərclər"))}
+                    <RenderForms order={1} selector={teams} setSelector={setTeams} label={"Heyət xərcləri"} key={1} />
+                    <RenderForms order={2} selector={activities} setSelector={setActivities} label={"Fəaliyyətlər"} key={2} />
+                    <RenderForms order={3} selector={gadjets} setSelector={setGadjets} label={"Avadanlıq"} key={3} />
+                    <RenderForms order={4} selector={others} setSelector={setOthers} label={"Digər xərclər"} key={4} />
                 </div>
             </div>
+        </div>
+    );
+}
+
+interface RenderFormsProps {
+    order: number;
+    selector: number;
+    setSelector: (selector: number) => void;
+    label: string;
+}
+
+const RenderForms: FunctionComponent<RenderFormsProps> = (props) => {
+    const { t } = useTranslation();
+    let budgetArray: any = [];
+
+    for(let i = 0; i < props.selector; i++) {
+        budgetArray.push(<BudgetTableRow order={props.order} index={i} />);
+    }
+
+    return (
+        <div>
+            <p className='candara'>
+                <span className='urbanica-badge centered-text'>{props.order}</span>
+                <span className='with-badge'>{t(props.label)}</span>
+            </p>
+            <div className='budget-table'>
+                <div className='budget-table__row'>
+                    <div className='budget-table__th-1'>
+                        <label className='main-blue-text candara'>{t('Xərclərin növü')}</label>
+                    </div>
+                    <div className='budget-table__th-2'>
+                        <label className='main-blue-text candara'>{t('Vahid')}</label>
+                    </div>
+                    <div className='budget-table__th-3'>
+                        <label className='main-blue-text candara'>{t('Kəmiyyət')}</label>
+                    </div>
+                    <div className='budget-table__th-4'>
+                        <label className='main-blue-text candara'>{t('Vahidin qiyməti')}</label>
+                    </div>
+                </div>
+                {budgetArray}
+                <div className='budget-table__row'>
+                    <div className='budget-table__th-1'>
+                        <label className='main-blue-text candara'>{t('Cəmi')}:</label>
+                    </div>
+                    <div className='budget-table__th-2' />
+                    <div className='budget-table__th-3' />
+                    <div className='budget-table__th-4'>
+                        <button className='urbanica-btn blue-btn' onClick={() => props.setSelector(props.selector + 1)}>+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+}
+
+interface BudgetTableRowProps {
+    order: number;
+    index: number;
+}
+
+const BudgetTableRow: FunctionComponent<BudgetTableRowProps> = (props) => {
+    const { t } = useTranslation();
+    const options: {value: string, label: string}[] = [
+        {value: 'day', label: 'gün'},
+        {value: 'month', label: 'ay'},
+        {value: 'year', label: 'il'}
+    ];
+    const [price, setPrice] = useState<number>(0);
+    const [quantity, setQuantity] = useState<number>(0);
+
+    const quantityChangeHandler = (e: any) => {
+        setQuantity(e.target.value)
+    }
+
+    const priceChangeHandler = (e: any) => {
+        setPrice(e.target.value)
+    }
+    return (
+        <div className='budget-table__row'>
+            <div className='budget-table__th-1'>
+                <Field component={UrbanicaInput} name={`${props.order}_type_${props.index}`} />
+            </div>
+            <div className='budget-table__th-2'>
+                <Field component={UrbanicaSelect} name={`${props.order}_unit_${props.index}`} options={options} />
+            </div>
+            <div className='budget-table__th-3'>
+                <Field component={UrbanicaInput} name={`${props.order}_quantity_${props.index}`} onChange={quantityChangeHandler} />
+            </div>
+            <div className='budget-table__th-4'>
+                <Field component={UrbanicaInput} name={`${props.order}_price_${props.index}`} onChange={priceChangeHandler} />
+            </div>
+            <div className='budget-table__th-5'><label className='main-blue-text candara'>{t("Cəmi")}: {price * quantity}</label></div>
         </div>
     );
 }

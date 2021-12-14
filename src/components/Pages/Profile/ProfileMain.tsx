@@ -1,17 +1,26 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ReactComponent as ProfileEllipses } from '../../../assets/images/profile/profile-ellipses.svg';
 import { ReactComponent as FolderIcon } from '../../../assets/images/folder.svg';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../../redux/reducers';
+import { getUserProjects } from '../../../redux/actions';
 import './profile.scss';
 
 const ProfileMain: FunctionComponent = () => {
-    const { auth, lang } = useSelector((state: RootState) => ({
-        auth: state.auth,
-        lang: state.settings.language
-    }));
     const { t } = useTranslation();
+    const dispatch = useDispatch();
+    const { auth, lang, projects } = useSelector((state: RootState) => ({
+        auth: state.auth,
+        lang: state.settings.language,
+        projects: state.auth.userProjects
+    }));
+    
+    useEffect(() => {
+        if (auth.user) dispatch(getUserProjects(auth.user._id!, 5, 0));
+    }, []);
+
+    console.log('proj', projects);
     return (
         <div className='profile container'>
             <div className='container-inner flex-center flex-col'>

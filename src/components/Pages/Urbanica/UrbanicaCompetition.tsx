@@ -1,9 +1,8 @@
 import React, { FunctionComponent, useState, useEffect } from 'react';
-import { ImArrowRight2 } from 'react-icons/im';
+import { ImArrowLeft2, ImArrowRight2 } from 'react-icons/im';
 import UrbanicaGeneralForm from '../../../forms/UrbanicaGeneralForm';
 import { RootState } from '../../../redux/reducers';
 import { submit } from "redux-form";
-import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { IBudget, IProject, IProjectBudjet } from '../../../models';
 import { getCompetition, sendProject, getProfile } from '../../../redux/actions';
@@ -92,18 +91,19 @@ const UrbanicaCompetition: FunctionComponent = () => {
                     <span className='success-icon'><BsCheckCircle /></span>
                     Layihə uğurla göndərildi!
                 </h1>
-                <Link to={`/`}>Ana səhifə</Link>
-                <Link to={`/urbanica`}>Urbanica</Link>
-            </div> : stage === 0 ? <div className='container'>
+                <a href={`/`}>Ana səhifə</a>
+                <a href={`/urbanica`}>Urbanica</a>
+            </div> : stage === 0 ? <div className='container relative'>
                 <UrbanicaGeneralForm onSubmit={submitHandler} />
-                <div className='urbanica-competition__footer'>
-                    <button className='urbanica-btn sign-up' onClick={() => dispatch(submit("UrbanicaGeneralForm"))}>
-                        İrəli <ImArrowRight2/>
-                    </button>
-                </div>
+                <button className='competition-btn' onClick={() => dispatch(submit("UrbanicaGeneralForm"))}>
+                    <ImArrowRight2/>
+                </button>
             </div> : <div className='container'>
                 <UrbanicaBudgetForm onSubmit={submitBudget} />
                 <div className='urbanica-competition__footer'>
+                    <button className='urbanica-btn big-blue' onClick={() => setStage(0)}>
+                        <ImArrowLeft2/> Geri
+                    </button>
                     <button className='urbanica-btn sign-up' onClick={() => dispatch(submit("UrbanicaBudgetForm"))}>
                         Göndər <ImArrowRight2/>
                     </button>
