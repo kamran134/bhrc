@@ -21,6 +21,7 @@ const Footer: FunctionComponent<{}> = () => {
 
     useEffect(() => {
         dispatch(getStatics(10, 0));
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (
@@ -47,7 +48,7 @@ const Footer: FunctionComponent<{}> = () => {
                         <div className='footer-col'>
                             <h2>{t("Reporting")}</h2>
                             {staticPages && staticPages.slice(0).reverse().map(page => (
-                                <Link to={`/${page.path.az}`}><span className='info-item'>{page.name[lang]}</span></Link>
+                                <Link to={`/${page.path.az}`} key={page._id}><span className='info-item'>{page.name[lang]}</span></Link>
                             ))}
                         </div>
                     </div>

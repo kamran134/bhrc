@@ -63,6 +63,7 @@ const Resources: FunctionComponent = () => {
                 }
             }
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [location.pathname, lang, resources.categories])
 
     const selectDocType = (id: string, type: string) => {

@@ -20,7 +20,7 @@ const Activity: FunctionComponent = () => {
     const { t } = useTranslation();
     const { id } = useParams<QuizParams>();
 
-    const { article, lang, visitorId, seen } = useSelector((state: RootState) => ({
+    const { article, lang, visitorId } = useSelector((state: RootState) => ({
         article: state.news.articleByName,
         lang: state.settings.language,
         visitorId: state.visitors.visitorId,
@@ -33,6 +33,7 @@ const Activity: FunctionComponent = () => {
 
     useEffect(() => {
         if (article) dispatch(sendView(visitorId, article._id));
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [article]);
 
     moment.locale(lang);

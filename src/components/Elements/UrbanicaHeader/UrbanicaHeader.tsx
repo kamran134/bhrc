@@ -4,7 +4,6 @@ import { ReactComponent as UrbanicaRight } from '../../../assets/images/urbanica
 import { ReactComponent as UrbanicaLogo } from '../../../assets/images/urbanica/urbanica-logo.svg';
 import { ReactComponent as UrbanicaLeftTopLeaves } from '../../../assets/images/urbanica/urbanica-left-top-leaves.svg';
 import { ReactComponent as UrbanicaLeftBottomLeaves } from '../../../assets/images/urbanica/urbanica-left-bottom-leaves.svg';
-import { ReactComponent as LogoEn } from '../../../assets/images/urbanica/bhrc-urbanica.svg';
 import { useTranslation } from 'react-i18next';
 import { RootState } from '../../../redux/reducers';
 import { useDispatch, useSelector } from 'react-redux';
@@ -20,19 +19,20 @@ const UrbanicaHeader: FunctionComponent<{}> = (props) => {
     let history = useHistory();
     const dispatch = useDispatch();
 
-    const {auth, lang} = useSelector((state: RootState) => ({
-        auth: state.auth,
-        lang: state.settings.language
+    const { auth } = useSelector((state: RootState) => ({
+        auth: state.auth
     }));
 
     useEffect(() => {
         if (auth.isAuthenticated) {
             dispatch(openModal(false));
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [dispatch]);
 
     useEffect(() => {
         dispatch(getProfile(auth.token || ''));
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [dispatch]);
 
     return (

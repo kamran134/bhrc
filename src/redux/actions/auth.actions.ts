@@ -1,19 +1,19 @@
 import API from '../../api';
 import {
-    GetProfileAction,
     AUTH_SUCCESS,
     LOGOUT,
     USER_LOADED,
     REGISTER_STAGE,
     REGISTER_SUCCESS,
     AuthType,
-    GET_USER_PROJECTS
+    GET_USER_PROJECTS,
+    UPDATE_PROFILE
 } from '../types';
 import { ThunkAction } from 'redux-thunk';
 import { Action, ActionCreator } from 'redux';
 import { RootState } from '../reducers';
 import { _hasError, setAlert, openModal, redirect } from '.';
-import { IProject, IUser, IUserInfo } from '../../models';
+import { IProfile, IProject, IUser, IUserInfo } from '../../models';
 
 const _signIn: ActionCreator<AuthType> = (token: string) => ({
     type: AUTH_SUCCESS,
@@ -106,6 +106,39 @@ export const getUserProjects = (userId: string, limit: number, skip: number): Th
     API.get(`projectsByUser/${userId}/${limit}/${skip}`).then(({ data }) => {
         if (data.error) dispatch(_hasError(data));
         else dispatch(_getUserProjects(data));
+    });
+}
+
+const _updateProfile: ActionCreator<AuthType> = (profile: IProfile) => ({
+    type: UPDATE_PROFILE,
+    payload: profile
+});
+
+export const updateProfile = (profile?: IProfile): ThunkAction<void, RootState, unknown, Action<string>> => (dispatch, getState) => {
+    API.post(`updateProfile`, {
+        token: getState().auth.token,
+        profile,
+        _id: getState().auth.user?._id
+    })
+        .then(({ data }) => dispatch(_updateProfile(data)))
+        .catch(e => dispatch(_hasError(e)));
+}
+
+const _testRequest: ActionCreator<AuthType> = (projects: IProject[]) => ({
+    type: GET_USER_PROJECTS,
+    payload: projects
+});
+
+export const testRequest = (): ThunkAction<void, RootState, unknown, Action<string>> => (dispatch, getState) => {
+    API.post(`testApi`, {
+        _id: getState().auth.user?._id
+    }, {
+        headers: {
+            "Authorization": `BHRC ${getState().auth.token}`
+        }
+    }).then(({ data }) => {
+        if (data.error) dispatch(_hasError(data));
+        else dispatch(_testRequest(data));
     });
 }
 

@@ -30,6 +30,7 @@ const UrbanicaMain: FunctionComponent = () => {
 
     useEffect(() => {
         dispatch(getCompetition());
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     useEffect(() => {

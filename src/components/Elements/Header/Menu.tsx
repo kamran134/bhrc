@@ -17,7 +17,6 @@ interface MenuProps {
 const Menu: FunctionComponent<MenuProps> = ({showWhite}) => {
     const { t } = useTranslation();
     const [mobileNavMenu, setMobileNavMenu] = useState<boolean>(false);
-    let navStyle;
     const ref = useRef() as React.MutableRefObject<HTMLDivElement>;
 
     const renderDesktop = () => (
@@ -27,7 +26,7 @@ const Menu: FunctionComponent<MenuProps> = ({showWhite}) => {
             </div>
             <MenuElement url='/' label={t("Home")} />
             <MenuElement url='/about' label={t("About us")} />
-            <MenuElement url='/activities' label={t("Activity")} />
+            <MenuElement url='/activities' label={t("News")} />
             {/* <MenuElement url='/urbanica' label={t("Urbanica")} _className='urbanica-menu' /> */}
             <MenuElement url='/resources' label={t("Resources")} />
             <Navigation />

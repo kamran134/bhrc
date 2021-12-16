@@ -19,4 +19,5 @@ export interface IAuthenticate {
     user?: IUserInfo;
     userProjects?: IProject[];
     processStage: number;
+    test?: any;
 }

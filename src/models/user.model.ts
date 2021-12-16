@@ -15,7 +15,7 @@ export interface IUserInfo {
     createdAt?: Date;
 }
 
-interface IProfile {
+export interface IProfile {
     role?: UserRole;
     _id?: string;
     darkMode?: boolean;

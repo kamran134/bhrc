@@ -9,8 +9,6 @@ import { IHomePageBlock } from '../../../models';
 import Autocomplete from 'react-autocomplete';
 import { globalSearch } from '../../../redux/actions';
 import { ISearch } from '../../../models/search.model';
-import { config } from '../../../config';
-import { isTemplateElement } from '@babel/types';
 import { transliterate } from '../../../translit';
 
 interface CoverProps {

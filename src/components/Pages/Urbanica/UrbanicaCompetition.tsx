@@ -25,6 +25,7 @@ const UrbanicaCompetition: FunctionComponent = () => {
     useEffect(() => {
         dispatch(getCompetition());
         dispatch(getProfile(auth?.token || ''));
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const submitHandler = (data: any) => {

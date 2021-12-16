@@ -22,6 +22,7 @@ const ProfileHeader: FunctionComponent = () => {
 
     useEffect(() => {
         dispatch(getProfile(auth.token || ''));
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     useEffect(() => {

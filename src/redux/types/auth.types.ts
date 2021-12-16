@@ -1,4 +1,4 @@
-import { IProject, IUserInfo } from "../../models";
+import { IProfile, IProject, IUserInfo } from "../../models";
 import { ErrorAction } from ".";
 
 //AUTH
@@ -47,6 +47,18 @@ export interface GetUserProjects {
     payload: IProject[]
 }
 
+export const TEST_REQUEST = "TEST_REQUEST";
+export interface TestRequest {
+    type: typeof TEST_REQUEST;
+    payload: any;
+}
+
+export const UPDATE_PROFILE = "UPDATE_PROFILE";
+export interface UpdateProfileAction {
+    type: typeof UPDATE_PROFILE;
+    payload: IProfile;
+}
+
 export type AuthType = 
     SingInAction |
     SignInFailAction |
@@ -56,4 +68,6 @@ export type AuthType =
     GetProfileAction |
     ProcessStageAction |
     GetUserProjects |
+    TestRequest |
+    UpdateProfileAction |
     ErrorAction;

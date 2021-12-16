@@ -10,12 +10,50 @@
             background-color: $urbanica-pink;
             border-radius: 39px;
             margin-top: 50px;
-            box-shadow: 3px 3px 6px 3px rgba(0, 0, 0, 0.16);
+            &:hover {
+                box-shadow: $profile-shadow;
+            }
+            &:hover &__edit {
+                display: flex !important;
+            }
             &__info {
                 margin-top: 20px;
                 color: $main-blue;
                 font-size: 20px;
                 line-height: 1.2;
+                textarea {
+                    border: none;
+                    background-color: transparent;
+                    width: 100%;
+                    &:focus {
+                        border: none;
+                        outline: none;
+                    }
+                }
+            }
+            &__edit {
+                position: absolute;
+                display: none;
+                font-size: 30px;
+                width: 50px;
+                height: 50px;
+                align-items: center;
+                justify-content: center;
+                right: 42px;
+                top: 42px;
+                border-radius: 50%;
+                cursor: pointer;
+                svg {
+                    transform: rotate(0deg);
+                }
+                &:hover {
+                    background-color: rgba(206, 206, 206, 0.25);
+                    
+                    svg {
+                        transform: rotate(360deg);
+                        transition: transform 0.5s ease-in-out;
+                    }
+                }
             }
         }
     }
@@ -30,7 +68,7 @@
             width: 49px;
             height: 49px;
             border-radius: 50%;
-            box-shadow: 0 3px 6px 3px rgba(0, 0, 0, 0.16);
+            box-shadow: $standart-shadow;
             color: $main-blue;
             font-size: 20px;
             font-weight: 600;
@@ -81,10 +119,12 @@
             border-radius: 28px;
             padding: 24px;
             width: 100%;
-            box-shadow: 3px 3px 6px 3px rgba(0, 0, 0, 0.16);
             display: flex;
             color: $main-blue;
             margin-bottom: 43px;
+            &:hover {
+                box-shadow: $profile-shadow;
+            }
             .file-title {
                 font-weight: 600;
                 font-size: 20px;

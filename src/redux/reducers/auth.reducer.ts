@@ -5,7 +5,7 @@ import {
     USER_LOADED,
     AUTH_FAIL,
     AUTH_SUCCESS,
-    LOGOUT, ERROR, REGISTER_STAGE, AuthType, GET_USER_PROJECTS
+    LOGOUT, ERROR, REGISTER_STAGE, AuthType, GET_USER_PROJECTS, TEST_REQUEST, UPDATE_PROFILE
 } from '../types';
 import { IAuthenticate } from '../states';
 
@@ -14,7 +14,8 @@ const INITIAL_STATE: IAuthenticate = {
     isAuthenticated: false,
     user: undefined,
     processStage: 0,
-    userProjects: []
+    userProjects: [],
+    test: undefined
 }
 
 export function authReducer(state = INITIAL_STATE, action: AuthType) {
@@ -35,8 +36,12 @@ export function authReducer(state = INITIAL_STATE, action: AuthType) {
         case LOGOUT:
             localStorage.removeItem('bhrc.token');
             return {...state, token: undefined, isAuthenticated: false, user: undefined }
+        case UPDATE_PROFILE:
+            return {...state, user: {...state.user, profile: action.payload} }
+        case TEST_REQUEST:
+            return {...state, test: action.payload }
         case REGISTER_STAGE:
-            return {...state, processStage: action.payload}
+            return {...state, processStage: action.payload }
         default:
             return state;
     }

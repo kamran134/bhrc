@@ -4,13 +4,13 @@
     &__background {
         position: relative;
         width: 100%;
-        height: $news-cover-height;
+        height: $resources-head-height;
         background: url('../../../assets/images/articles/BHRC_news_cover.jpg');
         background-size: cover;
         background-position-y: center;
     }
     &__text {
-        height: $news-cover-height;
+        height: $resources-head-height;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -28,10 +28,10 @@
 @media screen and (min-width: $width-4K) {
     .articles-head {
         &__background {
-            height: $news-cover-height*2;
+            height: $resources-head-height*2;
         }
         &__text {
-            height: $news-cover-height*2;
+            height: $resources-head-height*2;
             p {
                 max-width: $news-p-height*2;
             }

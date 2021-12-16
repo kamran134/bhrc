@@ -1,6 +1,5 @@
 import React, { FunctionComponent } from 'react';
 import { Field, InjectedFormProps, reduxForm } from 'redux-form';
-import { useTranslation } from 'react-i18next';
 import { IAuthForm } from '../models';
 import UrbanicaInput from '../components/UI/UrbanicaInput';
 import UrbanicaTextarea from '../components/UI/UrbanicaTextarea';
@@ -8,19 +7,18 @@ import { ReactComponent as Humans } from '../assets/images/urbanica/humans.svg';
 import { ReactComponent as BHRCLogo } from '../assets/images/urbanica/bhrc-logo-balls.svg';
 
 const UrbanicaGeneralForm: FunctionComponent<InjectedFormProps<IAuthForm>> = (props) => {
-    const { t } = useTranslation();
     return (
         <div>
             <div className='container-inner urbanica-container flex-col align-center'>
                 <div className='urbanica-container__title'>
-                    <h1 className='main-blue-text'>{t("Müsabiqə")}</h1>
+                    <h1 className='main-blue-text'>Müsabiqə</h1>
                 </div>
                 <div className='urbanica-container__subtitle'>
-                    <h1 className='lined-title main-blue-text'><span className='upper-case'>{t("Ümumi xülasə")}</span></h1>
+                    <h1 className='lined-title main-blue-text'><span className='upper-case'>Ümumi xülasə</span></h1>
                 </div>
                 <div className='urbanica-container__project-name'>
-                    <label className='main-blue-text candara'>{'Layihənin adı'}</label>
-                    <Field placeholder={t("Layihənin adını daxil edin")} component={UrbanicaInput} name={'projectName'} />
+                    <label className='main-blue-text candara'>Layihənin adı</label>
+                    <Field placeholder={"Layihənin adını daxil edin"} component={UrbanicaInput} name={'projectName'} />
                 </div>
                 <div className='urbanica-container__general-info'>
                     <h2 className='candara regular-font centered-text main-orange-text'>
@@ -50,7 +48,7 @@ const UrbanicaGeneralForm: FunctionComponent<InjectedFormProps<IAuthForm>> = (pr
 
             <div className='container-inner urbanica-container flex-col align-center'>
                 <div className='urbanica-container__subtitle'>
-                    <h1 className='lined-title main-blue-text'><span className='upper-case'>{t("Layihənin detalları")}</span></h1>
+                    <h1 className='lined-title main-blue-text'><span className='upper-case'>Layihənin detalları</span></h1>
                 </div>
                 <div className='urbanica-container__general-info'>
                     <h2 className='candara regular-font centered-text main-orange-text'>
