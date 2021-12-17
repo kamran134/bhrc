@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect } from 'react';
+import React, { FunctionComponent, useEffect, useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import { ReactComponent as ProfileCover } from '../../../assets/images/profile/profile-cover.svg';
@@ -9,16 +9,20 @@ import { RootState } from '../../../redux/reducers';
 import { getProfile, signOut } from '../../../redux/actions';
 import { useTranslation } from 'react-i18next';
 import { UserRole } from '../../../models';
+import { MdPhotoCamera } from 'react-icons/md';
 import './profileHeader.scss';
 
 const ProfileHeader: FunctionComponent = () => {
     const dispatch = useDispatch();
     const { t } = useTranslation();
+    const addPhotoRef = useRef<HTMLInputElement>(null);
     const history = useHistory();
     const { auth, lang } = useSelector((state: RootState) => ({
         auth: state.auth,
         lang: state.settings.language
     }));
+    const [preview, setPreview] = useState<string>();
+    const FR = new FileReader();
 
     useEffect(() => {
         dispatch(getProfile(auth.token || ''));
@@ -33,12 +37,34 @@ const ProfileHeader: FunctionComponent = () => {
         dispatch(signOut(auth.user?._id || '', auth.token || ''));
     }
 
+    const addPhotoHandler = () => {
+        addPhotoRef.current?.click();
+    }
+
+    const addPhotoChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (e.target.files && e.target.files[0]) FR.readAsDataURL(e.target.files[0])
+        FR.onloadend = () => {
+            console.log('res', FR.result);
+            setPreview(FR.result as string);
+        }
+    }
+
     return (
         <div className='profile-header'>
             <ProfileCover />
             <ProfileCoverEllipse className='ellipse' />
             <div className='profile-header__avatar'>
-                <img src={noAvatar} alt={'test_avatar'} />
+                <img src={preview ? preview : noAvatar} alt={'test_avatar'} />
+                <div className='profile-header__avatar__change-photo'>
+                    <div className='change-photo-inner' onClick={addPhotoHandler}>
+                        <MdPhotoCamera />
+                    </div>
+                    <input
+                        type={'file'}
+                        style={{display: 'none'}}
+                        onChange={(e) => addPhotoChangeHandler(e)}
+                        ref={addPhotoRef} />
+                </div>
             </div>
             <div className='profile-header__name'>
                 <p className='name'>{(auth.user?.profile?.fullName || {})[lang]}</p>
