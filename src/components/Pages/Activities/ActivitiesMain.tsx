@@ -63,11 +63,44 @@ const ActivitiesMain: FunctionComponent<ActivitiesMainProps> = props => {
 
     return (
         <Element name='articles' className='articles-body'>
+            <div className='container flex-row mobile'>
+                <div className='search-block'>
+                    <Autocomplete 
+                        items={foundArticles}
+                        getItemValue={(item: IArticle) => item.name[lang]}
+                        value={searchString}
+                        onChange={(e) => searchNewsHandler(e.target.value)}
+                        onSelect={(val) => selectNewsHandler(val)}
+                        renderInput={(props) => (
+                            <input type='text' {...props} placeholder={t('Search')} onFocus={onFocusHandler} />
+                        )}
+                        renderItem={(item, isHighlighted) => (
+                            <div className={isHighlighted ? 'search-block__item highlighted' : 'search-block__item'}>
+                                <Link to={`/activities/${item.path[lang]}`}>
+                                    <img loading='lazy'
+                                        className='search-block__item-image'
+                                        src={`${config.url.IMAGE_URL}article_images/${item.picture}/original/${item.picture}`}
+                                        alt={item._id} />
+                                    {item.name[lang]}
+                                </Link>
+                            </div>
+                        )}
+                        menuStyle={{
+                            left: 0,
+                            top: 60,
+                            width: 250,
+                            position: 'absolute',
+                            backgroundColor: 'rgba(248,248,248, 1)',
+                            zIndex: 30
+                        }} />
+                    <SearchIcon className='search-icon' />
+                </div>
+            </div>
             <div className='container flex-row space-between align-top'>
                 <div className='articles-body__left'>
                     {props.children}
                 </div>
-                <div className='articles-body__right'>
+                <div className='articles-body__right desktop'>
                     <div className='search-block'>
                         <Autocomplete 
                             items={foundArticles}
@@ -90,11 +123,11 @@ const ActivitiesMain: FunctionComponent<ActivitiesMainProps> = props => {
                                 </div>
                             )}
                             menuStyle={{
-                                    left: 0,
-                                    top: 60,
-                                    width: 250,
-                                    position: 'absolute',
-                                    backgroundColor: 'rgba(248,248,248, 1)'
+                                left: 0,
+                                top: 60,
+                                width: 250,
+                                position: 'absolute',
+                                backgroundColor: 'rgba(248,248,248, 1)'
                             }} />
                         
                         <SearchIcon className='search-icon' />

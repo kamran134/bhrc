@@ -331,15 +331,29 @@
     padding: $medium-padding 0;
     color: #fff;
     position: relative;
-    .start {
+    &__left {
         position: absolute;
+        top: 0;
         left: 0;
-        bottom: 0;
+        overflow: hidden;
+        height: 230px;
+    }
+    &__right {
+        position: absolute;
+        top: 0;
+        right: 0;
+        overflow: hidden;
+        height: 230px;
+    }
+    .start {
+        width: calc(190px * 3);
+        height: calc(164px * 3);
+        margin-top: -88px;
     }
     .end {
-        position: absolute;
-        right: 0;
-        top: 0;
+        width: calc(190px * 3);
+        height: calc(164px * 3);
+        margin-top: -88px;
         transform: rotate(180deg);
     }
     h1 {
@@ -751,6 +765,10 @@
 
     .main-activity {
         height: auto;
+        &__background {
+            background-position-y: 0;
+            background-position-x: -125px;
+        }
         .main-activity-flex {
             display: flex;
             flex-direction: column !important;
@@ -795,11 +813,18 @@
     }
 
     .main-sign-in {
+        &__left {
+            bottom: 0;
+            top: auto;
+            height: auto;
+        }
         .start {
+            margin-top: 0;
             width: 95px;
             height: 95px;
         }
         .end {
+            margin-top: 0;
             width: 95px;
             height: 95px;
         }

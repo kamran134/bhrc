@@ -6,11 +6,12 @@ import { ReactComponent as ProfileCoverEllipse } from '../../../assets/images/pr
 import { ReactComponent as LogoutIcon } from '../../../assets/images/profile/logout.svg';
 import noAvatar from '../../../assets/images/profile/no-avatar.png';
 import { RootState } from '../../../redux/reducers';
-import { getProfile, signOut } from '../../../redux/actions';
+import { getProfile, signOut, updateProfile } from '../../../redux/actions';
 import { useTranslation } from 'react-i18next';
 import { UserRole } from '../../../models';
 import { MdPhotoCamera } from 'react-icons/md';
 import './profileHeader.scss';
+import { config } from '../../../config';
 
 const ProfileHeader: FunctionComponent = () => {
     const dispatch = useDispatch();
@@ -31,7 +32,8 @@ const ProfileHeader: FunctionComponent = () => {
 
     useEffect(() => {
         if (!auth.isAuthenticated) history.push('/urbanica');
-    }, [auth, history]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     const signOutHandler = () => {
         dispatch(signOut(auth.user?._id || '', auth.token || ''));
@@ -49,12 +51,20 @@ const ProfileHeader: FunctionComponent = () => {
         }
     }
 
+    useEffect(() => {
+        if (preview) dispatch(updateProfile(undefined, preview));
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [preview]);
+
+    console.log('prof', auth.user);
+
     return (
         <div className='profile-header'>
             <ProfileCover />
             <ProfileCoverEllipse className='ellipse' />
             <div className='profile-header__avatar'>
-                <img src={preview ? preview : noAvatar} alt={'test_avatar'} />
+                {auth.user?.profile.picture ? <img src={`${config.url.IMAGE_URL}users_images/${auth.user.profile.picture}/original/avatar`} /> : 
+                <img src={preview ? preview : noAvatar} alt={'test_avatar'} />}
                 <div className='profile-header__avatar__change-photo'>
                     <div className='change-photo-inner' onClick={addPhotoHandler}>
                         <MdPhotoCamera />

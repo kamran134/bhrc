@@ -114,11 +114,12 @@ const _updateProfile: ActionCreator<AuthType> = (profile: IProfile) => ({
     payload: profile
 });
 
-export const updateProfile = (profile?: IProfile): ThunkAction<void, RootState, unknown, Action<string>> => (dispatch, getState) => {
+export const updateProfile = (profile?: IProfile, picture?: string): ThunkAction<void, RootState, unknown, Action<string>> => (dispatch, getState) => {
     API.post(`updateProfile`, {
         token: getState().auth.token,
+        _id: getState().auth.user?._id,
         profile,
-        _id: getState().auth.user?._id
+        picture
     })
         .then(({ data }) => dispatch(_updateProfile(data)))
         .catch(e => dispatch(_hasError(e)));

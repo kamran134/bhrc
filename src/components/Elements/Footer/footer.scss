@@ -118,8 +118,19 @@
 
 @media screen and (max-width: $width-mobile) {
     .footer {
+        &__information {
+            .footer-col {
+                width: 90%;
+                text-align: center;
+            }
+        }
         &__copyright {
-            width: 100vw;
+            width: 100%;
+            align-items: flex-end;
+            .text {
+                margin-left: 10px;
+                font-size: 10px;
+            }
         }
     }
 }

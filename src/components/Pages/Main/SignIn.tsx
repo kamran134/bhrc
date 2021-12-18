@@ -30,7 +30,9 @@ const MainSignIn: FunctionComponent<MainSignInProps> = ({ data }) => {
     return (
         <>
             <div className='main-sign-in'>
-                <Listochki className='start' />
+                <div className='main-sign-in__left'>
+                    <Listochki className='start' />
+                </div>
                 <div className='main-sign-in__container'>
                     <h1>{data && data.title[lang]}</h1>
                     {data && data.subtitle && <h3>{data.subtitle[lang]}</h3>}
@@ -43,7 +45,9 @@ const MainSignIn: FunctionComponent<MainSignInProps> = ({ data }) => {
                         {t("Sign in")} <ImArrowRight2/>
                     </button>
                 </div>
-                <Listochki className='end' />
+                <div className='main-sign-in__right'>
+                    <Listochki className='end' />
+                </div>
             </div>
             <AuthModal />
         </>

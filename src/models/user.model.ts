@@ -23,6 +23,7 @@ export interface IProfile {
     ratinrg?: number;
     fullName: IMultilang;
     bio: IMultilang;
+    picture?: string;
 }
 
 interface IEmail {
