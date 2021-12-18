@@ -363,4 +363,41 @@
             margin-right: $post-image-right;
         }
     }
+    .popular-block {
+        margin-top: $big-margin;
+        width: 100%;
+        background-color: #fff;
+        border-radius: $standart-radius;
+        box-shadow: $standart-shadow;
+        padding: $popular-v $popular-right $popular-v $popular-left;
+        color: $block-text-color;
+        h4 {
+            font-size: $footer-font-size;
+            font-style: italic;
+            font-weight: 600;
+            color: $block-text-color;
+            margin-top: $article-title-top;
+            margin-bottom: $menu-margin;
+            padding-bottom: $popular-v;
+            border-bottom: 1px solid $main-orange;
+        }
+        .post {
+            display: flex;
+            height: $article-search-height;
+            img {
+                width: $post-image-width;
+                height: $post-image-height;
+                object-fit: cover;
+                margin-right: $post-image-right;
+            }
+            &__date {
+                font-size: $little-font-size;
+                h5 {
+                    font-size: $button-font-size;
+                    font-weight: 600;
+                    font-style: italic;
+                }
+            }
+        }
+    }
 }

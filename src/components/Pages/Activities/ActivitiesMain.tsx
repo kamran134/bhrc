@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { Element, scroller } from 'react-scroll';
-import { getArticles, searchArticles } from '../../../redux/actions';
+import { getArticles, getPopularArticles, searchArticles } from '../../../redux/actions';
 import { config } from '../../../config';
 import { ReactComponent as SearchIcon } from '../../../assets/images/search-icon.svg';
 import { RootState } from '../../../redux/reducers';
@@ -27,14 +27,15 @@ const ActivitiesMain: FunctionComponent<ActivitiesMainProps> = props => {
     const { t } = useTranslation();
     const [searchString, setSearchString] = useState<string>('');
 
-    const { articles, lang, foundArticles } = useSelector((state: RootState) => ({
+    const { articles, lang, foundArticles, popularArticles } = useSelector((state: RootState) => ({
         articles: state.news.articles,
         lang: state.settings.language,
-        foundArticles: state.news.foundArticles
+        foundArticles: state.news.foundArticles,
+        popularArticles: state.news.popularArticles
     }));
 
     useEffect(() => {
-        dispatch(getArticles(1, 5));
+        dispatch(getPopularArticles());
     }, [dispatch]);
 
     useEffect(() => {
@@ -132,25 +133,39 @@ const ActivitiesMain: FunctionComponent<ActivitiesMainProps> = props => {
                         
                         <SearchIcon className='search-icon' />
                     </div>
-                    <div className='popular-block'>
-                        <h4>{t("Most read")}</h4>
-                        {articles && articles.slice(0, 5).map((article: IArticle) =>
-                        <div className='post' key={article._id}>
-                            <div><img loading='lazy' src={`${config.url.IMAGE_URL}article_images/${article.picture}/original/${article.picture}`} alt={article._id} /></div>
-                            <div className='post__date'>
-                                <span className='blue-round'/> {moment(article.createdAt).format('dddd, DD MMMM')}
-                                <h5><Link to={`/activities/${article.path[lang]}`}>
-                                    {article.name[lang].length <= 56 ? article.name[lang] : article.name[lang].substring(0, 56) + ' ...'}
-                                    </Link>
-                                </h5>
-                            </div>
-                        </div>
-                        )}
-                    </div>
+                    <PopularBlock articles={popularArticles} lang={lang} />
                 </div>
             </div>
             {props.allNews && <Pagination page={props.page || 1} url={'/activities'} count={props.count!} />}
+            <PopularBlock articles={popularArticles} lang={lang} _className='mobile' />
         </Element>
+    );
+}
+
+interface PopularBlockProps {
+    articles: IArticle[];
+    lang: string;
+    _className?: string;
+}
+
+const PopularBlock: FunctionComponent<PopularBlockProps> = (props) => {
+    const { t } = useTranslation();
+    return (
+        <div className={`popular-block ${props._className || ''}`}>
+            <h4>{t("Most read")}</h4>
+            {props.articles && props.articles.slice(0, 5).map((article: IArticle) =>
+            <div className='post' key={article._id}>
+                <div><img loading='lazy' src={`${config.url.IMAGE_URL}article_images/${article.picture}/original/${article.picture}`} alt={article._id} /></div>
+                <div className='post__date'>
+                    <span className='blue-round'/> {moment(article.createdAt).format('dddd, DD MMMM')}
+                    <h5><Link to={`/activities/${article.path[props.lang]}`}>
+                        {article.name[props.lang].length <= 56 ? article.name[props.lang] : article.name[props.lang].substring(0, 56) + ' ...'}
+                        </Link>
+                    </h5>
+                </div>
+            </div>
+            )}
+        </div>
     )
 }
 

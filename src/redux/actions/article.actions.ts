@@ -1,6 +1,6 @@
 import API from '../../api';
 import { Action, ActionCreator } from 'redux';
-import { ArticleTypes, COUNT_ARTICLES, GET_ARTICLES, GET_ARTICLE_BY_NAME, GET_LAST_4_ARTICLES, SEARCH_ARTICLES } from '../types';
+import { ArticleTypes, COUNT_ARTICLES, GET_ARTICLES, GET_ARTICLE_BY_NAME, GET_LAST_4_ARTICLES, GET_POPULAR, SEARCH_ARTICLES } from '../types';
 import { IArticle } from '../../models';
 import { ThunkAction } from 'redux-thunk';
 import { RootState } from '../reducers';
@@ -58,4 +58,16 @@ dispatch => {
     !empty ? API.get(`searchArticles/${searchString}`)
         .then(({ data }) => dispatch(_searchArticles(data))) :
     dispatch(_searchArticles([]));
+}
+
+const _getPopularArticles: ActionCreator<ArticleTypes> = (articles: IArticle[]) => (
+    {
+        type: GET_POPULAR,
+        payload: articles
+    }
+);
+
+export const getPopularArticles = (): ThunkAction<void, RootState, unknown, Action<string>> => dispatch => {
+    API.get(`popularArticles/5/0`)
+        .then(({ data }) => dispatch(_getPopularArticles(data)));
 }

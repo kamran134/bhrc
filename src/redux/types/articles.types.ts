@@ -31,4 +31,10 @@ export interface SearchArticlesAction {
     payload: IArticle[];
 }
 
-export type ArticleTypes = ArticlesAction | LastArticlesAction | ArticleAction | CountArticlesAction | SearchArticlesAction;
+export const GET_POPULAR = "GET_POPULAR";
+export interface GetPopularAction {
+    type: typeof GET_POPULAR;
+    payload: IArticle[];
+}
+
+export type ArticleTypes = ArticlesAction | LastArticlesAction | ArticleAction | CountArticlesAction | SearchArticlesAction | GetPopularAction;

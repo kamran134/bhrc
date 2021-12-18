@@ -5,5 +5,5 @@ export interface IArticleState {
     articleByName?: IArticle;
     count?: number;
     foundArticles: IArticle[];
-    //found?: IFound;
+    popularArticles: IArticle[];
 }

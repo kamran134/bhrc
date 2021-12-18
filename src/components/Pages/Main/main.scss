@@ -769,6 +769,9 @@
             background-position-y: 0;
             background-position-x: -125px;
         }
+        h1 {
+            white-space: pre-wrap !important;
+        }
         .main-activity-flex {
             display: flex;
             flex-direction: column !important;
