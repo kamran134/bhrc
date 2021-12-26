@@ -9,6 +9,7 @@ import { staticPageReducer } from './staticPage.reducer';
 import { urbanicaReducer } from './urbanica.reducer';
 import { visitorsReducer } from './visitors.reducer';
 import { reducer as formReducer } from 'redux-form';
+import { statementReducer } from './statement.reducer';
 
 export const rootReducer = combineReducers({
     alert: alertReducer,
@@ -20,6 +21,7 @@ export const rootReducer = combineReducers({
     staticPage: staticPageReducer,
     urbanica: urbanicaReducer,
     visitors: visitorsReducer,
+    report: statementReducer,
     form: formReducer
 });
 

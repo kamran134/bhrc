@@ -18,6 +18,8 @@ import NewsHeader from './components/Elements/NewsHeader/NewsHeader';
 import UrbanicaCompetition from './components/Pages/Urbanica/UrbanicaCompetition';
 import AlertMessage from './components/UI/AlertMessage';
 import StaticPage from './components/Pages/StaticPage/StaticPage';
+import Statement from './components/Pages/Statements/Statement';
+import Statements from './components/Pages/Statements/Statements';
 
 const MyRouter: FunctionComponent<{}> = () => {
     return (
@@ -50,6 +52,8 @@ const MyRouter: FunctionComponent<{}> = () => {
                 <Route path='/' exact component={Main} />
                 <Route path='resources/:category/:topic' component={Resources} />
                 <Route path='/resources' component={Resources} />
+                <Route path='/statement/:id' component={Statement} />
+                <Route path='/statements' component={Statements} />
                 <Route path='/:page' component={StaticPage} />
               </Switch>
             </Route>

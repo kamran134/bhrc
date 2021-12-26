@@ -1,0 +1,16 @@
+@import '../../../variables.scss';
+
+.statement {
+    margin-top: $big-margin;
+    margin-bottom: $big-margin;
+    &__title {
+        margin-bottom: $big-margin !important;
+    }
+    &__date {
+        font-style: italic;
+    }
+    &__footer {
+        display: flex;
+        justify-content: space-between;
+    }
+}

@@ -86,5 +86,14 @@
     "Select one of the categories above": "Yuxarıdakı kateqoriyalardan birini seçin",
     "Informations": "Məlumat",
     "#AboutME": "#ÖzümHaqqımda",
-    "#MyWorks": "#Layihələrim"
+    "#MyWorks": "#Layihələrim",
+    "Name": "Ad",
+    "Short description": "Qısa məzmunu",
+    "Date": "Tarix",
+    "File": "Fayl",
+    "Statement": "Hesabatlılıq",
+    "Link": "Keçid",
+    "Link to statement": "Hesabata keçid",
+    "Published": "Dərc edilib",
+    "Attachment": "Qoşma"
 }

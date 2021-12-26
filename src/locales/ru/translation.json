@@ -84,5 +84,14 @@
     "Password mismatch": "Пароли не совпадают",
     "Successfull register": "Регистрация успешно завершена",
     "Select one of the categories above": "Выберите одну из категорий выше",
-    "Informations": "Информация"
+    "Informations": "Информация",
+    "Name": "Название",
+    "Short description": "Короткое содержимое",
+    "Date": "Дата",
+    "File": "Файл",
+    "Statement": "Отчётность",
+    "Link": "Переход",
+    "Link to statement": "Перейти к отчёту",
+    "Published": "Опубликовано",
+    "Attachment": "Прикрепление"
 }
