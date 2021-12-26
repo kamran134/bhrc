@@ -61,7 +61,7 @@ const Menu: FunctionComponent<MenuProps> = ({showWhite}) => {
                     <a href='/about'>{t("About us")}</a>
                 </li>
                 <li>
-                    <a href='/activities'>{t("Activity")}</a>
+                    <a href='/activities'>{t("News")}</a>
                 </li>
                 <li>
                     <a href='/resources'>{t("Resources")}</a>

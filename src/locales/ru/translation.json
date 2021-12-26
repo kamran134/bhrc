@@ -93,5 +93,17 @@
     "Link": "Переход",
     "Link to statement": "Перейти к отчёту",
     "Published": "Опубликовано",
-    "Attachment": "Прикрепление"
+    "Attachment": "Прикрепление",
+    "Beneficiary Name": "Имя клиента получателя",
+    "Beneficiary Account": "Номер счёта клиента получателя, İBAN",
+    "Beneficiary Bank": "Банк получатель",
+    "SWIFT Code": "SWIFT код банка получателя",
+    "Correspondent Account": "Квитанционный отчёт банка",
+    "Bank Code": "Код банка получателя",
+    "Bank Tax ID": "ИНН банка (VÖEN)",
+    "Bank address": "Адрес банка",
+    "Bank telephone numbers": "Контактные номера банка",
+    "FAX": "ФАКС",
+    "Beneficiary Tax ID": "ИНН клиента (VÖEN)",
+    "ATTENTION! Only Azerbaijani citizens can donate!": "ВНИМАНИЕ! Пожертвовать могут только граждане Азербайджана!"
 }

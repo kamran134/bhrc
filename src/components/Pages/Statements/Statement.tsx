@@ -41,9 +41,9 @@ const Statement: FunctionComponent = () => {
                             <p className="statement__date">{t("Published")}: {moment(statement.createdAt).format('DD.MM.YYYY')}</p>
                             <a href={statement.filePath[lang]}><GrAttachment /> {t("Attachment")}</a>
                         </div>
-                    </>}            
+                    </>}
                 </div>
-            </div> 
+            </div>
         </div>
     );
 }

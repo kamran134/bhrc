@@ -33,6 +33,7 @@
             line-height: 1.2;
             margin-bottom: $medium-margin;
             color: #fff;
+            cursor: pointer;
         }
     }
     &__copyright {
@@ -59,6 +60,28 @@
         .st1 {
             fill: $logo-white;
         }
+    }
+    
+}
+
+.footer-modal {
+    .modal-dialog {
+        max-width: 800px;
+    }
+    .modal-content {
+        align-items: flex-start;
+        //width: auto;
+        width: 800px;
+        height: 600px;
+    }
+    .modal-header {
+        display: block;
+    }
+    .modal-body {
+        overflow-y: scroll;
+    }
+    .thead {
+        font-weight: 600;
     }
 }
 

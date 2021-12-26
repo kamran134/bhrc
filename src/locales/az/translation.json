@@ -95,5 +95,17 @@
     "Link": "Keçid",
     "Link to statement": "Hesabata keçid",
     "Published": "Dərc edilib",
-    "Attachment": "Qoşma"
+    "Attachment": "Qoşma",
+    "Beneficiary Name": "Alan müştərinin adı",
+    "Beneficiary Account": "Alan müştərinin hesab nömrəsi, İBAN",
+    "Beneficiary Bank": "Alan bank",
+    "SWIFT Code": "Alan bankın SWIFT kodu",
+    "Correspondent Account": "Alan bankın müxbir hesabı",
+    "Bank Code": "Alan bankın kodu",
+    "Bank Tax ID": "Bankın VÖEN-i",
+    "Bank address": "Bankın ünvanı",
+    "Bank telephone numbers": "Bankın əlaqə nömrələri",
+    "FAX": "FAKS",
+    "Beneficiary Tax ID": "Müştəri VÖEN-i",
+    "ATTENTION! Only Azerbaijani citizens can donate!": "DİQQƏT! Yalnız Azərbaycan vətəndaşları ianə edə bilər!"
 }
