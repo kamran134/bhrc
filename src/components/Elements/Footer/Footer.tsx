@@ -11,11 +11,12 @@ import { getStatics } from '../../../redux/actions';
 import { Modal, Table } from 'react-bootstrap';
 import 'react-bootstrap';
 import './footer.scss'
+import { TFunction } from 'i18next';
 
 const Footer: FunctionComponent<{}> = () => {
     const { t } = useTranslation();
     const dispatch = useDispatch();
-    const [showDotation, setShowDonation] = useState<boolean>(false);
+    const [showDonation, setShowDonation] = useState<boolean>(false);
 
     const { lang, staticPages } = useSelector((state: RootState) => ({
         lang: state.settings.language,
@@ -43,7 +44,7 @@ const Footer: FunctionComponent<{}> = () => {
                         </div>
                         <div className='footer-col'>
                             <h2>{t("Support us")}</h2>
-                            <span className='info-item' onClick={() => setShowDonation(!showDotation)}>{t("Donate now")}</span>
+                            <span className='info-item' onClick={() => setShowDonation(!showDonation)}>{t("Donate now")}</span>
                             {/* <span className='info-item'>Careers</span> */}
                             <span className='info-item'>{t("Be volunteer")}</span>
                             <span className='info-item'>{t("Vacancies")}</span>
@@ -64,62 +65,75 @@ const Footer: FunctionComponent<{}> = () => {
                     </div>
                 </div>
             </div>
-            <Modal show={showDotation} onHide={() => setShowDonation(false)} className='footer-modal'>
-                <Modal.Header>
-                    <h1 className='main-blue-text'>{t("Donate now")}</h1>
-                    <p><h2 className='red-text'>{t("ATTENTION! Only Azerbaijani citizens can donate!")}</h2></p>
-                </Modal.Header>
-                <Modal.Body>
-                    <Table responsive striped bordered hover>
-                        <tr>
-                            <td className='thead'>{t("Beneficiary Name")}</td>
-                            <td>BAKI INSAN HUQUQLARI KLUBU ICTIMAI BIRLIYI</td>
-                        </tr>
-                        <tr>
-                            <td className='thead'>{t("Beneficiary Account")}</td>
-                            <td>AZ14IBAZ40090019444621454202</td>
-                        </tr>
-                        <tr>
-                            <td className='thead'>{t("Beneficiary Bank")}</td>
-                            <td>Azərbaycan Beynəlxalq Bankı Binəqədi filialı</td>
-                        </tr>
-                        <tr>
-                            <td className='thead'>{t("SWIFT Code")}</td>
-                            <td>IBAZAZ2X</td>
-                        </tr>
-                        <tr>
-                            <td className='thead'>{t("Correspondent Account")}</td>
-                            <td>AZ03NABZ01350100000000002944</td>
-                        </tr>
-                        <tr>
-                            <td className='thead'>{t("Bank Code")}</td>
-                            <td>805584</td>
-                        </tr>
-                        <tr>
-                            <td className='thead'>{t("Bank Tax ID")}</td>
-                            <td>9900001881</td>
-                        </tr>
-                        <tr>
-                            <td className='thead'>{t("Bank address")}</td>
-                            <td>AZ10005</td>
-                        </tr>
-                        <tr>
-                            <td className='thead'>{t("Bank telephone numbers")}</td>
-                            <td>+994 12 562 99 41</td>
-                        </tr>
-                        <tr>
-                            <td className='thead'>{t("FAX")}</td>
-                            <td>+994 12 562 99 41</td>
-                        </tr>
-                        <tr>
-                            <td className='thead'>{t("Beneficiary Tax ID")}</td>
-                            <td>1306986731</td>
-                        </tr>
-                    </Table>
-                </Modal.Body>
-            </Modal>
+            <DonationModal showDonation={showDonation} setShowDonation={setShowDonation} t={t} />
         </div>
     );
+}
+
+interface DonationProps {
+    showDonation: boolean;
+    setShowDonation: (show: boolean) => void;
+    t: TFunction;
+}
+
+const DonationModal: FunctionComponent<DonationProps> = (props) => {
+    const { t, showDonation, setShowDonation } = props;
+    return (
+        <Modal show={showDonation} onHide={() => setShowDonation(false)} className='footer-modal'>
+            <Modal.Header>
+                <h1 className='main-blue-text'>{t("Donate now")}</h1>
+                <p><h3 className='red-text bold-italic-text candara'>{t("ATTENTION! Only citizens of the Republic of Azerbaijan can donate!")}</h3></p>
+            </Modal.Header>
+            <Modal.Body>
+                <Table responsive striped bordered hover>
+                    <tr>
+                        <td className='thead'>{t("Beneficiary Name")}</td>
+                        <td>BAKI INSAN HUQUQLARI KLUBU ICTIMAI BIRLIYI</td>
+                    </tr>
+                    <tr>
+                        <td className='thead'>{t("Beneficiary Account")}</td>
+                        <td>AZ14IBAZ40090019444621454202</td>
+                    </tr>
+                    <tr>
+                        <td className='thead'>{t("Beneficiary Bank")}</td>
+                        <td>Azərbaycan Beynəlxalq Bankı Binəqədi filialı</td>
+                    </tr>
+                    <tr>
+                        <td className='thead'>{t("SWIFT Code")}</td>
+                        <td>IBAZAZ2X</td>
+                    </tr>
+                    <tr>
+                        <td className='thead'>{t("Correspondent Account")}</td>
+                        <td>AZ03NABZ01350100000000002944</td>
+                    </tr>
+                    <tr>
+                        <td className='thead'>{t("Bank Code")}</td>
+                        <td>805584</td>
+                    </tr>
+                    <tr>
+                        <td className='thead'>{t("Bank Tax ID")}</td>
+                        <td>9900001881</td>
+                    </tr>
+                    <tr>
+                        <td className='thead'>{t("Bank address")}</td>
+                        <td>AZ10005</td>
+                    </tr>
+                    <tr>
+                        <td className='thead'>{t("Bank telephone numbers")}</td>
+                        <td>+994 12 562 99 41</td>
+                    </tr>
+                    <tr>
+                        <td className='thead'>{t("FAX")}</td>
+                        <td>+994 12 562 99 41</td>
+                    </tr>
+                    <tr>
+                        <td className='thead'>{t("Beneficiary Tax ID")}</td>
+                        <td>1306986731</td>
+                    </tr>
+                </Table>
+            </Modal.Body>
+        </Modal>
+    )
 }
 
 const MultilangLogo: FunctionComponent<{language: string}> = ({language}) => {
