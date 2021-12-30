@@ -9,3 +9,4 @@ export * from './staticPage.actions';
 export * from './urbanica.actions';
 export * from './visitors.action';
 export * from './statement.actions';
+export * from './orgDocs.actions';

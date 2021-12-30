@@ -1,14 +1,13 @@
 import React, { FunctionComponent, useEffect } from "react";
-import { Table } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { getStatement, getStatements } from "../../../redux/actions";
+import { getStatement } from "../../../redux/actions";
 import { RootState } from "../../../redux/reducers";
 import { useTranslation } from "react-i18next";
+import { useParams } from "react-router-dom";
+import { GrAttachment } from 'react-icons/gr';
 import moment from "moment";
 import 'react-bootstrap';
 import './statement.scss';
-import { useParams } from "react-router-dom";
-import { GrAttachment } from 'react-icons/gr';
 
 interface StatementParams {
     id: string;

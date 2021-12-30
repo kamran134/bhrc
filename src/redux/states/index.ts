@@ -6,3 +6,4 @@ export * from './home.state';
 export * from './resource.state';
 export * from './settings.state';
 export * from './urbanica.state';
+export * from './orgDocs.state';

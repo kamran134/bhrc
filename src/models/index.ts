@@ -8,3 +8,4 @@ export * from './team.model';
 export * from './urbanica.model';
 export * from './user.model';
 export * from './statement.model';
+export * from './orgDocs.model';

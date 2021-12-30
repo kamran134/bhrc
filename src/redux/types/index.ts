@@ -9,3 +9,4 @@ export * from './staticPage.types';
 export * from './urbanica.types';
 export * from './visitor.types';
 export * from './statement.types';
+export * from './orgDocs.types';

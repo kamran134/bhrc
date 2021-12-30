@@ -20,6 +20,8 @@ import AlertMessage from './components/UI/AlertMessage';
 import StaticPage from './components/Pages/StaticPage/StaticPage';
 import Statement from './components/Pages/Statements/Statement';
 import Statements from './components/Pages/Statements/Statements';
+import OrganizationDoc from './components/Pages/OrganizationDocs/OrganizationDoc';
+import OrganizationDocs from './components/Pages/OrganizationDocs/OrganizationDocs';
 
 const MyRouter: FunctionComponent<{}> = () => {
     return (
@@ -52,6 +54,8 @@ const MyRouter: FunctionComponent<{}> = () => {
                 <Route path='/' exact component={Main} />
                 <Route path='resources/:category/:topic' component={Resources} />
                 <Route path='/resources' component={Resources} />
+                <Route path='/organization-document/:id' component={OrganizationDoc} />
+                <Route path='/organization-documents' component={OrganizationDocs} />
                 <Route path='/statement/:id' component={Statement} />
                 <Route path='/statements' component={Statements} />
                 <Route path='/:page' component={StaticPage} />
