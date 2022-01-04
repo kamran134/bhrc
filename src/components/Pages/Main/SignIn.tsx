@@ -8,6 +8,8 @@ import { IHomePageBlock } from '../../../models';
 import { RootState } from '../../../redux/reducers';
 import AuthModal from '../../Elements/Auth/AuthModal';
 import { openModal, redirect } from '../../../redux/actions';
+import { AnimationOnScroll } from 'react-animation-on-scroll';
+import "animate.css/animate.min.css";
 
 interface MainSignInProps {
     data: IHomePageBlock
@@ -28,7 +30,7 @@ const MainSignIn: FunctionComponent<MainSignInProps> = ({ data }) => {
     }, [isAuthenticated, redirectUrl, history]);
 
     return (
-        <>
+        <AnimationOnScroll animateIn='animate__fadeIn' animateOnce>
             <div className='main-sign-in'>
                 <div className='main-sign-in__left'>
                     <Listochki className='start' />
@@ -50,7 +52,7 @@ const MainSignIn: FunctionComponent<MainSignInProps> = ({ data }) => {
                 </div>
             </div>
             <AuthModal />
-        </>
+        </AnimationOnScroll>
     );
 }
 

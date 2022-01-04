@@ -9,6 +9,8 @@ import Modal from 'react-bootstrap/Modal';
 import { config } from '../../../config';
 import { RootState } from '../../../redux/reducers';
 import { ITeamMember, ISocialNetwork } from '../../../models';
+import { AnimationOnScroll } from 'react-animation-on-scroll';
+import "animate.css/animate.min.css";
 
 const MainTeam: FunctionComponent = () => {
 
@@ -28,7 +30,9 @@ const MainTeam: FunctionComponent = () => {
         <div className='main-team'>
             <div className='container'>
                 <div className='container-inner centered-text'>
-                    <h1>{t("Our team")}</h1>
+                    <AnimationOnScroll animateIn='animate__backInDown' animateOnce>
+                        <h1>{t("Our team")}</h1>
+                    </AnimationOnScroll>
                     <Members members={team} />
                 </div>
             </div>
@@ -47,8 +51,8 @@ const Members: FunctionComponent<MembersProps> = ({members}) => {
     const [showInfo, setShowInfo] = useState<string | undefined>(undefined);
     return (
         <div className='main-team__members'>
-            {members.map((member: ITeamMember) => (
-                <React.Fragment key={member._id}>
+            {members.map((member: ITeamMember, i: number) => (
+                <AnimationOnScroll key={member._id} animateIn='animate__fadeInUp' delay={i*100} animateOnce>
                     <div className='member' onClick={() => setShowInfo(member._id)}>
                         <img src={`${config.url.IMAGE_URL}team_images/${member.picture}/original/${member.picture}.${member.pictureExtension}`} alt={'avatar'} />
                         <div className='name'>{member.name[lang]}</div>
@@ -71,7 +75,7 @@ const Members: FunctionComponent<MembersProps> = ({members}) => {
                             {member.socialNetworks.map(network => <SocialNetwork key={network.name} network={network} />)}
                         </div>}
                     </Modal>
-                </React.Fragment>
+                </AnimationOnScroll>
             ))}
         </div>
     )

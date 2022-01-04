@@ -9,6 +9,8 @@ import { TFunction } from 'i18next';
 import { RootState } from '../../../redux/reducers';
 import { IHomePageBlock, IArticle } from '../../../models';
 import moment from 'moment';
+import { AnimationOnScroll } from 'react-animation-on-scroll';
+import "animate.css/animate.min.css";
 
 interface ActivityProps {
     data: IHomePageBlock
@@ -29,20 +31,23 @@ const MainActivity: FunctionComponent<ActivityProps> = ({ data }) => {
 
     return (
         <div className='main-activity centered-text'>
-            <h1 className='main-blue-text nowrap-text title'>{data && data.title[lang]}</h1>
-            <div className='main-activity__background'>
-                <div className='opacity'/>
-                <div className='container'>
-                    <div className='container-inner'>
-                        <div className='flex-col flex-center small-margin-top'>
-                            {/* <PaintBadge title={'Activity'} /> */}
-                            {data && data.subtitle && <div className='main-activity__central-block'>
-                                <h3 className='white-text'>{data.subtitle[lang]}</h3>
-                            </div>}
+            <AnimationOnScroll animateIn='animate__backInLeft' animateOnce>
+                <h1 className='main-blue-text nowrap-text title'>{data && data.title[lang]}</h1>
+            </AnimationOnScroll>
+            <AnimationOnScroll animateIn='animate__fadeIn' animateOnce>
+                <div className='main-activity__background'>
+                    <div className='opacity'/>
+                    <div className='container'>
+                        <div className='container-inner'>
+                            <div className='flex-col flex-center small-margin-top'>
+                                {data && data.subtitle && <div className='main-activity__central-block'>
+                                    <h3 className='white-text'>{data.subtitle[lang]}</h3>
+                                </div>}
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </AnimationOnScroll>
             <Activities articles={articles} lang={lang} className='desktop' />
             <Activities articles={articles} lang={lang} className='mobile' />
         </div>

@@ -9,6 +9,8 @@ import { config } from '../../../config';
 import { transliterate } from '../../../translit';
 import { IHomePageBlock, ICategory } from '../../../models';
 import { RootState } from '../../../redux/reducers';
+import { AnimationOnScroll } from 'react-animation-on-scroll';
+import "animate.css/animate.min.css";
 
 interface MainResourcesProps {
     data: IHomePageBlock
@@ -35,7 +37,9 @@ const MainResources: FunctionComponent<MainResourcesProps> = ({ data }) => {
                     <div className='flex-col flex-center small-margin-top'>
                         {/* <PaintBadge title={'Resources'} /> */}
                         <div className='main-activity__central-block'>
-                            <h1 className='main-blue-text'>{data && data.title[lang]}</h1>
+                            <AnimationOnScroll animateIn='animate__backInRight' animateOnce>
+                                <h1 className='main-blue-text'>{data && data.title[lang]}</h1>
+                            </AnimationOnScroll>
                             {data && data.subtitle && <h3 className='main-grey-text'>{data && data.subtitle[lang]}</h3>}
                         </div>
                         <div className='main-resources__blocks'>
@@ -64,18 +68,21 @@ const ResourceBlock: FunctionComponent<ResourceBlockProps> = ({ categories, lang
     return(
         <>
             {categories && categories.map((category, i) => (
-                <div key={category._id} className='resource-block' style={{backgroundImage: `url(${config.url.IMAGE_URL}category_images/${category.picture}/original/${category.picture})`}}>
-                    <div className='resource-block__content'>
-                        {/* <div className='hashtag-text white-text'>{content[i].hashtag}</div> */}
-                        <div className='block-title-text white-text'>{category.name[lang]}</div>
-                        <div className='text'>{category.description[lang]}</div>
-                        <div className='indicator'>
-                            <div className='indicator__progress' />
+                <AnimationOnScroll key={category._id} animateIn='animate__backInUp' delay={i*100} animateOnce>
+                    <div key={category._id} className='resource-block' style={{backgroundImage: `url(${config.url.IMAGE_URL}category_images/${category.picture}/original/${category.picture})`}}>
+                        <div className='resource-block__content'>
+                            {/* <div className='hashtag-text white-text'>{content[i].hashtag}</div> */}
+                            <div className='block-title-text white-text'>{category.name[lang]}</div>
+                            <div className='text'>{category.description[lang]}</div>
+                            <div className='indicator'>
+                                <div className='indicator__progress' />
+                            </div>
+                            <div className='statistics'>{}</div>
+                            <button className='bhrc-btn white-btn' onClick={() => history.push(`/resources/${transliterate().transform(category.name[lang], '-')}`)}>{t("Read more")}<ImArrowRight2/></button>
                         </div>
-                        <div className='statistics'>{}</div>
-                        <button className='bhrc-btn white-btn' onClick={() => history.push(`/resources/${transliterate().transform(category.name[lang], '-')}`)}>{t("Read more")}<ImArrowRight2/></button>
                     </div>
-                </div>
+                </AnimationOnScroll>
+                
             ))}
         </>
     )
