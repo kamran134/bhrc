@@ -10,7 +10,6 @@ import { RootState } from '../../../redux/reducers';
 import { IArticle } from '../../../models';
 import Pagination from '../../UI/Pagination';
 import Autocomplete from 'react-autocomplete';
-//import 'react-dropdown/style.css';
 import moment from 'moment';
 import 'moment/locale/az';
 import 'moment/locale/ru';
@@ -27,8 +26,7 @@ const ActivitiesMain: FunctionComponent<ActivitiesMainProps> = props => {
     const { t } = useTranslation();
     const [searchString, setSearchString] = useState<string>('');
 
-    const { articles, lang, foundArticles, popularArticles } = useSelector((state: RootState) => ({
-        articles: state.news.articles,
+    const { lang, foundArticles, popularArticles } = useSelector((state: RootState) => ({
         lang: state.settings.language,
         foundArticles: state.news.foundArticles,
         popularArticles: state.news.popularArticles
@@ -80,7 +78,7 @@ const ActivitiesMain: FunctionComponent<ActivitiesMainProps> = props => {
                                 <Link to={`/activities/${item.path[lang]}`}>
                                     <img loading='lazy'
                                         className='search-block__item-image'
-                                        src={`${config.url.IMAGE_URL}article_images/${item.picture}/original/${item.picture}`}
+                                        src={`${config.url.IMAGE_URL}article_images/${item.picture}/mobile/${item.picture}`}
                                         alt={item._id} />
                                     {item.name[lang]}
                                 </Link>
@@ -117,7 +115,7 @@ const ActivitiesMain: FunctionComponent<ActivitiesMainProps> = props => {
                                     <Link to={`/activities/${item.path[lang]}`}>
                                         <img loading='lazy'
                                             className='search-block__item-image'
-                                            src={`${config.url.IMAGE_URL}article_images/${item.picture}/original/${item.picture}`}
+                                            src={`${config.url.IMAGE_URL}article_images/${item.picture}/mobile/${item.picture}`}
                                             alt={item._id} />
                                         {item.name[lang]}
                                     </Link>
@@ -130,7 +128,6 @@ const ActivitiesMain: FunctionComponent<ActivitiesMainProps> = props => {
                                 position: 'absolute',
                                 backgroundColor: 'rgba(248,248,248, 1)'
                             }} />
-                        
                         <SearchIcon className='search-icon' />
                     </div>
                     <PopularBlock articles={popularArticles} lang={lang} />
@@ -155,7 +152,7 @@ const PopularBlock: FunctionComponent<PopularBlockProps> = (props) => {
             <h4>{t("Most read")}</h4>
             {props.articles && props.articles.slice(0, 5).map((article: IArticle) =>
             <div className='post' key={article._id}>
-                <div><img loading='lazy' src={`${config.url.IMAGE_URL}article_images/${article.picture}/original/${article.picture}`} alt={article._id} /></div>
+                <div><img loading='lazy' src={`${config.url.IMAGE_URL}article_images/${article.picture}/mobile/${article.picture}`} alt={article._id} /></div>
                 <div className='post__date'>
                     <span className='blue-round'/> {moment(article.createdAt).format('dddd, DD MMMM')}
                     <h5><Link to={`/activities/${article.path[props.lang]}`}>
@@ -166,7 +163,7 @@ const PopularBlock: FunctionComponent<PopularBlockProps> = (props) => {
             </div>
             )}
         </div>
-    )
+    );
 }
 
 export default ActivitiesMain;

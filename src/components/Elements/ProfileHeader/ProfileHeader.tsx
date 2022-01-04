@@ -63,7 +63,7 @@ const ProfileHeader: FunctionComponent = () => {
             <ProfileCover />
             <ProfileCoverEllipse className='ellipse' />
             <div className='profile-header__avatar'>
-                {auth.user?.profile.picture ? <img src={`${config.url.IMAGE_URL}users_images/${auth.user.profile.picture}/original/avatar`} /> : 
+                {auth.user?.profile.picture ? <img src={`${config.url.IMAGE_URL}users_images/${auth.user.profile.picture}/mobile/avatar`} /> : 
                 <img src={preview ? preview : noAvatar} alt={'test_avatar'} />}
                 <div className='profile-header__avatar__change-photo'>
                     <div className='change-photo-inner' onClick={addPhotoHandler}>

@@ -69,7 +69,7 @@ const ResourceBlock: FunctionComponent<ResourceBlockProps> = ({ categories, lang
         <>
             {categories && categories.map((category, i) => (
                 <AnimationOnScroll key={category._id} animateIn='animate__backInUp' delay={i*100} animateOnce>
-                    <div key={category._id} className='resource-block' style={{backgroundImage: `url(${config.url.IMAGE_URL}category_images/${category.picture}/original/${category.picture})`}}>
+                    <div key={category._id} className='resource-block' style={{backgroundImage: `url(${config.url.IMAGE_URL}category_images/${category.picture}/mobile/${category.picture})`}}>
                         <div className='resource-block__content'>
                             {/* <div className='hashtag-text white-text'>{content[i].hashtag}</div> */}
                             <div className='block-title-text white-text'>{category.name[lang]}</div>

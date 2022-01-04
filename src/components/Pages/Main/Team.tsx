@@ -54,7 +54,7 @@ const Members: FunctionComponent<MembersProps> = ({members}) => {
             {members.map((member: ITeamMember, i: number) => (
                 <AnimationOnScroll key={member._id} animateIn='animate__fadeInUp' delay={i*100} animateOnce>
                     <div className='member' onClick={() => setShowInfo(member._id)}>
-                        <img src={`${config.url.IMAGE_URL}team_images/${member.picture}/original/${member.picture}.${member.pictureExtension}`} alt={'avatar'} />
+                        <img src={`${config.url.IMAGE_URL}team_images/${member.picture}/mobile/${member.picture}.${member.pictureExtension}`} alt={'avatar'} />
                         <div className='name'>{member.name[lang]}</div>
                         <div className='profession'>{member.profession[lang]}</div>
                         {member.socialNetworks && <div className='social-network'>
@@ -67,7 +67,7 @@ const Members: FunctionComponent<MembersProps> = ({members}) => {
                         show={showInfo === member._id}
                         onHide={() => setShowInfo(undefined)}
                     >
-                        <img src={`${config.url.IMAGE_URL}team_images/${member.picture}/original/${member.picture}.${member.pictureExtension}`} alt={'avatar'} />
+                        <img src={`${config.url.IMAGE_URL}team_images/${member.picture}/mobile/${member.picture}.${member.pictureExtension}`} alt={'avatar'} />
                         <div className='name'>{member.name[lang]}</div>
                         <div className='profession'>{member.profession[lang]}</div>
                         <div className='bio' dangerouslySetInnerHTML={{__html: member.bio[lang]}} />

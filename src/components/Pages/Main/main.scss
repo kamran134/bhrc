@@ -4,7 +4,7 @@
     height: calc(100vh - #{$cover-photo-margin});
     position: relative;
     //background-attachment: fixed;
-    background-image: url("/assets/images/bhrc_1.jpg");
+    background-image: url("/assets/images/bhrc_cover.webp");
     background-size: cover;
     background-position-y: 60%;
     &__search {
@@ -139,7 +139,7 @@
         position: relative;
         width: 100%;
         height: $main-activity-back-height;
-        background: url('../../../assets/images/bhrc_news.jpg');
+        background: url('../../../assets/images/bhrc_news.webp');
         background-size: cover;
         background-position-y: $main-activity-y;
     }

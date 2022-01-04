@@ -39,7 +39,7 @@ const Activities: FunctionComponent = () => {
                 <Link key={article._id} to={`/activities/${article.path[lang]}`}>
                     <div 
                         className='article'
-                        style={{backgroundImage: `url(${config.url.IMAGE_URL}article_images/${article.picture}/original/${article.picture})`}} 
+                        style={{backgroundImage: `url(${config.url.IMAGE_URL}article_images/${article.picture}/mobile/${article.picture})`}} 
                     >
                         <div className='article__info'>
                             <div className='article__info__date'>
