@@ -2,7 +2,7 @@ import React, { useEffect, FunctionComponent } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { TFunction } from 'i18next';
-import { useHistory } from 'react-router-dom';
+import { NavigateFunction, useNavigate } from 'react-router-dom';
 import { ImArrowRight2 } from 'react-icons/im';
 import { getResourcesCategories } from '../../../redux/actions';
 import { config } from '../../../config';
@@ -19,7 +19,7 @@ interface MainResourcesProps {
 const MainResources: FunctionComponent<MainResourcesProps> = ({ data }) => {
     const { t } = useTranslation();
     const dispatch = useDispatch();
-    const history = useHistory();
+    const navigate = useNavigate();
 
     const { resources, lang } = useSelector((state: RootState) => ({
         lang: state.settings.language,
@@ -48,23 +48,23 @@ const MainResources: FunctionComponent<MainResourcesProps> = ({ data }) => {
                                     categories={resources.categories}
                                     lang={lang}
                                     t={t}
-                                    history={history} /> : <></>}
+                                    navigate={navigate} /> : <></>}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    )
+    );
 }
 
 interface ResourceBlockProps {
-    categories?: ICategory[],
-    lang: string,
-    t: TFunction,
-    history: any
+    categories?: ICategory[];
+    lang: string;
+    t: TFunction;
+    navigate: NavigateFunction;
 }
 
-const ResourceBlock: FunctionComponent<ResourceBlockProps> = ({ categories, lang, t, history }) => {
+const ResourceBlock: FunctionComponent<ResourceBlockProps> = ({ categories, lang, t, navigate }) => {
     return(
         <>
             {categories && categories.map((category, i) => (
@@ -78,7 +78,7 @@ const ResourceBlock: FunctionComponent<ResourceBlockProps> = ({ categories, lang
                                 <div className='indicator__progress' />
                             </div>
                             <div className='statistics'>{}</div>
-                            <button className='bhrc-btn white-btn' onClick={() => history.push(`/resources/${transliterate().transform(category.name[lang], '-')}`)}>{t("Read more")}<ImArrowRight2/></button>
+                            <button className='bhrc-btn white-btn' onClick={() => navigate(`/resources/${transliterate().transform(category.name[lang], '-')}`)}>{t("Read more")}<ImArrowRight2/></button>
                         </div>
                     </div>
                 </AnimationOnScroll>

@@ -8,16 +8,19 @@ import { getTeam } from '../../../redux/actions/home.actions';
 import Modal from 'react-bootstrap/Modal';
 import { config } from '../../../config';
 import { RootState } from '../../../redux/reducers';
-import { ITeamMember, ISocialNetwork } from '../../../models';
+import { ITeamMember, ISocialNetwork, IHomePageBlock } from '../../../models';
 import { AnimationOnScroll } from 'react-animation-on-scroll';
 import "animate.css/animate.min.css";
 
-const MainTeam: FunctionComponent = () => {
+interface MainTeamProps {
+    data: IHomePageBlock;
+}
 
+const MainTeam: FunctionComponent<MainTeamProps> = ({ data }) => {
     const dispatch = useDispatch();
-
-    const { team } = useSelector((state: RootState) => ({
-        team: state.homepage.teamMembers
+    const { teamMembers, lang } = useSelector((state: RootState) => ({
+        teamMembers: state.homepage.teamMembers,
+        lang: state.settings.language
     }));
 
     useEffect(() => {
@@ -31,9 +34,9 @@ const MainTeam: FunctionComponent = () => {
             <div className='container'>
                 <div className='container-inner centered-text'>
                     <AnimationOnScroll animateIn='animate__backInDown' animateOnce>
-                        <h1>{t("Our team")}</h1>
+                        <h1>{data && data.title[lang]}</h1>
                     </AnimationOnScroll>
-                    <Members members={team} />
+                    <Members members={teamMembers} />
                 </div>
             </div>
         </div>

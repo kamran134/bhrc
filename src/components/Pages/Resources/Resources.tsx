@@ -1,7 +1,7 @@
 import React, { useState, useEffect, FunctionComponent } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector, useDispatch } from 'react-redux';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import Carousel from 'react-bootstrap/Carousel';
 import { ReactComponent as FolderIcon } from '../../../assets/images/folder.svg';
 import { ReactComponent as WordIcon } from '../../../assets/images/word-icon.svg';
@@ -17,7 +17,7 @@ import './resources.scss';
 const Resources: FunctionComponent = () => {
     const dispatch = useDispatch();
     const { t } = useTranslation();
-    const history = useHistory();
+    const navigate = useNavigate();
     const location = useLocation();
     const [categoryId, setCategoryId] = useState<string | undefined>(undefined);
     const [topicId, setTopicId] = useState<string | undefined>(undefined);
@@ -50,7 +50,7 @@ const Resources: FunctionComponent = () => {
     const selectCategoryHandler = (id: string, name: string) => {
         setCategoryId(id);
         const tName = transliterate().transform(name, '-');
-        history.push(`/resources/${tName}`);
+        navigate(`/resources/${tName}`);
     }
 
     useEffect(() => {

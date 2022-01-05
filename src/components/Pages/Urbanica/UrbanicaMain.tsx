@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../../redux/reducers';
 import { getCompetition, openModal, redirect } from '../../../redux/actions';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import moment from 'moment';
 import 'moment/locale/az';
 import './urbanica.scss';
@@ -19,7 +19,7 @@ import './urbanica.scss';
 const UrbanicaMain: FunctionComponent = () => {
     const { t } = useTranslation();
     const dispatch = useDispatch();
-    const history = useHistory();
+    const navigate = useNavigate();
 
     const { competition, lang, auth, redirect } = useSelector((state: RootState) => ({
         competition: state.urbanica.competition,
@@ -34,8 +34,8 @@ const UrbanicaMain: FunctionComponent = () => {
     }, []);
 
     useEffect(() => {
-        if(redirect && redirect!== '' && auth.isAuthenticated ) history.push(redirect);
-    }, [auth, redirect, history]);
+        if(redirect && redirect!== '' && auth.isAuthenticated ) navigate(redirect);
+    }, [auth, redirect, navigate]);
 
     return (
         <>
@@ -95,12 +95,12 @@ interface ContestProps {
 
 const Contest: FunctionComponent<ContestProps> = ({ name, description, isAuthenticate, endDate }) => {
     const { t } = useTranslation();
-    let history = useHistory();
+    let navigate = useNavigate();
     const dispatch = useDispatch();
 
     const participateHandler = () => {
         if (isAuthenticate) {
-            history.push('/urbanica/competition');
+            navigate('/urbanica/competition');
         } else {
             dispatch(openModal(true));
             dispatch(redirect('/urbanica/competition'));

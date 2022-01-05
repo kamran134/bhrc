@@ -17,7 +17,7 @@ declare global {
     interface Window {
       __REDUX_DEVTOOLS_EXTENSION__?: typeof compose;
     }
-  }
+}
 
 if (window.__REDUX_DEVTOOLS_EXTENSION__) {
     middleware = compose(applyMiddleware(thunkMiddleware), window.__REDUX_DEVTOOLS_EXTENSION__());

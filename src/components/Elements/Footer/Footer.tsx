@@ -51,8 +51,8 @@ const Footer: FunctionComponent<{}> = () => {
                         </div>
                         <div className='footer-col'>
                             <h2>{t("Reporting")}</h2>
-                            {staticPages && staticPages.slice(0).reverse().map(page => (
-                                <Link to={`/${page.path.az}`} key={page._id}><span className='info-item'>{page.name[lang]}</span></Link>
+                            {staticPages && staticPages.slice(0).reverse().map(staticPage => (
+                                <Link to={`/${staticPage.path.az}`} key={staticPage._id}><span className='info-item'>{staticPage.name[lang]}</span></Link>
                             ))}
                             <Link to={`/statements`} key={'0'}><span className='info-item'>{t("Reports")}</span></Link>
                             <Link to={`/organization-documents`} key={'1'}><span className='info-item'>{t("Organization Documents")}</span></Link>

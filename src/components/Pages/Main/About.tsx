@@ -4,7 +4,7 @@ import FontanImg from '../../../assets/images/about/bhrc_3.jpg';
 import HAImg from '../../../assets/images/about/bhrc_7.jpg';
 import { ImArrowRight2 } from 'react-icons/im';
 import { useTranslation } from 'react-i18next';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { RootState } from '../../../redux/reducers';
 import { IHomePageBlock } from '../../../models';
 import { AnimationOnScroll } from 'react-animation-on-scroll';
@@ -16,7 +16,7 @@ interface AboutProps {
 
 const MainAbout: FunctionComponent<AboutProps> = ({data}) => {
     const { t } = useTranslation();
-    const history = useHistory();
+    const history = useNavigate();
     const { lang } = useSelector((state: RootState) => ({
         lang: state.settings.language
     }));
@@ -40,7 +40,7 @@ const MainAbout: FunctionComponent<AboutProps> = ({data}) => {
                                 <div className='block-text'>{data.text[lang]}</div>
                             </AnimationOnScroll>}
                             <div className='main-about__footer'>
-                                <button className='bhrc-btn orange-btn' onClick={() => history.push('/about')}>
+                                <button className='bhrc-btn orange-btn' onClick={() => history('/about')}>
                                     {t("More info")} <ImArrowRight2/>
                                 </button>
                                 <button className='bhrc-btn blue-btn'>{t("Support us")} <ImArrowRight2/></button>
@@ -60,7 +60,7 @@ const MainAbout: FunctionComponent<AboutProps> = ({data}) => {
                 </div>
             </div>
         </div>
-    )
+    );
 }
 
 export default MainAbout;

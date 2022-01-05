@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useEffect, useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { ReactComponent as ProfileCover } from '../../../assets/images/profile/profile-cover.svg';
 import { ReactComponent as ProfileCoverEllipse } from '../../../assets/images/profile/profile-cover-ellipse.svg';
 import { ReactComponent as LogoutIcon } from '../../../assets/images/profile/logout.svg';
@@ -17,7 +17,7 @@ const ProfileHeader: FunctionComponent = () => {
     const dispatch = useDispatch();
     const { t } = useTranslation();
     const addPhotoRef = useRef<HTMLInputElement>(null);
-    const history = useHistory();
+    const navigate = useNavigate();
     const { auth, lang } = useSelector((state: RootState) => ({
         auth: state.auth,
         lang: state.settings.language
@@ -31,7 +31,7 @@ const ProfileHeader: FunctionComponent = () => {
     }, []);
 
     useEffect(() => {
-        if (!auth.isAuthenticated) history.push('/urbanica');
+        if (!auth.isAuthenticated) navigate('/urbanica');
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 

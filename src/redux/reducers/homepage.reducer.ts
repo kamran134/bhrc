@@ -1,7 +1,7 @@
-import { IHome } from "../states";
+import { IHomeState } from "../states";
 import { GET_HOMEPAGE, GET_STATICS, GET_TEAM, GLOBAL_SEARCH, HomePageTypes } from "../types";
 
-const INITIAL_STATE: IHome = {
+const INITIAL_STATE: IHomeState = {
     welcome: undefined,
     about: undefined,
     activity: undefined,

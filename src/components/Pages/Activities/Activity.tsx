@@ -11,14 +11,10 @@ import moment from 'moment';
 import 'moment/locale/az';
 import 'moment/locale/ru';
 
-interface QuizParams {
-    id: string;
-};
-
 const Activity: FunctionComponent = () => {
     const dispatch = useDispatch();
     const { t } = useTranslation();
-    const { id } = useParams<QuizParams>();
+    const { id } = useParams<{id: string}>();
 
     const { article, lang, visitorId } = useSelector((state: RootState) => ({
         article: state.news.articleByName,
@@ -28,7 +24,7 @@ const Activity: FunctionComponent = () => {
     }));
 
     useEffect(() => {
-        dispatch(getArticleByName(id));
+        id && dispatch(getArticleByName(id));
     }, [dispatch, id]);
 
     useEffect(() => {

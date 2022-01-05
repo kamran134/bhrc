@@ -8,7 +8,7 @@ import { useTranslation } from 'react-i18next';
 import { RootState } from '../../../redux/reducers';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProfile, openModal } from '../../../redux/actions';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import AuthModal from '../Auth/AuthModal';
 import './urbanicaHeader.scss';
 import { FaUser } from 'react-icons/fa';
@@ -16,7 +16,7 @@ import { IoIosHome } from 'react-icons/io';
 
 const UrbanicaHeader: FunctionComponent<{}> = (props) => {
     const { t } = useTranslation();
-    let history = useHistory();
+    let navigate = useNavigate();
     const dispatch = useDispatch();
 
     const { auth } = useSelector((state: RootState) => ({
@@ -50,7 +50,7 @@ const UrbanicaHeader: FunctionComponent<{}> = (props) => {
                             onClick={() => dispatch(openModal(true))}
                         >
                             {t("Sign in")}
-                        </button> : <button className='urbanica-btn sign-up' onClick={() => history.push('/profile')}>
+                        </button> : <button className='urbanica-btn sign-up' onClick={() => navigate('/profile')}>
                             {t("Şəxsi hesab")}
                             <FaUser style={{marginLeft: 10}} />
                         </button>}

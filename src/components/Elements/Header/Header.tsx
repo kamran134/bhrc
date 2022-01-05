@@ -19,7 +19,7 @@ const Header: FunctionComponent = () => {
             window.removeEventListener('scroll', handleScroll)
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[]);
+    }, []);
 
     const handleScroll = (e: Event) => {
         if (window.scrollY > 200 && !showWhite) {

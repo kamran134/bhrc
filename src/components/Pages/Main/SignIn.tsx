@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { ImArrowRight2 } from 'react-icons/im';
@@ -17,7 +17,7 @@ interface MainSignInProps {
 
 const MainSignIn: FunctionComponent<MainSignInProps> = ({ data }) => {
     const dispatch = useDispatch();
-    const history = useHistory();
+    const navigate = useNavigate();
     const { lang, redirectUrl, isAuthenticated } = useSelector((state: RootState) => ({
         lang: state.settings.language,
         redirectUrl: state.settings.redirect,
@@ -26,8 +26,8 @@ const MainSignIn: FunctionComponent<MainSignInProps> = ({ data }) => {
     const { t } = useTranslation();
 
     useEffect(() => {
-        if (redirectUrl && redirectUrl !== '' && isAuthenticated) history.push(redirectUrl);
-    }, [isAuthenticated, redirectUrl, history]);
+        if (redirectUrl && redirectUrl !== '' && isAuthenticated) navigate(redirectUrl);
+    }, [isAuthenticated, redirectUrl, navigate]);
 
     return (
         <AnimationOnScroll animateIn='animate__fadeIn' animateOnce>

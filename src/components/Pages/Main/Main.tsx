@@ -13,8 +13,7 @@ import './main.scss';
 
 const Main: FunctionComponent = () => {
     const dispatch = useDispatch();
-
-    const { homepage: { welcome, about, activity, resources, signin } } = useSelector((state: RootState) => ({
+    const { homepage: { welcome, about, activity, resources, signin, team } } = useSelector((state: RootState) => ({
         homepage: state.homepage
     }));
 
@@ -38,7 +37,7 @@ const Main: FunctionComponent = () => {
             {/* <Statistics /> */}
             {resources && <MainResources data={resources} />}
             {signin && <MainSignIn data={signin} />}
-            <MainTeam />
+            {team && <MainTeam data={team} />}
         </>
     );
 }
