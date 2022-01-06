@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { Element, scroller } from 'react-scroll';
-import { getArticles, getPopularArticles, searchArticles } from '../../../redux/actions';
+import { getPopularArticles, searchArticles } from '../../../redux/actions';
 import { config } from '../../../config';
 import { ReactComponent as SearchIcon } from '../../../assets/images/search-icon.svg';
 import { RootState } from '../../../redux/reducers';

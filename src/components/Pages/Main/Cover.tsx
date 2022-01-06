@@ -1,4 +1,4 @@
-import React, { FunctionComponent, ReactNode, useEffect, useState } from 'react';
+import React, { FunctionComponent, ReactNode, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { ReactComponent as BHRCfigure } from '../../../assets/images/new-figure.svg';
@@ -10,7 +10,6 @@ import Autocomplete from 'react-autocomplete';
 import { globalSearch } from '../../../redux/actions';
 import { ISearch } from '../../../models/search.model';
 import { transliterate } from '../../../translit';
-import { animateScroll } from 'react-scroll';
 
 interface CoverProps {
     data: IHomePageBlock

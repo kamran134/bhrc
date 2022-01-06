@@ -37,6 +37,9 @@ const UrbanicaMain: FunctionComponent = () => {
         if(redirect && redirect!== '' && auth.isAuthenticated ) navigate(redirect);
     }, [auth, redirect, navigate]);
 
+    const today = new Date();
+    const endDate = competition ? new Date(competition?.endDate) : new Date();
+
     return (
         <>
             <div className='urbanica-main'>
@@ -48,7 +51,7 @@ const UrbanicaMain: FunctionComponent = () => {
                         <div className='urbanica-main__motivation'>
                             {t("MAKE A STEP")}
                         </div>
-                        {competition && 
+                        {competition && (endDate.getTime() > today.getTime()) &&
                             <Contest
                                 name={competition.name[lang] || competition.name.az}
                                 description={(competition.description || {})[lang || 'az']}
