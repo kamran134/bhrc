@@ -40,7 +40,7 @@ const MyRouter: FunctionComponent<{}> = () => {
                 </Route>
                 <Route path='/' element={<Default />}>
                     <Route index element={<Main/>} />
-                    <Route path='resources/:category/:topic' element={<Resources/>} />
+                    <Route path='resources/:category' element={<Resources/>} />
                     <Route path='resources' element={<Resources/>} />
                     <Route path='organization-document/:id' element={<OrganizationDoc/>} />
                     <Route path='organization-documents' element={<OrganizationDocs/>} />

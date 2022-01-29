@@ -28,7 +28,6 @@ const ScrollPageContainer: FunctionComponent = (props) => {
             const scrollEnd: number = startPosition === 0 ? bodyHeight - 150 : startPosition + bodyHeight - 90;
             scrollTo(scrollEnd).then(() => {
                 setStartPosition(scrollEnd);
-                //setEndPosition(endPosition + bodyHeight);
                 setTrigger(false);
             });
         }
@@ -45,7 +44,7 @@ const ScrollPageContainer: FunctionComponent = (props) => {
         const prom = new Promise((resolve, reject) => {
             setTimeout(() => {
                 resolve(window.scrollTo({behavior: 'smooth', top: position}));
-            }, 500);
+            }, 200);
         });
         return prom;
     }

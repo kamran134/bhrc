@@ -75,7 +75,6 @@ const Resources: FunctionComponent = () => {
         <>
             <Element name='resources' className='resources-head'>
                 <div className='resources-head__background'>
-                    {/* <div className='opacity'/> */}
                     <div className='container'>
                         <div className='container-inner'>
                             <div className='resources-head__categories'>
