@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useEffect, useRef, useState } from 'react';
-import { useTranslation } from 'react-i18next';
+import { TFunction, useTranslation } from 'react-i18next';
 import { ReactComponent as ProfileEllipses } from '../../../assets/images/profile/profile-ellipses.svg';
 import { ReactComponent as FolderIcon } from '../../../assets/images/folder.svg';
 import { useDispatch, useSelector } from 'react-redux';
@@ -7,6 +7,8 @@ import { RootState } from '../../../redux/reducers';
 import { getUserProjects, testRequest, updateProfile } from '../../../redux/actions';
 import { IProject } from '../../../models';
 import { GrEdit, GrCheckmark } from 'react-icons/gr';
+import { Table } from 'react-bootstrap';
+import { MdArrowDropDown, MdArrowDropUp } from 'react-icons/md';
 import './profile.scss';
 
 const ProfileMain: FunctionComponent = () => {
@@ -81,7 +83,7 @@ const ProfileMain: FunctionComponent = () => {
                 <div className='profile__works flex-center flex-col'>
                     <ProfileEllipses className='left-corner' />
                     <ProfileEllipses className='right-corner' />
-                    <MyProjects projects={projects} />
+                    <MyProjects projects={projects} t={t} />
                 </div>
             </div>
         </div>
@@ -89,11 +91,12 @@ const ProfileMain: FunctionComponent = () => {
 }
 
 interface MyProjectsProps {
-    projects?: IProject[]
+    projects?: IProject[];
+    t: TFunction;
 }
 
-const MyProjects: FunctionComponent<MyProjectsProps> = (props) => {
-    const { t } = useTranslation();
+const MyProjects: FunctionComponent<MyProjectsProps> = props => {
+    const { t } = props;
     return (
         <>
             <div className='profile-badge'>
@@ -102,20 +105,193 @@ const MyProjects: FunctionComponent<MyProjectsProps> = (props) => {
             <div className='profile-files'>
                 {Array.isArray(props.projects) && props.projects.length > 0 &&
                     props.projects.map(project => (
-                        <div className='profile-files__file' key={project._id}>
-                            <div><FolderIcon /></div>
-                            <div style={{marginLeft: 20}}>
-                                <div className='file-title'>#{project.general?.projectName || 'Adsız layihə'}</div>
-                                <div className='file-description'>
-                                    {project.general?.neccessary?.slice(0, 160)}
-                                </div>
-                            </div>
-                        </div>
+                        <MyProject project={project} t={t} />
                     ))
                 }
             </div>
         </>
-    )
+    );
+}
+
+interface ProjectProps {
+    project: IProject;
+    t: TFunction;
+}
+
+const MyProject: FunctionComponent<ProjectProps> = props => {
+    const [showDetails, setShowDetails] = useState<boolean>(false);
+    const [showBudget, setShowBudget] = useState<boolean>(false);
+    const budgetSums: number[] = [
+        props.project.budget?.participants?.reduce((p, c) => (p + c.price)*c.period.quantity, 0)!,
+        props.project.budget?.activities?.reduce((p, c) => (p + c.price)*c.period.quantity, 0)!,
+        props.project.budget?.devices?.reduce((p, c) => (p + c.price)*c.period.quantity, 0)!,
+        props.project.budget?.others?.reduce((p, c) => (p + c.price)*c.period.quantity, 0)!,
+    ];
+    const { t } = props;
+    return (
+        <>
+            <div className='profile-files__file' key={props.project._id} onClick={() => setShowDetails(!showDetails)}>
+                <div><FolderIcon /></div>
+                <div style={{marginLeft: 20}}>
+                    <div className='file-title'>#{props.project.general?.projectName || 'Adsız layihə'}</div>
+                    <div className='file-description'>
+                        {props.project.general?.neccessary?.slice(0, 160)}
+                    </div>
+                </div>
+            </div>
+            {showDetails && <div className={showDetails ? 'profile-files__details active' : 'profile-files__details'}>
+                <Table responsive bordered hover>
+                    <tbody>
+                        <tr>
+                            <th colSpan={4}>Ümumi məlumatlar</th>
+                        </tr>
+                        <tr>
+                            <td colSpan={2}>Layihənin adı: </td>
+                            <td colSpan={2}>{props.project.general?.projectName || 'Adssız'}</td>
+                        </tr>
+                        <tr>
+                            <td colSpan={2}>Layihənin zəruriliyi: </td>
+                            <td colSpan={2}>{props.project.general?.neccessary}</td>
+                        </tr>
+                        <tr>
+                            <td colSpan={2}>Layihənin həll edəcəyi problemlər: </td>
+                            <td colSpan={2}>{props.project.general?.howSolve}</td>
+                        </tr>
+                        <tr>
+                            <td colSpan={2}>Layihənin hədəf qrupları: </td>
+                            <td colSpan={2}>{props.project.general?.groups}</td>
+                        </tr>
+
+                        <tr>
+                            <th colSpan={4}>Layihənin detalları</th>
+                        </tr>
+                        <tr>
+                            <td colSpan={2}>Layihənin məqsədi: </td>
+                            <td colSpan={2}>{props.project.details?.goal}</td>
+                        </tr>
+                        <tr>
+                            <td colSpan={2}>Layihənin fəaliyyət təklifi: </td>
+                            <td colSpan={2}>{props.project.details?.suggestions}</td>
+                        </tr>
+                        <tr>
+                            <td colSpan={2}>Layihənin gözlənilən nəticələri: </td>
+                            <td colSpan={2}>{props.project.details?.expectedResult}</td>
+                        </tr>
+
+                        <tr>
+                            <th colSpan={4} onClick={() => setShowBudget(!showBudget)}>
+                                Büdcə forması {showBudget ? <MdArrowDropUp /> : <MdArrowDropDown />}
+                            </th>
+                        </tr>
+                        {showBudget && <>
+                            <tr>
+                                <td colSpan={2}>Layihənin müddəti: </td>
+                                <td colSpan={2}>{props.project.budget?.period.quantity} {t(props.project.budget?.period.unit || '')}</td>
+                            </tr>
+                            
+                            <tr>
+                                <th colSpan={4}>Heyət xərcləri</th>
+                            </tr>
+                            <tr>
+                                <th>Xərclərin növü</th>
+                                <th>Vahid</th>
+                                <th>Kəmiyyət</th>
+                                <th>Vahidin qiyməti</th>
+                            </tr>
+                            {props.project.budget?.participants?.map(p => (
+                                <tr>
+                                    <td>{p.name}</td>
+                                    <td>{t(p.period.unit)}</td>
+                                    <td>{p.period.quantity}</td>
+                                    <td>{p.price}</td>
+                                </tr>
+                            ))}
+                            <tr>
+                                <td colSpan={4}>
+                                    Cəmi: {budgetSums[0]} AZN
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th colSpan={4}>Fəaliyyət</th>
+                            </tr>
+                            <tr>
+                                <th>Xərclərin növü</th>
+                                <th>Vahid</th>
+                                <th>Kəmiyyət</th>
+                                <th>Vahidin qiyməti</th>
+                            </tr>
+                            {props.project.budget?.activities?.map(a => (
+                                <tr>
+                                    <td>{a.name}</td>
+                                    <td>{t(a.period.unit)}</td>
+                                    <td>{a.period.quantity}</td>
+                                    <td>{a.price}</td>
+                                </tr>
+                            ))}
+                            <tr>
+                                <td colSpan={4}>
+                                    Cəmi: {budgetSums[1]} AZN
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th colSpan={4}>Avadanlıq</th>
+                            </tr>
+                            <tr>
+                                <th>Xərclərin növü</th>
+                                <th>Vahid</th>
+                                <th>Kəmiyyət</th>
+                                <th>Vahidin qiyməti</th>
+                            </tr>
+                            {props.project.budget?.devices?.map(d => (
+                                <tr>
+                                    <td>{d.name}</td>
+                                    <td>{t(d.period.unit)}</td>
+                                    <td>{d.period.quantity}</td>
+                                    <td>{d.price}</td>
+                                </tr>
+                            ))}
+                            <tr>
+                                <td colSpan={4}>
+                                    Cəmi: {budgetSums[2]} AZN
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th colSpan={4}>Digər xərclər</th>
+                            </tr>
+                            <tr>
+                                <th>Xərclərin növü</th>
+                                <th>Vahid</th>
+                                <th>Kəmiyyət</th>
+                                <th>Vahidin qiyməti</th>
+                            </tr>
+                            {props.project.budget?.others?.map(o => (
+                                <tr>
+                                    <td>{o.name}</td>
+                                    <td>{t(o.period.unit)}</td>
+                                    <td>{o.period.quantity}</td>
+                                    <td>{o.price}</td>
+                                </tr>
+                            ))}
+                            <tr>
+                                <td colSpan={4}>
+                                    Cəmi: {budgetSums[3]} AZN
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <th colSpan={4}>
+                                    Cəmi: {budgetSums.reduce((p, c) => (p + c), 0)} AZN
+                                </th>
+                            </tr>
+                        </>}
+                    </tbody>
+                </Table>
+            </div>}
+        </>
+    );
 }
 
 export default ProfileMain;

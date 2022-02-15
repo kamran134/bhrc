@@ -109,5 +109,9 @@
     "ATTENTION! Only citizens of the Republic of Azerbaijan can donate!": "ВНИМАНИЕ! Пожертвовать могут только граждане Азербайджанской Республики!",
     "Organization Documents": "Организационные документы",
     "Organizagion Document": "Организационный документ",
-    "Link to Document": "Перейти к документу"
+    "Link to Document": "Перейти к документу",
+    "day": "день",
+    "week": "неделя",
+    "month": "месяц",
+    "year": "год"
 }

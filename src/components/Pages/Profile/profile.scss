@@ -115,6 +115,7 @@
         width: 852px;
         margin: 50px 0 100px;
         &__file {
+            cursor: pointer;
             background-color: $urbanica-light-pink;
             border-radius: 28px;
             padding: 24px;
@@ -131,6 +132,18 @@
             }
             .file-description {
                 font-size: 15px;
+            }
+        }
+        &__details {
+            padding: 0 24px;
+            margin-top: -43px;
+            opacity: 0;
+            &.active {
+                opacity: 1;
+                transition: opacity 0.5s;
+            }
+            th {
+                background-color: $urbanica-light-pink !important;
             }
         }
     }
