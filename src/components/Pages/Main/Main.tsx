@@ -32,7 +32,7 @@ const Main: FunctionComponent = () => {
     }, []);
 
     return (
-        <ScrollPageContainer>
+        <>
             {welcome && <ScrollPage name='cover' pageNumber={0}><Cover data={welcome} /></ScrollPage>}
             {about && <ScrollPage name='cover' pageNumber={1}><MainAbout data={about} /></ScrollPage>}
             {activity && <ScrollPage name='cover' pageNumber={2}><MainActivity data={activity} /></ScrollPage>}
@@ -40,7 +40,7 @@ const Main: FunctionComponent = () => {
             {resources && <ScrollPage name='cover' pageNumber={3}><MainResources data={resources} /></ScrollPage>}
             {signin && <ScrollPage name='cover' pageNumber={4}><MainSignIn data={signin} /></ScrollPage>}
             {team && <ScrollPage name='cover' pageNumber={5}><MainTeam data={team} /></ScrollPage>}
-        </ScrollPageContainer>
+        </>
     );
 }
 
