@@ -28,15 +28,15 @@ const MainAbout: FunctionComponent<AboutProps> = ({data}) => {
                     <div className='flex-row space-between main-about-flex'>
                         <div className='main-about__left'>
                             {data && data.title && 
-                            <AnimationOnScroll animateIn='animate__rubberBand' animateOnce>
+                            <AnimationOnScroll animateIn={'animate__rubberBand'} animateOnce>
                                 <h2 className='main-blue-text'>{data.title[lang]}</h2>
                             </AnimationOnScroll>}
                             {data && data.subtitle && 
-                            <AnimationOnScroll animateIn='animate__fadeIn' animateOnce>
+                            <AnimationOnScroll animateIn={'animate__fadeIn'} animateOnce>
                                 <h3 className='main-orange-text'>{data.subtitle[lang]}</h3>
                             </AnimationOnScroll>}
                             {data && data.text && 
-                            <AnimationOnScroll animateIn='animate__fadeIn' animateOnce>
+                            <AnimationOnScroll animateIn={'animate__fadeIn'} animateOnce>
                                 <div className='block-text'>{data.text[lang]}</div>
                             </AnimationOnScroll>}
                             <div className='main-about__footer'>
