@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import { Field, FormErrors, InjectedFormProps, reduxForm } from 'redux-form';
-import { IAuthForm, IProjectGeneralInfo } from '../models';
+import { IAuthForm, IProjectDetails, IProjectGeneralInfo } from '../models';
 import UrbanicaInput from '../components/UI/UrbanicaInput';
 import UrbanicaTextarea from '../components/UI/UrbanicaTextarea';
 import { ReactComponent as Humans } from '../assets/images/urbanica/humans.svg';
@@ -73,8 +73,8 @@ const UrbanicaGeneralForm: FunctionComponent<InjectedFormProps<IAuthForm>> = (pr
     );
 }
 
-const validate = (values: IProjectGeneralInfo): FormErrors<IProjectGeneralInfo> => {
-    const errors: FormErrors<IProjectGeneralInfo> = {};
+const validate = (values: IProjectGeneralInfo & IProjectDetails): FormErrors<IProjectGeneralInfo & IProjectDetails> => {
+    const errors: FormErrors<IProjectGeneralInfo & IProjectDetails> = {};
     if (!values.projectName || values.projectName.trim() === '') {
         errors.projectName = 'Layihənin adı boş ola bilməz!';
     }
@@ -84,10 +84,22 @@ const validate = (values: IProjectGeneralInfo): FormErrors<IProjectGeneralInfo> 
     if (!values.neccessary || values.neccessary.trim() == '') {
         errors.neccessary = 'Bu sahə də boş ola bilməz!';
     }
+    if (!values.groups || values.groups.trim() == '' ) {
+        errors.groups = 'Bu sahə də boş ola bilməz!';
+    }
+    if (!values.goal || values.goal.trim()) {
+        errors.goal = 'Bu sahə də boş ola bilməz!';
+    }
+    if (!values.suggestions || values.suggestions.trim()) {
+        errors.suggestions = 'Bu sahə də boş ola bilməz!';
+    }
+    if (!values.expectedResult || values.expectedResult.trim()) {
+        errors.expectedResult = 'Bu sahə də boş ola bilməz!';
+    }
     return errors;
 }
 
-export default reduxForm<IProjectGeneralInfo, any>({
+export default reduxForm<IProjectGeneralInfo & IProjectDetails, any>({
     form: 'UrbanicaGeneralForm',
     validate,
     enableReinitialize: true

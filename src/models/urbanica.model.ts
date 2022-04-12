@@ -41,7 +41,7 @@ export interface IProjectGeneralInfo {
     groups?: string;
 }
 
-interface IProjectDetails {
+export interface IProjectDetails {
     goal?: string;
     suggestions?: string;
     expectedResult?: string;
