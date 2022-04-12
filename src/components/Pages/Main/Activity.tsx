@@ -96,7 +96,7 @@ interface NewsBlockProps {
 const NewsBlock: FunctionComponent<NewsBlockProps> = ({article, lang, t}) => {
     return (
         <div className='activity-block noncentered-text'>
-            <h2 className='main-blue-text'>{article.name[lang].length <= 56 ? article.name[lang] : article.name[lang].substring(0, 56) + ' ...'}</h2>
+            <h2 className='main-blue-text'>{article.name[lang].length <= 50 ? article.name[lang] : article.name[lang].substring(0, 50) + ' ...'}</h2>
             <div className='time-and-location'>
                 <ClockIcon />
                 <span>{moment(article.createdAt).format('hh:mm, DD MMMM YYYY')}</span>

@@ -11,12 +11,12 @@ const UrbanicaTextarea: FunctionComponent<UrbanicaTextareaProps> = (props) => {
     const {
         placeholder,
         input: { onChange },
-        //meta: { touched, valid, error },
+        meta: { touched, valid, error },
         name,
     } = props;
     return (
-        <textarea className='urbanica-textarea'
-            placeholder={placeholder}
+        <textarea className={touched && error ? 'urbanica-textarea error' : 'urbanica-textarea'}
+            placeholder={touched && error ? error : placeholder}
             onChange={onChange}
             name={name}
         />

@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
-import { Field, InjectedFormProps, reduxForm } from 'redux-form';
-import { IAuthForm } from '../models';
+import { Field, FormErrors, InjectedFormProps, reduxForm } from 'redux-form';
+import { IAuthForm, IProjectGeneralInfo } from '../models';
 import UrbanicaInput from '../components/UI/UrbanicaInput';
 import UrbanicaTextarea from '../components/UI/UrbanicaTextarea';
 import { ReactComponent as Humans } from '../assets/images/urbanica/humans.svg';
@@ -17,8 +17,8 @@ const UrbanicaGeneralForm: FunctionComponent<InjectedFormProps<IAuthForm>> = (pr
                     <h1 className='lined-title main-blue-text'><span className='upper-case'>Ümumi xülasə</span></h1>
                 </div>
                 <div className='urbanica-container__project-name'>
-                    <label className='main-blue-text candara'>Layihənin adı</label>
-                    <Field placeholder={"Layihənin adını daxil edin"} component={UrbanicaInput} name={'projectName'} />
+                    <label className='main-blue-text candara'>Layihənin adı və həyata keçiriləcəyi yer</label>
+                    <Field placeholder={"Layihənin adını və yerini daxil edin"} component={UrbanicaInput} name={'projectName'} />
                 </div>
                 <div className='urbanica-container__general-info'>
                     <h2 className='candara regular-font centered-text main-orange-text'>
@@ -26,7 +26,7 @@ const UrbanicaGeneralForm: FunctionComponent<InjectedFormProps<IAuthForm>> = (pr
                         əksini tapmalıdır
                     </h2>
                     <p className='centered-text candara'>
-                        Niyə bu təşəbüs zəruridir? (Kontekstin qısa təsviri/mövcud problemlər)
+                        Layihənin həll edəcəyi mövcud problem
                     </p>
                     <Field component={UrbanicaTextarea} name={'neccessary'} />
                     <p className='centered-text candara'>
@@ -37,7 +37,7 @@ const UrbanicaGeneralForm: FunctionComponent<InjectedFormProps<IAuthForm>> = (pr
                     <div className='flex-row'>
                         <div>
                             <p className='candara'>
-                                Layihədən hansı qrup(lar)un bəhrələnəcəyi gözlənilir? (hədəf qrupları)
+                                Hədəf qrupları
                             </p>
                             <Humans />
                         </div>
@@ -55,17 +55,15 @@ const UrbanicaGeneralForm: FunctionComponent<InjectedFormProps<IAuthForm>> = (pr
                         Bu bölmədə aşağıdakı suallara cavab verilməklə layihənin detalları öz əksini tapmalıdır
                     </h2>
                     <p className='centered-text candara'>
-                        Layihənin əsas məqsədi nədir? Siz nəyi dəyişməyi hədəfləyirsiz? Məqsədl(lər) spesifik,
-                        konkret, praktiki və ölçülə bilən olmalıdır.
+                        Layihənin məqsədi
                     </p>
                     <Field component={UrbanicaTextarea} name={'goal'} />
                     <p className='centered-text candara'>
-                        Layihə hansı fəaliyyətləri təklif edir? Hədəf qrupları bu fəaliyyət(lər)dən necə bəhrələnəcək?
+                        Layihə çərçivəsində həyata keçiriləcək fəaliyyət(lər)
                     </p>
                     <Field component={UrbanicaTextarea} name={'suggestions'} />
                     <p className='centered-text candara'>
-                        Layihənin gözlənilən nəticələri hansılardır? Layihənin məqsədinə nail olmaq üçün hansı
-                        dəyişikliyin baş verməsi planlaşdırılır?
+                        Gözlənilən nəticə
                     </p>
                     <Field component={UrbanicaTextarea} name={'expectedResult'} />                
                 </div>
@@ -75,6 +73,22 @@ const UrbanicaGeneralForm: FunctionComponent<InjectedFormProps<IAuthForm>> = (pr
     );
 }
 
-export default reduxForm<IAuthForm, any>({
-    form: 'UrbanicaGeneralForm'
+const validate = (values: IProjectGeneralInfo): FormErrors<IProjectGeneralInfo> => {
+    const errors: FormErrors<IProjectGeneralInfo> = {};
+    if (!values.projectName || values.projectName.trim() === '') {
+        errors.projectName = 'Layihənin adı boş ola bilməz!';
+    }
+    if (!values.howSolve || values.howSolve.trim() == '') {
+        errors.howSolve = 'Bu sahə boş ola bilməz!';
+    }
+    if (!values.neccessary || values.neccessary.trim() == '') {
+        errors.neccessary = 'Bu sahə də boş ola bilməz!';
+    }
+    return errors;
+}
+
+export default reduxForm<IProjectGeneralInfo, any>({
+    form: 'UrbanicaGeneralForm',
+    validate,
+    enableReinitialize: true
 })(UrbanicaGeneralForm);

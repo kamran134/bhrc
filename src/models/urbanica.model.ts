@@ -34,7 +34,7 @@ export interface IProject {
     budget?: IProjectBudjet;
 }
 
-interface IProjectGeneralInfo {
+export interface IProjectGeneralInfo {
     projectName?: string;
     neccessary?: string;
     howSolve?: string;
