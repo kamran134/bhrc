@@ -2,7 +2,7 @@ import React, { useEffect, FunctionComponent, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
-import { Element, scroller } from 'react-scroll';
+import { Element, animateScroll as scroll } from 'react-scroll';
 import { getPopularArticles, searchArticles } from '../../../redux/actions';
 import { config } from '../../../config';
 import { ReactComponent as SearchIcon } from '../../../assets/images/search-icon.svg';
@@ -37,7 +37,7 @@ const ActivitiesMain: FunctionComponent<ActivitiesMainProps> = props => {
     }, [dispatch]);
 
     useEffect(() => {
-        scroller.scrollTo('articles', {
+        scroll.scrollTo(335, {
             duration: 1500,
             delay: 100,
             smooth: true,

@@ -8,6 +8,7 @@ import { IBudget, IProject, IProjectBudjet } from '../../../models';
 import { getCompetition, sendProject, getProfile } from '../../../redux/actions';
 import UrbanicaBudgetForm from '../../../forms/UrbanicaBudgetForm';
 import { BsCheckCircle } from 'react-icons/bs';
+import { Element, scroller, animateScroll as scroll } from 'react-scroll';
 import './urbanica.scss';
 
 const UrbanicaCompetition: FunctionComponent = () => {
@@ -85,7 +86,19 @@ const UrbanicaCompetition: FunctionComponent = () => {
         dispatch(sendProject({...project, budget: bud}));
     }
 
+    const nextButtonClickHandler = () => {
+        scroll.scrollTo(450, {
+            duration: 500,
+            delay: 100,
+            smooth: true,
+            block: "center",
+            isDynamic: true
+        });
+        dispatch(submit("UrbanicaGeneralForm"));
+    }
+
     return (
+        <Element name='competition'>
         <div className='urbanica-competition'>
             {response ? <div className='container success'>
                 <h1 className='main-blue-text'>
@@ -96,7 +109,7 @@ const UrbanicaCompetition: FunctionComponent = () => {
                 <a href={`/urbanica`}>Urbanica</a>
             </div> : stage === 0 ? <div className='container relative'>
                 <UrbanicaGeneralForm onSubmit={submitHandler} />
-                <button className='competition-btn' onClick={() => dispatch(submit("UrbanicaGeneralForm"))}>
+                <button className='competition-btn' onClick={nextButtonClickHandler}>
                     <ImArrowRight2/>
                 </button>
             </div> : <div className='container'>
@@ -111,6 +124,7 @@ const UrbanicaCompetition: FunctionComponent = () => {
                 </div>
             </div>}
         </div>
+        </Element>
     );
 }
 
