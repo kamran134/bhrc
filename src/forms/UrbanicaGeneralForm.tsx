@@ -6,7 +6,7 @@ import UrbanicaTextarea from '../components/UI/UrbanicaTextarea';
 import { ReactComponent as Humans } from '../assets/images/urbanica/humans.svg';
 import { ReactComponent as BHRCLogo } from '../assets/images/urbanica/bhrc-logo-balls.svg';
 
-const UrbanicaGeneralForm: FunctionComponent<InjectedFormProps<IAuthForm>> = (props) => {
+const UrbanicaGeneralForm: FunctionComponent<InjectedFormProps<IProjectGeneralInfo & IProjectDetails>> = () => {
     return (
         <div>
             <div className='container-inner urbanica-container flex-col align-center'>
@@ -87,13 +87,13 @@ const validate = (values: IProjectGeneralInfo & IProjectDetails): FormErrors<IPr
     if (!values.groups || values.groups.trim() == '' ) {
         errors.groups = 'Bu sahə də boş ola bilməz!';
     }
-    if (!values.goal || values.goal.trim()) {
+    if (!values.goal || values.goal.trim() == '') {
         errors.goal = 'Bu sahə də boş ola bilməz!';
     }
-    if (!values.suggestions || values.suggestions.trim()) {
+    if (!values.suggestions || values.suggestions.trim() == '') {
         errors.suggestions = 'Bu sahə də boş ola bilməz!';
     }
-    if (!values.expectedResult || values.expectedResult.trim()) {
+    if (!values.expectedResult || values.expectedResult.trim() == '') {
         errors.expectedResult = 'Bu sahə də boş ola bilməz!';
     }
     return errors;
