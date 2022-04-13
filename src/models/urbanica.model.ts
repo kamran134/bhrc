@@ -59,6 +59,7 @@ export interface IBudget {
     name: string;
     period: IPeriod;
     price: number;
+    count?: number;
 }
 
 export interface IPeriod {

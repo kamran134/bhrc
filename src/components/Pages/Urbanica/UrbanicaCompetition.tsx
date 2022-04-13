@@ -59,7 +59,8 @@ const UrbanicaCompetition: FunctionComponent = () => {
                     quantity: data[`${numb}_quantity_${i}`],
                     unit: data[`${numb}_unit_${i}`]?.value
                 },
-                price: data[`${numb}_price_${i}`]
+                price: data[`${numb}_price_${i}`],
+                count: data[`${numb}_count_${i}`]
             });
             i++;
         }

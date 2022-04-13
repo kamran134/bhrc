@@ -1,11 +1,11 @@
 import React, { FunctionComponent, useState } from 'react';
 import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 import { useTranslation } from 'react-i18next';
-import { IAuthForm } from '../models';
+import { IAuthForm, IProjectBudjet } from '../models';
 import UrbanicaInput from '../components/UI/UrbanicaInput';
 import UrbanicaSelect from '../components/UI/UrbanicaSelect';
 
-const UrbanicaBudgetForm: FunctionComponent<InjectedFormProps<IAuthForm>> = (props) => {
+const UrbanicaBudgetForm: FunctionComponent<InjectedFormProps<IProjectBudjet>> = () => {
     const { t } = useTranslation();
     const options: {value: string, label: string}[] = [
         {value: 'day', label: 'gün'},
@@ -36,8 +36,8 @@ const UrbanicaBudgetForm: FunctionComponent<InjectedFormProps<IAuthForm>> = (pro
                 <div className='urbanica-container__general-info'>
                     <RenderForms order={1} selector={teams} setSelector={setTeams} label={"Heyət xərcləri"} key={1} />
                     <RenderForms order={2} selector={activities} setSelector={setActivities} label={"Fəaliyyətlər"} key={2} />
-                    <RenderForms order={3} selector={gadjets} setSelector={setGadjets} label={"Avadanlıq"} key={3} />
-                    <RenderForms order={4} selector={others} setSelector={setOthers} label={"Digər xərclər"} key={4} />
+                    <RenderForms order={3} selector={gadjets} setSelector={setGadjets} label={"Avadanlıq"} key={3} hasCount={true} />
+                    <RenderForms order={4} selector={others} setSelector={setOthers} label={"Digər xərclər"} key={4} hasCount={true} />
                 </div>
             </div>
         </div>
@@ -49,6 +49,7 @@ interface RenderFormsProps {
     selector: number;
     setSelector: (selector: number) => void;
     label: string;
+    hasCount?: boolean;
 }
 
 const RenderForms: FunctionComponent<RenderFormsProps> = (props) => {
@@ -56,7 +57,7 @@ const RenderForms: FunctionComponent<RenderFormsProps> = (props) => {
     let budgetArray: any = [];
 
     for(let i = 0; i < props.selector; i++) {
-        budgetArray.push(<BudgetTableRow order={props.order} index={i} />);
+        budgetArray.push(<BudgetTableRow order={props.order} index={i} hasCount={props.hasCount} />);
     }
 
     return (
@@ -68,22 +69,25 @@ const RenderForms: FunctionComponent<RenderFormsProps> = (props) => {
             <div className='budget-table'>
                 <div className='budget-table__row'>
                     <div className='budget-table__th-1'>
-                        <label className='main-blue-text candara'>{t('Xərclərin növü')}</label>
+                        <label className='main-blue-text candara'>Xərclərin növü</label>
                     </div>
                     <div className='budget-table__th-2'>
-                        <label className='main-blue-text candara'>{t('Vahid')}</label>
+                        <label className='main-blue-text candara'>Kəmiyyət</label>
                     </div>
                     <div className='budget-table__th-3'>
-                        <label className='main-blue-text candara'>{t('Kəmiyyət')}</label>
+                        <label className='main-blue-text candara'>Vahid</label>
                     </div>
                     <div className='budget-table__th-4'>
-                        <label className='main-blue-text candara'>{t('Vahidin qiyməti')}</label>
+                        <label className='main-blue-text candara'>Vahidin qiyməti</label>
                     </div>
+                    {props.hasCount && <div className='budget-table__th-2'>
+                        <label className='main-blue-text candara'>Ədəd</label>
+                    </div>}
                 </div>
                 {budgetArray}
                 <div className='budget-table__row'>
                     <div className='budget-table__th-1'>
-                        <label className='main-blue-text candara'>{t('Cəmi')}:</label>
+                        <label className='main-blue-text candara'>Cəmi:</label>
                     </div>
                     <div className='budget-table__th-2' />
                     <div className='budget-table__th-3' />
@@ -99,6 +103,7 @@ const RenderForms: FunctionComponent<RenderFormsProps> = (props) => {
 interface BudgetTableRowProps {
     order: number;
     index: number;
+    hasCount?: boolean;
 }
 
 const BudgetTableRow: FunctionComponent<BudgetTableRowProps> = (props) => {
@@ -109,7 +114,8 @@ const BudgetTableRow: FunctionComponent<BudgetTableRowProps> = (props) => {
         {value: 'year', label: 'il'}
     ];
     const [price, setPrice] = useState<number>(0);
-    const [quantity, setQuantity] = useState<number>(0);
+    const [quantity, setQuantity] = useState<number>(1);
+    const [count, setCount] = useState<number>(1);
 
     const quantityChangeHandler = (e: any) => {
         setQuantity(e.target.value)
@@ -118,25 +124,33 @@ const BudgetTableRow: FunctionComponent<BudgetTableRowProps> = (props) => {
     const priceChangeHandler = (e: any) => {
         setPrice(e.target.value)
     }
+
+    const countChangeHandler = (e: any) => {
+        setCount(e.target.value);
+    }
+
     return (
         <div className='budget-table__row'>
             <div className='budget-table__th-1'>
                 <Field component={UrbanicaInput} name={`${props.order}_type_${props.index}`} />
             </div>
             <div className='budget-table__th-2'>
-                <Field component={UrbanicaSelect} name={`${props.order}_unit_${props.index}`} options={options} />
+                <Field component={UrbanicaInput} name={`${props.order}_quantity_${props.index}`} onChange={quantityChangeHandler} />
             </div>
             <div className='budget-table__th-3'>
-                <Field component={UrbanicaInput} name={`${props.order}_quantity_${props.index}`} onChange={quantityChangeHandler} />
+                <Field component={UrbanicaSelect} name={`${props.order}_unit_${props.index}`} options={options} />
             </div>
             <div className='budget-table__th-4'>
                 <Field component={UrbanicaInput} name={`${props.order}_price_${props.index}`} onChange={priceChangeHandler} />
             </div>
-            <div className='budget-table__th-5'><label className='main-blue-text candara'>{t("Cəmi")}: {price * quantity}</label></div>
+            {props.hasCount && <div className='budget-table__th-2'>
+                <Field component={UrbanicaInput} name={`${props.order}_count_${props.index}`} onChange={countChangeHandler} />
+            </div>}
+            <div className='budget-table__th-5'><label className='main-blue-text candara'>{t("Cəmi")}: {price * quantity * count}</label></div>
         </div>
     );
 }
 
-export default reduxForm<IAuthForm, any>({
+export default reduxForm<IProjectBudjet, any>({
     form: 'UrbanicaBudgetForm'
 })(UrbanicaBudgetForm);
