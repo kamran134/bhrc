@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import { ReactComponent as LogoEn } from '../../../assets/images/BHRC_logo_horizontal_en.svg';
+import { ReactComponent as Logo } from '../../../assets/images/BHRC_logo_3.svg';
 import { ReactComponent as BHRCNavBarIcon } from '../../../assets/images/bhrc-navbar-icon.svg';
 import Navigation from './Navigation';
 import { IoMdClose } from 'react-icons/io';
@@ -22,7 +22,7 @@ const Menu: FunctionComponent<MenuProps> = ({showWhite}) => {
     const renderDesktop = () => (
         <div className={showWhite ? 'white-menu menu desktop' : 'menu desktop'}>
             <div className='menu__logo'>
-                <Link to='/'><LogoEn /></Link>
+                <Link to='/'><Logo /></Link>
             </div>
             <MenuElement url='/' label={t("Home")} />
             <MenuElement url='/about' label={t("About us")} />
@@ -36,7 +36,7 @@ const Menu: FunctionComponent<MenuProps> = ({showWhite}) => {
     const renderMobile = () => (
         <div className='menu mobile'>
             <div className='menu__logo'>
-                <Link to='/'><LogoEn /></Link>
+                <Link to='/'><Logo /></Link>
             </div>
             <div className='menu__navbar'>
                 <BHRCNavBarIcon onClick={() => setMobileNavMenu(!mobileNavMenu)} />
@@ -68,7 +68,7 @@ const Menu: FunctionComponent<MenuProps> = ({showWhite}) => {
                 </li>
             </ul>
             <div className='mobile-nav__footer'>
-                <LogoEn />
+                <Logo />
                 <div className='mobile-nav__footer__social'>
                     <Facebook />
                     <Instagram />
