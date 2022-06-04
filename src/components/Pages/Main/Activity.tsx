@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import Carousel from 'react-bootstrap/Carousel';
 import { ReactComponent as ClockIcon } from '../../../assets/images/clock.svg';
+import { ReactComponent as LocationIcon } from '../../../assets/images/location-pin.svg';
 import { getArticles } from '../../../redux/actions/article.actions';
 import { useTranslation } from 'react-i18next';
 import { TFunction } from 'i18next';
@@ -32,7 +33,7 @@ const MainActivity: FunctionComponent<ActivityProps> = ({ data }) => {
     return (
         <div className='main-activity centered-text'>
             <AnimationOnScroll animateIn='animate__backInLeft' animateOnce>
-                <h1 className='main-blue-text nowrap-text title'>{data && data.title[lang]}</h1>
+                <h1 className='main-blue-text nowrap-text title'>Be Ready For Our Events</h1>
             </AnimationOnScroll>
             <AnimationOnScroll animateIn='animate__fadeIn' animateOnce>
                 <div className='main-activity__background'>
@@ -41,7 +42,9 @@ const MainActivity: FunctionComponent<ActivityProps> = ({ data }) => {
                         <div className='container-inner'>
                             <div className='flex-col flex-center small-margin-top'>
                                 {data && data.subtitle && <div className='main-activity__central-block'>
-                                    <h3 className='white-text'>{data.subtitle[lang]}</h3>
+                                    <h3 className='block-description white-text'>
+                                        Event makes suspendice adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendices gravida.
+                                    </h3>
                                 </div>}
                             </div>
                         </div>
@@ -67,47 +70,45 @@ const Activities: FunctionComponent<ActivitiesProps> = (props) => {
         <Carousel controls={false} className={`main-activity__activities ${className || ''}`}>
             <Carousel.Item>
                 <div className='flex-row flex-center container-inner main-activity-flex'>
-                {articles.map((article, i) =>
-                    i < 2 && (
-                        <NewsBlock article={article} lang={lang} key={article._id} t={t} />
-                    )
-                )}
+                    <NewsBlock lang={lang} key={1} t={t} title={'Azerbaijani Con Donation'} activityUrl={'/'} />
+                    <NewsBlock lang={lang} key={2} t={t} title={'Azerbaijani Con Donation'} activityUrl={'/'} />
                 </div>
             </Carousel.Item>
-            {articles.length > 2 && <Carousel.Item>
+            <Carousel.Item>
                 <div className='flex-row flex-center container-inner main-activity-flex'>
-                {articles.map((article, i) =>
-                    i >= 2 && (
-                        <NewsBlock article={article} lang={lang} key={article._id} t={t} />
-                    )
-                )}
+                    <NewsBlock lang={lang} key={1} t={t} title={'Azerbaijani Con Donation'} activityUrl={'/'} />
+                    <NewsBlock lang={lang} key={2} t={t} title={'Azerbaijani Con Donation'} activityUrl={'/'} />
                 </div>
-            </Carousel.Item>}
+            </Carousel.Item>
         </Carousel>
     );
 }
 
 interface NewsBlockProps {
-    article: IArticle,
-    lang: string,
-    t: TFunction
+    article?: IArticle;
+    lang: string;
+    t: TFunction;
+    title?: string;
+    activityUrl?: string;
 }
 
-const NewsBlock: FunctionComponent<NewsBlockProps> = ({article, lang, t}) => {
+const NewsBlock: FunctionComponent<NewsBlockProps> = ({article, lang, t, title, activityUrl}) => {
     return (
         <div className='activity-block noncentered-text'>
-            <h2 className='main-blue-text'>{article.name[lang].length <= 50 ? article.name[lang] : article.name[lang].substring(0, 50) + ' ...'}</h2>
+            <h2 className='main-blue-text'>
+                {title}
+            </h2>
             <div className='time-and-location'>
                 <ClockIcon />
-                <span>{moment(article.createdAt).format('hh:mm, DD MMMM YYYY')}</span>
-                {/* <LocationIcon />
-                <span>Baku city</span> */}
+                <span>08:00 - 10:00</span>
+                <LocationIcon />
+                <span>Baku city</span>
             </div>
-            {/* <div className='activity-block__description'>
-                {article.shortDescription[lang]}
-            </div> */}
+            <div className='activity-block__description'>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla imperdiet turpis quis nunc vestibulum auctor.
+            </div>
             <div className='activity-block__join'>
-                <Link to={`/activities/${article.path[lang]}`}>{t('Read more')}</Link>
+                <Link to={`/activities/${activityUrl}`}>Join now +</Link>
             </div>
         </div>
     )

@@ -102,7 +102,7 @@ const Cover: FunctionComponent<CoverProps> = ({ data }) => {
                     <div className='cover__slogan'>
                         <BHRCfigure />
                         <div className='slogan'>
-                            <p>{data && data.title[lang]}</p>
+                            <p>Be strong and move. It's time to be happy again</p>
                         </div>
                     </div>
                     <div className='cover__urbanica'>

@@ -2,6 +2,7 @@ import React, { FunctionComponent, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { ReactComponent as Logo } from '../../../assets/images/BHRC_logo_3.svg';
+import { ReactComponent as LogoOutLined } from '../../../assets/images/BHRC_logo_outlined.svg';
 import { ReactComponent as BHRCNavBarIcon } from '../../../assets/images/bhrc-navbar-icon.svg';
 import Navigation from './Navigation';
 import { IoMdClose } from 'react-icons/io';
@@ -18,17 +19,22 @@ const Menu: FunctionComponent<MenuProps> = ({showWhite}) => {
     const { t } = useTranslation();
     const [mobileNavMenu, setMobileNavMenu] = useState<boolean>(false);
     const ref = useRef() as React.MutableRefObject<HTMLDivElement>;
+    const [path, setPath] = useState<string>();
+
+    useEffect(() => {
+        setPath(window.location.pathname);
+    }, [window.location.pathname]);
 
     const renderDesktop = () => (
         <div className={showWhite ? 'white-menu menu desktop' : 'menu desktop'}>
             <div className='menu__logo'>
-                <Link to='/'><Logo /></Link>
+                <Link to='/'>{showWhite ? <LogoOutLined/> : <Logo />}</Link>
             </div>
-            <MenuElement url='/' label={t("Home")} />
-            <MenuElement url='/about' label={t("About us")} />
-            <MenuElement url='/activities' label={t("News")} />
+            <MenuElement url='/' label={t("Home")} _className={path === '/' ? 'active' : ''} />
+            <MenuElement url='/about' label={t("About us")} _className={path === '/about' ? 'active' : ''} />
+            <MenuElement url='/activities' label={t("News")} _className={path === '/activities' ? 'active' : ''} />
             {/* <MenuElement url='/urbanica' label={t("Urbanica")} _className='urbanica-menu' /> */}
-            <MenuElement url='/resources' label={t("Resources")} />
+            <MenuElement url='/resources' label={t("Resources")} _className={path === '/resources' ? 'active' : ''} />
             <Navigation />
         </div>
     );

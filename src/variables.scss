@@ -36,7 +36,7 @@ $footer-height: 300px;
 $small-icon-size: 16px;
 $main-logo-size: 142px;
 $main-logo-inner: 160px;
-$little-logo: 40px;
+$little-logo: 75px;
 $blue-round: 6px;
 
 /* Font sizes */
@@ -45,6 +45,7 @@ $little-font-size: 10px;
 $language-font-size: 12px;
 $location-font-size: 13px;
 $hashtag-font-size: 13px;
+$block-small-text: 13px;
 $main-font-size: 14px;
 $follow-font-size: 15px;
 $button-font-size: 15px;
@@ -54,7 +55,9 @@ $urbanica-button-font-size: 26px;
 $h1-font-size: 35px;
 $h2-font-size: 25px;
 $h3-font-size: 18px;
-$text-font-size: 13px;
+$h1-about-size: 30px;
+$slogan-font-size: 20px;
+$text-font-size: 18px;
 $block-title-font-size: 18px;
 $footer-font-size: 20px;
 
@@ -68,7 +71,7 @@ $footer-margin: 5px;
 $modal-footer-top: 10px;
 $modal-input-margin: 15px;
 $medium-margin: 15px;
-$menu-margin: 20px;
+$menu-margin: 45px;
 $search-margin: 24px;
 $cover-photo-margin: 145px;
 $urbanica-button-bottom: 50px;
@@ -89,6 +92,7 @@ $category-min-width: 290px;
 //-------------------------
 $little-margin: 5px;
 $small-margin: 8px;
+$small-margin-top: 15px;
 $line-margin: 10px;
 $medium-margin: 15px;
 $block-margin: 24px;
@@ -146,7 +150,7 @@ $central-subtitle-width: 430px;
 $main-activity-width: 360px;
 $main-indicator-width: 73px;
 $main-resource-width: 270px;
-$main-signin-container: 515px;
+$main-signin-container: 540px;
 $member-width: 230px;
 $footer-col: 200px;
 $copyright-width: 711px;
@@ -163,7 +167,7 @@ $mini-button-height: 22px;
 $bhrc-button-height: 20px;
 $menu-height: 90px;
 $main-activity-height: 460px;
-$main-activity-back-height: 350px;
+$main-activity-back-height: 313px;
 $main-search-height: 30px;
 $modal-content-height: 450px;
 $modal-input-height: 28px;
@@ -172,11 +176,11 @@ $main-indicator-height: 2px;
 $little-height: 4px;
 $main-resource-height: 325px;
 //$main-resource-small: 160px;
-$main-resource-small: 100px;
-$main-resource-hover: 141px;
+$main-resource-small: 140px;
+$main-resource-hover: 185px;
 $main-sign-in: 230px;
 //$member-height: 266px;
-$footer-logo-height: 50px;
+$footer-logo-height: 66px;
 $news-cover-height: 560px;
 $news-p-height: 450px;
 $topic-height: 90px;
@@ -193,7 +197,7 @@ $screen-height: calc(100vh - 90px);
 
 /* Background-positions */
 
-$main-activity-y: -170px;
+$main-activity-y: -144px;
 
 /* Round elements */
 

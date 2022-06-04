@@ -27,23 +27,24 @@ const MainAbout: FunctionComponent<AboutProps> = ({data}) => {
                 <div className='container-inner'>
                     <div className='flex-row space-between main-about-flex'>
                         <div className='main-about__left'>
-                            {data && data.title && 
                             <AnimationOnScroll animateIn={'animate__rubberBand'} animateOnce>
-                                <h2 className='main-blue-text'>{data.title[lang]}</h2>
-                            </AnimationOnScroll>}
-                            {data && data.subtitle && 
+                                <h1 className='main-blue-text about'>An International Independent Charity Organization</h1>
+                            </AnimationOnScroll>
+                            
                             <AnimationOnScroll animateIn={'animate__fadeIn'} animateOnce>
-                                <h3 className='main-orange-text'>{data.subtitle[lang]}</h3>
-                            </AnimationOnScroll>}
+                                <h3 className='main-orange-text'>Your support will help us to make life better living for poor vulnerable children consectetur adipisicing elit.</h3>
+                            </AnimationOnScroll>
                             {data && data.text && 
                             <AnimationOnScroll animateIn={'animate__fadeIn'} animateOnce>
-                                <div className='block-text'>{data.text[lang]}</div>
+                                <div className='block-text'>
+                                    Konin wansis dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                                </div>
                             </AnimationOnScroll>}
                             <div className='main-about__footer'>
                                 <button className='bhrc-btn orange-btn' onClick={() => history('/about')}>
-                                    {t("More info")} <ImArrowRight2/>
+                                    Donate now <ImArrowRight2/>
                                 </button>
-                                <button className='bhrc-btn blue-btn'>{t("Support us")} <ImArrowRight2/></button>
+                                <button className='bhrc-btn blue-btn'>More about Urbanica <ImArrowRight2/></button>
                             </div>
                         </div>
                         <div className='main-about__right desktop'>

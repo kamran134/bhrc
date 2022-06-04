@@ -34,7 +34,10 @@ const MainTeam: FunctionComponent<MainTeamProps> = ({ data }) => {
             <div className='container'>
                 <div className='container-inner centered-text'>
                     <AnimationOnScroll animateIn='animate__backInDown' animateOnce>
-                        <h1>{data && data.title[lang]}</h1>
+                        <h1>Talented Team Behind BHRC</h1>
+                        <h3 className='block-description'>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla imperdiet turpis quis nunc vestibulum auctor. 
+                        </h3>
                     </AnimationOnScroll>
                     <Members members={teamMembers} />
                 </div>

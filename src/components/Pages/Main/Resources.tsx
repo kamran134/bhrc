@@ -5,11 +5,13 @@ import { TFunction } from 'i18next';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
 import { ImArrowRight2 } from 'react-icons/im';
 import { getResourcesCategories } from '../../../redux/actions';
-import { config } from '../../../config';
 import { transliterate } from '../../../translit';
 import { IHomePageBlock, ICategory } from '../../../models';
 import { RootState } from '../../../redux/reducers';
 import { AnimationOnScroll } from 'react-animation-on-scroll';
+import Resourse1Img from '../../../assets/images/bhrc.JPG';
+import Resourse2Img from '../../../assets/images/bhrc_6.JPG';
+import Resourse3Img from '../../../assets/images/bhrc_5.JPG';
 import "animate.css/animate.min.css";
 
 interface MainResourcesProps {
@@ -38,7 +40,10 @@ const MainResources: FunctionComponent<MainResourcesProps> = ({ data }) => {
                         {/* <PaintBadge title={'Resources'} /> */}
                         <div className='main-activity__central-block'>
                             <AnimationOnScroll animateIn='animate__backInRight' animateOnce>
-                                <h1 className='main-blue-text'>{data && data.title[lang]}</h1>
+                                <h1 className='main-blue-text'>The News You Care About</h1>
+                                <h3 className='block-description'>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla imperdiet turpis quis nunc vestibulum auctor. 
+                                </h3>
                             </AnimationOnScroll>
                             {data && data.subtitle && <h3 className='main-grey-text'>{data && data.subtitle[lang]}</h3>}
                         </div>
@@ -67,25 +72,50 @@ interface ResourceBlockProps {
 const ResourceBlock: FunctionComponent<ResourceBlockProps> = ({ categories, lang, t, navigate }) => {
     return(
         <>
-            {categories && categories.map((category, i) => (
-                <AnimationOnScroll key={category._id} animateIn='animate__backInUp' delay={i*100} animateOnce>
-                    <div key={category._id} className='resource-block' style={{backgroundImage: `url(${config.url.IMAGE_URL}category_images/${category.picture}/mobile/${category.picture})`}}>
-                        <div className='resource-block__content'>
-                            {/* <div className='hashtag-text white-text'>{content[i].hashtag}</div> */}
-                            <div className='block-title-text white-text'>{category.name[lang]}</div>
-                            <div className='text'>{category.description[lang]}</div>
-                            <div className='indicator'>
-                                <div className='indicator__progress' />
-                            </div>
-                            <div className='statistics'>{}</div>
-                            <button className='bhrc-btn white-btn' onClick={() => navigate(`/resources/${transliterate().transform(category.name[lang], '-')}`)}>{t("Read more")}<ImArrowRight2/></button>
+            <AnimationOnScroll animateIn='animate__backInUp' delay={1*100} animateOnce>
+                <div className='resource-block' style={{backgroundImage: `url(${Resourse1Img}`, backgroundPositionX: 283}}>
+                    <div className='resource-block__content'>
+                        <div className='hashtag-text white-text'>#Business</div>
+                        <div className='block-title-text white-text'>Donate for all people</div>
+                        <div className='text'>Lorem ipsum dolor sit amet, consecretur adipiscing elit.</div>
+                        <div className='indicator'>
+                            <div className='indicator__progress' />
                         </div>
+                        <div className='statistics'>{}</div>
+                        <button className='bhrc-btn white-btn' onClick={() => navigate(`/resources/${transliterate().transform(categories![0].name[lang], '-')}`)}>{t("Read more")}<ImArrowRight2/></button>
                     </div>
-                </AnimationOnScroll>
-                
-            ))}
+                </div>
+            </AnimationOnScroll>
+            <AnimationOnScroll animateIn='animate__backInUp' delay={2*100} animateOnce>
+                <div className='resource-block' style={{backgroundImage: `url(${Resourse2Img}`, backgroundPositionX: 340}}>
+                    <div className='resource-block__content'>
+                        <div className='hashtag-text white-text'>#Helpness</div>
+                        <div className='block-title-text white-text'>Help for all people</div>
+                        <div className='text'>Lorem ipsum dolor sit amet, consecretur adipiscing elit.</div>
+                        <div className='indicator'>
+                            <div className='indicator__progress' />
+                        </div>
+                        <div className='statistics'>{}</div>
+                        <button className='bhrc-btn white-btn' onClick={() => navigate(`/resources/${transliterate().transform(categories![1].name[lang], '-')}`)}>{t("Read more")}<ImArrowRight2/></button>
+                    </div>
+                </div>
+            </AnimationOnScroll>
+            <AnimationOnScroll animateIn='animate__backInUp' delay={3*100} animateOnce>
+                <div className='resource-block' style={{backgroundImage: `url(${Resourse3Img}`, backgroundPositionX: 270}}>
+                    <div className='resource-block__content'>
+                        <div className='hashtag-text white-text'>#Education</div>
+                        <div className='block-title-text white-text'>Education for all children</div>
+                        <div className='text'>Lorem ipsum dolor sit amet, consecretur adipiscing elit.</div>
+                        <div className='indicator'>
+                            <div className='indicator__progress' />
+                        </div>
+                        <div className='statistics'>{}</div>
+                        <button className='bhrc-btn white-btn' onClick={() => navigate(`/resources/${transliterate().transform(categories![1].name[lang], '-')}`)}>{t("Read more")}<ImArrowRight2/></button>
+                    </div>
+                </div>
+            </AnimationOnScroll>
         </>
-    )
+    );
 }
 
 export default MainResources;

@@ -167,6 +167,10 @@ h1.title {
     text-transform: uppercase;
 }
 
+h1.about {
+    font-size: $h1-about-size !important;
+}
+
 
 /* Buttons */
 
@@ -213,7 +217,7 @@ h1.title {
     background-color: #fff;
     color: $main-orange;
     height: $white-button-height;
-    font-size: $text-font-size;
+    font-size: $block-small-text;
     &:hover {
         background-color: $main-white-hover;
     }
@@ -300,14 +304,14 @@ h1.title {
 /* Margins */
 
 .small-margin-top {
-    margin-top: $small-margin;
+    margin-top: $small-margin-top;
 }
 
 
 /* Colors */
 
 .white-text {
-    color: #fff;
+    color: #fff !important;
 }
 
 .main-blue-text {
@@ -370,6 +374,14 @@ h1.title {
     color: $block-text-color;
 }
 
+.block-description {
+    line-height: 1;
+    font-size: $h3-font-size !important;
+    font-family: 'Candara';
+    color: $block-text-color;
+    font-weight: normal !important;
+}
+
 .candara {
     font-family: 'Candara';
 }
@@ -384,6 +396,10 @@ h1.title {
 
 .bold-text {
     font-weight: 600 !important;
+}
+
+.block-small-text {
+    font-size: $block-small-text;
 }
 
 .bold-italic-text {
@@ -516,6 +532,9 @@ h1.title {
     }
     .block-text {
         font-size: $text-font-size*2;
+    }
+    .block-description {
+        font-size: $h3-font-size*2;
     }
     h1.title {
         margin-bottom: $big-margin*2 !important;

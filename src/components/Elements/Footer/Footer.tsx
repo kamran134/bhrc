@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { ReactComponent as FooterLogoAz } from '../../../assets/images/BHRC_logo_horizontal_az.svg';
 import { ReactComponent as FooterLogoRu } from '../../../assets/images/BHRC_logo_horizontal_ru.svg';
 import { ReactComponent as FooterLogoEn } from '../../../assets/images/BHRC_logo_horizontal_en.svg';
+import { ReactComponent as LogoOutLined } from '../../../assets/images/BHRC_logo_outlined.svg';
 import { MdLocationOn, MdCall, MdEmail } from 'react-icons/md';
 import { RootState } from '../../../redux/reducers';
 import { getStatics } from '../../../redux/actions';
@@ -60,9 +61,9 @@ const Footer: FunctionComponent<{}> = () => {
                     </div>
                     <div className='footer__copyright'>
                         <div className='footer__logo'>
-                            <MultilangLogo language={lang} />
+                            <LogoOutLined className='footer__logo' />
                         </div>
-                        <div className='text'>2021 BHRC. {t("All Rights Reserved")}</div>
+                        <div className='text'>2022 BHRC. All Rights Reserved by Alina Asgarova</div>
                     </div>
                 </div>
             </div>

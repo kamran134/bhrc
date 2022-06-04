@@ -36,15 +36,17 @@ const MainSignIn: FunctionComponent<MainSignInProps> = ({ data }) => {
                     <Listochki className='start' />
                 </div>
                 <div className='main-sign-in__container'>
-                    <h1>{data && data.title[lang]}</h1>
-                    {data && data.subtitle && <h3>{data.subtitle[lang]}</h3>}
+                    <h1>Be with us</h1>
+                    <h3 className='block-description white-text'>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla imperdiet turpis quis nunc vestibulum auctor. Fusce semper vel enim sit amet ultricies.
+                    </h3>
                     <button 
                         className='bhrc-btn blue-btn'
                         onClick={() => {
                             dispatch(openModal(true));
                             dispatch(redirect('/urbanica'));
                         }}>
-                        {t("Sign in")} <ImArrowRight2/>
+                        <span className='candara'>Sign in <ImArrowRight2/></span>
                     </button>
                 </div>
                 <div className='main-sign-in__right'>
