@@ -21,6 +21,7 @@ import Urbanica from './components/Pages/Urbanica/Urbanica';
 import News from './components/Pages/Activities/News';
 import Profile from './components/Pages/Profile/Profile';
 import Default from './components/Pages/Default';
+import About from './components/Pages/About/About';
 
 const MyRouter: FunctionComponent<{}> = () => {
     return (
@@ -40,6 +41,7 @@ const MyRouter: FunctionComponent<{}> = () => {
                 </Route>
                 <Route path='/' element={<Default />}>
                     <Route index element={<Main/>} />
+                    <Route path='about' element={<About />} />
                     <Route path='resources/:category' element={<Resources/>} />
                     <Route path='resources' element={<Resources/>} />
                     <Route path='organization-document/:id' element={<OrganizationDoc/>} />

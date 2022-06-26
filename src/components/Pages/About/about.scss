@@ -1,4 +1,31 @@
 @import '../../../variables.scss';
 .about {
     margin-top: $big-margin;
+    .container {
+        width: 778px !important;
+        margin-bottom: $big-margin;
+    }
+    h2 {
+        font-size: $h2-about-size !important;
+        font-weight: 600 !important;
+        color: $block-text-color;
+    }
+    p {
+        margin-top: $big-margin;
+        color: $block-text-color;
+        font-size: $h2-about-size;
+        text-align: center;
+    }
+    &__images {
+        display: flex;
+        margin-top: $big-margin;
+        margin-bottom: $big-margin*2;
+        justify-content: space-between;
+        width: 100%;
+        img {
+            width: 357px;
+            height: 164px;
+            border-radius: $standart-radius;
+        }
+    }
 }

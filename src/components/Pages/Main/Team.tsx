@@ -247,7 +247,7 @@ const MainTeam: FunctionComponent<MainTeamProps> = ({ data }) => {
                 </div>
             </div>
         </div>
-    )
+    );
 }
 
 interface MembersProps {

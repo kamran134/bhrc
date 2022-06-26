@@ -19,22 +19,21 @@ const Menu: FunctionComponent<MenuProps> = ({showWhite}) => {
     const { t } = useTranslation();
     const [mobileNavMenu, setMobileNavMenu] = useState<boolean>(false);
     const ref = useRef() as React.MutableRefObject<HTMLDivElement>;
-    const [path, setPath] = useState<string>();
+    const [path, setPath] = useState<string>('/');
 
     useEffect(() => {
         setPath(window.location.pathname);
-    }, [window.location.pathname]);
+    }, [window.location]);
 
     const renderDesktop = () => (
         <div className={showWhite ? 'white-menu menu desktop' : 'menu desktop'}>
             <div className='menu__logo'>
                 <Link to='/'>{showWhite ? <LogoOutLined/> : <Logo />}</Link>
             </div>
-            <MenuElement url='/' label={t("Home")} _className={path === '/' ? 'active' : ''} />
-            <MenuElement url='/about' label={t("About us")} _className={path === '/about' ? 'active' : ''} />
-            <MenuElement url='/activities' label={t("News")} _className={path === '/activities' ? 'active' : ''} />
-            {/* <MenuElement url='/urbanica' label={t("Urbanica")} _className='urbanica-menu' /> */}
-            <MenuElement url='/resources' label={t("Resources")} _className={path === '/resources' ? 'active' : ''} />
+            <MenuElement key={1} url='/' label={t("Home")} _className={path === '/' ? 'active' : ''} />
+            <MenuElement key={2} url='/about' label={t("About us")} _className={path === '/about' ? 'active' : ''} />
+            <MenuElement key={3} url='/activities' label={t("News")} _className={path === '/activities' ? 'active' : ''} />
+            <MenuElement key={4} url='/resources' label={t("Resources")} _className={path === '/resources' ? 'active last' : 'last'} />
             <Navigation />
         </div>
     );
@@ -123,7 +122,7 @@ interface MenuElementProps {
 const MenuElement: FunctionComponent<MenuElementProps> = ({url, label, _className}) => {
     return (
         <div className={'menu__element ' + _className}>
-            <Link to={url}>{label} </Link>
+            <a href={url}>{label} </a>
         </div>
     );
 }

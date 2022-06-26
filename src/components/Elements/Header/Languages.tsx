@@ -5,8 +5,11 @@ import { ReactComponent as FlagAz } from '../../../assets/images/flag-az.svg';
 import { ReactComponent as FlagRu } from '../../../assets/images/flag-ru.svg';
 import { ReactComponent as FlagEn } from '../../../assets/images/flag-en.svg';
 import { RootState } from '../../../redux/reducers';
+import { AZ } from 'country-flag-icons/react/1x1';
+import { GB } from 'country-flag-icons/react/1x1';
+import { RU } from 'country-flag-icons/react/1x1';
 
-const Languages: FunctionComponent<{}> = props => {
+const Languages: FunctionComponent<{}> = () => {
     const { lang } = useSelector((state: RootState) => ({
         lang: state.settings.language
     }));
@@ -18,13 +21,13 @@ const Languages: FunctionComponent<{}> = props => {
     return (
         <div className='languages'>
             <div className={lang === 'az' ? 'lang checked': 'lang'}>
-                <FlagAz onClick={() => langSelectHandle('az')} />
+                <AZ onClick={() => langSelectHandle('az')} />
             </div>
             <div className={lang === 'ru' ? 'lang checked': 'lang'}>
-                <FlagRu onClick={() => langSelectHandle('ru')} />
+                <RU onClick={() => langSelectHandle('ru')} />
             </div>
             <div className={lang === 'en' ? 'lang checked': 'lang'}>
-                <FlagEn onClick={() => langSelectHandle('en')} />
+                <GB onClick={() => langSelectHandle('en')} />
             </div>
         </div>
     );

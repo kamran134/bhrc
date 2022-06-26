@@ -70,15 +70,16 @@
         font-weight: 700;
         margin-right: $small-margin;
         position: relative;
-        background-color: #fff;
         font-size: $language-font-size;
         cursor: pointer;
+        transform: scale(1);
+        transition: 0.2s transform;
         &:last-child {
             margin-right: 0;
         }
         &:hover {
-            // background-color: $main-white-hover;
-            border: 2px solid $main-orange;
+            transform: scale(1.25);
+            transition: 0.2s transform;
         }
         input[type='radio'] {
             opacity: 0;
@@ -88,11 +89,15 @@
             cursor: pointer;
         }
         &.checked {
-            // background-color: $main-white-hover;
-            border: 2px solid $main-orange;
+            transform: scale(1.25);
         }
         label {
             margin-bottom: 0 !important;
+        }
+        svg {
+            width: $menu-round;
+            height: $menu-round;
+            border-radius: 50%;
         }
     }
 }
@@ -139,32 +144,33 @@
         }
     }
     &__element {
+        transform: scale(1);
+        transition: 0.2s transform;
         margin-right: $menu-margin;
         &:last-child {
-            margin-right: 0;
+            margin-right: 0 !important;
         }
         a {
             text-decoration: none;
             color: #fff;
             font-size: $menu-font-size;
-            //font-weight: 600;
-            transition: 0s font-size;
-            &:hover {
-                font-size: $menu-font-size*1.2;
-                transition-duration: 0.2s;
-                transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
-            }
         }
         &.active {
-            a {
-                font-size: $menu-font-size*1.2;
-            }
+            transform: scale(1.25);
+            
+        }
+        &:hover {
+            transform: scale(1.25);
+            transition-duration: 0.2s;
         }
         &.urbanica-menu {
             a {
                 font-size: $menu-urbanica-font-size;
                 font-weight: 500;
             }
+        }
+        &.last {
+            margin-right: 0;
         }
     }
 }
