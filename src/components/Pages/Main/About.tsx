@@ -25,7 +25,7 @@ const MainAbout: FunctionComponent<AboutProps> = ({data}) => {
         <div className='main-about'>
             <div className='container'>
                 <div className='container-inner'>
-                    <div className='flex-row space-between main-about-flex'>
+                    <div className='flex-row space-between main-about-flex vertical-center'>
                         <div className='main-about__left'>
                             <AnimationOnScroll animateIn={'animate__rubberBand'} animateOnce>
                                 <h1 className='main-blue-text main-about'>An International Independent Charity Organization</h1>
@@ -52,7 +52,7 @@ const MainAbout: FunctionComponent<AboutProps> = ({data}) => {
                                 <AnimationOnScroll animateIn='animate__rotateIn' className='small-circle__animate' animateOnce>
                                     <img className='small-circle' src={FontanImg} alt={'woman'} />
                                 </AnimationOnScroll>
-                                <AnimationOnScroll animateIn='animate__rotateInDownLeft' animateOnce>
+                                <AnimationOnScroll animateIn='animate__rotateInDownLeft' className='big-circle__animate' animateOnce>
                                     <img className='big-circle' src={HAImg} alt={'man'} />
                                 </AnimationOnScroll>
                             </div>
