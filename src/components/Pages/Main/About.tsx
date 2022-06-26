@@ -28,7 +28,7 @@ const MainAbout: FunctionComponent<AboutProps> = ({data}) => {
                     <div className='flex-row space-between main-about-flex'>
                         <div className='main-about__left'>
                             <AnimationOnScroll animateIn={'animate__rubberBand'} animateOnce>
-                                <h1 className='main-blue-text about'>An International Independent Charity Organization</h1>
+                                <h1 className='main-blue-text main-about'>An International Independent Charity Organization</h1>
                             </AnimationOnScroll>
                             
                             <AnimationOnScroll animateIn={'animate__fadeIn'} animateOnce>
