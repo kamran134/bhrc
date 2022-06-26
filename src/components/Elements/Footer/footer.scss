@@ -9,9 +9,11 @@
         display: flex;
         justify-content: space-between;
         font-size: $footer-font-size;
-        font-family: Arial, Helvetica, sans-serif;
+        // font-family: Arial, Helvetica, sans-serif;
         h2 {
             margin-bottom: $big-margin !important;
+            font-style: italic;
+            font-weight: normal !important;
         }
         .footer-col {
             width: $footer-col;

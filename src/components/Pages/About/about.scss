@@ -1,9 +1,9 @@
 @import '../../../variables.scss';
 .about {
-    margin-top: $big-margin;
+    margin-top: $big-margin + 15;
     .container {
         width: 778px !important;
-        margin-bottom: $big-margin;
+        margin-bottom: $big-margin + 15;
     }
     h2 {
         font-size: $h2-about-size !important;

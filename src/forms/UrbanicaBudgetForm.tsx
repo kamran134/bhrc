@@ -62,7 +62,7 @@ const RenderForms: FunctionComponent<RenderFormsProps> = (props) => {
 
     return (
         <div>
-            <p className='candara'>
+            <p>
                 <span className='urbanica-badge centered-text'>{props.order}</span>
                 <span className='with-badge'>{t(props.label)}</span>
             </p>

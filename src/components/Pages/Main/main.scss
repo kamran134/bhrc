@@ -58,15 +58,15 @@
         z-index: 1;
         top: 43%;
         transform: translate(0, -50%);
-        font-family: 'candara-italic';
+        font-style: italic;
         .st0 {
             fill: $main-orange;
         }
         .slogan {
             color: #fff;
             font-size: $slogan-font-size;
-            font-weight: 600;
-            width: 60%;
+            //font-weight: 600;
+            width: 64%;
             position: absolute;
             line-height: 1.5;
             top: 40%;
@@ -406,9 +406,6 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            font-family: Arial,
-            Helvetica,
-            sans-serif;
             img {
                 margin-bottom: $big-margin;
                 width: $main-logo-size;

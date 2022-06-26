@@ -36,7 +36,7 @@ const UrbanicaGeneralForm: FunctionComponent<InjectedFormProps<IProjectGeneralIn
                     <Field component={UrbanicaTextarea} name={'howSolve'} />
                     <div className='flex-row'>
                         <div>
-                            <p className='candara'>
+                            <p>
                                 Hədəf qrupları
                             </p>
                             <Humans />
