@@ -30,7 +30,6 @@ const MainAbout: FunctionComponent<AboutProps> = ({data}) => {
                             <AnimationOnScroll animateIn={'animate__rubberBand'} animateOnce>
                                 <h1 className='main-blue-text main-about'>An International Independent Charity Organization</h1>
                             </AnimationOnScroll>
-                            
                             <AnimationOnScroll animateIn={'animate__fadeIn'} animateOnce>
                                 <h3 className='main-orange-text'>Your support will help us to make life better living for poor vulnerable children consectetur adipisicing elit.</h3>
                             </AnimationOnScroll>

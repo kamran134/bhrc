@@ -15,6 +15,15 @@ import 'moment/locale/az';
 import 'moment/locale/ru';
 import './activities.scss';
 
+// Mock ----------------------------------------------
+import bhrc1 from '../../../assets/images/bhrc.JPG';
+import bhrc2 from '../../../assets/images/bhrc_5.JPG';
+import bhrc3 from '../../../assets/images/bhrc_2.JPG';
+import bhrc4 from '../../../assets/images/bhrc_4.JPG';
+import bhrc5 from '../../../assets/images/bhrc_7.JPG';
+import bhrc6 from '../../../assets/images/bhrc_3.JPG';
+// ---------------------------------------------------
+
 interface ActivitiesMainProps {
     page?: number;
     count?: number;
@@ -59,6 +68,141 @@ const ActivitiesMain: FunctionComponent<ActivitiesMainProps> = props => {
     const onFocusHandler = () => {
         if (searchString.length < 3) dispatch(searchArticles('', true));
     }
+
+    const articlesMock: IArticle[] = [
+        {
+            _id: 'a',
+            name: {
+                az: 'Aliquam erat volutpat. Aenean consequat tempus iaculis.',
+                ru: 'Aliquam erat volutpat. Aenean consequat tempus iaculis. ',
+                en: 'Aliquam erat volutpat. Aenean consequat tempus iaculis. '
+            },
+            description: {
+                az: '',
+                ru: '',
+                en: ''
+            },
+            path: {
+                az: 'news1',
+                ru: 'news1',
+                en: 'news1'
+            },
+            pictureExtension: 'jpg',
+            picture: bhrc1,
+            shortDescription: '',
+            createdAt: new Date()
+        },
+        {
+            _id: 'b',
+            name: {
+                az: 'Aliquam erat volutpat. Aenean consequat tempus iaculis.',
+                ru: 'Aliquam erat volutpat. Aenean consequat tempus iaculis. ',
+                en: 'Aliquam erat volutpat. Aenean consequat tempus iaculis. '
+            },
+            description: {
+                az: '',
+                ru: '',
+                en: ''
+            },
+            path: {
+                az: 'news1',
+                ru: 'news1',
+                en: 'news1'
+            },
+            pictureExtension: 'jpg',
+            picture: bhrc2,
+            shortDescription: '',
+            createdAt: new Date()
+        },
+        {
+            _id: 'c',
+            name: {
+                az: 'Aliquam erat volutpat. Aenean consequat tempus iaculis.',
+                ru: 'Aliquam erat volutpat. Aenean consequat tempus iaculis. ',
+                en: 'Aliquam erat volutpat. Aenean consequat tempus iaculis. '
+            },
+            description: {
+                az: '',
+                ru: '',
+                en: ''
+            },
+            path: {
+                az: 'news1',
+                ru: 'news1',
+                en: 'news1'
+            },
+            pictureExtension: 'jpg',
+            picture: bhrc3,
+            shortDescription: '',
+            createdAt: new Date()
+        },
+        {
+            _id: 'd',
+            name: {
+                az: 'Aliquam erat volutpat. Aenean consequat tempus iaculis.',
+                ru: 'Aliquam erat volutpat. Aenean consequat tempus iaculis. ',
+                en: 'Aliquam erat volutpat. Aenean consequat tempus iaculis. '
+            },
+            description: {
+                az: '',
+                ru: '',
+                en: ''
+            },
+            path: {
+                az: 'news1',
+                ru: 'news1',
+                en: 'news1'
+            },
+            pictureExtension: 'jpg',
+            picture: bhrc4,
+            shortDescription: '',
+            createdAt: new Date()
+        },
+        {
+            _id: 'e',
+            name: {
+                az: 'Aliquam erat volutpat. Aenean consequat tempus iaculis.',
+                ru: 'Aliquam erat volutpat. Aenean consequat tempus iaculis. ',
+                en: 'Aliquam erat volutpat. Aenean consequat tempus iaculis. '
+            },
+            description: {
+                az: '',
+                ru: '',
+                en: ''
+            },
+            path: {
+                az: 'news1',
+                ru: 'news1',
+                en: 'news1'
+            },
+            pictureExtension: 'jpg',
+            picture: bhrc5,
+            shortDescription: '',
+            createdAt: new Date()
+        },
+        {
+            _id: 'f',
+            name: {
+                az: 'Aliquam erat volutpat. Aenean consequat tempus iaculis.',
+                ru: 'Aliquam erat volutpat. Aenean consequat tempus iaculis. ',
+                en: 'Aliquam erat volutpat. Aenean consequat tempus iaculis. '
+            },
+            description: {
+                az: '',
+                ru: '',
+                en: ''
+            },
+            path: {
+                az: 'news1',
+                ru: 'news1',
+                en: 'news1'
+            },
+            pictureExtension: 'jpg',
+            picture: bhrc6,
+            shortDescription: '',
+            createdAt: new Date()
+        }
+    ];
 
     return (
         <Element name='articles' className='articles-body'>
@@ -130,11 +274,11 @@ const ActivitiesMain: FunctionComponent<ActivitiesMainProps> = props => {
                             }} />
                         <SearchIcon className='search-icon' />
                     </div>
-                    <PopularBlock articles={popularArticles} lang={lang} />
+                    <PopularBlock articles={articlesMock} lang={lang} />
                 </div>
             </div>
             {props.allNews && <Pagination page={props.page || 1} url={'/activities'} count={props.count!} />}
-            <PopularBlock articles={popularArticles} lang={lang} _className='mobile' />
+            <PopularBlock articles={articlesMock} lang={lang} _className='mobile' />
         </Element>
     );
 }
@@ -152,7 +296,13 @@ const PopularBlock: FunctionComponent<PopularBlockProps> = (props) => {
             <h4>{t("Most read")}</h4>
             {props.articles && props.articles.slice(0, 5).map((article: IArticle) =>
             <div className='post' key={article._id}>
-                <div><img loading='lazy' src={`${config.url.IMAGE_URL}article_images/${article.picture}/mobile/${article.picture}`} alt={article._id} /></div>
+                <div>
+                    <img
+                        loading='lazy'
+                        src={`${article.picture}`}
+                        //src={`${config.url.IMAGE_URL}article_images/${article.picture}/mobile/${article.picture}`} alt={article._id} 
+                    />
+                </div>
                 <div className='post__date'>
                     <span className='blue-round'/> {moment(article.createdAt).format('dddd, DD MMMM')}
                     <h5><Link to={`/activities/${article.path[props.lang]}`}>

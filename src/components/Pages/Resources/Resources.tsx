@@ -77,6 +77,13 @@ const Resources: FunctionComponent = () => {
                 <div className='resources-head__background'>
                     <div className='container'>
                         <div className='container-inner'>
+                            <div style={{justifyContent: 'initial', paddingTop: 30}} className='articles-head__text'>
+                                <h1>{t("Resources")}</h1>
+                                <p style={{textAlign: 'center'}}>
+                                    Event makes suspendice adipiscing elit, sed do eiusmod tempor incididunt
+                                    ut labore et dolore magna aliqua. Quis ipsum suspendices gravida.
+                                </p>
+                            </div>
                             <div className='resources-head__categories'>
                                 <Carousel controls={false} indicators={false}>
                                     <Carousel.Item>
