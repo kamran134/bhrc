@@ -9,7 +9,6 @@ import TeamMock3 from '../../../assets/images/team3.png';
 import { useDispatch, useSelector } from 'react-redux';
 import { getTeam } from '../../../redux/actions/home.actions';
 import Modal from 'react-bootstrap/Modal';
-import { config } from '../../../config';
 import { RootState } from '../../../redux/reducers';
 import { ITeamMember, ISocialNetwork, IHomePageBlock } from '../../../models';
 import { AnimationOnScroll } from 'react-animation-on-scroll';

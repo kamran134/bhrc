@@ -22,6 +22,7 @@ import News from './components/Pages/Activities/News';
 import Profile from './components/Pages/Profile/Profile';
 import Default from './components/Pages/Default';
 import About from './components/Pages/About/About';
+import NewsMock from './components/Pages/Activities/NewsMock';
 
 const MyRouter: FunctionComponent<{}> = () => {
     return (
@@ -37,6 +38,7 @@ const MyRouter: FunctionComponent<{}> = () => {
                 </Route>
                 <Route path='activities' element={<News/>}>
                     <Route index element={<Activities/>} />
+                    <Route path='news1' element={<NewsMock/>} />
                     <Route path=':id' element={<Activity/>} />
                 </Route>
                 <Route path='/' element={<Default />}>
