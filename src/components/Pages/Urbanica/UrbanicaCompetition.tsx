@@ -8,7 +8,7 @@ import { IBudget, IProject, IProjectBudjet } from '../../../models';
 import { getCompetition, sendProject, getProfile } from '../../../redux/actions';
 import UrbanicaBudgetForm from '../../../forms/UrbanicaBudgetForm';
 import { BsCheckCircle } from 'react-icons/bs';
-import { Element, scroller, animateScroll as scroll } from 'react-scroll';
+import { Element, animateScroll as scroll } from 'react-scroll';
 import './urbanica.scss';
 
 const UrbanicaCompetition: FunctionComponent = () => {
@@ -100,31 +100,31 @@ const UrbanicaCompetition: FunctionComponent = () => {
 
     return (
         <Element name='competition'>
-        <div className='urbanica-competition'>
-            {response ? <div className='container success'>
-                <h1 className='main-blue-text'>
-                    <span className='success-icon'><BsCheckCircle /></span>
-                    Layihə uğurla göndərildi!
-                </h1>
-                <a href={`/`}>Ana səhifə</a>
-                <a href={`/urbanica`}>Urbanica</a>
-            </div> : stage === 0 ? <div className='container relative'>
-                <UrbanicaGeneralForm onSubmit={submitHandler} />
-                <button className='competition-btn' onClick={nextButtonClickHandler}>
-                    <ImArrowRight2/>
-                </button>
-            </div> : <div className='container'>
-                <UrbanicaBudgetForm onSubmit={submitBudget} />
-                <div className='urbanica-competition__footer'>
-                    <button className='urbanica-btn big-blue' onClick={() => setStage(0)}>
-                        <ImArrowLeft2/> Geri
+            <div className='urbanica-competition'>
+                {response ? <div className='container success'>
+                    <h1 className='main-blue-text'>
+                        <span className='success-icon'><BsCheckCircle /></span>
+                        Project has been sent successfull!
+                    </h1>
+                    <a href={`/`}>Home</a>
+                    <a href={`/urbanica`}>Urbanica</a>
+                </div> : stage === 0 ? <div className='container relative'>
+                    <UrbanicaGeneralForm onSubmit={submitHandler} />
+                    <button className='competition-btn' onClick={nextButtonClickHandler}>
+                        <ImArrowRight2/>
                     </button>
-                    <button className='urbanica-btn sign-up' onClick={() => dispatch(submit("UrbanicaBudgetForm"))}>
-                        Göndər <ImArrowRight2/>
-                    </button>
-                </div>
-            </div>}
-        </div>
+                </div> : <div className='container'>
+                    <UrbanicaBudgetForm onSubmit={submitBudget} />
+                    <div className='urbanica-competition__footer'>
+                        <button className='urbanica-btn big-blue' onClick={() => setStage(0)}>
+                            <ImArrowLeft2/> Back
+                        </button>
+                        <button className='urbanica-btn sign-up' onClick={() => dispatch(submit("UrbanicaBudgetForm"))}>
+                            Send <ImArrowRight2/>
+                        </button>
+                    </div>
+                </div>}
+            </div>
         </Element>
     );
 }

@@ -16,7 +16,7 @@ const NewsHeader: FunctionComponent = () => {
                         <div className='container-inner flex-row flex-center'>
                             <div className='articles-head__text'>
                                 <h1>{t("News").toUpperCase()}</h1>
-                                <p>
+                                <p className='centered-text'>
                                     Event makes suspendice adipiscing elit, sed do eiusmod tempor incididunt
                                     ut labore et dolore magna aliqua. Quis ipsum suspendices gravida.
                                 </p>

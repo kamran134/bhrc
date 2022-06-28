@@ -278,7 +278,6 @@ h1.main-about {
     }
     &.blue-btn {
         background-color: $main-blue;
-        font-family: 'Candara';
         min-width: 64px;
         height: 48px;
         font-size: 30px;
@@ -478,7 +477,9 @@ h1.main-about {
 
 .urbanica-modal {
     .modal-content {
-        background-image: url("/assets/images/urbanica/modal-back.png");
+        background-image: url("/assets/images/sigin-modal-background.png");
+        background-size: cover;
+        background-position-x: right;
     }
     .register-btn {
         position: absolute;

@@ -1,10 +1,14 @@
 .profile-header {
     width: 100%;
     position: relative;
-    svg {
-        .st0 {
-            fill: #F3B13B;
-        }
+    img {
+        width: 100%;
+    }
+    &__logo {
+        width: 125px;
+        position: absolute;
+        top: 50%;
+        right: 31%;
     }
     &__avatar {
         position: absolute;
@@ -51,7 +55,7 @@
     }
     .ellipse {
         position: absolute;
-        top: 62%;
+        top: 60%;
         left: 14.5%;
         width: 6.5vw;
         height: 6.5vw;

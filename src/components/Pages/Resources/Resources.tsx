@@ -56,7 +56,7 @@ const Resources: FunctionComponent = () => {
     useEffect(() => {
         if (resources.categories) {
             for (let category of resources.categories) {
-                const tName = transliterate().transform(category.name[lang], '-');
+                const tName = transliterate().transform(category.name.az, '-');
                 if ('/resources/' + tName === location.pathname) {
                     selectCategoryHandler(category._id, tName);
                     break;
@@ -160,16 +160,16 @@ const Materials: FunctionComponent<MaterialsProps> = ({materialsArray, lang}) =>
     return (
         <div className='topic__materials'>
             {(materialsArray as (IAttachment | IPresentation | IReport | IVideo | IResource)[]).map(material => {
-                if(material.fileLink && material.fileLink[lang]) return <Material material={material} lang={lang} key={material._id} />
+                if(material.fileLink && material.fileLink.az) return <Material material={material} lang={lang} key={material._id} />
                 else return(
                     <div className='material-doc info'>
-                        <h3>{material.name[lang]}</h3>
-                        <p dangerouslySetInnerHTML={{__html: material.description[lang]}} />
+                        <h3>{material.name.az}</h3>
+                        <p dangerouslySetInnerHTML={{__html: material.description.az}} />
                     </div>
-                )
+                );
             })}
         </div>
-    )
+    );
 }
 
 interface MaterialProps {
@@ -178,43 +178,42 @@ interface MaterialProps {
 }
 
 const Material: FunctionComponent<MaterialProps> = ({material, lang}) => {
-    console.log('me', material);
-    const extention = material.fileLink[lang].split('.').pop();
+    const extention = material.fileLink.az.split('.').pop();
     switch(extention) {
         case 'docx':
         case 'doc':
             return (
-                <a href={material.fileLink[lang]} target='_blanck'>
+                <a href={material.fileLink.az} target='_blanck'>
                     <div className='material-doc'>
                         <div><WordIcon /></div>
-                        <div>{material.name[lang]}</div>
+                        <div>{material.name.az}</div>
                     </div>
                 </a>
                 
             );
         case 'pdf':
             return (
-                <a href={material.fileLink[lang]} target='_blanck'>
+                <a href={material.fileLink.az} target='_blanck'>
                     <div className='material-doc'>
                         <div><PDFIcon /></div>
-                        <div>{material.name[lang]}</div>
+                        <div>{material.name.az}</div>
                     </div>
                 </a>
             );
         case 'pptx':
             return (
-                <a href={material.fileLink[lang]} target='_blanck'>
+                <a href={material.fileLink.az} target='_blanck'>
                     <div className='material-doc'>
                         <div><PowerPointIcon /></div>
-                        <div>{material.name[lang]}</div>
+                        <div>{material.name.az}</div>
                     </div>
                 </a>
             );
         default:
             return (
                 <div className='material'>
-                    <iframe src={`${material.fileLink[lang]}&embedded=true`} width='100%' title={material.name[lang]} />
-                    {material.name[lang]}
+                    <iframe src={`${material.fileLink.az}&embedded=true`} width='100%' title={material.name.az} />
+                    {material.name.az}
                 </div>
             );
     }

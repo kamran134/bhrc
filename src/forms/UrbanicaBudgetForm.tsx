@@ -8,9 +8,9 @@ import UrbanicaSelect from '../components/UI/UrbanicaSelect';
 const UrbanicaBudgetForm: FunctionComponent<InjectedFormProps<IProjectBudjet>> = () => {
     const { t } = useTranslation();
     const options: {value: string, label: string}[] = [
-        {value: 'day', label: 'gün'},
-        {value: 'month', label: 'ay'},
-        {value: 'year', label: 'il'}
+        {value: 'day', label: 'day'},
+        {value: 'month', label: 'month'},
+        {value: 'year', label: 'year'}
     ];
 
     const [teams, setTeams] = useState<number>(1);
@@ -22,22 +22,22 @@ const UrbanicaBudgetForm: FunctionComponent<InjectedFormProps<IProjectBudjet>> =
         <div>
             <div className='container-inner urbanica-container flex-col align-center'>
                 <div className='urbanica-container__title'>
-                    <h1 className='main-blue-text'>{t("Büdcə forması")}</h1>
+                    <h1 className='main-blue-text'>{t("Budget form")}</h1>
                 </div>
                 <div className='urbanica-container__project-name'>
-                    <label className='main-blue-text candara'>{'Layihənin müddəti'}</label>
-                    <Field placeholder={t("Layihənin müddəti")} component={UrbanicaInput} name={'projectPeriod'} />
-                    <Field placeholder={t("Layihənin müddəti")} component={UrbanicaSelect} name={'projectPeriodSelect'} options={options} />
+                    <label className='main-blue-text'>{'Project duration'}</label>
+                    <Field placeholder={t("Project duration")} component={UrbanicaInput} name={'projectPeriod'} />
+                    <Field placeholder={t("Project duration")} component={UrbanicaSelect} name={'projectPeriodSelect'} options={options} />
                 </div>
                 <div className='urbanica-container__subtitle'>
-                    <h1 className='lined-title main-blue-text'><span className='upper-case'>{t("Xərclər")}</span></h1>
+                    <h1 className='lined-title main-blue-text'><span className='upper-case'>{t("Expenses")}</span></h1>
                 </div>
                 
                 <div className='urbanica-container__general-info'>
-                    <RenderForms order={1} selector={teams} setSelector={setTeams} label={"Heyət xərcləri"} key={1} />
-                    <RenderForms order={2} selector={activities} setSelector={setActivities} label={"Fəaliyyətlər"} key={2} />
-                    <RenderForms order={3} selector={gadjets} setSelector={setGadjets} label={"Avadanlıq"} key={3} hasCount={true} />
-                    <RenderForms order={4} selector={others} setSelector={setOthers} label={"Digər xərclər"} key={4} hasCount={true} />
+                    <RenderForms order={1} selector={teams} setSelector={setTeams} label={"Staff costs"} key={1} />
+                    <RenderForms order={2} selector={activities} setSelector={setActivities} label={"Activities"} key={2} />
+                    <RenderForms order={3} selector={gadjets} setSelector={setGadjets} label={"Equipment"} key={3} hasCount={true} />
+                    <RenderForms order={4} selector={others} setSelector={setOthers} label={"Other costs"} key={4} hasCount={true} />
                 </div>
             </div>
         </div>
@@ -69,25 +69,25 @@ const RenderForms: FunctionComponent<RenderFormsProps> = (props) => {
             <div className='budget-table'>
                 <div className='budget-table__row'>
                     <div className='budget-table__th-1'>
-                        <label className='main-blue-text candara'>Xərclərin növü</label>
+                        <label className='main-blue-text'>Type of expenses</label>
                     </div>
                     <div className='budget-table__th-2'>
-                        <label className='main-blue-text candara'>Kəmiyyət</label>
+                        <label className='main-blue-text'>Quantity</label>
                     </div>
                     <div className='budget-table__th-3'>
-                        <label className='main-blue-text candara'>Vahid</label>
+                        <label className='main-blue-text'>Unit</label>
                     </div>
                     <div className='budget-table__th-4'>
-                        <label className='main-blue-text candara'>Vahidin qiyməti</label>
+                        <label className='main-blue-text'>Unit value</label>
                     </div>
                     {props.hasCount && <div className='budget-table__th-2'>
-                        <label className='main-blue-text candara'>Ədəd</label>
+                        <label className='main-blue-text'>Number</label>
                     </div>}
                 </div>
                 {budgetArray}
                 <div className='budget-table__row'>
                     <div className='budget-table__th-1'>
-                        <label className='main-blue-text candara'>Cəmi:</label>
+                        <label className='main-blue-text'>Total:</label>
                     </div>
                     <div className='budget-table__th-2' />
                     <div className='budget-table__th-3' />
@@ -109,20 +109,20 @@ interface BudgetTableRowProps {
 const BudgetTableRow: FunctionComponent<BudgetTableRowProps> = (props) => {
     const { t } = useTranslation();
     const options: {value: string, label: string}[] = [
-        {value: 'day', label: 'gün'},
-        {value: 'month', label: 'ay'},
-        {value: 'year', label: 'il'}
+        {value: 'day', label: 'day'},
+        {value: 'month', label: 'month'},
+        {value: 'year', label: 'year'}
     ];
     const [price, setPrice] = useState<number>(0);
     const [quantity, setQuantity] = useState<number>(1);
     const [count, setCount] = useState<number>(1);
 
     const quantityChangeHandler = (e: any) => {
-        setQuantity(e.target.value)
+        setQuantity(e.target.value);
     }
 
     const priceChangeHandler = (e: any) => {
-        setPrice(e.target.value)
+        setPrice(e.target.value);
     }
 
     const countChangeHandler = (e: any) => {
@@ -146,7 +146,7 @@ const BudgetTableRow: FunctionComponent<BudgetTableRowProps> = (props) => {
             {props.hasCount && <div className='budget-table__th-2'>
                 <Field component={UrbanicaInput} name={`${props.order}_count_${props.index}`} onChange={countChangeHandler} />
             </div>}
-            <div className='budget-table__th-5'><label className='main-blue-text candara'>{t("Cəmi")}: {price * quantity * count}</label></div>
+            <div className='budget-table__th-5'><label className='main-blue-text'>{t("Total")}: {price * quantity * count}</label></div>
         </div>
     );
 }

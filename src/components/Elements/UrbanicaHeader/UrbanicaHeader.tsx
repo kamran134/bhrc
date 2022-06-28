@@ -51,7 +51,7 @@ const UrbanicaHeader: FunctionComponent<{}> = (props) => {
                         >
                             {t("Sign in")}
                         </button> : <button className='urbanica-btn sign-up' onClick={() => navigate('/profile')}>
-                            {t("Şəxsi hesab")}
+                            {t("Profile")}
                             <FaUser style={{marginLeft: 10}} />
                         </button>}
                     </div>

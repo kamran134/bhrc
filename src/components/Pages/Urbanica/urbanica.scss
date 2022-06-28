@@ -160,6 +160,20 @@
         position: absolute;
         bottom: 0;
         transform: translate(0, 50%);
+        width: 252px;
+        height: 220px;
+        svg {
+            height: 205px;
+        }
+    }
+    &__purple-circle {
+        background-color: #93b3f4;
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        position: absolute;
+        bottom: 50px;
+        right: 0;
     }
     &__subtitle {
         margin-top: $menu-margin;

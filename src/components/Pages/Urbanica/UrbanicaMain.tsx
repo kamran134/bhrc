@@ -39,7 +39,7 @@ const UrbanicaMain: FunctionComponent = () => {
     }, [auth, redirect, navigate]);
 
     const today = new Date();
-    // const endDate = competition ? new Date(competition?.endDate) : new Date();
+    const endDate = competition ? new Date(competition?.endDate) : new Date();
 
     const competitionMock: IContest = {
         _id: 'test',
@@ -68,8 +68,6 @@ const UrbanicaMain: FunctionComponent = () => {
         endDate: new Date('06.29.2022 20:00:00'),
         picture: ''
     };
-
-    const endDate = new Date(competitionMock.endDate);
 
     return (
         <>
