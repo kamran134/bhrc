@@ -15,6 +15,7 @@ import { useNavigate } from 'react-router-dom';
 import moment from 'moment';
 import 'moment/locale/az';
 import './urbanica.scss';
+import { IContest } from '../../../models';
 
 const UrbanicaMain: FunctionComponent = () => {
     const { t } = useTranslation();
@@ -38,7 +39,37 @@ const UrbanicaMain: FunctionComponent = () => {
     }, [auth, redirect, navigate]);
 
     const today = new Date();
-    const endDate = competition ? new Date(competition?.endDate) : new Date();
+    // const endDate = competition ? new Date(competition?.endDate) : new Date();
+
+    const competitionMock: IContest = {
+        _id: 'test',
+        name: {
+            az: 'SHOW YOURSELF',
+            ru: 'SHOW YOURSELF',
+            en: 'SHOW YOURSELF'
+        },
+        shortDescription: {
+            az: 'Participate in our competition and show what you are capable of',
+            ru: 'Participate in our competition and show what you are capable of',
+            en: 'Participate in our competition and show what you are capable of'
+        },
+        description: {
+            az: 'Participate in our competition and show what you are capable of',
+            ru: 'Participate in our competition and show what you are capable of',
+            en: 'Participate in our competition and show what you are capable of'
+        },
+        path: {
+            az: 'test',
+            ru: 'test',
+            en: 'test'
+        },
+        createdAt: new Date(),
+        startDate: new Date(),
+        endDate: new Date('06.29.2022 20:00:00'),
+        picture: ''
+    };
+
+    const endDate = new Date(competitionMock.endDate);
 
     return (
         <>
@@ -51,12 +82,12 @@ const UrbanicaMain: FunctionComponent = () => {
                         <div className='urbanica-main__motivation'>
                             {t("MAKE A STEP")}
                         </div>
-                        {competition && (endDate.getTime() > today.getTime()) &&
+                        {competitionMock &&
                             <Contest
-                                name={competition.name[lang] || competition.name.az}
-                                description={(competition.description || {})[lang || 'az']}
+                                name={competitionMock.name[lang] || competitionMock.name.az}
+                                description={(competitionMock.description || {})[lang || 'az']}
                                 isAuthenticate={auth.isAuthenticated}
-                                endDate={competition.endDate} />}
+                                endDate={competitionMock.endDate} />}
                     </div>
                 </div>
             </div>
