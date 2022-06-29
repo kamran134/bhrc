@@ -80,7 +80,7 @@ const ProfileHeader: FunctionComponent = () => {
                 </div>
             </div>
             <div className='profile-header__name'>
-                <p className='name'>{(auth.user?.profile?.fullName || {})[lang]}</p>
+                <p className='name'>Alina Asgarova</p>
                 <p className='role'>{auth.user?.profile.role === UserRole.PARTICIPANT ? t("Participant") : t(auth.user?.profile.role || "Participant")}</p>
             </div>
             <div className='profile-header__logout'>

@@ -45,13 +45,37 @@ const ProfileMain: FunctionComponent = () => {
         if (auth) setInfoEditMode(false);
     }, [auth]);
 
+    const projectsMock: IProject[] = [
+        {
+            _id: '1',
+            general: {
+                projectName: 'LoremIpsum',
+                neccessary: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s....... '
+            }
+        },
+        {
+            _id: '2',
+            general: {
+                projectName: 'LoremIpsum',
+                neccessary: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s....... '
+            }
+        },
+        {
+            _id: '3',
+            general: {
+                projectName: 'LoremIpsum',
+                neccessary: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s....... '
+            }
+        }
+    ];
+
     return (
         <div className='profile container'>
             <div className='container-inner flex-center flex-col'>
                 <div className='profile__about'>
-                    {/* <div className='profile__statistics'>
+                    <div className='profile__statistics'>
                         <div>
-                            <div className='statistics-badge'>{projects?.length}</div>
+                            <div className='statistics-badge'>{projectsMock?.length}</div>
                             <label>{t("Works")}</label>
                         </div>
                         <div>
@@ -62,13 +86,13 @@ const ProfileMain: FunctionComponent = () => {
                             <div className='statistics-badge'>20</div>
                             <label>{t("Raitings")}</label>
                         </div>
-                    </div> */}
+                    </div>
                     <div className='profile__about-me relative'>
                         <div className='profile-badge'>
                             {t("#AboutME")}
                         </div>
                         <div className='profile__about-me__info'>
-                            {!infoEditMode ? (auth.user?.profile?.bio || {})[lang] : 
+                            {!infoEditMode ? 'I am a new participant in this enterprise. I strive to improve life in our country. I am looking for new opportunities to prove myself.is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.' : 
                                 <textarea value={about} onChange={e => setAbout(e.target.value)} ref={textareaRef} />
                             } 
                         </div>
@@ -83,7 +107,7 @@ const ProfileMain: FunctionComponent = () => {
                 <div className='profile__works flex-center flex-col'>
                     <ProfileEllipses className='left-corner' />
                     <ProfileEllipses className='right-corner' />
-                    <MyProjects projects={projects} t={t} />
+                    <MyProjects projects={projectsMock} t={t} />
                 </div>
             </div>
         </div>

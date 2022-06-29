@@ -12,10 +12,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../../redux/reducers';
 import { getCompetition, openModal, redirect } from '../../../redux/actions';
 import { useNavigate } from 'react-router-dom';
+import { IContest } from '../../../models';
 import moment from 'moment';
 import 'moment/locale/az';
 import './urbanica.scss';
-import { IContest } from '../../../models';
 
 const UrbanicaMain: FunctionComponent = () => {
     const { t } = useTranslation();
@@ -222,7 +222,9 @@ const BHRCLink = () => {
     const dispatch = useDispatch();
     return (
         <div className='urbanica-info__go-home'>
-            <Link to='/' onClick={() => dispatch(redirect('/'))} ><LogoEn className='bhrc-go-home' /></Link>
+            <Link to='/' onClick={() => dispatch(redirect('/'))} >
+                <LogoEn className='bhrc-go-home' />
+            </Link>
         </div>
 )};
 
