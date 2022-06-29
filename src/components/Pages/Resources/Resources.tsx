@@ -117,7 +117,7 @@ const Resources: FunctionComponent = () => {
                                     <div className='topic'>
                                         <div className='topic__icon'><FolderIcon/></div>
                                         <div className='flex-col space-between'>
-                                            <div className='topic__title'>{topic.name[lang]}</div>
+                                            <div className='topic__title'>{topic.name.az}</div>
                                             <div className='topic__resources'>
                                                 {topic.videos && topic.videos.length !== 0 && <button onClick={() => selectDocType(topic._id, 'videos')}>
                                                     {t("Videos")}
