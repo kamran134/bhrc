@@ -78,22 +78,22 @@ const validate = (values: IProjectGeneralInfo & IProjectDetails): FormErrors<IPr
     if (!values.projectName || values.projectName.trim() === '') {
         errors.projectName = 'Layihənin adı boş ola bilməz!';
     }
-    if (!values.howSolve || values.howSolve.trim() == '') {
+    if (!values.howSolve || values.howSolve.trim() === '') {
         errors.howSolve = 'Bu sahə boş ola bilməz!';
     }
-    if (!values.neccessary || values.neccessary.trim() == '') {
+    if (!values.neccessary || values.neccessary.trim() === '') {
         errors.neccessary = 'Bu sahə də boş ola bilməz!';
     }
-    if (!values.groups || values.groups.trim() == '' ) {
+    if (!values.groups || values.groups.trim() === '' ) {
         errors.groups = 'Bu sahə də boş ola bilməz!';
     }
-    if (!values.goal || values.goal.trim() == '') {
+    if (!values.goal || values.goal.trim() === '') {
         errors.goal = 'Bu sahə də boş ola bilməz!';
     }
-    if (!values.suggestions || values.suggestions.trim() == '') {
+    if (!values.suggestions || values.suggestions.trim() === '') {
         errors.suggestions = 'Bu sahə də boş ola bilməz!';
     }
-    if (!values.expectedResult || values.expectedResult.trim() == '') {
+    if (!values.expectedResult || values.expectedResult.trim() === '') {
         errors.expectedResult = 'Bu sahə də boş ola bilməz!';
     }
     return errors;

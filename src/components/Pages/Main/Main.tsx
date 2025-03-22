@@ -1,4 +1,4 @@
-import React, { useEffect, FunctionComponent, useState } from 'react';
+import React, { useEffect, FunctionComponent } from 'react';
 import { animateScroll as scroll } from 'react-scroll';
 import Cover from './Cover';
 import MainAbout from './About';
@@ -11,7 +11,7 @@ import { getHomePage } from '../../../redux/actions';
 import { RootState } from '../../../redux/reducers';
 import './main.scss';
 import ScrollPage from '../../UI/ScrollPage';
-import ScrollPageContainer from '../../UI/ScrollPageContainer';
+import { MainSonicBot } from './SonicBot';
 
 const Main: FunctionComponent = () => {
     const dispatch = useDispatch();
@@ -40,6 +40,7 @@ const Main: FunctionComponent = () => {
             {resources && <ScrollPage name='cover' pageNumber={3}><MainResources data={resources} /></ScrollPage>}
             {signin && <ScrollPage name='cover' pageNumber={4}><MainSignIn data={signin} /></ScrollPage>}
             {team && <ScrollPage name='cover' pageNumber={5}><MainTeam data={team} /></ScrollPage>}
+            <ScrollPage name='cover' pageNumber={6}><MainSonicBot /></ScrollPage>
         </>
     );
 }

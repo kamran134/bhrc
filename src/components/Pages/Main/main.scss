@@ -443,6 +443,12 @@
     }
 }
 
+.main-bot {
+    padding: $big-margin 0;
+    display: flex;
+    justify-content: center;
+}
+
 .member-modal {
     .modal-content {
         display: flex;
